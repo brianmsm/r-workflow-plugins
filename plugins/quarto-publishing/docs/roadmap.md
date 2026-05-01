@@ -87,7 +87,9 @@ The plugin exists as an installable unit inside the monorepo, even if only a sub
 Check that:
 
 * The plugin name is stable: `quarto-publishing`.
-* The plugin version starts at `0.1.0` only when the first usable release is ready.
+* The plugin version remains `0.0.0` during scaffold-only development.
+* No public tag is created for the scaffold-only `0.0.0` state.
+* The plugin version changes to `0.1.0` only in the first usable release commit.
 * The plugin manifest points to `./skills/`.
 * The README explains the plugin purpose without duplicating the full architecture.
 * The roadmap references `architecture.md` as the target design.
@@ -701,6 +703,10 @@ However, `v1.0.0` does not require every possible future specialized skill. Stab
 ## Versioning Strategy
 
 Use plugin-level semantic versioning.
+
+During scaffold-only development, keep `plugin.json` at `0.0.0` and do not create a public tag. The first usable release changes `plugin.json` to `0.1.0` in the release commit and creates the tag `quarto-publishing-v0.1.0`.
+
+After a release, keep `plugin.json` at the latest released version while normal development continues. Track work for the next release under `## [Unreleased]` in `CHANGELOG.md`. When the next release is ready, update `plugin.json` in the release commit and create the corresponding plugin tag.
 
 ### Patch Versions
 
