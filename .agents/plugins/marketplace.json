@@ -1,0 +1,20 @@
+{
+  "name": "r-workflow-plugins",
+  "interface": {
+    "displayName": "R Workflow Plugins"
+  },
+  "plugins": [
+    {
+      "name": "quarto-publishing",
+      "source": {
+        "source": "local",
+        "path": "./plugins/quarto-publishing"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
