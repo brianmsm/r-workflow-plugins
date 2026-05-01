@@ -1,0 +1,35 @@
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto
+.quarto/
+_freeze/
+/.quarto/
+/.quarto-preview/
+
+# Local environments and caches
+.env
+.env.*
+!.env.example
+.cache/
+.pytest_cache/
+__pycache__/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+*.tmp
+*.bak
