@@ -9,7 +9,10 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 ## Structure
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
+- `docs/architecture.md`: intended mature architecture for the plugin.
 - `skills/quarto-publishing-workflow/SKILL.md`: initial workflow skill.
 - `skills/quarto-publishing-workflow/agents/openai.yaml`: OpenAI-facing skill metadata.
 
 The plugin is in an early state and should stay small until real publishing workflows require more structure.
+
+For the intended mature architecture of this plugin, see [`docs/architecture.md`](docs/architecture.md).

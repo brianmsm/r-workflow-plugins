@@ -14,6 +14,8 @@ Each plugin lives in `plugins/<plugin-name>/` and includes:
 
 Do not add empty architecture folders before there is real content for them.
 
+Plugin-level architecture documents may describe the intended mature design for a specific plugin. For example, `plugins/quarto-publishing/docs/architecture.md` describes where the `quarto-publishing` plugin should grow; a plugin roadmap can describe the gradual path toward that design.
+
 ## Marketplace
 
 During development, `.agents/plugins/marketplace.json` can point to local plugin paths such as `./plugins/quarto-publishing`. Published entries may point to Git tags or other release sources later.
