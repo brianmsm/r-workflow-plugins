@@ -93,7 +93,22 @@ claude plugin marketplace add brianmsm/r-workflow-plugins
 claude plugin install quarto-publishing@r-workflow-plugins
 ```
 
-Claude plugin and marketplace manifests currently pin `quarto-publishing` to the public plugin release version. Keep `.claude-plugin/marketplace.json`, `plugins/quarto-publishing/.claude-plugin/plugin.json`, and the Codex manifest version aligned in release commits.
+Claude Code resolves plugin versions in this order:
+
+1. `version` in the plugin's `.claude-plugin/plugin.json`
+2. `version` in the plugin entry inside `.claude-plugin/marketplace.json`
+3. the Git commit SHA of the plugin source
+
+For `r-workflow-plugins`, keep the marketplace as a catalog and keep plugin release versions inside each plugin manifest. Do not duplicate plugin `version` fields in `.claude-plugin/marketplace.json`.
+
+Current policy:
+
+- `.claude-plugin/marketplace.json`: no per-plugin `version` field.
+- `plugins/<plugin-name>/.claude-plugin/plugin.json`: plugin-level `version` field.
+- `homepage`: point to the plugin subdirectory so users can jump directly to plugin-specific documentation.
+- `$schema`: optional editor tooling only; omit it unless validation/autocomplete becomes useful.
+
+During scaffold or pre-release development, a plugin may use `0.0.0` or omit `version` temporarily if commit-SHA-based update behavior is preferred. For controlled plugin releases, keep `version` in the plugin manifest and bump it only when preparing an actual plugin release.
 
 ## Gemini CLI
 

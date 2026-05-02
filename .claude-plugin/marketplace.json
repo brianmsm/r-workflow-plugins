@@ -9,10 +9,10 @@
       "name": "quarto-publishing",
       "source": "./plugins/quarto-publishing",
       "description": "Quarto-first publishing workflows for analytical, academic, technical, and reproducible outputs.",
-      "version": "0.1.0",
       "author": {
         "name": "Brian Norman Peña-Calero"
       },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/quarto-publishing",
       "repository": "https://github.com/brianmsm/r-workflow-plugins",
       "license": "MIT",
       "category": "productivity",

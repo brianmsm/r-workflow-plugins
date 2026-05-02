@@ -5,6 +5,7 @@
   "author": {
     "name": "Brian Norman Peña-Calero"
   },
+  "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/quarto-publishing",
   "repository": "https://github.com/brianmsm/r-workflow-plugins",
   "license": "MIT",
   "keywords": [
