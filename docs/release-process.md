@@ -16,6 +16,8 @@ quarto-publishing-v0.1.0
 
 During local development, `.agents/plugins/marketplace.json` may point to local paths such as `./plugins/quarto-publishing`. For publication, marketplace entries can be updated to point to Git tags or other stable release sources.
 
+Claude Code marketplaces live in `.claude-plugin/marketplace.json`. When Claude plugins are distributed from Git, omit explicit Claude plugin versions unless there is a release reason to pin them; Claude Code can use the source commit SHA for update detection. If explicit Claude versions are added later, avoid declaring conflicting versions in both the marketplace and the plugin manifest.
+
 ## Version Field Policy
 
 Use the same versioning policy for every plugin:
@@ -74,6 +76,7 @@ Before releasing a plugin:
 
 - update the plugin `CHANGELOG.md`;
 - update `.codex-plugin/plugin.json`;
+- review any agent-specific manifests and marketplaces;
 - validate included skills;
 - create the plugin-specific Git tag.
 

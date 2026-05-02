@@ -9,6 +9,7 @@ The architecture is intentionally small and evolutionary. Each plugin is the uni
 Each plugin lives in `plugins/<plugin-name>/` and includes:
 
 - `.codex-plugin/plugin.json`
+- `.claude-plugin/plugin.json` when Claude Code support is enabled
 - optional `skills/<skill-name>/SKILL.md`
 - plugin-level documentation when useful
 
@@ -18,6 +19,8 @@ Plugin-level architecture documents may describe the intended mature design for 
 
 ## Marketplace
 
-During development, `.agents/plugins/marketplace.json` can point to local plugin paths such as `./plugins/quarto-publishing`. Published entries may point to Git tags or other release sources later.
+During development, `.agents/plugins/marketplace.json` can point to local plugin paths such as `./plugins/quarto-publishing`. Claude Code support uses `.claude-plugin/marketplace.json` with the same shared plugin content.
+
+Published entries may point to Git tags or other release sources later.
 
 Future plugins will be designed in separate threads once their scope is concrete.

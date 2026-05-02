@@ -1,0 +1,28 @@
+{
+  "name": "r-workflow-plugins",
+  "owner": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "description": "Portable workflow plugins for AI agents working with R and Quarto.",
+  "plugins": [
+    {
+      "name": "quarto-publishing",
+      "source": "./plugins/quarto-publishing",
+      "description": "Quarto-first publishing workflows for analytical, academic, technical, and reproducible outputs.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "quarto",
+        "python",
+        "julia",
+        "publishing",
+        "reproducible-research"
+      ]
+    }
+  ]
+}
