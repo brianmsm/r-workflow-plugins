@@ -1,0 +1,6 @@
+interface:
+  display_name: "Quarto Computation Performance"
+  short_description: "Optimize expensive Quarto renders and validation."
+  default_prompt: "Use $quarto-computation-performance to review this Quarto workflow for expensive computation, cache/freeze strategy, precomputed artifacts, and proportional validation."
+policy:
+  allow_implicit_invocation: true

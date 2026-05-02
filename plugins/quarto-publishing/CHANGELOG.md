@@ -12,6 +12,8 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added compact Quarto project configuration patterns for metadata placement, project profiles, render targets, parameters, resources, and project-level `freeze`.
 - Added the initial `quarto-format-configuration` skill for output-format YAML and format-specific rendering behavior.
 - Added compact Quarto format configuration patterns for HTML, PDF via LaTeX, PDF via Typst, DOCX, presentations, secondary formats, and advanced output mechanisms.
+- Added the initial `quarto-computation-performance` skill for expensive computation, long renders, cache/freeze strategy, externalized R computation, precomputed artifacts, and proportional validation.
+- Added compact Quarto computation performance patterns for cache/freeze, artifacts, pipeline escalation, random seeds, and long-render validation.
 
 ## [0.0.0] - Scaffold
 
