@@ -5,7 +5,7 @@ Use these compact patterns when reviewing or editing Quarto workflows with expen
 ## Decision Matrix
 
 - Compute directly in `.qmd`: cheap, transparent transformations, small summaries, and examples that should stay close to the narrative.
-- Use chunk cache: repeated expensive chunks where source-code changes are the main invalidation trigger.
+- Use cell or chunk cache: repeated expensive executable cells where source-code changes are the main invalidation trigger.
 - Use project freeze: many computational documents or collaborators need stable project renders without rerunning every document.
 - Use precomputed artifacts: model objects, simulation results, large tables, or expensive data prep can be reused across renders when regeneration during render is slow, fragile, or unnecessary.
 - Use external scripts: the analysis has clear steps that should be run, tested, or reviewed independently from publication.
@@ -93,6 +93,8 @@ Choose artifact formats based on the object:
 - `.qs`: fast R object serialization when the project already uses the package.
 - Parquet/Arrow: columnar tabular data and interoperability.
 - DuckDB: larger local analytical datasets and SQL-style access.
+
+For Python or Julia workflows, prefer artifact formats already used by the project. For tabular outputs, Parquet, Arrow, CSV, or DuckDB-backed data are often more portable across languages than language-specific serialized objects.
 
 Do not hide manual artifacts. Keep the code that generates each artifact and document how to regenerate it.
 

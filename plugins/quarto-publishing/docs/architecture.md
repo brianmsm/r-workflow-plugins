@@ -68,9 +68,9 @@ This skill focuses on the document body and authoring layer, rather than project
 
 * Quarto Markdown syntax.
 * Headings and document structure.
-* Executable code chunks.
+* Executable code cells or chunks.
 * Inline computations, including inline R where applicable.
-* Recommended chunk options for ordinary analytical documents.
+* Recommended cell or chunk options for ordinary analytical documents.
 * Figures and figure captions.
 * Tables and table captions.
 * Equations.
@@ -89,7 +89,7 @@ This skill focuses on the document body and authoring layer, rather than project
 * Whether labels and cross-references are correctly named.
 * Whether figures and tables have meaningful captions.
 * Whether citations are represented consistently.
-* Whether chunk options are proportional to the task.
+* Whether cell or chunk options are proportional to the task.
 * Whether the document body is portable enough for the intended output.
 * Whether the authoring choices preserve the user’s statistical and analytical intent.
 
@@ -945,7 +945,7 @@ Possible future scripts:
 * Validate internal links in HTML.
 * Check for missing figure files.
 * Check for missing bibliography files.
-* Detect long-running chunks heuristically.
+* Detect long-running executable cells or chunks heuristically.
 * Summarize render logs.
 
 Scripts should not replace expert judgment about structure, audience, or analytical reporting.

@@ -84,17 +84,18 @@ Check:
 
 If the task is to design YAML placement from scratch, use `quarto-project-configuration` or `quarto-format-configuration`. Stay here when wrong YAML is causing a failure or defective output.
 
-## R And Chunk Execution Errors
+## Execution Errors And Working Directory
 
 Common failure signs:
 
-- package not found
-- object not found
+- package/module not found
+- object, variable, or name not found
 - file not found
 - parameter missing
 - working directory differs between interactive work and render
+- wrong kernel, environment, or execution engine
 
-Check:
+For R/knitr, useful checks include:
 
 ```r
 getwd()
@@ -102,7 +103,11 @@ getwd()
 sessionInfo()
 ```
 
-Review chunk labels and options only as needed to fix the failure. Ordinary chunk cleanup belongs to `quarto-authoring-core`.
+For Python/Jupyter, check the active kernel, virtual environment, Python path, and whether `quarto check jupyter` reports the expected configuration.
+
+For Julia, check whether the document uses `engine: julia` or Jupyter/IJulia, and verify the Julia executable, project environment, package availability, and kernel when applicable.
+
+Review cell or chunk labels and options only as needed to fix the failure. Ordinary cell or chunk cleanup belongs to `quarto-authoring-core`.
 
 For project renders, code usually executes relative to the document directory unless `execute-dir: project` is configured. Avoid assuming an interactive RStudio working directory.
 
