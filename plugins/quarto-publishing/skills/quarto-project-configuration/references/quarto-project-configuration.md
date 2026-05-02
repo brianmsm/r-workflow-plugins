@@ -108,7 +108,7 @@ project:
   output-dir: docs
 ```
 
-Review output directories together with `.gitignore` and publishing expectations, but keep hosting and CI details out of this skill unless explicitly requested.
+Review output directories together with `.gitignore` and publishing expectations, but route hosting and CI details to deployment or automation guidance.
 
 ## Resources
 

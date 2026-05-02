@@ -52,4 +52,4 @@ Do not design caching, `freeze`, execution architecture, or long-running render 
 
 Do not perform deep render troubleshooting, TeX log debugging, package installation repair, missing font diagnosis, Pandoc failure analysis, or environment setup.
 
-Do not build full multiformat compatibility strategy, report narrative design, custom extension systems, Lua filters, or reusable templates for v0.1.0 unless explicitly requested.
+Do not use this skill as the primary guide for full multiformat compatibility strategy, report narrative design, custom extension systems, Lua filter implementation, or reusable templates. Keep format advice limited to output behavior and route broader work to the appropriate skill boundary.
