@@ -159,7 +159,7 @@ For Typst output, check:
 - referenced files exist
 - Typst syntax errors point to the relevant generated or source location
 
-Keep Typst guidance shallow in v0.1.0. Do not turn this reference into a Typst tutorial.
+Keep Typst guidance limited to diagnosis and verification. Do not turn this reference into a Typst tutorial.
 
 ## HTML Verification
 

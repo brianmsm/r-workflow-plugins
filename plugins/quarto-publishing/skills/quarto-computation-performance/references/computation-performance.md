@@ -110,7 +110,7 @@ Escalate when:
 - Expensive steps should be skipped when inputs are unchanged.
 - The workflow needs repeatable orchestration outside Quarto.
 
-Keep v0.1.0 guidance shallow. Do not turn this skill into a `targets` tutorial.
+Keep pipeline guidance shallow. Do not turn this skill into a `targets` tutorial.
 
 ## Random Seeds
 

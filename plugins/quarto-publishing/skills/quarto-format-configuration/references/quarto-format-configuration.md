@@ -192,7 +192,7 @@ Use custom formats, extensions, or Lua filters only when ordinary format options
 
 Custom formats should derive from an appropriate base format and have a concrete reuse case.
 
-Lua filters are advanced output-behavior tools. In v0.1.0, this skill should usually warn, classify, or point to official docs rather than create filters.
+Lua filters are advanced output-behavior tools. This skill should usually warn, classify, or point to official docs rather than create filters.
 
 ## Official Sources
 

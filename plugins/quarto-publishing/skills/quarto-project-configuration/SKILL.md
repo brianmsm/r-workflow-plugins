@@ -48,7 +48,7 @@ Do not deeply tune output formats, templates, themes, CSS, LaTeX, Typst, DOCX re
 
 Do not design deployment, hosting, GitHub Pages, Netlify, Posit Connect, CI, or publishing pipelines.
 
-Do not create Quarto extensions, Lua filters, brand extensions, project templates, scripts, assets, or validators for v0.1.0 unless explicitly requested.
+Do not use this skill as the primary guide for Quarto extensions, Lua filters, brand extensions, project templates, scripts, assets, or validators. Route those requests to the relevant format, authoring, troubleshooting, or future extension/template scope unless they are only being classified as project-configuration boundaries.
 
 Do not solve long-running computation architecture beyond conservative project-level `freeze` guidance.
 
