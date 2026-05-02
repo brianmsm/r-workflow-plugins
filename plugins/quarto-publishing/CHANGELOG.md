@@ -4,6 +4,11 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Added Claude Code plugin and marketplace metadata for `quarto-publishing`.
+- Added agent setup documentation for Codex and Claude Code adapter layers.
+
 ## [0.1.0] - 2026-05-02
 
 ### Added
