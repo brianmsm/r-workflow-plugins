@@ -20,6 +20,9 @@
     "shortDescription": "Quarto-first publishing workflows.",
     "longDescription": "Guidance for AI agents working on Quarto publishing projects, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows with R/knitr, Python/Jupyter, Julia, or prose-only documents.",
     "developerName": "Brian Norman Peña-Calero",
+    "brandColor": "#4779A6",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
     "category": "Productivity",
     "capabilities": [
       "Documentation",

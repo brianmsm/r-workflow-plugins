@@ -12,6 +12,7 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
 - `.claude-plugin/plugin.json`: Claude Code plugin manifest.
+- `assets/`: Codex interface icon and logo assets.
 - `docs/architecture.md`: intended mature architecture for the plugin.
 - `docs/roadmap.md`: staged plan for growing toward the intended architecture.
 - `skills/quarto-authoring-core/SKILL.md`: Quarto `.qmd` authoring and review skill.
