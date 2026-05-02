@@ -1,6 +1,6 @@
 # QMD Authoring Patterns
 
-Use these compact patterns when reviewing or editing Quarto `.qmd` documents. Prefer official project conventions already present in the user's file.
+Use these compact patterns when reviewing or editing Quarto `.qmd` documents. Prefer official project conventions already present in the user's file, and check whether the document uses R/knitr, Python/Jupyter, Julia, or prose-only Markdown before assuming code behavior.
 
 ## Minimal Document YAML
 
@@ -27,9 +27,9 @@ format:
 ---
 ```
 
-## R Cells
+## Executable Cells
 
-Prefer Quarto cell options as comments at the top of the executable block:
+Prefer Quarto cell options as comments at the top of executable blocks. This pattern applies across engines; choose the code language that matches the document.
 
 ````markdown
 ```{r}
@@ -42,6 +42,8 @@ Prefer Quarto cell options as comments at the top of the executable block:
 plot(sales$date, sales$value, type = "l")
 ```
 ````
+
+For Python/Jupyter documents, the executable block uses `{python}` and the document or project may specify `jupyter: python3`. For Julia documents, check whether the workflow uses `engine: julia` or a Jupyter/IJulia kernel before changing execution assumptions.
 
 Use labels that are unique, descriptive, lowercase, and hyphenated. Avoid underscores in labels that may be cross-referenced or rendered to PDF.
 

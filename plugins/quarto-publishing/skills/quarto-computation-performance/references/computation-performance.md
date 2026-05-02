@@ -1,6 +1,6 @@
 # Quarto Computation Performance Reference
 
-Use these compact patterns when reviewing or editing Quarto workflows with expensive computation. Optimize the Quarto workflow, not the statistical method or general R algorithm unless the user explicitly asks.
+Use these compact patterns when reviewing or editing Quarto workflows with expensive computation. Optimize the Quarto workflow, not the statistical method or general algorithm unless the user explicitly asks.
 
 ## Decision Matrix
 
@@ -13,7 +13,7 @@ Use these compact patterns when reviewing or editing Quarto workflows with expen
 
 ## Cache Basics
 
-For R/knitr documents, enable cache at document or project level:
+Enable cache at document or project level only after checking the execution engine:
 
 ```yaml
 execute:
@@ -43,6 +43,16 @@ Cache invalidation is not the same as data dependency tracking. If input data, t
 
 For knitr workflows, options such as `cache.extra` or other cache attributes can help when a chunk depends on external files, but do not turn this reference into a full knitr caching tutorial.
 
+## Engine-Aware Execution
+
+Treat execution behavior as engine-specific.
+
+- R documents usually use knitr; cache behavior is cell-level and uses knitr cache.
+- Python documents usually use Jupyter; check `jupyter`, kernels, virtual environments, and Jupyter Cache behavior before assuming invalidation.
+- Julia documents may use the `julia` engine or the Jupyter/IJulia engine; check document or project YAML before assuming execution behavior.
+- Quarto can render specially formatted `.py`, `.jl`, and `.r` script files, but the engine and script syntax differ.
+- `freeze` is a project-level strategy for reusing previous computational output during global project renders and should not be treated as the same thing as cache.
+
 ## Freeze Basics
 
 Use `freeze` when global project renders should reuse previous computational results:
@@ -64,7 +74,7 @@ Use `--use-freezer` only as an advanced targeted render flag when the workflow e
 
 Use precomputed artifacts when rerunning computation during render would be slow, fragile, expensive, or unnecessary.
 
-Common R patterns:
+Common R pattern:
 
 ```r
 # prepare-data.R
@@ -150,7 +160,10 @@ Never claim a full render, clean cache refresh, or artifact regeneration unless 
 
 - Quarto managing execution: https://quarto.org/docs/projects/code-execution.html
 - Quarto using R: https://quarto.org/docs/computations/r.html
+- Quarto using Python: https://quarto.org/docs/computations/python.html
+- Quarto using Julia: https://quarto.org/docs/computations/julia.html
 - Quarto caching: https://quarto.org/docs/computations/caching.html
+- Quarto rendering script files: https://quarto.org/docs/computations/render-scripts.html
 - Quarto execution options: https://quarto.org/docs/computations/execution-options.html
 - Quarto render command: https://quarto.org/docs/cli/render.html
 - Quarto parameters: https://quarto.org/docs/computations/parameters.html

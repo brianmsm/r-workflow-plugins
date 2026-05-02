@@ -153,7 +153,7 @@ For `quarto-authoring-core`:
 
 * `qmd-authoring-patterns.md`
 
-This compact reference initially covers document YAML, R/knitr cells, chunk options, figures, tables, cross-references, citations, callouts, and light adaptation of R Markdown idioms inside `.qmd` files. More focused references can be split later if real usage shows they are needed.
+This compact reference initially covers document YAML, executable cells, cell or chunk options, figures, tables, cross-references, citations, callouts, light adaptation of R Markdown idioms inside `.qmd` files, and engine-aware notes for R/knitr, Python/Jupyter, Julia, or prose-only documents. More focused references can be split later if real usage shows they are needed.
 
 For `quarto-project-configuration`:
 

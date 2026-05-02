@@ -1,6 +1,6 @@
 ---
 name: quarto-project-configuration
-description: Use when designing or reviewing shared Quarto project configuration for R workflows, including _quarto.yml, _metadata.yml, shared metadata, project profiles, parameters, render targets, project types, and document-vs-project YAML placement. Do not use for single-document authoring, format-specific output styling, deployment, CI, custom extensions, performance architecture, or deep render troubleshooting.
+description: Use when designing or reviewing shared Quarto project configuration, including _quarto.yml, _metadata.yml, shared metadata, project profiles, parameters, render targets, project types, engine-aware execution settings, and document-vs-project YAML placement. Do not use for single-document authoring, format-specific output styling, deployment, CI, custom extensions, performance architecture, or deep render troubleshooting.
 ---
 
 # Quarto Project Configuration
@@ -16,6 +16,7 @@ Use this skill for the project layer of a Quarto workflow, especially `_quarto.y
 - Use `_metadata.yml` for directory-specific defaults, such as defaults for reports, posts, slides, or notebooks in one folder.
 - Use project profiles only when the project genuinely needs alternate configurations, such as development vs production, local vs CI, or different versions of the same project.
 - Treat project-level `execute`, `freeze`, `render`, `output-dir`, `resources`, and `execute-dir` as high-impact settings that require conservative review.
+- Do not assume every computational project uses knitr. Check whether the project uses `jupyter`, `engine: julia`, `.ipynb`, `.py`, `.jl`, `.r`, or `.qmd` files before recommending execution, cache, or environment settings.
 - Keep format-specific styling and output behavior shallow here; defer detailed HTML, PDF, DOCX, revealjs, PowerPoint, Beamer, Typst, CSS, templates, and extension decisions to `quarto-format-configuration`.
 - Prefer minimal, reversible edits and explain why a setting belongs at project, directory, or document level.
 

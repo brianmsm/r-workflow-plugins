@@ -1,7 +1,7 @@
 {
   "name": "quarto-publishing",
   "version": "0.0.0",
-  "description": "Quarto publishing workflows for R-based documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
+  "description": "Quarto publishing workflows for analytical and research-oriented documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
   "author": {
     "name": "Brian Norman Peña-Calero"
   },
@@ -17,13 +17,16 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Quarto Publishing",
-    "shortDescription": "Quarto publishing workflows for R.",
-    "longDescription": "Guidance for AI agents working on Quarto publishing projects with R, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows.",
+    "shortDescription": "Quarto-first publishing workflows.",
+    "longDescription": "Guidance for AI agents working on Quarto publishing projects, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows with R/knitr, Python/Jupyter, Julia, or prose-only documents.",
     "developerName": "Brian Norman Peña-Calero",
     "category": "Productivity",
     "capabilities": [
       "Documentation",
+      "Quarto",
       "R",
+      "Python",
+      "Julia",
       "Publishing"
     ],
     "defaultPrompt": [
@@ -32,7 +35,7 @@
       "Use the Quarto publishing skills to configure HTML, PDF, DOCX, or revealjs output formats.",
       "Use the Quarto publishing skills to improve the structure and narrative of a technical or executive report.",
       "Use the Quarto publishing skills to review cache, freeze, and expensive computation in a Quarto workflow.",
-      "Use the Quarto publishing skills to troubleshoot a Quarto render issue in an R project.",
+      "Use the Quarto publishing skills to troubleshoot a Quarto render issue in a project that uses R, Python, Julia, Jupyter, or prose-only documents.",
       "Use the Quarto publishing skills to verify rendered-output problems, broken links, missing assets, or format-specific failures."
     ]
   }
