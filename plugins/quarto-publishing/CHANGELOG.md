@@ -14,6 +14,8 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added compact Quarto format configuration patterns for HTML, PDF via LaTeX, PDF via Typst, DOCX, presentations, secondary formats, and advanced output mechanisms.
 - Added the initial `quarto-computation-performance` skill for expensive computation, long renders, cache/freeze strategy, externalized R computation, precomputed artifacts, and proportional validation.
 - Added compact Quarto computation performance patterns for cache/freeze, artifacts, pipeline escalation, random seeds, and long-render validation.
+- Added the initial `quarto-render-troubleshooting` skill for Quarto render failures, rendered-output defects, diagnostics, targeted fixes, and honest verification.
+- Added compact Quarto render troubleshooting patterns for YAML, execution, paths/assets, LaTeX, Typst, citations, cross-references, HTML verification, and local-vs-CI differences.
 
 ## [0.0.0] - Scaffold
 

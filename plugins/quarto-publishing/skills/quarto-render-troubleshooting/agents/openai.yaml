@@ -1,0 +1,6 @@
+interface:
+  display_name: "Quarto Render Troubleshooting"
+  short_description: "Diagnose and verify Quarto render failures."
+  default_prompt: "Use $quarto-render-troubleshooting to diagnose this Quarto render or output verification problem from the exact error, command, file, format, and environment."
+policy:
+  allow_implicit_invocation: true

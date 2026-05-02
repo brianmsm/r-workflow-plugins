@@ -182,11 +182,9 @@ This compact reference initially covers cache/freeze, long-running renders, exte
 
 For `quarto-render-troubleshooting`:
 
-* `render-failure-checklist.md`
-* `yaml-errors.md`
-* `chunk-errors.md`
-* `latex-errors.md`
-* `html-verification.md`
+* `render-troubleshooting.md`
+
+This compact reference initially covers render failure triage, diagnostic commands, YAML errors, chunk execution errors, paths and assets, LaTeX and Typst failures, citations, cross-references, HTML verification, local-vs-CI differences, and honest verification claims.
 
 ### Expected Outcome
 
