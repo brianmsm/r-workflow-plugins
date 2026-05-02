@@ -6,8 +6,8 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ### Added
 
-- Added the initial `quarto-authoring-core` skill for Quarto `.qmd` authoring and review.
-- Added compact `.qmd` authoring patterns for YAML, R cells, cross-references, citations, callouts, and R Markdown interoperability.
+- Added the initial `quarto-authoring-core` skill for Quarto `.qmd` authoring and review, especially R/knitr workflows, with light adaptation of R Markdown idioms inside `.qmd` files.
+- Added compact `.qmd` authoring patterns for YAML, R cells, cross-references, citations, callouts, and light R Markdown interoperability.
 - Added the initial `quarto-project-configuration` skill for `_quarto.yml`, `_metadata.yml`, shared metadata, profiles, parameters, and project-level configuration review.
 - Added compact Quarto project configuration patterns for metadata placement, project profiles, render targets, parameters, resources, and project-level `freeze`.
 - Added the initial `quarto-format-configuration` skill for output-format YAML and format-specific rendering behavior.
@@ -18,11 +18,6 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added compact Quarto render troubleshooting patterns for YAML, execution, paths/assets, LaTeX, Typst, citations, cross-references, HTML verification, and local-vs-CI differences.
 - Added the initial `quarto-report-design` skill for executive, technical, academic, and mixed Quarto report structure.
 - Added profile-specific report design references for executive, technical, and academic reports, plus a basic transitional accessibility checklist.
-
-### Changed
-
-- Clarified `quarto-authoring-core` as light `.qmd` adaptation rather than full R Markdown ecosystem migration.
-- Aligned release-readiness wording across Quarto skills, project docs, and references before the first usable release.
 
 ### Removed
 
