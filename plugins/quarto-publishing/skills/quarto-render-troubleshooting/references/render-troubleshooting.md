@@ -154,7 +154,7 @@ Do not redesign PDF styling here. Format choices and options belong to `quarto-f
 
 For Typst output, check:
 
-- the project is using `format: typst`
+- Typst output is configured with `format: typst`
 - Typst-specific options, templates, bibliography behavior, and syntax are not confused with LaTeX options
 - referenced files exist
 - Typst syntax errors point to the relevant generated or source location
