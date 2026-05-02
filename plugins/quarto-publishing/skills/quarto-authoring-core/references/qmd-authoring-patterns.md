@@ -98,7 +98,7 @@ For an equation:
 
 ```markdown
 $$
-y = \\alpha + \\beta x
+y = \alpha + \beta x
 $$ {#eq-linear}
 
 See @eq-linear.
