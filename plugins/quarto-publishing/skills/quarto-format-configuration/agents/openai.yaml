@@ -1,0 +1,7 @@
+interface:
+  display_name: "Quarto Format Configuration"
+  short_description: "Review Quarto output format YAML."
+  default_prompt: "Use $quarto-format-configuration to review Quarto output-format YAML, format-specific options, styling mechanisms, and rendered output behavior."
+
+policy:
+  allow_implicit_invocation: true
