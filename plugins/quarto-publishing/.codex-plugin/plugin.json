@@ -1,6 +1,6 @@
 {
   "name": "quarto-publishing",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Quarto publishing workflows for analytical and research-oriented documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
   "author": {
     "name": "Brian Norman Peña-Calero"

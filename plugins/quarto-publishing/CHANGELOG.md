@@ -4,6 +4,8 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-05-02
+
 ### Added
 
 - Added the initial `quarto-authoring-core` skill for Quarto `.qmd` authoring and review across R/knitr, Python/Jupyter, Julia, and prose-only workflows, with light adaptation of R Markdown idioms inside `.qmd` files.
