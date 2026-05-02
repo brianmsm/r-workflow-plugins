@@ -22,7 +22,7 @@ The plugin should cover:
 * Migration from R Markdown, Bookdown, Distill, Blogdown, Xaringan, ioslides, Beamer, and related R Markdown-based ecosystems.
 * Publication and distribution through static files, self-contained HTML, GitHub Pages, Netlify, Posit Connect, Posit Connect Cloud, institutional delivery, and CI/CD workflows.
 * Accessibility and quality practices, including alt text, heading structure, semantic tables, link text, language metadata, PDF accessibility, output review, and editorial consistency.
-* Render troubleshooting, logs, YAML errors, chunk errors, LaTeX errors, Typst errors, bibliography problems, missing assets, broken links, screenshot review, browser-based inspection, and verification of rendered outputs.
+* Render troubleshooting, logs, YAML errors, cell or chunk errors, LaTeX errors, Typst errors, bibliography problems, missing assets, broken links, screenshot review, browser-based inspection, and verification of rendered outputs.
 
 ## Architectural Principles
 

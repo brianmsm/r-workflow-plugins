@@ -184,7 +184,7 @@ For `quarto-render-troubleshooting`:
 
 * `render-troubleshooting.md`
 
-This compact reference initially covers render failure triage, diagnostic commands, YAML errors, chunk execution errors, paths and assets, LaTeX and Typst failures, citations, cross-references, HTML verification, local-vs-CI differences, and honest verification claims.
+This compact reference initially covers render failure triage, diagnostic commands, YAML errors, cell or chunk execution errors, paths and assets, LaTeX and Typst failures, citations, cross-references, HTML verification, local-vs-CI differences, and honest verification claims.
 
 ### Expected Outcome
 

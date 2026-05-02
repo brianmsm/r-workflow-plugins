@@ -1,6 +1,6 @@
 ---
 name: quarto-render-troubleshooting
-description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed quarto render commands, YAML parse errors, chunk execution errors, missing packages or files, working-directory and path issues, LaTeX or Typst failures, bibliography/CSL/citation problems, cross-reference failures, image/assets issues, extension/theme/CSS problems that break rendering, generated HTML inspection, screenshot or browser review, link/anchor/navigation checks, logs, local-vs-CI render differences, and honest verification claims. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache/freeze/performance strategy, report structure/design, deployment automation, accessibility review, or broad refactoring unless the main task is to fix or verify a render/output failure.
+description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed quarto render commands, YAML parse errors, cell or chunk execution errors, missing packages or files, working-directory and path issues, LaTeX or Typst failures, bibliography/CSL/citation problems, cross-reference failures, image/assets issues, extension/theme/CSS problems that break rendering, generated HTML inspection, screenshot or browser review, link/anchor/navigation checks, logs, local-vs-CI render differences, and honest verification claims. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache/freeze/performance strategy, report structure/design, deployment automation, accessibility review, or broad refactoring unless the main task is to fix or verify a render/output failure.
 ---
 
 # Quarto Render Troubleshooting
@@ -19,7 +19,7 @@ Classify the problem before changing files:
 
 1. Command or environment failure: Quarto, R, Python, Jupyter, LaTeX, Typst, Pandoc, or missing dependencies.
 2. YAML or metadata failure: invalid indentation, wrong key placement, unsupported option, or profile mismatch.
-3. Execution failure: chunk error, missing package, missing object, bad parameter, or wrong working directory.
+3. Execution failure: cell or chunk error, missing package, missing object, bad parameter, or wrong working directory.
 4. File/path failure: missing data, bibliography, CSL, image, include, extension, theme, or resource.
 5. Format failure: LaTeX/PDF, Typst/PDF, DOCX/PPTX, revealjs, HTML asset, or CSS issue.
 6. Output verification issue: rendered file exists but links, anchors, navigation, images, tables, citations, or layout are wrong.
