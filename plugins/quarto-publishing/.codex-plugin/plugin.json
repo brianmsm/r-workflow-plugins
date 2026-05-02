@@ -5,7 +5,7 @@
   "author": {
     "name": "Brian"
   },
-  "repository": "https://github.com/brian/r-workflow-plugins",
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
   "license": "MIT",
   "keywords": [
     "r",
@@ -27,8 +27,8 @@
       "Publishing"
     ],
     "defaultPrompt": [
-      "Use the Quarto publishing workflow skill to troubleshoot a Quarto render issue in an R project.",
-      "Use the Quarto publishing workflow skill to improve a reproducible analytical report built with Quarto and R."
+      "Use the Quarto publishing skills to troubleshoot a Quarto render issue in an R project.",
+      "Use the Quarto publishing skills to improve a reproducible analytical report built with Quarto and R."
     ]
   }
 }
