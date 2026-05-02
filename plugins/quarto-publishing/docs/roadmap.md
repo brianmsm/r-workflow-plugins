@@ -176,10 +176,9 @@ For `quarto-report-design`:
 
 For `quarto-computation-performance`:
 
-* `cache-and-freeze.md`
-* `long-running-renders.md`
-* `externalized-computation.md`
-* `proportional-validation.md`
+* `computation-performance.md`
+
+This compact reference initially covers cache/freeze, long-running renders, externalized computation, precomputed artifacts, pipeline escalation, random seeds, proportional validation, and agent behavior when full renders may be expensive.
 
 For `quarto-render-troubleshooting`:
 
