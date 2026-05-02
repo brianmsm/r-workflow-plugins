@@ -1,0 +1,7 @@
+interface:
+  display_name: "Quarto Project Configuration"
+  short_description: "Review Quarto project configuration."
+  default_prompt: "Use $quarto-project-configuration to review a Quarto project configuration for clear shared YAML, project structure, profiles, and document-vs-project placement."
+
+policy:
+  allow_implicit_invocation: true
