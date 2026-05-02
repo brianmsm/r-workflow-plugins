@@ -16,6 +16,8 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added compact Quarto computation performance patterns for cache/freeze, artifacts, pipeline escalation, random seeds, and long-render validation.
 - Added the initial `quarto-render-troubleshooting` skill for Quarto render failures, rendered-output defects, diagnostics, targeted fixes, and honest verification.
 - Added compact Quarto render troubleshooting patterns for YAML, execution, paths/assets, LaTeX, Typst, citations, cross-references, HTML verification, and local-vs-CI differences.
+- Added the initial `quarto-report-design` skill for executive, technical, academic, and mixed Quarto report structure.
+- Added profile-specific report design references for executive, technical, and academic reports, plus a basic transitional accessibility checklist.
 
 ## [0.0.0] - Scaffold
 
