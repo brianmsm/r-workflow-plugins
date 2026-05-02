@@ -191,7 +191,7 @@ This compact reference initially covers render failure triage, diagnostic comman
 By the end of Phase 1, the plugin should be useful for ordinary Quarto tasks, including:
 
 * Creating or reviewing a `.qmd`.
-* Improving chunk options.
+* Improving cell or chunk options.
 * Fixing cross-references.
 * Setting up basic `_quarto.yml`.
 * Choosing and configuring common output formats.
@@ -560,7 +560,7 @@ Potential scripts:
 * Run targeted `quarto render` commands.
 * Summarize render logs.
 * Check internal links in generated HTML.
-* Detect obvious long-running chunks.
+* Detect obvious long-running executable cells or chunks.
 * Check for missing alt text in `.qmd` files.
 * Validate project structure heuristically.
 
