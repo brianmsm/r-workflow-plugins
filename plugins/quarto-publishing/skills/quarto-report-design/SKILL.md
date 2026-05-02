@@ -61,7 +61,7 @@ When working autonomously, state the assumption before editing; ask only when th
 
 ## Boundaries
 
-Use `quarto-authoring-core` for Quarto Markdown syntax, chunk labels/options, citations, cross-references, captions, equations, callout syntax, or ordinary `.qmd` authoring mechanics.
+Use `quarto-authoring-core` for Quarto Markdown syntax, cell or chunk labels/options, citations, cross-references, captions, equations, callout syntax, or ordinary `.qmd` authoring mechanics.
 
 Use `quarto-project-configuration` for `_quarto.yml`, `_metadata.yml`, shared metadata, profiles, parameters, render targets, resources, output directories, or project-level organization.
 
@@ -69,6 +69,6 @@ Use `quarto-format-configuration` for output-format YAML, HTML/PDF/DOCX/revealjs
 
 Use `quarto-computation-performance` for cache, freeze, long renders, externalized computation, seeds, precomputed artifacts, or pipeline escalation.
 
-Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, or verification claims.
+Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell or chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, or verification claims.
 
 Do not use this skill as the primary guide for scripts, assets, reusable templates, full accessibility audits, deployment workflows, or broad academic-writing guidance. If the user asks for those while designing a report, keep the report-design part limited and route the rest to the appropriate skill boundary.

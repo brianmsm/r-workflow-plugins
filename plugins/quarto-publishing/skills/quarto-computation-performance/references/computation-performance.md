@@ -153,7 +153,7 @@ Never claim a full render, clean cache refresh, or artifact regeneration unless 
 ## Boundaries
 
 - Project placement for `execute`, `freeze`, profiles, and render targets belongs primarily to `quarto-project-configuration`.
-- Ordinary chunk option cleanup belongs to `quarto-authoring-core`.
+- Ordinary cell or chunk option cleanup belongs to `quarto-authoring-core`.
 - Output-format behavior belongs to `quarto-format-configuration`.
 - Deployment, CI, hosting, and release automation are deferred.
 - Failed render logs and deep debugging belong to `quarto-render-troubleshooting` unless the root issue is unsafe recomputation.

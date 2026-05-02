@@ -8,7 +8,7 @@ Classify the failure before editing:
 
 - Command/environment: Quarto, R, Python, Jupyter, LaTeX, Typst, Pandoc, or system dependency problem.
 - YAML/metadata: parse error, indentation, invalid key, unsupported option, or wrong layer.
-- Execution: chunk error, missing package, missing object, bad parameter, wrong working directory, stale cache.
+- Execution: cell or chunk error, missing package/module, missing object, bad parameter, wrong working directory, stale cache.
 - Files/assets: missing data, bibliography, CSL, image, include, extension, theme, CSS, or resource.
 - Format: LaTeX PDF, Typst PDF, DOCX/PPTX, revealjs, HTML asset, or CSS failure.
 - Output verification: generated file exists but links, anchors, navigation, images, citations, cross-references, or layout are wrong.
@@ -107,7 +107,7 @@ For Python/Jupyter, check the active kernel, virtual environment, Python path, a
 
 For Julia, check whether the document uses `engine: julia` or Jupyter/IJulia, and verify the Julia executable, project environment, package availability, and kernel when applicable.
 
-Review cell or chunk labels and options only as needed to fix the failure. Ordinary cell or chunk cleanup belongs to `quarto-authoring-core`.
+Review cell or chunk labels and options only as needed to fix the failure. Ordinary cell or chunk option cleanup belongs to `quarto-authoring-core`.
 
 For project renders, code usually executes relative to the document directory unless `execute-dir: project` is configured. Avoid assuming an interactive RStudio working directory.
 
