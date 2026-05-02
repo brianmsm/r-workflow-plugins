@@ -16,7 +16,7 @@ quarto-publishing-v0.1.0
 
 During local development, `.agents/plugins/marketplace.json` may point to local paths such as `./plugins/quarto-publishing`. For publication, marketplace entries can be updated to point to Git tags or other stable release sources.
 
-Claude Code marketplaces live in `.claude-plugin/marketplace.json`. When Claude plugins are distributed from Git, omit explicit Claude plugin versions unless there is a release reason to pin them; Claude Code can use the source commit SHA for update detection. If explicit Claude versions are added later, avoid declaring conflicting versions in both the marketplace and the plugin manifest.
+Claude Code marketplaces live in `.claude-plugin/marketplace.json`. When Claude plugin manifests use explicit versions, keep `.claude-plugin/marketplace.json`, `plugins/<plugin-name>/.claude-plugin/plugin.json`, and the Codex manifest version aligned in release commits.
 
 ## Version Field Policy
 
@@ -30,6 +30,7 @@ Use the same versioning policy for every plugin:
 - During later feature development, keep `plugin.json` at the latest released version until the next release commit.
 - Track unreleased work in the plugin `CHANGELOG.md` under `## [Unreleased]`.
 - When the next release is ready, move the relevant changelog entries from `Unreleased` to the new version section, update `plugin.json`, and create the plugin-specific tag.
+- For plugins with Claude support, update both Claude JSON manifests to the same released plugin version.
 
 Avoid pre-release versions such as `0.2.0-alpha.0` unless the project intentionally wants to publish and support a pre-release build.
 
