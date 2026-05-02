@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Quarto publishing workflows for R-based documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
   "author": {
-    "name": "Brian"
+    "name": "Brian Norman Peña-Calero"
   },
   "repository": "https://github.com/brianmsm/r-workflow-plugins",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "displayName": "Quarto Publishing",
     "shortDescription": "Quarto publishing workflows for R.",
     "longDescription": "Guidance for AI agents working on Quarto publishing projects with R, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows.",
-    "developerName": "Brian",
+    "developerName": "Brian Norman Peña-Calero",
     "category": "Productivity",
     "capabilities": [
       "Documentation",
@@ -27,8 +27,13 @@
       "Publishing"
     ],
     "defaultPrompt": [
+      "Use the Quarto publishing skills to review and improve a Quarto .qmd analytical report.",
+      "Use the Quarto publishing skills to review a Quarto _quarto.yml project configuration.",
+      "Use the Quarto publishing skills to configure HTML, PDF, DOCX, or revealjs output formats.",
+      "Use the Quarto publishing skills to improve the structure and narrative of a technical or executive report.",
+      "Use the Quarto publishing skills to review cache, freeze, and expensive computation in a Quarto workflow.",
       "Use the Quarto publishing skills to troubleshoot a Quarto render issue in an R project.",
-      "Use the Quarto publishing skills to improve a reproducible analytical report built with Quarto and R."
+      "Use the Quarto publishing skills to verify rendered-output problems, broken links, missing assets, or format-specific failures."
     ]
   }
 }
