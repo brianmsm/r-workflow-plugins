@@ -10,6 +10,7 @@ All notable changes to `quarto-publishing` will be documented here.
 
 - Added Claude Code plugin and marketplace metadata for `quarto-publishing`.
 - Added agent setup documentation for Codex, Claude Code, and Gemini CLI installation paths.
+- Added Codex interface branding with plugin icon and logo assets.
 - Added the initial `quarto-authoring-core` skill for Quarto `.qmd` authoring and review across R/knitr, Python/Jupyter, Julia, and prose-only workflows, with light adaptation of R Markdown idioms inside `.qmd` files.
 - Added compact `.qmd` authoring patterns for YAML, executable cells, cross-references, citations, callouts, and light R Markdown interoperability.
 - Added the initial `quarto-project-configuration` skill for `_quarto.yml`, `_metadata.yml`, shared metadata, profiles, parameters, and project-level configuration review.
