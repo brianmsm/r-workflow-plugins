@@ -44,8 +44,11 @@ Check, as applicable:
 - YAML syntax, indentation, nesting, quoting, and option placement.
 - Project vs document metadata placement.
 - Active profile and selected output format.
+- Execution engine: R/knitr, Python/Jupyter, Julia, prose-only, or mixed.
 - `execute-dir`, relative paths, `here`, `getwd()`, and `QUARTO_PROJECT_DIR`.
-- R package availability, `.libPaths()`, `sessionInfo()`, and environment mismatch.
+- R/knitr: package availability, `.libPaths()`, `sessionInfo()`, and environment mismatch.
+- Python/Jupyter: `jupyter`, kernels, virtual environments, `quarto check jupyter`, Python path issues, and notebook execution settings.
+- Julia: whether the document uses `engine: julia` or Jupyter/IJulia, Julia installation, package environments, and kernel availability.
 - Bibliography and CSL file paths, citation keys, and cite processor behavior.
 - Cross-reference labels, prefixes, captions, duplicate labels, and section numbering.
 - Image paths, generated figure paths, static assets, includes, and project resources.

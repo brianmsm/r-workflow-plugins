@@ -6,14 +6,14 @@ The `quarto-publishing` plugin provides reusable agent skills for working with Q
 
 The plugin is not limited to writing `.qmd` files. It should help an AI agent reason about Quarto as a complete workflow that includes authoring, project configuration, format-specific rendering, multi-format compatibility, report design, computation strategy, migration from R Markdown, deployment, accessibility, quality review, and troubleshooting.
 
-The plugin should be useful when the user wants to create, review, refactor, diagnose, or improve Quarto documents and projects, especially in research-oriented R workflows.
+The plugin should be useful when the user wants to create, review, refactor, diagnose, or improve Quarto documents and projects, especially in research-oriented computational workflows using R/knitr, Python/Jupyter, Julia, or prose-only Quarto documents.
 
 ## General Scope
 
 The plugin should cover:
 
 * General Quarto authoring and Markdown syntax.
-* Executable code chunks, inline R code, chunk options, figures, tables, equations, theorems, cross-references, citations, callouts, div blocks, shortcodes, and reusable document patterns.
+* Executable code cells, inline computations, cell or chunk options, figures, tables, equations, theorems, cross-references, citations, callouts, div blocks, shortcodes, and reusable document patterns.
 * Quarto projects, `_quarto.yml`, `_metadata.yml`, shared metadata, project profiles, project-level execution, parameters, and project organization.
 * Format-specific configuration for HTML, PDF, Typst, DOCX, revealjs, PowerPoint, Beamer, websites, books, manuscripts, and other supported outputs.
 * Multi-format rendering strategies, including conditional content, fallbacks for HTML-only artifacts, tables and figures that work across formats, and format-specific profiles.
@@ -35,7 +35,7 @@ The plugin should follow these principles:
 * Use scripts only for deterministic and repeatable checks, not for replacing methodological or publishing judgment.
 * Avoid creating one skill per Quarto feature unless that feature becomes a recurring task with a clear activation pattern.
 * Separate authoring, project configuration, format configuration, multi-format compatibility, performance, migration, deployment, accessibility, and troubleshooting because they represent different agent behaviors.
-* Ensure that the plugin remains useful for R-based workflows while not assuming that Quarto is only for R.
+* Keep R/knitr support strong because the monorepo is R-oriented, but avoid making R the default assumption when the user's Quarto project uses Python, Julia, Jupyter, or prose-only documents.
 * Preserve the user’s analytical and communicative intent when editing Quarto documents.
 * Avoid claiming that a render, screenshot, link, or output has been checked unless the agent actually performed that check.
 
@@ -69,7 +69,7 @@ This skill focuses on the document body and authoring layer, rather than project
 * Quarto Markdown syntax.
 * Headings and document structure.
 * Executable code chunks.
-* Inline R code and inline computations.
+* Inline computations, including inline R where applicable.
 * Recommended chunk options for ordinary analytical documents.
 * Figures and figure captions.
 * Tables and table captions.

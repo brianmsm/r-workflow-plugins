@@ -1,8 +1,10 @@
 # Quarto Publishing
 
-`quarto-publishing` is a plugin for Quarto publishing workflows with R.
+`quarto-publishing` is a Quarto-first, engine-aware plugin for publishing workflows.
 
-Its initial scope includes Quarto documents, analytical reports, websites, books, manuscripts, revealjs slides, `_quarto.yml` configuration, render troubleshooting, and reproducible R-based publishing workflows.
+Its initial scope includes Quarto documents, analytical reports, websites, books, manuscripts, revealjs slides, `_quarto.yml` configuration, render troubleshooting, and reproducible publishing workflows that may use R/knitr, Python/Jupyter, Julia, or prose-only Quarto documents.
+
+Because this plugin lives in `r-workflow-plugins`, examples may emphasize R/knitr. The skills should still avoid assuming R when the user's files or project configuration indicate Python, Julia, Jupyter, or prose-only authoring.
 
 This plugin is not focused on classic R Markdown. R Markdown should appear only when migrating to Quarto, comparing behavior, or maintaining interoperability with Quarto projects.
 

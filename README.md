@@ -8,7 +8,7 @@ This repository is in an early initialization phase. At the moment, only the `qu
 
 ## Current Plugin
 
-- `quarto-publishing`: workflows for Quarto publishing with R, including documents, analytical reports, websites, books, manuscripts, revealjs slides, `_quarto.yml`, reproducible rendering, and render troubleshooting.
+- `quarto-publishing`: Quarto-first publishing workflows for analytical and research-oriented documents, including R/knitr, Python/Jupyter, Julia, and prose-only projects.
 
 ## Repository Shape
 

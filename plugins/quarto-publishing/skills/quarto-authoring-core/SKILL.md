@@ -1,15 +1,16 @@
 ---
 name: quarto-authoring-core
-description: Use when authoring, reviewing, or lightly adapting Quarto .qmd documents, especially R/knitr workflows, including Markdown structure, document YAML, knitr cell options, citations, cross-references, figures, tables, equations, callouts, and light adaptation of R Markdown idioms inside .qmd files. Do not use for full migration from R Markdown ecosystems, including R Markdown, Bookdown, Distill, Blogdown, Xaringan, ioslides, or Beamer projects.
+description: Use when authoring, reviewing, or lightly adapting Quarto .qmd documents, especially analytical documents using R/knitr, Python/Jupyter, Julia, or prose-only Markdown, including Markdown structure, document YAML, executable cell options, citations, cross-references, figures, tables, equations, callouts, and light adaptation of R Markdown idioms inside .qmd files. Do not use for full migration from R Markdown ecosystems, including R Markdown, Bookdown, Distill, Blogdown, Xaringan, ioslides, or Beamer projects.
 ---
 
 # Quarto Authoring Core
 
-Use this skill for Quarto `.qmd` authoring and review tasks, especially R/knitr workflows that combine prose, Markdown, citations, cross-references, equations, figures, tables, callouts, and executable code cells.
+Use this skill for Quarto `.qmd` authoring and review tasks, especially analytical documents that combine prose, Markdown, citations, cross-references, equations, figures, tables, callouts, and executable code cells.
 
 ## Operating Principles
 
 - Treat the `.qmd` source as the primary artifact.
+- Treat the document as Quarto-first and engine-aware: check whether it uses R/knitr, Python/Jupyter, Julia, or prose-only Markdown before assuming code behavior.
 - Prefer Quarto-native syntax over legacy R Markdown habits when editing `.qmd`.
 - Keep changes local to the document unless the user explicitly asks for project-level configuration.
 - Preserve the author's writing style, analytical intent, and document purpose.
@@ -22,7 +23,7 @@ When reviewing a `.qmd`, check:
 
 1. Document YAML is valid, minimal, and appropriate for the requested output.
 2. Headings form a coherent hierarchy.
-3. R code cells use Quarto `#|` cell options where practical.
+3. Executable code cells use Quarto `#|` cell options where practical.
 4. Cell labels are unique, descriptive, lowercase, and hyphenated.
 5. Cross-reference labels use valid prefixes such as `fig-`, `tbl-`, `eq-`, and `sec-`.
 6. Figures, tables, and equations that are referenced have captions or labels as needed; referenced sections have explicit `sec-` IDs when stable section references are required.
@@ -33,7 +34,7 @@ When reviewing a `.qmd`, check:
 
 ## References
 
-For compact syntax examples for document YAML, R cells, cross-references, citations, callouts, and R Markdown interoperability, read `references/qmd-authoring-patterns.md` when editing or reviewing concrete `.qmd` syntax.
+For compact syntax examples for document YAML, executable cells, cross-references, citations, callouts, engine-aware authoring, and R Markdown interoperability, read `references/qmd-authoring-patterns.md` when editing or reviewing concrete `.qmd` syntax.
 
 ## Anti-Scope
 

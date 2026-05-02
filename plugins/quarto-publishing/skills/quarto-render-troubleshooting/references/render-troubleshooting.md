@@ -27,6 +27,12 @@ quarto check jupyter
 quarto check all
 ```
 
+When diagnosing execution failures, identify the execution engine before proposing fixes:
+
+- R/knitr: check R packages, knitr options, `renv` or library paths, and the active R session.
+- Python/Jupyter: check `jupyter`, kernels, virtual environments, `quarto check jupyter`, Python path issues, and whether notebooks should execute during render.
+- Julia: check whether the document uses `engine: julia` or Jupyter/IJulia, Julia installation, package environments, and kernel availability.
+
 Prefer targeted renders:
 
 ```bash
@@ -210,7 +216,10 @@ Avoid claims like "works now", "all links work", "the PDF is fixed", or "the scr
 - Quarto render command: https://quarto.org/docs/cli/render.html
 - Quarto project execution: https://quarto.org/docs/projects/code-execution.html
 - Quarto computations with R: https://quarto.org/docs/computations/r.html
+- Quarto computations with Python: https://quarto.org/docs/computations/python.html
+- Quarto computations with Julia: https://quarto.org/docs/computations/julia.html
 - Quarto caching: https://quarto.org/docs/computations/caching.html
+- Quarto rendering script files: https://quarto.org/docs/computations/render-scripts.html
 - Quarto citations: https://quarto.org/docs/authoring/citations.html
 - Quarto cross-references: https://quarto.org/docs/authoring/cross-references
 - Quarto PDF basics: https://quarto.org/docs/output-formats/pdf-basics.html
