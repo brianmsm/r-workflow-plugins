@@ -130,7 +130,7 @@ In the first version, they can be folded as references:
 
 * `quarto-multiformat-compatibility` can initially live inside `quarto-format-configuration/references/`.
 * `quarto-rmarkdown-migration` can initially live inside `quarto-authoring-core/references/` or `quarto-project-configuration/references/`.
-* `quarto-publishing-deployment` can initially live inside `quarto-project-configuration/references/`.
+* `quarto-publishing-deployment` can initially remain deferred, with only minimal cross-references from `quarto-project-configuration` when output directories or resources affect later publishing.
 * `quarto-accessibility-quality` can initially live inside `quarto-report-design/references/` and `quarto-render-troubleshooting/references/`.
 
 This is a temporary implementation strategy. The target architecture still treats them as future independent skills.
@@ -157,10 +157,9 @@ For `quarto-authoring-core`:
 
 For `quarto-project-configuration`:
 
-* `quarto-projects.md`
-* `_quarto-yml-patterns.md`
-* `project-profiles.md`
-* `parameters.md`
+* `quarto-project-configuration.md`
+
+This compact reference initially covers `_quarto.yml`, `_metadata.yml`, project/document metadata placement, profiles, parameters, render targets, output directories, resources, project-level `freeze`, and the boundary with format configuration.
 
 For `quarto-format-configuration`:
 
