@@ -163,12 +163,9 @@ This compact reference initially covers `_quarto.yml`, `_metadata.yml`, project/
 
 For `quarto-format-configuration`:
 
-* `html-output.md`
-* `pdf-latex-output.md`
-* `pdf-typst-output.md`
-* `docx-output.md`
-* `presentations.md`
-* `multiformat-notes.md`
+* `quarto-format-configuration.md`
+
+This compact reference initially covers format choice, YAML shape patterns, HTML, PDF via LaTeX, PDF via Typst, DOCX, revealjs, PowerPoint, Beamer, secondary formats, shallow book/website/manuscript output behavior, custom format cautions, and minimal multiformat notes.
 
 For `quarto-report-design`:
 
