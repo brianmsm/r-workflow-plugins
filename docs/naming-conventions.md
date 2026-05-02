@@ -3,7 +3,7 @@
 The naming conventions are intentionally brief and may evolve as more plugins are added.
 
 - Plugin names use lowercase hyphen-case, for example `quarto-publishing`.
-- Skill names use lowercase hyphen-case and should describe a reusable workflow, for example `quarto-publishing-workflow`.
+- Skill names use lowercase hyphen-case and should describe a reusable agent capability, for example `quarto-project-configuration`.
 - Plugin folders live at `plugins/<plugin-name>/`.
 - Skill folders live at `plugins/<plugin-name>/skills/<skill-name>/`.
 - Topic documents under `docs/` use lowercase hyphen-case, for example `architecture.md`, `roadmap.md`, and `release-process.md`.

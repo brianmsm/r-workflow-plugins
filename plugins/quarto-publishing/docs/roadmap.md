@@ -122,6 +122,8 @@ Implement these skills as independent skills in `v0.1.0`:
 
 These six skills provide enough coverage for real use while avoiding excessive fragmentation.
 
+The initial scaffold `quarto-publishing-workflow` skill was removed before `v0.1.0`. Its broad workflow guidance was superseded by the six Phase 1 skills, which provide clearer activation boundaries.
+
 ### Topics Temporarily Folded into Other Skills
 
 The target architecture includes additional skills that may not exist yet in `v0.1.0`.

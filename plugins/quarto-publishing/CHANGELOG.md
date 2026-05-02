@@ -19,6 +19,10 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added the initial `quarto-report-design` skill for executive, technical, academic, and mixed Quarto report structure.
 - Added profile-specific report design references for executive, technical, and academic reports, plus a basic transitional accessibility checklist.
 
+### Removed
+
+- Removed the scaffold `quarto-publishing-workflow` skill because it was superseded by the six Phase 1 skills and created broad activation overlap.
+
 ## [0.0.0] - Scaffold
 
 Scaffold version; not a public release.

@@ -1,7 +1,0 @@
-interface:
-  display_name: "Quarto Publishing Workflow"
-  short_description: "Quarto publishing workflows with R."
-  default_prompt: "Use $quarto-publishing-workflow to plan, implement, or troubleshoot a Quarto publishing workflow with R."
-
-policy:
-  allow_implicit_invocation: true

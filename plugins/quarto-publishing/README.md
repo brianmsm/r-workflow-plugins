@@ -17,7 +17,6 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 - `skills/quarto-report-design/SKILL.md`: Quarto report structure and analytical communication design skill.
 - `skills/quarto-computation-performance/SKILL.md`: Quarto computation, cache, freeze, and long-render strategy skill.
 - `skills/quarto-render-troubleshooting/SKILL.md`: Quarto render failure and output verification troubleshooting skill.
-- `skills/quarto-publishing-workflow/SKILL.md`: initial workflow skill.
 - `skills/*/agents/openai.yaml`: OpenAI-facing skill metadata.
 
 The plugin is in an early state and should stay small until real publishing workflows require more structure.
