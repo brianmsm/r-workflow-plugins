@@ -106,6 +106,8 @@ These topics may be referenced briefly, but they belong primarily to other skill
 
 ### Possible References
 
+Early versions may keep these topics in one compact reference such as `qmd-authoring-patterns.md`. If authoring guidance grows large enough, it can later split into focused references such as:
+
 * `markdown-syntax.md`
 * `chunk-options-defaults.md`
 * `figures-and-tables.md`
@@ -193,7 +195,7 @@ This skill focuses on format-specific YAML and rendering behavior for outputs su
 * ePub and other secondary formats when needed.
 * Format-specific YAML.
 * Templates.
-* `reference-docx`.
+* `reference-doc`.
 * CSS, SCSS, Bootstrap, and themes.
 * HTML options.
 * PDF options.
@@ -521,6 +523,7 @@ This skill focuses on what happens after the document or project renders: where 
 * Manuscripts.
 * GitHub Pages.
 * Netlify.
+* Quarto Pub.
 * Posit Connect.
 * Posit Connect Cloud.
 * Institutional hosting.

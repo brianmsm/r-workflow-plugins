@@ -31,7 +31,7 @@ Quarto merges metadata from project, directory, and document layers. Use this pl
 
 Document YAML has the highest priority, followed by directory metadata, then project metadata.
 
-One important boundary: when a document specifies `format`, it should define the complete intended format list for that document rather than partially patching the project-level format list.
+One important boundary: document-level metadata generally overrides directory and project metadata, but `format` is special. If document-level YAML defines `format`, it should define the complete intended list of formats for that document rather than assuming it only patches the project-level format list.
 
 ## Directory Defaults With `_metadata.yml`
 
@@ -161,7 +161,7 @@ Defer detailed decisions about these topics to `quarto-format-configuration`:
 
 - HTML themes, CSS, SCSS, Bootstrap, JavaScript, and includes.
 - PDF via LaTeX or Typst, including templates, packages, and engine-specific options.
-- DOCX `reference-docx` and Word styling.
+- DOCX `reference-doc` and Word styling.
 - revealjs, PowerPoint, Beamer, and presentation-specific behavior.
 - Custom formats, extensions, and Lua filters.
 

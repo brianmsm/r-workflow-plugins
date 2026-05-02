@@ -19,6 +19,11 @@ All notable changes to `quarto-publishing` will be documented here.
 - Added the initial `quarto-report-design` skill for executive, technical, academic, and mixed Quarto report structure.
 - Added profile-specific report design references for executive, technical, and academic reports, plus a basic transitional accessibility checklist.
 
+### Changed
+
+- Clarified `quarto-authoring-core` as light `.qmd` adaptation rather than full R Markdown ecosystem migration.
+- Aligned release-readiness wording across Quarto skills, project docs, and references before the first usable release.
+
 ### Removed
 
 - Removed the scaffold `quarto-publishing-workflow` skill because it was superseded by the six Phase 1 skills and created broad activation overlap.

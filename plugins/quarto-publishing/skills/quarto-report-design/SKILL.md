@@ -41,7 +41,7 @@ When the user does not specify a profile, infer the lightest reasonable profile 
 
 ## User-Supervised Decisions
 
-Pause, ask, or make the decision explicit before changing:
+When working autonomously, state the assumption before editing; ask only when the change would alter the report purpose, claims, reader task, or evidentiary meaning. Apply that rule before changing:
 
 - The primary report profile or intended reader task.
 - The amount of technical detail exposed in the body.
