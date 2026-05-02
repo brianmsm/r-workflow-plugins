@@ -12,10 +12,13 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 - `docs/architecture.md`: intended mature architecture for the plugin.
 - `docs/roadmap.md`: staged plan for growing toward the intended architecture.
 - `skills/quarto-authoring-core/SKILL.md`: Quarto `.qmd` authoring and review skill.
-- `skills/quarto-format-configuration/SKILL.md`: Quarto output format configuration review skill.
 - `skills/quarto-project-configuration/SKILL.md`: Quarto project configuration review skill.
+- `skills/quarto-format-configuration/SKILL.md`: Quarto output format configuration review skill.
+- `skills/quarto-report-design/SKILL.md`: Quarto report structure and analytical communication design skill.
+- `skills/quarto-computation-performance/SKILL.md`: Quarto computation, cache, freeze, and long-render strategy skill.
+- `skills/quarto-render-troubleshooting/SKILL.md`: Quarto render failure and output verification troubleshooting skill.
 - `skills/quarto-publishing-workflow/SKILL.md`: initial workflow skill.
-- `skills/quarto-publishing-workflow/agents/openai.yaml`: OpenAI-facing skill metadata.
+- `skills/*/agents/openai.yaml`: OpenAI-facing skill metadata.
 
 The plugin is in an early state and should stay small until real publishing workflows require more structure.
 
