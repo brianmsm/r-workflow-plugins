@@ -1,0 +1,7 @@
+interface:
+  display_name: "Quarto Authoring Core"
+  short_description: "Review Quarto .qmd authoring with R."
+  default_prompt: "Use $quarto-authoring-core to review and improve a Quarto .qmd document with R code."
+
+policy:
+  allow_implicit_invocation: true
