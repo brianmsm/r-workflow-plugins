@@ -144,7 +144,7 @@ Never claim a full render, clean cache refresh, or artifact regeneration unless 
 - Ordinary chunk option cleanup belongs to `quarto-authoring-core`.
 - Output-format behavior belongs to `quarto-format-configuration`.
 - Deployment, CI, hosting, and release automation are deferred.
-- Failed render logs and deep debugging belong to future `quarto-render-troubleshooting` unless the root issue is unsafe recomputation.
+- Failed render logs and deep debugging belong to `quarto-render-troubleshooting` unless the root issue is unsafe recomputation.
 
 ## Official Sources
 
@@ -152,7 +152,7 @@ Never claim a full render, clean cache refresh, or artifact regeneration unless 
 - Quarto using R: https://quarto.org/docs/computations/r.html
 - Quarto caching: https://quarto.org/docs/computations/caching.html
 - Quarto execution options: https://quarto.org/docs/computations/execution-options.html
-- Quarto render command: https://quarto.org/docs/reference/cli/quarto-render.html
+- Quarto render command: https://quarto.org/docs/cli/render.html
 - Quarto parameters: https://quarto.org/docs/computations/parameters.html
 - R `saveRDS` / `readRDS`: https://stat.ethz.ch/R-manual/R-devel/library/base/html/readRDS.html
 - targets manual: https://ropensci.r-universe.dev/targets/doc/manual.html

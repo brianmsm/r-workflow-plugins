@@ -61,7 +61,7 @@ Use other skills when the main task is not troubleshooting:
 - `quarto-project-configuration`: designing `_quarto.yml`, `_metadata.yml`, profiles, render targets, or project structure.
 - `quarto-format-configuration`: choosing or configuring output formats before a failure occurs.
 - `quarto-computation-performance`: reducing expensive recomputation, cache/freeze strategy, precomputed artifacts, or pipeline escalation.
-- Future `quarto-report-design`: report structure, audience, and communication design.
+- `quarto-report-design`: report structure, audience, and communication design.
 - Future `quarto-publishing-deployment`: publishing targets, hosting, and CI/CD setup.
 - Future `quarto-accessibility-quality`: accessibility and publication-readiness review beyond failure verification.
 

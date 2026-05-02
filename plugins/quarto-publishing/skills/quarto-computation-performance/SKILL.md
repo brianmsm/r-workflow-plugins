@@ -37,7 +37,7 @@ Use `quarto-authoring-core` for ordinary chunk options, inline R, figures, table
 
 Use `quarto-format-configuration` for output-format YAML, styling, templates, PDF/Typst/DOCX/revealjs/PowerPoint behavior, and format-specific rendering behavior.
 
-Use future `quarto-render-troubleshooting` for failed renders, logs, LaTeX/Typst errors, missing files, broken links, or output inspection unless the core issue is long-running recomputation.
+Use `quarto-render-troubleshooting` for failed renders, logs, LaTeX/Typst errors, missing files, broken links, or output inspection unless the core issue is long-running recomputation.
 
 Use future `quarto-publishing-deployment` for CI, hosting, publishing, and release automation.
 

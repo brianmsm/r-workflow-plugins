@@ -1,11 +1,11 @@
 ---
 name: quarto-authoring-core
-description: Use when authoring, reviewing, or lightly migrating Quarto .qmd documents with R code, including Markdown structure, document YAML, knitr cell options, citations, cross-references, figures, tables, equations, and callouts.
+description: Use when authoring, reviewing, or lightly adapting Quarto .qmd documents, especially R/knitr workflows, including Markdown structure, document YAML, knitr cell options, citations, cross-references, figures, tables, equations, callouts, and light adaptation of R Markdown idioms inside .qmd files. Do not use for full migration from R Markdown ecosystems, including R Markdown, Bookdown, Distill, Blogdown, Xaringan, ioslides, or Beamer projects.
 ---
 
 # Quarto Authoring Core
 
-Use this skill for Quarto `.qmd` authoring and review tasks, especially documents that combine prose, Markdown, citations, cross-references, equations, figures, tables, callouts, and R code cells.
+Use this skill for Quarto `.qmd` authoring and review tasks, especially R/knitr workflows that combine prose, Markdown, citations, cross-references, equations, figures, tables, callouts, and executable code cells.
 
 ## Operating Principles
 
@@ -37,4 +37,4 @@ For compact syntax examples for document YAML, R cells, cross-references, citati
 
 ## Anti-Scope
 
-Do not redesign `_quarto.yml`, deployment, website or book structure, CI, long-running computation, caching architecture, custom extensions, or deep render troubleshooting unless the user explicitly asks.
+Do not use this skill as the primary guide for full migration from R Markdown ecosystems, project-level `_quarto.yml` design, deployment, website or book structure, CI, long-running computation, caching architecture, custom extensions, or deep render troubleshooting.

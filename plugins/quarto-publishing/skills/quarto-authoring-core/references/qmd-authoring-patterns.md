@@ -148,8 +148,9 @@ Prefer `note`, `tip`, `important`, `caution`, or `warning` according to the comm
 
 ## R Markdown Interoperability
 
-When lightly migrating from R Markdown habits:
+When lightly adapting R Markdown idioms inside `.qmd` files:
 
 - Prefer Quarto `format:` over R Markdown `output:`.
 - Prefer Quarto `#|` cell options over long chunk headers when editing `.qmd`.
 - Keep compatible legacy syntax only when the user intentionally needs interoperability.
+- Do not treat this reference as full migration guidance for R Markdown, Bookdown, Distill, Blogdown, Xaringan, ioslides, or Beamer projects.

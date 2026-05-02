@@ -151,11 +151,9 @@ Avoid creating `scripts/` and `assets/` in `v0.1.0` unless there is a concrete a
 
 For `quarto-authoring-core`:
 
-* `chunk-options-defaults.md`
-* `cross-references.md`
-* `citations.md`
-* `figures-and-tables.md`
-* `callouts-divs-and-shortcodes.md`
+* `qmd-authoring-patterns.md`
+
+This compact reference initially covers document YAML, R/knitr cells, chunk options, figures, tables, cross-references, citations, callouts, and light adaptation of R Markdown idioms inside `.qmd` files. More focused references can be split later if real usage shows they are needed.
 
 For `quarto-project-configuration`:
 
@@ -490,6 +488,7 @@ Add:
 
 * GitHub Pages.
 * Netlify.
+* Quarto Pub.
 * Posit Connect.
 * Posit Connect Cloud.
 * Self-contained HTML.
