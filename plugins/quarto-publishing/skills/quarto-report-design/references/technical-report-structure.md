@@ -33,6 +33,12 @@ Keep the prose explanatory, not merely procedural.
 
 For technical audit reports, raw outputs may be appropriate in the body when they are the object of inspection. For technical deliverable reports, central results should usually be summarized in readable tables or figures, with raw outputs kept as supporting evidence.
 
+## Code Visibility
+
+For technical, reproducible, debug-oriented, or executive-technical HTML reports, prefer source code that is available but folded by default. A useful default is `echo: true` with `code-fold: true`, plus hidden messages and warnings unless they are part of the diagnostic evidence.
+
+Use global `echo: false` only when the report is intentionally reader-only, when code is moved to an appendix or supplement, or when the user explicitly asks to hide source code.
+
 ## Diagnostics and Validation
 
 Include diagnostics in the body when they affect interpretation. Move long or mechanical checks to appendices or collapsed sections.

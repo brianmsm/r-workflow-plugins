@@ -24,7 +24,7 @@ Do not treat this as a generic writing skill. The main question is whether the r
 - Executive: Use when the report supports decisions or non-specialist interpretation. Prioritize plain language, key findings, implications, recommendations, and readable tables or figures. Technical details may go in collapsed callouts or appendices, but the main argument must be understandable without opening them.
 - Technical: Use when the report supports analytical review, audit, reproducibility, debugging, or methodological inspection. Include assumptions, diagnostics, validation checks, model details, and inspectable outputs when useful. Raw outputs are acceptable only when they improve technical inspection.
 - Academic: Use when the report supports a thesis, manuscript, research report, methodological evaluation, or scholarly deliverable. Organize around research questions, objectives, hypotheses, or analytical aims. Connect analyses into a coherent argument and keep routine technical checks outside the main body unless they affect interpretation.
-- Mixed: Use when signals conflict or the report must serve more than one reader task. Keep the main narrative readable while retaining technical detail in clearly marked sections.
+- Mixed: Use when signals conflict or the report must serve more than one reader task. Keep the main narrative readable while retaining technical detail in clearly marked sections. For HTML mixed reports that need auditability, prefer folded source code over hidden source code.
 
 When the user does not specify a profile, infer the lightest reasonable profile from the task. Decision, recommendation, stakeholder, or summary language usually points to executive. Diagnostics, assumptions, reproducibility, model checks, or validation usually points to technical. Thesis, manuscript, research questions, objectives, hypotheses, methods, or academic evaluation usually points to academic. For ambiguous R/Quarto analytical reports without a decision-making signal, prefer an academic-technical mixed profile and ask before major restructuring.
 
@@ -33,11 +33,21 @@ When the user does not specify a profile, infer the lightest reasonable profile 
 - Contextualize before reporting numbers.
 - Each major section should open with its central idea and close with an implication, decision, limitation, or transition.
 - The body should explain what is evaluated, why it matters, what the result suggests, and what decision or next step it enables.
-- Avoid raw code output in executive and academic bodies unless it directly supports understanding.
+- Avoid raw console output in executive and polished academic bodies unless it directly supports understanding; do not confuse this with hiding source code that should remain inspectable.
 - Use inline computed values only when they support a substantive sentence.
 - Do not use generic boilerplate around inline values when rendered results can be inspected.
 - Prefer clean ASCII names for code-facing objects and columns. Reserve accents, spaces, and reader-facing labels for final tables, figures, captions, and prose.
 - Avoid hiding the core argument in collapsed callouts or appendices.
+
+## Code Visibility
+
+Distinguish source code from raw console output. Avoiding raw output does not mean hiding all executable source code.
+
+For technical, reproducible, debug-oriented, or mixed executive-technical reports, keep source code inspectable by default when the medium supports it. For HTML, prefer visible-but-folded code with `echo: true` and `code-fold: true`, while hiding messages and warnings unless they are diagnostically relevant.
+
+Use global `echo: false` mainly for reader-only executive or polished academic deliverables, or when source code is intentionally moved to appendices, supplements, or a separate technical version.
+
+Do not set global `echo: false` for mixed, technical, reproducible, or debug-oriented reports unless the user explicitly asks for a reader-only document or the source code is exposed elsewhere.
 
 ## User-Supervised Decisions
 

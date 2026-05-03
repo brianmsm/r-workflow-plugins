@@ -4,6 +4,10 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Clarified `quarto-report-design` guidance for mixed and technical reports so source code remains inspectable with folded code when appropriate, instead of being hidden by global `echo: false`.
+
 ## [0.1.0] - 2026-05-02
 
 ### Added
