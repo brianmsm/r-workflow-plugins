@@ -259,7 +259,9 @@ For each test, record:
 
 ### Suggested Testing Log
 
-Maintain private local testing notes for real project evidence. Summarize public pilot patterns in committed documentation instead of committing raw local logs.
+Maintain private local testing notes for real project evidence. Do not commit raw logs that contain private project details, local paths, institutions, clients, manuscripts, advisor or reviewer comments, or other identifying context.
+
+For public repository history, summarize reusable patterns in `docs/pilot-findings.md` instead of committing the raw testing log.
 
 Each entry should include:
 
@@ -292,6 +294,12 @@ At the end of Phase 2, there should be enough evidence to decide whether to:
 Improve the first functional version based on real project testing, without expanding the plugin too quickly.
 
 This phase should focus on correction, not feature growth.
+
+### `v0.1.1` Calibration Note
+
+Early Phase 2 evidence, summarized publicly in `pilot-findings.md`, supports a small `v0.1.1` calibration patch before any `v0.2.0` expansion. The patch should clarify activation boundaries and handoffs among the six Phase 1 skills, especially around overuse of `quarto-authoring-core`, underactivation of `quarto-report-design`, DOCX/output-format behavior, rendered artifact verification, and proportional validation for expensive or non-executed workflows.
+
+After `v0.1.1`, continue Phase 2 testing with more diverse projects beyond the current DOCX/manuscript-heavy evidence. Prioritize HTML-only reports, PDF-only reports, websites, revealjs slides, `.Rmd` migration, deployment-oriented tasks, and intentionally broken renders. Do not open `v0.2.0` until broader evidence supports splitting future skills such as `quarto-multiformat-compatibility`, `quarto-rmarkdown-migration`, `quarto-publishing-deployment`, or `quarto-accessibility-quality`.
 
 ### Correction Types
 

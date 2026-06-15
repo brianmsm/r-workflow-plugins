@@ -7,6 +7,11 @@ All notable changes to `quarto-publishing` will be documented here.
 ### Changed
 
 - Clarified `quarto-report-design` guidance for mixed and technical reports so source code remains inspectable with folded code when appropriate, instead of being hidden by global `echo: false`.
+- Calibrated handoff guidance among existing Phase 1 skills so `quarto-authoring-core` does not act as the default for every `.qmd` task.
+- Strengthened `quarto-report-design` activation for manuscript/report restructuring, Results/Discussion boundaries, objectives/hypotheses, analytical narrative, and local review constraints.
+- Strengthened DOCX and format-specific guidance for `reference-doc`, tables, captions, Word-oriented notation, CSL/citeproc behavior, and bounded post-render configuration.
+- Strengthened `quarto-render-troubleshooting` guidance for rendered artifact verification across HTML, DOCX, PDF, citations, links, and post-render outputs.
+- Strengthened `quarto-computation-performance` guidance for do-not-execute requests, expensive renders, external/generated artifacts, simulations/models, and proportional validation.
 
 ## [0.1.0] - 2026-05-02
 

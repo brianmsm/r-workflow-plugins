@@ -33,3 +33,7 @@ Thumbs.db
 *.log
 *.tmp
 *.bak
+
+# Private pilot/testing notes
+plugins/quarto-publishing/docs/testing-log.md
+plugins/quarto-publishing/docs/testing-log.local.md
