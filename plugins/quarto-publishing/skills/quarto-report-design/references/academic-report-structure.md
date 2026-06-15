@@ -27,12 +27,15 @@ Use this sequence for major analytical sections:
 
 Do not force connections between analyses when they are genuinely independent.
 
+When condensing or restructuring an academic manuscript, preserve objectives, hypotheses, argument sequence, and Results/Discussion separation. Results should report what the evidence shows; Discussion should explain mechanisms, implications, limitations, and future work rather than restating every table.
+
 ## Tables and Figures
 
 - Use formatted tables and figures for central results.
 - Allow technical detail when needed, but make sure each table or figure supports a clear interpretive point.
 - Avoid presenting large technical outputs as the main body unless they directly support methodological transparency or interpretation.
 - Use captions and surrounding prose to clarify the role of each result.
+- If a figure, table, or generated artifact is corrected, revisit the prose for the affected objective or hypothesis before making broad manuscript changes.
 
 ## Technical Detail
 
@@ -45,6 +48,8 @@ Appendices or supplementary materials are appropriate for extended diagnostics, 
 Preserve or request appropriate citations when conceptual, methodological, or interpretive claims require support. Do not invent sources.
 
 If research questions, objectives, hypotheses, or substantive claims are unclear, ask before restructuring the argument around them.
+
+Treat local writing guidelines, advisor comments, reviewer notes, and thesis or journal instructions as constraints on structure and voice before deleting or moving content.
 
 ## Voice
 

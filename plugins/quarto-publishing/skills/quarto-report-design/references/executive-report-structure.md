@@ -48,6 +48,8 @@ Golden rule: if the report cannot be understood without opening a collapsed call
 
 Technical appendices can hold model details, diagnostics, sensitivity checks, code notes, and extended tables unless they affect the main decision.
 
+For mixed executive/technical deliverables, keep the body readable while moving dense diagnostics, file-path traceability, model details, and extended evidence into notes, appendices, or sidecar documents. Do not hide information needed for the main decision.
+
 ## Raw Outputs
 
 Avoid raw software output in the body. Convert central results into readable tables, figures, or interpreted statements.

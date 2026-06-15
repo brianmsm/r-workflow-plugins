@@ -1,11 +1,11 @@
 ---
 name: quarto-render-troubleshooting
-description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed quarto render commands, YAML parse errors, cell or chunk execution errors, missing packages or files, working-directory and path issues, LaTeX or Typst failures, bibliography/CSL/citation problems, cross-reference failures, image/assets issues, extension/theme/CSS problems that break rendering, generated HTML inspection, screenshot or browser review, link/anchor/navigation checks, logs, local-vs-CI render differences, and honest verification claims. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache/freeze/performance strategy, report structure/design, deployment automation, accessibility review, or broad refactoring unless the main task is to fix or verify a render/output failure.
+description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed quarto render commands, YAML parse errors, cell or chunk execution errors, missing packages or files, working-directory and path issues, LaTeX or Typst failures, bibliography/CSL/citation problems, cross-reference failures, image/assets issues, extension/theme/CSS problems that break rendering, generated HTML inspection, DOCX/PDF artifact checks, screenshots or browser review, link/anchor/navigation checks, post-render verification, logs, local-vs-CI render differences, and honest verification claims. Use source/static checks only when the user says not to render. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache/freeze/performance strategy, report structure/design, deployment automation, accessibility review, or broad refactoring unless the main task is to fix or verify a render/output problem.
 ---
 
 # Quarto Render Troubleshooting
 
-Use this skill to diagnose, fix, and verify Quarto render failures or rendered-output defects.
+Use this skill to diagnose, fix, and verify Quarto render failures or rendered-output defects. A successful render and a verified artifact are different claims.
 
 ## Core Role
 
@@ -36,6 +36,22 @@ When tools are available:
 5. Fix the smallest relevant source of failure.
 6. Re-run the smallest render or verification check needed.
 7. Report exactly what was verified and what remains unverified.
+
+## Rendered Artifact Verification
+
+When the output exists but correctness matters, verify only the relevant artifact surface:
+
+- HTML: open the generated file or served page; inspect visual layout, assets, links, anchors, navigation, and screenshots when needed.
+- DOCX: check generated text, package/XML structure, citation output, table and figure readability, captions, section behavior, and Word/LibreOffice/OnlyOffice behavior when the user reports application-specific problems.
+- PDF: inspect produced pages, figure/table placement, pagination, references, and any LaTeX or Typst-specific visual issue.
+- Citations and references: check for raw citation keys, bibliography heading language, CSL/citeproc behavior, DOI/link output, and rendered reference formatting when relevant.
+- Post-render scripts: confirm the script ran on the intended artifact, did not affect other formats, and produced the expected bounded transformation.
+
+Always state which formats were rendered and which artifacts were inspected.
+
+## No Render Requested Or Unavailable
+
+If the user explicitly says not to render, says they will render themselves, or render tools are unavailable, perform source/static checks only. Do not invoke render commands, do not imply layout verification, and state that rendered outputs were not verified.
 
 ## Common Fix Areas
 
@@ -78,6 +94,7 @@ Acceptable wording:
 - "I inspected the generated `report.html` and confirmed the figure appears."
 - "I checked the internal link to `#sec-methods`."
 - "I did not run the PDF render, so the LaTeX fix is not verified."
+- "I checked source-level citations only; I did not render the DOCX, so reference formatting is not verified."
 
 Do not say:
 

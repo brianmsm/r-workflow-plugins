@@ -131,6 +131,26 @@ Use `reference-doc` when Word styling, institutional templates, or repeatable DO
 
 Do not try to reproduce complex HTML/CSS styling in DOCX. Prefer Word styles through the reference document.
 
+Treat `reference-doc` as a style source, not a complete layout contract. Verify generated DOCX behavior when the task depends on:
+
+- headers, footers, first-page behavior, or page numbers
+- landscape sections or section breaks
+- table widths, column distribution, font size, or line breaks
+- captions, appendix labels, or table/figure wrappers
+- Word-specific review workflows or comments
+
+For Word-oriented prose and tables, avoid fragile raw LaTeX notation when Unicode or plain-text statistical notation is safer across DOCX readers.
+
+Post-render scripts can be reasonable for narrow DOCX cleanup when built-in Quarto options and `reference-doc` styles are insufficient. Keep them scoped to the intended file type, documented, idempotent, guarded against non-DOCX renders, and verified after render.
+
+When the question becomes "did the DOCX/PDF/HTML artifact actually render correctly?", hand off to `quarto-render-troubleshooting`.
+
+## Citations and Rendered References
+
+Use bibliography, CSL, `cite-method`, language, and reference-heading options when they affect rendered output. Correct configuration is only the first step: rendered citations and references may still need verification for raw keys, heading language, DOI output, and style behavior.
+
+Do not turn citation data cleanup into a large bibliography-management workflow here. Use this skill for format behavior, and use `quarto-render-troubleshooting` when the rendered references need inspection.
+
 ## Presentations
 
 Use `revealjs` for HTML slide decks:

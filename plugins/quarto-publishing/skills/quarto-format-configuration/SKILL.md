@@ -1,6 +1,6 @@
 ---
 name: quarto-format-configuration
-description: Use when configuring or reviewing Quarto output-format YAML and format-specific rendering behavior for HTML, PDF via LaTeX, PDF via Typst, DOCX, revealjs, PowerPoint, Beamer, output-format behavior for books, websites, manuscripts, ePub, themes, CSS/SCSS, reference documents, includes, templates, and custom formats or extensions when they affect output behavior. Do not use for general .qmd authoring, project architecture, publishing/deployment, CI, caching/performance strategy, report writing, or deep render troubleshooting except when the issue is an invalid or misplaced format option.
+description: Use when configuring or reviewing Quarto output-format YAML and format-specific rendering behavior for HTML, PDF via LaTeX, PDF via Typst, DOCX, revealjs, PowerPoint, Beamer, books, websites, manuscripts, ePub, themes, CSS/SCSS, reference documents, includes, templates, CSL/citeproc output behavior, Word-oriented formatting, DOCX tables/captions/landscape sections/headers/footers/page numbers, and custom formats or extensions when they affect output behavior. Hand off to render troubleshooting when the task becomes rendered artifact verification. Do not use for general .qmd authoring, project architecture, publishing/deployment, CI, caching/performance strategy, report writing, or deep render troubleshooting except when the issue is an invalid or misplaced format option.
 ---
 
 # Quarto Format Configuration
@@ -18,6 +18,9 @@ Use this skill to configure or review Quarto output formats and format-specific 
 - Be explicit about format limitations: HTML-specific features may not survive PDF, DOCX, PowerPoint, or ePub output.
 - Treat LaTeX PDF, Typst PDF, DOCX, revealjs, PowerPoint, and Beamer as related but distinct output systems with different option sets and constraints.
 - Keep multiformat advice minimal here; full cross-format compatibility belongs to future `quarto-multiformat-compatibility`.
+- Treat `reference-doc` as a Word style source, not a guarantee that every generated section property, header, footer, page number, landscape section, table width, or caption layout will behave as intended.
+- Use post-render scripts only when built-in Quarto options and reference documents are insufficient; keep them scoped, documented, idempotent, format-guarded, and verified.
+- Hand off to `quarto-render-troubleshooting` once the question is whether the rendered artifact actually looks, links, cites, or paginates correctly.
 
 ## Review Checklist
 
@@ -31,10 +34,12 @@ When reviewing Quarto format configuration, check:
 6. HTML options such as `theme`, `css`, `toc`, `code-fold`, `code-tools`, `code-overflow`, `syntax-highlighting`, `embed-resources`, `html-math-method`, and includes are appropriate when relevant.
 7. PDF via LaTeX options such as `documentclass`, `classoption`, `pdf-engine`, `pdf-engine-opt`, `pdf-engine-opts`, `include-in-header`, and `keep-tex` are justified when relevant.
 8. PDF via Typst uses `format: typst` and is considered when the user wants simpler or faster PDF production without LaTeX-specific templates or packages.
-9. DOCX output uses `reference-doc` when institutional styling, Word styles, or repeatable Word formatting matter.
+9. DOCX output uses `reference-doc` when institutional styling, Word styles, or repeatable Word formatting matter, without assuming those styles fully control the generated DOCX.
 10. Presentation format choice is clear: `revealjs` for HTML slides, `pptx` for editable Office slides, and `beamer` for LaTeX/PDF academic slides.
 11. Books, websites, manuscripts, and ePub are reviewed only for output-format behavior, not full project design.
-12. Custom formats, extensions, and Lua filters are treated as advanced choices that require a concrete reason.
+12. Citation processing options such as bibliography paths, CSL, `cite-method`, language, and reference heading behavior are configured where they affect rendered output.
+13. Word-oriented notation avoids fragile raw LaTeX when Unicode or plain text is safer for DOCX.
+14. Custom formats, extensions, and Lua filters are treated as advanced choices that require a concrete reason.
 
 ## References
 
@@ -50,6 +55,6 @@ Do not design deployment, publishing, CI, GitHub Pages, Netlify, Posit Connect, 
 
 Do not design caching, `freeze`, execution architecture, or long-running render performance.
 
-Do not perform deep render troubleshooting, TeX log debugging, package installation repair, missing font diagnosis, Pandoc failure analysis, or environment setup.
+Do not perform deep render troubleshooting, TeX log debugging, package installation repair, missing font diagnosis, Pandoc failure analysis, rendered DOCX/XML inspection, browser review, PDF page inspection, or environment setup.
 
 Do not use this skill as the primary guide for full multiformat compatibility strategy, report narrative design, custom extension systems, Lua filter implementation, or reusable templates. Keep format advice limited to output behavior and route broader work to the appropriate skill boundary.

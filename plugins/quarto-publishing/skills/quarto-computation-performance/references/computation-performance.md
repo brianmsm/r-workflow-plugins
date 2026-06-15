@@ -98,6 +98,13 @@ For Python or Julia workflows, prefer artifact formats already used by the proje
 
 Do not hide manual artifacts. Keep the code that generates each artifact and document how to regenerate it.
 
+For analytical artifacts consumed by Quarto, also check that the artifact still means what the report says it means:
+
+- Inspect scripts that generate figures, tables, or model summaries before revising narrative text.
+- Verify mappings between model labels, filters, rotations, conditions, captions, and prose claims.
+- Regenerate only affected artifacts when possible, instead of rerunning full simulations or complete model pipelines.
+- Distinguish file existence from semantic correctness and alignment with the `.qmd`.
+
 ## Externalized Computation
 
 Move computation outside `.qmd` when the document is acting like a pipeline script:
@@ -147,6 +154,7 @@ Prefer the smallest validation that proves the current change:
 - Use `--no-execute` only when validating non-computational rendering behavior and be explicit that code was not rerun.
 - Use `--cache-refresh` only when cache invalidation is part of the question.
 - Reserve full clean renders for release, publication, or when targeted validation cannot answer the risk.
+- If the user says not to execute or render, stop at static/source checks and say that no execution, render, or artifact regeneration was performed.
 
 Never claim a full render, clean cache refresh, or artifact regeneration unless it actually happened.
 

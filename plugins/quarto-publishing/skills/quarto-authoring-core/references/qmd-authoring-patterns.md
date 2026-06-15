@@ -47,6 +47,16 @@ For Python/Jupyter documents, the executable block uses `{python}` and the docum
 
 Use labels that are unique, descriptive, lowercase, and hyphenated. Avoid underscores in labels that may be cross-referenced or rendered to PDF.
 
+## Scoped Analytical Edits
+
+When a `.qmd` repeats model sections, sensitivity blocks, or cloned chunks, anchor edits narrowly:
+
+- Match the chunk label, object-name prefix, and nearby heading before changing code or prose.
+- Prefer scoped searches around the target section over repository-wide replacements.
+- After editing, check that similarly named sections were not changed accidentally.
+- If the change alters model comparisons, Results/Discussion meaning, or interpretation, use `quarto-report-design` as the primary guide.
+- If the change would execute expensive models or simulations, use `quarto-computation-performance` before running anything.
+
 ## Cross-References
 
 Use type-specific label prefixes:

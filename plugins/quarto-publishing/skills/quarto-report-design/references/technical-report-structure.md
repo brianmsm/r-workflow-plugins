@@ -24,6 +24,8 @@ Each technical section should make clear:
 
 Keep the prose explanatory, not merely procedural.
 
+When reorganizing a technical report, preserve auditability: the reader should still be able to trace assumptions, diagnostics, model specifications, data sources, and validation evidence after content is moved or condensed.
+
 ## Tables, Figures, and Raw Outputs
 
 - Use readable tables and figures for central deliverables.
@@ -44,6 +46,8 @@ Use global `echo: false` only when the report is intentionally reader-only, when
 Include diagnostics in the body when they affect interpretation. Move long or mechanical checks to appendices or collapsed sections.
 
 Useful diagnostic sections often include data quality checks, missingness, assumptions, model fit, convergence, sensitivity checks, version or seed notes, and known limitations. Do not add a diagnostic section only to fill a template.
+
+Use technical sidecars or appendices when dense traceability is needed but the main report must remain readable. Keep durable conclusions in the `.qmd` source even when comments or review notes arrive through DOCX or another rendered artifact.
 
 ## Glossary and Definitions
 

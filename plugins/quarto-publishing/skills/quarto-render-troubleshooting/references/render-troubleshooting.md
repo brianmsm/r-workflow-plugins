@@ -187,6 +187,51 @@ Use browser automation or screenshots when visual output matters. Say exactly wh
 
 Do not perform broad visual design or accessibility review here. Deep accessibility belongs to future `quarto-accessibility-quality`.
 
+## DOCX Verification
+
+For DOCX output, distinguish "Quarto produced a `.docx` file" from "the Word artifact was verified." Depending on the task, check:
+
+- expected text is present and obsolete text is absent
+- raw citation keys, raw LaTeX symbols, or broken inline notation did not leak into the document
+- tables, captions, figure wrappers, and landscape sections are readable
+- headers, footers, page numbers, and section breaks behave as intended
+- package/XML checks when visual tools are insufficient
+- Word, LibreOffice, or OnlyOffice behavior when the user reports application-specific prompts or layout differences
+
+Do not over-attribute DOCX repair prompts or application differences without evidence. If the cause is unclear, state the uncertainty and preserve source-of-truth files.
+
+## PDF Verification
+
+For PDF output, inspect pages when layout matters. Check that figures, tables, references, pagination, and symbols appear as intended. If only source or logs were checked, do not claim PDF layout verification.
+
+## Citation and CSL Verification
+
+Correct YAML does not prove rendered citation correctness. When citations or references are part of the task, check the relevant rendered output for:
+
+- no unintended raw citation keys
+- expected bibliography or references heading language
+- CSL/citeproc activation where configured
+- DOI or URL formatting when required
+- obvious bibliography formatting issues in the target output
+
+Bibliography data problems, such as title capitalization or protected braces, may surface only after render inspection. Keep fixes scoped to the reported citation/output problem.
+
+## Post-Render Verification
+
+When a project uses a `post-render` command, verify that it:
+
+- ran on the intended output file
+- is guarded against unrelated formats when format-specific
+- is idempotent or safe to rerun
+- preserved the source-of-truth `.qmd` workflow
+- produced the expected bounded change in the rendered artifact
+
+Post-render scripts can be inspected here only to explain or verify rendered-output behavior. Designing a broad post-render architecture belongs outside troubleshooting.
+
+## No Render Requested Or Available
+
+When the user says not to render, or render tools are unavailable, use static checks such as source inspection, scoped search, path checks, citation-key checks, or diff review. State plainly that rendered outputs were not verified.
+
 ## Local-Vs-CI Differences
 
 For CI render failures, compare:
@@ -211,6 +256,8 @@ Report verification with exact scope:
 - "Opened `_site/index.html` and checked the navbar links to `about.html` and `reports.html`."
 - "Ran the PDF render and confirmed it produced `report.pdf`."
 - "Did not run the full website render because the targeted page render was sufficient for this fix."
+- "Checked DOCX XML/text for the expected caption, but did not visually inspect the Word pages."
+- "Performed source-only checks because the user asked not to render; rendered output remains unverified."
 
 Avoid claims like "works now", "all links work", "the PDF is fixed", or "the screenshot looks good" unless those checks were actually performed.
 

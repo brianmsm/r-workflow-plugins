@@ -1,6 +1,6 @@
 ---
 name: quarto-computation-performance
-description: Use when designing or reviewing Quarto workflows where execution cost, render time, caching, freezing, precomputed artifacts, externalized computation, simulations, model fitting, repeated or parameterized renders, pipeline-like execution, random seeds, engine-specific execution behavior for R/knitr, Python/Jupyter, or Julia, or proportional validation are central. Use for deciding whether computation belongs inside .qmd files, scripts, stored artifacts, or an external pipeline. Do not use for ordinary .qmd authoring, general cell-option cleanup, project YAML architecture unrelated to execution cost, format styling, report writing/design, deployment/CI, accessibility, or deep render troubleshooting except when the main issue is excessive recomputation or unsafe long renders.
+description: Use when designing or reviewing Quarto workflows where execution cost, render time, user requests not to execute, caching, freezing, precomputed or external artifacts, generated figures/tables, simulations, model fitting, repeated or parameterized renders, pipeline-like execution, random seeds, engine-specific execution behavior for R/knitr, Python/Jupyter, or Julia, or proportional validation are central. Use for deciding whether computation belongs inside .qmd files, scripts, stored artifacts, or an external pipeline. Do not use for ordinary .qmd authoring, general cell-option cleanup, project YAML architecture unrelated to execution cost, format styling, report writing/design, deployment/CI, accessibility, or deep render troubleshooting except when the main issue is excessive recomputation or unsafe long renders.
 ---
 
 # Quarto Computation Performance
@@ -20,6 +20,13 @@ A `.qmd` may contain lightweight, transparent computation. Heavy simulations, ex
 3. Preserve reproducibility by keeping source code for generated artifacts, recording random seeds for stochastic results, avoiding hidden manual artifacts, and ensuring outputs can be regenerated.
 4. Validate proportionally by inspecting code/YAML first, rendering the smallest relevant target, and refreshing cache only when invalidation is uncertain.
 5. State verification honestly: do not claim a full render, cache refresh, or artifact regeneration unless it actually ran.
+
+## Non-Execution And External Artifacts
+
+- If the user says not to execute or render, use static checks only: inspect source, chunk labels, object names, paths, artifact references, and diffs.
+- For Quarto documents that consume generated tables, figures, model summaries, or simulation outputs, inspect the generating script and the mapping between labels, filters, model variants, captions, and narrative claims before changing prose.
+- Regenerate only the affected artifact when possible, and avoid full simulation/model reruns when targeted validation answers the risk.
+- Distinguish "artifact exists" from "artifact is correct and aligned with the report prose."
 
 ## Quarto Mechanisms
 

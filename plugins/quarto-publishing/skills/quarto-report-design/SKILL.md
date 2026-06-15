@@ -1,6 +1,6 @@
 ---
 name: quarto-report-design
-description: Use when designing, reviewing, or restructuring Quarto reports so analytical results are communicated coherently for a specific purpose, profile, and deliverable type, including executive, technical, academic, reproducible, applied, psychometric, simulation, teaching, and slide-oriented reports. Focus on report profiles, section hierarchy, narrative flow, executive summaries, appendices, supplements, placement of code, diagnostics, tables, figures, and callouts. Do not use as the primary skill for ordinary .qmd syntax, output-format YAML, project-level configuration, render failures, computation/cache strategy, deployment, accessibility audits, or general prose editing unless the main task is report structure and communication design.
+description: Use when designing, reviewing, reducing, or restructuring Quarto reports or manuscripts so analytical results are communicated coherently for a specific purpose, profile, and deliverable type. Use for executive, technical, academic, reproducible, applied, psychometric, simulation, teaching, and slide-oriented reports; Results/Discussion boundaries; objective or hypothesis alignment; model hierarchy; analytical narrative; result placement; figure/table interpretation; appendices; supplements; reviewer/advisor comments; local writing guidelines; and contractual objectives. Do not use as the primary skill for ordinary .qmd syntax, output-format YAML, project-level configuration, render failures, computation/cache strategy, deployment, accessibility audits, or general prose editing unless the main task is report structure and communication design.
 ---
 
 # Quarto Report Design
@@ -11,13 +11,14 @@ Do not treat this as a generic writing skill. The main question is whether the r
 
 ## Operating Workflow
 
-1. Identify the report goal, intended reader task, deliverable type, and expected level of technical detail.
+1. Identify the report goal, intended reader task, deliverable type, expected level of technical detail, and any local design constraints such as writing guidelines, reviewer notes, advisor comments, style guides, or contractual objectives.
 2. Select or infer a report profile: executive, technical, academic, or mixed.
 3. Propose a section hierarchy that makes the report navigable.
 4. For each analytical block, check the sequence: context, evidence, interpretation, implication, transition.
 5. Decide which results belong in the body, collapsed callouts, appendices, supplements, or technical notes.
-6. Preserve the user's analytical intent. Do not invent findings or claim rendered-output inspection unless it actually happened.
-7. Apply basic accessibility and readability checks only at a transitional level.
+6. When figures, tables, or generated artifacts have changed, check whether captions, surrounding prose, Results, Discussion, objectives, or hypotheses need to change with them.
+7. Preserve the user's analytical intent. Do not invent findings or claim rendered-output inspection unless it actually happened.
+8. Apply basic accessibility and readability checks only at a transitional level.
 
 ## Profile Defaults
 
@@ -38,6 +39,9 @@ When the user does not specify a profile, infer the lightest reasonable profile 
 - Do not use generic boilerplate around inline values when rendered results can be inspected.
 - Prefer clean ASCII names for code-facing objects and columns. Reserve accents, spaces, and reader-facing labels for final tables, figures, captions, and prose.
 - Avoid hiding the core argument in collapsed callouts or appendices.
+- Treat local writing guidelines, reviewer notes, advisor feedback, and contractual objectives as report-design constraints before cutting, moving, or deleting analytical content.
+- When reducing length, preserve the argument sequence, objectives or hypotheses, and the role of central figures and tables; remove redundancy before removing evidence.
+- Do not change captions, chunks, cross-references, or generated artifacts while doing prose-only design work unless the user asks for those edits.
 
 ## Code Visibility
 
@@ -79,6 +83,6 @@ Use `quarto-format-configuration` for output-format YAML, HTML/PDF/DOCX/revealjs
 
 Use `quarto-computation-performance` for cache, freeze, long renders, externalized computation, seeds, precomputed artifacts, or pipeline escalation.
 
-Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell or chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, or verification claims.
+Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell or chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, rendered artifact checks, or verification claims.
 
 Do not use this skill as the primary guide for scripts, assets, reusable templates, full accessibility audits, deployment workflows, or broad academic-writing guidance. If the user asks for those while designing a report, keep the report-design part limited and route the rest to the appropriate skill boundary.
