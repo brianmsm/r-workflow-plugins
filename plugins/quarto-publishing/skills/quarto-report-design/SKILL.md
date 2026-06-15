@@ -71,6 +71,7 @@ When working autonomously, state the assumption before editing; ask only when th
 - For decision-oriented reports, read `references/executive-report-structure.md`.
 - For technical review, audit, reproducibility, and diagnostic reports, read `references/technical-report-structure.md`.
 - For research, thesis, manuscript, methodological, and scholarly reports, read `references/academic-report-structure.md`.
+- For Quarto slide deck communication design, audience, purpose, message-oriented slide titles, deck structure, report-to-slides conversion, slide density, and backup or appendix slides, read `references/slide-deck-design.md`.
 - For basic transitional accessibility checks, read `references/accessibility-basic-checklist.md`.
 
 ## Boundaries
