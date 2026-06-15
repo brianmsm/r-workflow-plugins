@@ -1,6 +1,6 @@
 {
   "name": "quarto-publishing",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Quarto publishing workflows for analytical and research-oriented documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
   "author": {
     "name": "Brian Norman Peña-Calero"
@@ -33,6 +33,7 @@
       "Publishing"
     ],
     "defaultPrompt": [
+      "Use Quarto Publishing to create, review, configure, render, or troubleshoot Quarto documents, reports, websites, books, and presentations.",
       "Use the Quarto publishing skills to review and improve a Quarto .qmd analytical report.",
       "Use the Quarto publishing skills to review a Quarto _quarto.yml project configuration.",
       "Use the Quarto publishing skills to configure HTML, PDF, DOCX, or revealjs output formats.",

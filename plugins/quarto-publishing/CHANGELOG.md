@@ -4,6 +4,8 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-15
+
 ### Added
 
 - Added practical Quarto presentation format guidance for revealjs, PowerPoint, and Beamer workflows.
