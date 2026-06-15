@@ -299,7 +299,7 @@ This phase should focus on correction, not feature growth.
 
 Early Phase 2 evidence, summarized publicly in `pilot-findings.md`, supports a small `v0.1.1` calibration patch before any `v0.2.0` expansion. The patch should clarify activation boundaries and handoffs among the six Phase 1 skills, especially around overuse of `quarto-authoring-core`, underactivation of `quarto-report-design`, DOCX/output-format behavior, rendered artifact verification, and proportional validation for expensive or non-executed workflows.
 
-After `v0.1.1`, continue Phase 2 testing with more diverse projects beyond the current DOCX/manuscript-heavy evidence. Prioritize HTML-only reports, PDF-only reports, websites, revealjs slides, `.Rmd` migration, deployment-oriented tasks, and intentionally broken renders. Do not open `v0.2.0` until broader evidence supports splitting future skills such as `quarto-multiformat-compatibility`, `quarto-rmarkdown-migration`, `quarto-publishing-deployment`, or `quarto-accessibility-quality`.
+After `v0.1.1`, continue Phase 2 testing with more diverse projects beyond the current DOCX/manuscript-heavy evidence. Prioritize HTML-only reports, PDF-only reports, websites, revealjs slides, `.Rmd` migration, deployment-oriented tasks, and intentionally broken renders. Open `v0.2.0` conservatively when testing supports useful workflow expansion inside existing skills; split future skills such as `quarto-multiformat-compatibility`, `quarto-rmarkdown-migration`, `quarto-publishing-deployment`, or `quarto-accessibility-quality` only when broader evidence supports independent activation.
 
 ### Correction Types
 
@@ -348,20 +348,24 @@ Use patch releases, such as `v0.1.1` or `v0.1.2`, when changes include:
 
 Patch versions should not introduce major skill restructuring.
 
-## Phase 4: First Expansion, `v0.2.0`
+## Phase 4: First Conservative Expansion, `v0.2.0`
 
 ### Goal
 
-Split the most important folded topics into independent skills if testing shows that they deserve independent activation.
+Expand the most useful folded workflows conservatively, preferring references and handoff calibration inside existing skills unless testing shows that a topic deserves independent activation.
 
-### Candidate New Independent Skills
+### Current Conservative `v0.2.0` Direction
 
-The strongest candidates for `v0.2.0` are:
+Current `v0.2.0` development expands practical Quarto presentation workflow support through existing skills: presentation format guidance, slide-deck design guidance, presentation-output verification, and natural broad plugin invocation through existing handoffs. Keep `quarto-publishing-router`, `quarto-revealjs`, and `quarto-slide-decks` deferred until further evidence shows they would reduce confusion rather than add fragmentation.
+
+### Deferred Candidate Independent Skills
+
+The strongest future candidates remain:
 
 1. `quarto-multiformat-compatibility`
 2. `quarto-rmarkdown-migration`
 
-### Why These First
+### Why These Remain Candidates
 
 `quarto-multiformat-compatibility` should become independent if real testing shows repeated tasks like:
 
@@ -379,7 +383,7 @@ The strongest candidates for `v0.2.0` are:
 * “Convert `_output.yml` to `_quarto.yml`.”
 * “Preserve old R Markdown behavior while moving to Quarto.”
 
-### Implementation Scope
+### Deferred Implementation Scope
 
 For `quarto-multiformat-compatibility`, create:
 
@@ -405,7 +409,7 @@ For `quarto-rmarkdown-migration`, create:
   * `legacy-yaml-migration.md`
   * `migration-checklist.md`
 
-### Required Refactoring
+### Required Refactoring When Deferred Skills Are Created
 
 When these skills are created:
 
@@ -417,20 +421,23 @@ When these skills are created:
 
 ### Expected Outcome
 
-By the end of `v0.2.0`, the plugin should better handle multi-output workflows and legacy R Markdown migration.
+By the end of the current `v0.2.0`, the plugin should better handle Quarto presentation workflows without adding a router, revealjs-specific skill, or slide-deck-specific skill. Multi-output workflows and legacy R Markdown migration remain future expansion candidates until broader evidence justifies independent skills.
 
 ## Phase 5: Second Testing Cycle
 
 ### Goal
 
-Test the expanded plugin after adding new skills.
+Test the expanded presentation workflow guidance and continue gathering evidence for any deferred future skills.
 
-This cycle should focus on whether the new skills activate correctly and whether they create overlap with existing skills.
+This cycle should focus on whether existing skills and handoffs cover presentation workflows cleanly, and whether deferred topics would reduce confusion if split later.
 
 ### Specific Tests
 
 Test:
 
+* Revealjs presentation authoring, format configuration, design review, and rendered-output verification.
+* PowerPoint presentation generation with template/layout expectations.
+* Beamer presentation generation with PDF/LaTeX issues.
 * HTML plus PDF report.
 * HTML plus DOCX report.
 * HTML widget with static fallback.
@@ -444,9 +451,10 @@ Test:
 
 ### What to Check
 
-* Does `quarto-multiformat-compatibility` activate instead of `quarto-format-configuration` when appropriate?
+* Do presentation tasks route naturally among `quarto-authoring-core`, `quarto-format-configuration`, `quarto-report-design`, and `quarto-render-troubleshooting`?
+* Would a future `quarto-multiformat-compatibility` skill activate instead of `quarto-format-configuration` when appropriate?
 * Does `quarto-format-configuration` still activate for single-format tasks?
-* Does `quarto-rmarkdown-migration` activate only for migration tasks?
+* Would a future `quarto-rmarkdown-migration` skill activate only for migration tasks?
 * Are migration tasks preserving existing behavior?
 * Are multi-format tasks avoiding HTML-only assumptions?
 * Are references now too fragmented?
@@ -454,13 +462,13 @@ Test:
 
 ### Expected Outcome
 
-This phase should produce corrections for `v0.2.x`.
+This phase should produce corrections for `v0.2.x` and evidence for whether deferred skills should be created later.
 
 ## Phase 6: Second Stabilization, `v0.2.x`
 
 ### Goal
 
-Stabilize the expanded skill set.
+Stabilize the expanded presentation workflow coverage and any later expanded skill set.
 
 ### Correction Types
 
@@ -475,7 +483,7 @@ Stabilize the expanded skill set.
 
 ### Expected Outcome
 
-The plugin should now support typical single-format, multi-format, and migration workflows.
+The plugin should now support typical presentation workflows through existing skills, while continuing to collect evidence for later multi-format and migration workflow splits.
 
 ## Phase 7: Publishing, Deployment, and Accessibility Expansion, `v0.3.0`
 
@@ -790,9 +798,17 @@ Focus:
 
 ### `v0.2.0`
 
-First expansion.
+First conservative presentation workflow expansion.
 
-Likely new skills:
+Focus:
+
+* Quarto presentation format guidance.
+* Slide-deck design guidance.
+* Presentation-output verification.
+* Natural broad plugin invocation through existing skill handoffs.
+* No router, revealjs-specific skill, or slide-deck-specific skill yet.
+
+Deferred future candidates:
 
 * `quarto-multiformat-compatibility`
 * `quarto-rmarkdown-migration`

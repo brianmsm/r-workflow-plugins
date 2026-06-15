@@ -204,6 +204,16 @@ Do not over-attribute DOCX repair prompts or application differences without evi
 
 For PDF output, inspect pages when layout matters. Check that figures, tables, references, pagination, and symbols appear as intended. If only source or logs were checked, do not claim PDF layout verification.
 
+## Presentation Output Verification
+
+Distinguish "render succeeded" from "the presentation artifact was reviewed."
+
+- Revealjs: open the generated HTML when possible; check slide navigation when relevant; verify that figures, tables, and code output fit; check speaker notes only when requested or required; claim PDF export verification only if the PDF was actually generated and inspected.
+- PowerPoint: inspect the generated `.pptx` when template or layout behavior matters; check slide layouts, figures, tables, and speaker notes when relevant.
+- Beamer: verify the generated PDF when possible; inspect LaTeX logs when rendering fails; check equations, blocks, figures, and overflow when relevant.
+
+Do not claim visual review, navigation review, speaker-note review, or presentation PDF export review unless that output was opened, inspected, or generated.
+
 ## Citation and CSL Verification
 
 Correct YAML does not prove rendered citation correctness. When citations or references are part of the task, check the relevant rendered output for:
@@ -274,6 +284,12 @@ Avoid claims like "works now", "all links work", "the PDF is fixed", or "the scr
 - Quarto rendering script files: https://quarto.org/docs/computations/render-scripts.html
 - Quarto citations: https://quarto.org/docs/authoring/citations.html
 - Quarto cross-references: https://quarto.org/docs/authoring/cross-references
+- Quarto presentations: https://quarto.org/docs/presentations/
+- Quarto revealjs: https://quarto.org/docs/presentations/revealjs/
+- Quarto presenting slides: https://quarto.org/docs/presentations/revealjs/presenting.html
+- Quarto revealjs options: https://quarto.org/docs/reference/formats/presentations/revealjs.html
+- Quarto PowerPoint: https://quarto.org/docs/presentations/powerpoint.html
+- Quarto Beamer: https://quarto.org/docs/presentations/beamer.html
 - Quarto PDF basics: https://quarto.org/docs/output-formats/pdf-basics.html
 - Quarto PDF engine: https://quarto.org/docs/output-formats/pdf-engine.html
 - Quarto Typst output: https://quarto.org/docs/output-formats/typst.html

@@ -4,6 +4,17 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Added practical Quarto presentation format guidance for revealjs, PowerPoint, and Beamer workflows.
+- Added slide-deck design guidance for audience, purpose, message titles, narrative sequence, slide density, and report-to-slides conversion.
+- Added presentation-output verification guidance for revealjs, PowerPoint, and Beamer artifacts.
+
+### Changed
+
+- Refined `quarto-authoring-core` handoffs so project-level configuration routes to `quarto-project-configuration` when `.qmd` authoring is no longer the main concern.
+- Kept the router skill deferred pending further evidence, relying on existing skill handoffs for broad presentation workflow coverage.
+
 ## [0.1.1] - 2026-06-15
 
 ### Changed

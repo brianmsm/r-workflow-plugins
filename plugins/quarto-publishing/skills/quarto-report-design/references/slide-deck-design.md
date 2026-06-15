@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this reference for communication design in Quarto slide decks. Focus on audience, purpose, argument, sequence, slide density, evidence, and delivery readiness. This is not a format-configuration guide; use `quarto-format-configuration/references/presentations.md` for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
+Use this reference for communication design in Quarto slide decks. Focus on audience, purpose, argument, sequence, slide density, evidence, and delivery readiness. This is not a format-configuration guide; use the `quarto-format-configuration` skill and its `presentations.md` reference for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
 
 ## First Decide the Communication Situation
 
@@ -118,7 +118,7 @@ Do not claim visual review, projected-readability review, or backup export check
 
 ## Handoffs
 
-- Use `quarto-format-configuration/references/presentations.md` for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
+- Use the `quarto-format-configuration` skill and its `presentations.md` reference for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
 - Use `quarto-authoring-core` for writing or editing the slide `.qmd` content.
 - Use `quarto-render-troubleshooting` for rendering, opening, inspecting, or verifying generated presentation artifacts.
 - Use `quarto-computation-performance` when slide decks execute expensive analyses or consume generated artifacts.

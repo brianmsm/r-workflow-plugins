@@ -29,7 +29,7 @@ Use this skill with, or defer primary control to, the following when the main ri
 - `quarto-render-troubleshooting` when the task involves render failure, output verification, visual inspection, screenshots, links, anchors, final artifact checks, DOCX/PDF/HTML artifact checks, or post-render verification.
 - `quarto-computation-performance` when the task involves expensive execution, simulations, model fitting, generated or external artifacts, user requests not to execute, cache/freeze, or proportional validation.
 
-For slide `.qmd` files, use this skill for the actual slide source content: Markdown, headings, chunks, figures, tables, equations, citations, cross-references, callouts, and divs. Use `quarto-report-design` or `references/slide-deck-design.md` for audience, purpose, narrative sequence, message titles, density, and report-to-slides conversion; use `quarto-format-configuration` or `references/presentations.md` for revealjs/PPTX/Beamer YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior; use `quarto-render-troubleshooting` for rendered slide verification.
+For slide `.qmd` files, use this skill for the actual slide source content: Markdown, headings, chunks, figures, tables, equations, citations, cross-references, callouts, and divs. Use the `quarto-report-design` skill and its `slide-deck-design.md` reference for audience, purpose, narrative sequence, message titles, density, and report-to-slides conversion; use the `quarto-format-configuration` skill and its `presentations.md` reference for revealjs/PPTX/Beamer YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior; use `quarto-render-troubleshooting` for rendered slide verification.
 
 ## Review Checklist
 
