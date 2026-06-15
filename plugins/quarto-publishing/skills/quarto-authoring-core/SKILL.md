@@ -21,12 +21,15 @@ Use this skill for Quarto `.qmd` authoring and review tasks, especially analytic
 
 ## Handoff Rules
 
-Use this skill with, or defer primary control to:
+Use this skill with, or defer primary control to, the following when the main risk is no longer ordinary `.qmd` source authoring:
 
 - `quarto-report-design` when edits affect report or manuscript restructuring, Results/Discussion boundaries, objectives, hypotheses, analytical narrative, model hierarchy, length reduction, result placement, or interpretation of figures and tables.
+- `quarto-project-configuration` when the task involves `_quarto.yml`, `_metadata.yml`, project profiles, parameters, project-level render targets, shared metadata, resources, output directories, websites, books, manuscripts as project structures, or project-level configuration rather than document-body authoring.
 - `quarto-format-configuration` when the task involves output-specific YAML or behavior, especially DOCX/PDF/HTML, `reference-doc`, table width, captions, CSL/citeproc, Word-oriented formatting, landscape sections, headers, footers, page numbers, or format-specific rendering.
 - `quarto-render-troubleshooting` when the task involves render failure, output verification, visual inspection, screenshots, links, anchors, final artifact checks, DOCX/PDF/HTML artifact checks, or post-render verification.
 - `quarto-computation-performance` when the task involves expensive execution, simulations, model fitting, generated or external artifacts, user requests not to execute, cache/freeze, or proportional validation.
+
+For slide `.qmd` files, use this skill for the actual slide source content: Markdown, headings, chunks, figures, tables, equations, citations, cross-references, callouts, and divs. Use `quarto-report-design` or `references/slide-deck-design.md` for audience, purpose, narrative sequence, message titles, density, and report-to-slides conversion; use `quarto-format-configuration` or `references/presentations.md` for revealjs/PPTX/Beamer YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior; use `quarto-render-troubleshooting` for rendered slide verification.
 
 ## Review Checklist
 
