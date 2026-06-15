@@ -45,6 +45,8 @@ When reviewing Quarto format configuration, check:
 
 For compact examples and decision rules for HTML, LaTeX PDF, Typst PDF, DOCX, revealjs, PowerPoint, Beamer, secondary formats, custom formats, extensions, and minimal multiformat cautions, read `references/quarto-format-configuration.md` when editing or reviewing concrete format YAML.
 
+For Quarto presentation formats, revealjs, pptx, Beamer, presentation YAML, themes, templates, speaker notes, slide numbers, and format-specific slide behavior, read `references/presentations.md`.
+
 ## Anti-Scope
 
 Do not rewrite general `.qmd` prose, Markdown structure, citations, cross-references, callouts, figures, tables, or equations unless a format option directly affects rendering.

@@ -153,34 +153,9 @@ Do not turn citation data cleanup into a large bibliography-management workflow 
 
 ## Presentations
 
-Use `revealjs` for HTML slide decks:
+Quarto presentation format families are `revealjs` for HTML slides, `pptx` for editable Office slides, and `beamer` for LaTeX/PDF academic slides. Browser-first decks usually start with `revealjs`; Office template or post-editing workflows use `pptx`; LaTeX/PDF academic requirements use `beamer`.
 
-```yaml
-format:
-  revealjs:
-    theme: simple
-    slide-number: true
-    incremental: false
-```
-
-Use `pptx` for editable Office slides:
-
-```yaml
-format:
-  pptx:
-    reference-doc: template.pptx
-```
-
-Use `beamer` for LaTeX/PDF academic slides:
-
-```yaml
-format:
-  beamer:
-    theme: Madrid
-    slide-level: 2
-```
-
-Revealjs, PowerPoint, and Beamer are not interchangeable. Choose based on delivery, editing needs, institutional templates, and PDF requirements.
+For practical presentation YAML, slide structure, revealjs/PowerPoint/Beamer options, speaker notes, slide numbers, templates, verification boundaries, and handoffs, read [`presentations.md`](presentations.md).
 
 ## Books, Websites, Manuscripts, and ePub
 
