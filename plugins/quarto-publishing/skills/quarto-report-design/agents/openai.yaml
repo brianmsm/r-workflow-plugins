@@ -1,6 +1,6 @@
 interface:
   display_name: "Quarto Report Design"
-  short_description: "Structure Quarto reports for clear analytical communication."
-  default_prompt: "Use $quarto-report-design to design or review this Quarto report's profile, section hierarchy, narrative flow, result placement, and appendix/callout strategy."
+  short_description: "Structure Quarto reports and manuscripts."
+  default_prompt: "Use $quarto-report-design to review report profile, Results/Discussion flow, objective or hypothesis alignment, result placement, and constraints from guidelines or review comments."
 policy:
   allow_implicit_invocation: true

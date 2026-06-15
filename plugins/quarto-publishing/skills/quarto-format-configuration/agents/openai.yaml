@@ -1,7 +1,7 @@
 interface:
   display_name: "Quarto Format Configuration"
   short_description: "Review Quarto output format YAML."
-  default_prompt: "Use $quarto-format-configuration to review Quarto output-format YAML, format-specific options, styling mechanisms, and rendered output behavior."
+  default_prompt: "Use $quarto-format-configuration to review Quarto format YAML, reference documents, CSL/citeproc output behavior, DOCX/PDF/HTML options, captions, tables, and post-render configuration."
 
 policy:
   allow_implicit_invocation: true
