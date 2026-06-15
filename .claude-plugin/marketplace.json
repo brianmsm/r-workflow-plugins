@@ -11,7 +11,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/quarto-publishing",
-        "ref": "quarto-publishing-v0.1.1"
+        "ref": "quarto-publishing-v0.2.0"
       },
       "description": "Quarto-first publishing workflows for analytical, academic, technical, and reproducible outputs.",
       "author": {
