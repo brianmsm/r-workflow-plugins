@@ -4,6 +4,8 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-08
+
 ### Changed
 
 - Hardened short-request report design with conditional analysis-scope maps, preserved observational units, attributed decision requirements, incomplete-data denominators, consistent reader/technical labels, transformed-scale provenance, and coherent visual sequences.
