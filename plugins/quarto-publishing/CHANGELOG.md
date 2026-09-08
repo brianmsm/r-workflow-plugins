@@ -4,6 +4,18 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Hardened short-request report design with conditional analysis-scope maps, preserved observational units, attributed decision requirements, incomplete-data denominators, consistent reader/technical labels, transformed-scale provenance, and coherent visual sequences.
+- Added explicit raw-HTML authoring guidance and paired color/displayed-size checks after field trials exposed escaped summary cards and low-contrast title text.
+- Added a bounded, read-only HTML integrity helper with regression tests; markup in code remains an advisory requiring context, and structural results do not imply visual or interactive verification.
+- Clarified `quarto-report-design` activation and workflow for public and institutional executive-academic reports, including communication briefs, public-versus-internal terminology, point-of-need definitions, evidence routes, final-product voice, and non-invention of unestimated views.
+- Added visual-narrative guidance that distinguishes observed, transformed, diagnostic, didactic, and process artifacts and keeps captions, alt text, labels, and report prose aligned.
+- Made lightbox the preferred default for HTML executive and executive-academic reports with figures that benefit from close inspection, while preserving readable base presentation.
+- Separated source, render, structural, visual, and interactive verification claims and strengthened checks for Mermaid, collapsible content, rendered terminology, and lightbox behavior.
+- Recorded anonymized pilot findings supporting calibration of the existing skills rather than creation of a new report skill.
+- Clarified that evidence-backed, verified derivations within the authorized analytical scope are allowed, while unsupported aggregates and new analyses introduced solely for narrative symmetry remain excluded.
+
 ## [0.2.0] - 2026-06-15
 
 ### Added

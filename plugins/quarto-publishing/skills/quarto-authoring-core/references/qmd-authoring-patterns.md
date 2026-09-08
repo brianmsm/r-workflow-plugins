@@ -66,6 +66,8 @@ Use type-specific label prefixes:
 - Equations: `eq-`
 - Sections: `sec-`
 
+Figure and table cross-references normally include the localized type name. Prefer a sentence such as `See @fig-sales-trend` over adding another literal "Figure" before the reference; inspect the rendered wording when localization matters.
+
 Examples:
 
 ````markdown
@@ -157,6 +159,21 @@ This result depends on incomplete input data.
 ```
 
 Prefer `note`, `tip`, `important`, `caution`, or `warning` according to the communication need.
+
+## Raw HTML Components
+
+Prefer native fenced divs, callouts, tables, and figures when they express the intended component. For intentional custom HTML or inline SVG, use an explicit raw block:
+
+````markdown
+```{=html}
+<div class="summary-card">
+  <p><strong>Finding</strong></p>
+  <p>The evidence supports this bounded conclusion.</p>
+</div>
+```
+````
+
+Markdown and citation syntax inside a raw block are not processed as ordinary Markdown; keep them outside or use a native component. Nested, indented HTML without an explicit raw boundary can become escaped text inside a code block. After rendering, inspect each repeated component in the final HTML, not only whether an SVG element exists. Keep intentional code examples in documentation as code.
 
 ## R Markdown Interoperability
 

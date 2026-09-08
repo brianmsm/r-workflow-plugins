@@ -220,6 +220,7 @@ This skill focuses on format-specific YAML and rendering behavior for outputs su
 * Whether presentations should use revealjs, PowerPoint, or Beamer.
 * Whether Typst is a better option than LaTeX for the user’s PDF needs.
 * Whether a custom format or extension is justified.
+* Whether figures in an HTML executive or executive-academic report benefit from lightbox treatment, while remaining legible without it.
 
 ### Should Not Cover as Primary Focus
 
@@ -346,10 +347,13 @@ This skill should not be a generic writing skill. It should focus on how to stru
 * Who the intended audience is.
 * Whether the output is meant for decision-making, technical review, academic evaluation, teaching, or reproducibility.
 * Whether the current structure matches the audience.
+* Whether public-facing language is separated from necessary technical terminology and internal operational identifiers.
+* Whether an executive-academic report keeps an executive body while preserving academic definitions, citations, cautions, and evidence routes.
 * Whether technical details should be in the main text, appendix, collapsible sections, or supplementary files.
 * Whether the report needs an executive summary.
 * Whether results are overexplained or underexplained.
 * Whether tables and figures are placed strategically.
+* Whether each visual has a clear narrative and epistemic role and matches evidence that was actually observed or estimated.
 * Whether the chosen Quarto format supports the intended communication style.
 * Whether a template or reusable report skeleton would help.
 
@@ -692,6 +696,8 @@ Rationale:
 * Whether the output was actually generated.
 * Whether screenshots or browser inspection are needed.
 * Whether links and anchors work.
+* Which source, render, structural, visual, and interactive verification levels were actually completed.
+* Whether Mermaid diagrams and configured lightbox behavior require direct visual or interactive checks.
 * Whether the agent has enough access to claim that the render was verified.
 * Whether a partial render or targeted render is safer than rendering the full project.
 * Whether logs are sufficient for diagnosis.
@@ -865,10 +871,11 @@ Evaluate:
 Should be distributed across several skills:
 
 * General HTML syntax and HTML blocks: `quarto-authoring-core`.
-* HTML output options, themes, CSS, SCSS, Bootstrap: `quarto-format-configuration`.
+* HTML output options, themes, CSS, SCSS, Bootstrap, and lightbox configuration: `quarto-format-configuration`.
 * HTML widgets and fallbacks: `quarto-multiformat-compatibility`.
 * HTML deployment: `quarto-publishing-deployment`.
 * HTML inspection and screenshot review: `quarto-render-troubleshooting`.
+* Lightbox, link, navigation, and other interaction checks, plus visual checks of rendered Mermaid diagrams: `quarto-render-troubleshooting`.
 * HTML accessibility: `quarto-accessibility-quality`.
 
 ## Themes, Branding, and Visual Identity
@@ -935,6 +942,8 @@ The plugin should define when an agent should:
 The plugin should not start with many scripts or assets.
 
 ### Scripts Should Exist Only When They Are Deterministic
+
+The local HTML helper in `quarto-render-troubleshooting/scripts/` implements bounded anchor, ID, and asset checks plus advisory escaped-markup detection. It is read-only, uses the Python standard library, and has positive and negative regression cases. It does not score prose, infer the CSS cascade, or replace visual and interactive review.
 
 Possible future scripts:
 

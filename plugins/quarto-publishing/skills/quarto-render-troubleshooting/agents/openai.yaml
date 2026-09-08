@@ -1,6 +1,6 @@
 interface:
   display_name: "Quarto Render Troubleshooting"
   short_description: "Verify Quarto renders and artifacts."
-  default_prompt: "Use $quarto-render-troubleshooting to diagnose render failures or verify rendered artifacts, including DOCX/PDF/HTML checks, links, citations, screenshots, and post-render output."
+  default_prompt: "Use $quarto-render-troubleshooting to diagnose render failures or verify HTML, DOCX, and PDF artifacts with separate structural, visual, and interactive checks."
 policy:
   allow_implicit_invocation: true

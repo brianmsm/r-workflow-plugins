@@ -12,6 +12,7 @@ Use this skill for Quarto `.qmd` authoring and review tasks, especially analytic
 - Treat the `.qmd` source as the primary artifact.
 - Treat the document as Quarto-first and engine-aware: check whether it uses R/knitr, Python/Jupyter, Julia, or prose-only Markdown before assuming code behavior.
 - Prefer Quarto-native syntax over legacy R Markdown habits when editing `.qmd`.
+- Prefer native divs, callouts, tables, and figure syntax for ordinary report components. When custom HTML or inline SVG is needed, keep intentional markup in an explicit raw `{=html}` block and inspect its rendered subtree; indentation inside nested HTML can otherwise turn content into visible code. See the raw-HTML pattern in the reference.
 - Keep changes local to the document unless the user explicitly asks for project-level configuration.
 - Preserve the author's writing style, analytical intent, and document purpose.
 - Make the smallest useful correction that improves correctness, portability, readability, or maintainability.

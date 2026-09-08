@@ -182,8 +182,18 @@ When HTML output is generated but may be defective, inspect only what matters fo
 - images and generated figures appear
 - navigation/sidebar/table of contents behaves as expected
 - CSS/theme changes did not break readability or layout
+- figures and tables are readable in the normal page view and at relevant narrow or enlarged viewports
+- collapsed sections leave the main narrative understandable when closed and display usable technical detail when opened
+- Mermaid blocks render as usable diagrams rather than error text, empty SVG, clipped content, or illegible labels
+- configured lightbox figures open the intended resource, preserve useful caption context, close correctly, and support the interaction paths relevant to the task
 
 Use browser automation or screenshots when visual output matters. Say exactly what was opened, clicked, or captured.
+
+For structural verification when a local HTML artifact is available, run `python3 <skill-dir>/scripts/check_html_artifact.py report.html` for a read-only, standard-library check of duplicate IDs, same-document fragment targets, and local image/script/stylesheet paths. It is not required for a remote or served page without a local artifact. It reports suspicious markup inside code as review candidates: inspect the source and final subtree to decide whether this is an intended tutorial example or a broken report component. Do not automatically delete legitimate code or equate an empty error list with a verified artifact. Inspect repeated custom components, not merely the existence of a chart or table. The helper intentionally leaves CSS cascade/contrast, responsive layout, dynamic resources, and interactions unverified.
+
+Treat source inspection, successful render, structural inspection, visual inspection, and interactive testing as separate evidence levels. Finding a lightbox class in HTML does not prove that enlargement works; finding an SVG does not prove that a Mermaid diagram is legible. If browser execution is unavailable, report the affected checks as unverified.
+
+For public-facing reports with local terminology rules, inspect rendered headings, captions, table cells, legends, alt or ARIA text, SVG labels, navigation, and metadata when the task includes language-policy verification. A clean source-prose search does not prove that generated or hidden surfaces comply.
 
 Do not perform broad visual design or accessibility review here. Deep accessibility belongs to future `quarto-accessibility-quality`.
 
@@ -277,6 +287,7 @@ Avoid claims like "works now", "all links work", "the PDF is fixed", or "the scr
 - Quarto check command: https://quarto.org/docs/cli/check.html
 - Quarto render command: https://quarto.org/docs/cli/render.html
 - Quarto project execution: https://quarto.org/docs/projects/code-execution.html
+- Quarto lightbox figures: https://quarto.org/docs/output-formats/html-lightbox-figures.html
 - Quarto computations with R: https://quarto.org/docs/computations/r.html
 - Quarto computations with Python: https://quarto.org/docs/computations/python.html
 - Quarto computations with Julia: https://quarto.org/docs/computations/julia.html

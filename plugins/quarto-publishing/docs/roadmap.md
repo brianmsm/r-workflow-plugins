@@ -470,9 +470,20 @@ This phase should produce corrections for `v0.2.x` and evidence for whether defe
 
 Stabilize the expanded presentation workflow coverage and any later expanded skill set.
 
+### Executive-Academic HTML Calibration Note
+
+Additional public-report testing supports a focused correction inside the existing skills rather than a new skill. `quarto-report-design` should make the communication brief, public-versus-internal terminology, executive-academic layering, point-of-need definitions, evidence routes, and visual scope explicit. `quarto-format-configuration` should prefer lightbox for HTML executive and executive-academic reports whose figures benefit from close inspection, without treating enlargement as a substitute for base legibility. `quarto-render-troubleshooting` should distinguish source, render, structural, visual, and interactive evidence.
+
+Keep project-specific prohibited terms, punctuation, statistical thresholds, labels, and figure requirements in local guidance. Do not turn one report's conventions into universal plugin rules, and do not add validators or templates until repeated testing justifies them.
+
+Subsequent field testing and a real Quarto reproduction justified one bounded exception to the previously script-free implementation: `quarto-render-troubleshooting/scripts/check_html_artifact.py` checks local HTML structure and flags escaped markup for contextual review. Its negative tests preserve intentional HTML tutorials and skip unsupported URL scopes. This is not a narrative, accessibility, or publication-readiness validator; broader automation remains deferred.
+
 ### Correction Types
 
 * Refine activation descriptions.
+* Improve executive-academic profile defaults and public-language boundaries.
+* Improve visual narrative, evidence-linking, and point-of-need explanation guidance.
+* Improve HTML lightbox defaults and interactive verification boundaries.
 * Reduce overlap between format configuration and multi-format compatibility.
 * Reduce overlap between authoring and migration.
 * Add missing migration examples.

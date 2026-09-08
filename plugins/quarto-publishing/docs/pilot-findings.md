@@ -42,6 +42,26 @@ The current evidence supports calibration of the six existing skills, not immedi
 
 Design implication: continue Phase 2 testing with more diverse cases before opening `v0.2.0`, including HTML-only reports, PDF-only reports, websites, revealjs slides, `.Rmd` migration, deployment-oriented tasks, multi-output documents, and intentionally broken renders.
 
+## Findings Informing a Future `v0.2.x` Calibration
+
+### P07: Executive-Academic Reports Need an Explicit Communication Brief
+
+A public analytical HTML report can follow a broadly reasonable executive structure while still exposing operational vocabulary, defining consequential terms too late, organizing sections around the analysis pipeline, or narrating editorial history instead of the current evidence.
+
+Design implication: `quarto-report-design` should identify the primary reader task, public-versus-internal boundary, primary and secondary report profiles, terminology constraints, evidence routes, and current-state voice before drafting. Executive-academic work should keep the body executive while preserving academic precision through first-use definitions, citations, inferential cautions, and inspectable supporting detail.
+
+### P08: Visual Narrative and Verification Require Separate Decisions
+
+Figures, tables, diagrams, and interactive enlargement can support the argument only when their role, scope, and verification status are explicit. A successful render or the presence of HTML markup does not prove that a Mermaid diagram is legible, a table works at the intended viewport, or a lightbox interaction functions.
+
+Design implication: report design should classify visuals as observed, transformed, diagnostic, didactic, or process artifacts and must not invent aggregates or subgroups for symmetry. HTML executive and executive-academic reports with inspectable figures should prefer lightbox treatment, while format configuration preserves base legibility and render troubleshooting reports source, render, structural, visual, and interactive checks separately.
+
+### P09: Brief-Prompt Trials Need Evidence and Evaluator Controls
+
+Fresh report trials exposed observation-unit drift, replacement of documented decision requirements, and incomplete classified counts presented as exhaustive totals. Custom HTML also rendered as escaped source despite a successful render. These defects occurred across explicitly selected models; a single model's success or failure cannot establish the skill's general quality.
+
+Design implication: preserve units and denominators throughout the narrative, attribute requirements, distinguish unknown states from absence, and reverse-check central claims against evidence. Use a bounded structural helper for deterministic HTML defects, with contextual review of intentional code. Keep brief user requests separate from evaluation instructions, retest with fresh contexts, and distinguish legitimate methodological explanation from invented study facts. Assess source, render, structure, appearance, interaction, and installed discovery separately.
+
 ## What This Summary Excludes
 
 This file intentionally excludes:

@@ -1,6 +1,6 @@
 ---
 name: quarto-render-troubleshooting
-description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed quarto render commands, YAML parse errors, cell or chunk execution errors, missing packages or files, working-directory and path issues, LaTeX or Typst failures, bibliography/CSL/citation problems, cross-reference failures, image/assets issues, extension/theme/CSS problems that break rendering, generated HTML inspection, DOCX/PDF artifact checks, screenshots or browser review, link/anchor/navigation checks, post-render verification, logs, local-vs-CI render differences, and honest verification claims. Use source/static checks only when the user says not to render. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache/freeze/performance strategy, report structure/design, deployment automation, accessibility review, or broad refactoring unless the main task is to fix or verify a render/output problem.
+description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed renders; YAML, execution, dependency, path, LaTeX, Typst, citation, cross-reference, asset, extension, theme, or CSS problems; generated HTML inspection; Mermaid or lightbox behavior; DOCX or PDF checks; screenshots or browser review; links, anchors, navigation, post-render output, local-versus-CI differences, and honest structural, visual, or interactive verification claims. Use source or static checks only when the user says not to render. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache or performance strategy, report design, deployment, accessibility review, or broad refactoring unless the main task is to fix or verify rendered output.
 ---
 
 # Quarto Render Troubleshooting
@@ -41,13 +41,24 @@ When tools are available:
 
 When the output exists but correctness matters, verify only the relevant artifact surface:
 
-- HTML: open the generated file or served page; inspect visual layout, assets, links, anchors, navigation, and screenshots when needed.
+- HTML: open the generated file or served page; inspect visual layout, assets, links, anchors, navigation, figures, tables, collapsed sections, and screenshots when needed. Test configured interactions such as lightbox behavior rather than inferring them from markup.
+- For a local HTML artifact, run `python3 <skill-dir>/scripts/check_html_artifact.py <output.html>` when checking structural integrity. Adjudicate review candidates against the document's purpose, especially escaped markup in custom component subtrees: a successful render can still display a component's source. When edits are authorized, correct the source and repeat the relevant render/checks. The helper requires a local file and does not validate prose, CSS contrast, browser behavior, or visual quality.
 - DOCX: check generated text, package/XML structure, citation output, table and figure readability, captions, section behavior, and Word/LibreOffice/OnlyOffice behavior when the user reports application-specific problems.
 - PDF: inspect produced pages, figure/table placement, pagination, references, and any LaTeX or Typst-specific visual issue.
 - Citations and references: check for raw citation keys, bibliography heading language, CSL/citeproc behavior, DOI/link output, and rendered reference formatting when relevant.
 - Post-render scripts: confirm the script ran on the intended artifact, did not affect other formats, and produced the expected bounded transformation.
 
 Always state which formats were rendered and which artifacts were inspected.
+
+Keep verification levels distinct:
+
+1. Source/static: source, paths, configuration, and references were inspected without rendering.
+2. Rendered: the requested command completed and produced the expected artifact.
+3. Structural: relevant DOM, anchors, resources, or package structure were inspected.
+4. Visual: the artifact was opened or captured and relevant pages, sections, figures, tables, and rendered diagrams were reviewed at appropriate viewports or zoom levels.
+5. Interactive: configured controls such as links, navigation, collapsed sections, or lightbox were exercised.
+
+Do not combine these levels into a single pass claim. If a required level cannot be checked, report it as unverified.
 
 ## No Render Requested Or Unavailable
 
@@ -71,6 +82,8 @@ Check, as applicable:
 - LaTeX installation, missing packages, Unicode/font issues, `keep-tex`, and intermediate `.tex`.
 - Typst format options, bibliography handling, and Typst syntax errors.
 - HTML assets, CSS/SCSS, theme/extension effects, links, anchors, and navigation.
+- Mermaid diagrams for rendered SVG output, visible error placeholders, clipping, and legibility when they are part of the artifact.
+- Lightbox activation, target resources, captions, enlargement, closing behavior, and keyboard access when lightbox is configured and interactive verification is required.
 
 ## Boundary Rules
 

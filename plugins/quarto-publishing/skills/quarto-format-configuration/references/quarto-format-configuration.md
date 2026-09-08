@@ -66,6 +66,22 @@ format:
 
 Use `css` for small style changes. Use SCSS theme files when the user needs deeper Bootstrap or theme customization.
 
+For HTML executive or executive-academic reports with figures that readers may need to inspect closely, use `lightbox: true` as the default unless the user opts out:
+
+```yaml
+format:
+  html:
+    lightbox: true
+```
+
+Automatic lightbox treatment applies to eligible block images; use `.nolightbox` for an individual image that should not enlarge, or apply `.lightbox` selectively when global treatment is not appropriate.
+
+Lightbox does not repair an undersized, clipped, or poorly labeled figure. Keep the normal page view readable, preserve meaningful captions and alt text, and hand off browser, keyboard, enlargement, and bundled-resource checks to `quarto-render-troubleshooting`.
+
+Lightbox configuration applies to eligible image elements; do not assume it automatically enlarges arbitrary inline SVG or Mermaid output. If close inspection matters, use a supported image asset or a deliberate full-size route and verify it. Respect an explicit request for non-interactive output.
+
+For custom styling, inspect foreground/background pairs in the active theme, including title, subtitle, callouts, and captions. A color chosen for a dark banner may be unreadable on the default light title block. For responsive SVGs, estimate displayed text size from the rendered width divided by the viewBox width; a large canvas with small labels can become unreadable when fitted to a column. Split panels, shorten labels, or change the layout before relying on enlargement. These source checks identify risks; they do not prove visual readability.
+
 HTML includes:
 
 ```yaml
@@ -194,6 +210,7 @@ Lua filters are advanced output-behavior tools. This skill should usually warn, 
 - Quarto all formats: https://quarto.org/docs/output-formats/all-formats.html
 - Quarto format reference: https://quarto.org/docs/reference/
 - Quarto HTML basics: https://quarto.org/docs/output-formats/html-basics.html
+- Quarto lightbox figures: https://quarto.org/docs/output-formats/html-lightbox-figures.html
 - Quarto HTML themes: https://quarto.org/docs/output-formats/html-themes.html
 - Quarto PDF basics: https://quarto.org/docs/output-formats/pdf-basics.html
 - Quarto PDF engines: https://quarto.org/docs/output-formats/pdf-engine.html

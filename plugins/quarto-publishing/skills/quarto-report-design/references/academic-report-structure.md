@@ -25,6 +25,15 @@ Use this sequence for major analytical sections:
 4. Interpret the result in relation to the objective.
 5. Connect the implication to the next section, limitation, or broader argument.
 
+When a diagnostic, criterion, or uncommon methodological term is consequential to the argument, explain it at or before first substantive use:
+
+1. Its plain-language meaning and relevant scale or direction.
+2. Why it is examined and what pattern would be favorable or concerning.
+3. The observed result.
+4. What that result supports.
+5. What it does not establish.
+6. Where the reader can inspect the detailed evidence.
+
 Do not force connections between analyses when they are genuinely independent.
 
 When condensing or restructuring an academic manuscript, preserve objectives, hypotheses, argument sequence, and Results/Discussion separation. Results should report what the evidence shows; Discussion should explain mechanisms, implications, limitations, and future work rather than restating every table.
@@ -36,6 +45,8 @@ When condensing or restructuring an academic manuscript, preserve objectives, hy
 - Avoid presenting large technical outputs as the main body unless they directly support methodological transparency or interpretation.
 - Use captions and surrounding prose to clarify the role of each result.
 - If a figure, table, or generated artifact is corrected, revisit the prose for the affected objective or hypothesis before making broad manuscript changes.
+- Distinguish empirical results, transformed displays, diagnostics, and didactic illustrations in titles, captions, alt text, and prose.
+- Keep the scope of a figure aligned with the estimand or comparison actually produced. Distinguish displays of existing estimates from new derivations; compute the latter only within the authorized analytical scope, verify them, and document their method and interpretive limits. Do not invent aggregates or subgroups for visual symmetry.
 
 ## Technical Detail
 
@@ -46,6 +57,10 @@ Appendices or supplementary materials are appropriate for extended diagnostics, 
 ## Citations and Claims
 
 Preserve or request appropriate citations when conceptual, methodological, or interpretive claims require support. Do not invent sources.
+
+Use citations to support methodological interpretations and criteria, not as substitutes for explaining how the criterion applies to the evidence. Avoid presenting context-dependent thresholds as universal rules.
+
+When several methods are discussed, distinguish methods that were applied from alternatives mentioned only for context or future work.
 
 If research questions, objectives, hypotheses, or substantive claims are unclear, ask before restructuring the argument around them.
 

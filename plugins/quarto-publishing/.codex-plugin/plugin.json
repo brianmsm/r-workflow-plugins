@@ -38,6 +38,7 @@
       "Use the Quarto publishing skills to review a Quarto _quarto.yml project configuration.",
       "Use the Quarto publishing skills to configure HTML, PDF, DOCX, or revealjs output formats.",
       "Use the Quarto publishing skills to improve the structure and narrative of a technical or executive report.",
+      "Use the Quarto publishing skills to design a public executive-academic report with reader-facing terminology, evidence-linked visuals, and inspectable technical detail.",
       "Use the Quarto publishing skills to review cache, freeze, and expensive computation in a Quarto workflow.",
       "Use the Quarto publishing skills to troubleshoot a Quarto render issue in a project that uses R, Python, Julia, Jupyter, or prose-only documents.",
       "Use the Quarto publishing skills to verify rendered-output problems, broken links, missing assets, or format-specific failures."

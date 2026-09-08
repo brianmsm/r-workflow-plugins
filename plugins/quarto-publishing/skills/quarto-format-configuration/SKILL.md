@@ -1,6 +1,6 @@
 ---
 name: quarto-format-configuration
-description: Use when configuring or reviewing Quarto output-format YAML and format-specific rendering behavior for HTML, PDF via LaTeX, PDF via Typst, DOCX, revealjs, PowerPoint, Beamer, books, websites, manuscripts, ePub, themes, CSS/SCSS, reference documents, includes, templates, CSL/citeproc output behavior, Word-oriented formatting, DOCX tables/captions/landscape sections/headers/footers/page numbers, and custom formats or extensions when they affect output behavior. Hand off to render troubleshooting when the task becomes rendered artifact verification. Do not use for general .qmd authoring, project architecture, publishing/deployment, CI, caching/performance strategy, report writing, or deep render troubleshooting except when the issue is an invalid or misplaced format option.
+description: Use when configuring or reviewing Quarto output-format YAML and format-specific rendering behavior for HTML, PDF via LaTeX, PDF via Typst, DOCX, revealjs, PowerPoint, Beamer, books, websites, manuscripts, ePub, themes, CSS/SCSS, lightbox figures, reference documents, includes, templates, CSL/citeproc output behavior, Word-oriented formatting, DOCX tables/captions/landscape sections/headers/footers/page numbers, and custom formats or extensions when they affect output behavior. Hand off to render troubleshooting when the task becomes rendered artifact verification. Do not use for general .qmd authoring, project architecture, publishing/deployment, CI, caching/performance strategy, report writing, or deep render troubleshooting except when the issue is an invalid or misplaced format option.
 ---
 
 # Quarto Format Configuration
@@ -14,8 +14,10 @@ Use this skill to configure or review Quarto output formats and format-specific 
 - Keep authoring and project architecture out of scope unless a format option directly affects rendering or placement.
 - Review format options inside `_quarto.yml`, `_metadata.yml`, or document YAML only as format configuration; metadata architecture belongs to `quarto-project-configuration`.
 - Prefer built-in Quarto format options before custom mechanisms.
+- When customizing HTML colors, check foreground and background together in the active theme, including the title and subtitle. Judge figure text at its displayed size, not its SVG canvas size; simplify or split dense panels before shrinking the whole figure.
 - Use CSS/SCSS, reference documents, LaTeX includes, Typst options, templates, custom formats, extensions, or Lua filters only when simpler format options are insufficient.
 - Be explicit about format limitations: HTML-specific features may not survive PDF, DOCX, PowerPoint, or ePub output.
+- When configuring HTML executive or executive-academic reports with figures that benefit from close inspection, enable lightbox treatment by default unless the user opts out or the image should remain inline or non-interactive. In review-only tasks, recommend the change without editing. Keep the base figure legible without enlargement and treat lightbox as an HTML-only enhancement.
 - Treat LaTeX PDF, Typst PDF, DOCX, revealjs, PowerPoint, and Beamer as related but distinct output systems with different option sets and constraints.
 - Keep multiformat advice minimal here; full cross-format compatibility belongs to future `quarto-multiformat-compatibility`.
 - Treat `reference-doc` as a Word style source, not a guarantee that every generated section property, header, footer, page number, landscape section, table width, or caption layout will behave as intended.
@@ -31,7 +33,7 @@ When reviewing Quarto format configuration, check:
 3. `format:` is present when needed and format-specific options are nested under the relevant format.
 4. Shared options and format-specific options are separated only when the review requires it.
 5. Multiple formats are not likely to overwrite outputs unexpectedly.
-6. HTML options such as `theme`, `css`, `toc`, `code-fold`, `code-tools`, `code-overflow`, `syntax-highlighting`, `embed-resources`, `html-math-method`, and includes are appropriate when relevant.
+6. HTML options such as `theme`, `css`, `toc`, `code-fold`, `code-tools`, `code-overflow`, `syntax-highlighting`, `embed-resources`, `html-math-method`, `lightbox`, and includes are appropriate when relevant.
 7. PDF via LaTeX options such as `documentclass`, `classoption`, `pdf-engine`, `pdf-engine-opt`, `pdf-engine-opts`, `include-in-header`, and `keep-tex` are justified when relevant.
 8. PDF via Typst uses `format: typst` and is considered when the user wants simpler or faster PDF production without LaTeX-specific templates or packages.
 9. DOCX output uses `reference-doc` when institutional styling, Word styles, or repeatable Word formatting matter, without assuming those styles fully control the generated DOCX.
@@ -40,6 +42,7 @@ When reviewing Quarto format configuration, check:
 12. Citation processing options such as bibliography paths, CSL, `cite-method`, language, and reference heading behavior are configured where they affect rendered output.
 13. Word-oriented notation avoids fragile raw LaTeX when Unicode or plain text is safer for DOCX.
 14. Custom formats, extensions, and Lua filters are treated as advanced choices that require a concrete reason.
+15. Lightbox is not treated as proof that figures are readable or that enlargement, captions, keyboard behavior, or self-contained delivery were verified.
 
 ## References
 
