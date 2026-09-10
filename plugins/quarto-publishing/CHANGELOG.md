@@ -4,6 +4,14 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-09-10
+
+### Changed
+
+- Refined presentation guidance from a report's successive reader corrections: selective linked reading guides, shared-origin method explanations, distinct diagnostic/association/fit claims, and explicit references, directions, and neutral values for contrasts and transformed metrics.
+- Added comparison-table patterns for grouped headers, statistic scales, reference categories, unavailable estimates, consistent typography, and usable narrow-screen lookup without hiding central evidence.
+- Added guidance for supported Mermaid color controls, responsive composition, and browser verification of displayed text, contrast, image alternatives, table access, settled widgets, and real keyboard operation. Lightbox remains supplementary to readable inline figures.
+
 ## [0.2.1] - 2026-09-08
 
 ### Changed

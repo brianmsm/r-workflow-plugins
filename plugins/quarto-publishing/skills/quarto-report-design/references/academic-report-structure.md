@@ -36,6 +36,8 @@ When a diagnostic, criterion, or uncommon methodological term is consequential t
 
 Do not force connections between analyses when they are genuinely independent.
 
+For complex comparisons, use the reading-guide, shared-method-origin, contrast/metric, and comparison-table patterns in [Executive Report Structure](executive-report-structure.md#orienting-a-multi-method-comparison) when they help readers assess the evidence. These patterns do not require an executive outline or a different analytical sequence.
+
 When condensing or restructuring an academic manuscript, preserve objectives, hypotheses, argument sequence, and Results/Discussion separation. Results should report what the evidence shows; Discussion should explain mechanisms, implications, limitations, and future work rather than restating every table.
 
 ## Tables and Figures

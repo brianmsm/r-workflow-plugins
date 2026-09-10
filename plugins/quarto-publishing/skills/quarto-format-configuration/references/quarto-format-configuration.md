@@ -80,7 +80,26 @@ Lightbox does not repair an undersized, clipped, or poorly labeled figure. Keep 
 
 Lightbox configuration applies to eligible image elements; do not assume it automatically enlarges arbitrary inline SVG or Mermaid output. If close inspection matters, use a supported image asset or a deliberate full-size route and verify it. Respect an explicit request for non-interactive output.
 
-For custom styling, inspect foreground/background pairs in the active theme, including title, subtitle, callouts, and captions. A color chosen for a dark banner may be unreadable on the default light title block. For responsive SVGs, estimate displayed text size from the rendered width divided by the viewBox width; a large canvas with small labels can become unreadable when fitted to a column. Split panels, shorten labels, or change the layout before relying on enlargement. These source checks identify risks; they do not prove visual readability.
+### Responsive Figures and Diagram Colors
+
+Inspect foreground/background pairs in the active theme, including title, subtitle, callouts, captions, legends, and generated diagram labels. A color chosen for a dark banner may be unreadable on a light title block; a theme's accent color can be too faint for small diagram text even when body text is readable. Check each supported light/dark mode separately when both are configured.
+
+With Quarto's built-in Bootswatch themes, or custom themes using the same SCSS variables, default Mermaid colors follow the document theme. For a targeted correction, prefer its supported theme variables over selectors tied to generated node IDs. For example, a light report can set the following in its existing stylesheet, with colors chosen for that report:
+
+```css
+:root {
+  --mermaid-node-fg-color: #172b4d;
+  --mermaid-label-fg-color: #172b4d;
+  --mermaid-node-bg-color: #edf3f8;
+  --mermaid-label-bg-color: #ffffff;
+}
+```
+
+This is a light-theme example, not a universal palette. Quarto also supports `format.html.mermaid.theme`; an explicitly selected Mermaid theme may use different controls. See [Mermaid themes](https://quarto.org/docs/authoring/diagrams.html#mermaid-themes) and verify the rendered result.
+
+For a uniformly scaled SVG, estimate displayed text size as source font size × displayed width / viewBox width; nested transforms may require inspecting the actual SVG transform. Raster resolution alone likewise does not guarantee readable labels. Test the ordinary report column and intended narrow widths, including a phone-sized viewport when relevant. Recompose with wrapped labels, fewer side-by-side panels, or native text that can reflow; preserve the comparisons and branch logic. A global image width percentage or `max-width: 100%` prevents some overflow but does not establish readability.
+
+For wide tables, prefer a labeled local scroll region or coherent smaller tables over shrinking all text. Keep header/reference context available and verify that clipped columns can actually be reached. Defining a wrapper's CSS does nothing unless the rendered table is inside that wrapper; an unconditional table `min-width` can instead widen the entire page. Scope styling to the relevant component; inspect static and generated tables together. These choices identify risks and possible remedies; rendered visual and keyboard verification belongs to `quarto-render-troubleshooting`.
 
 HTML includes:
 

@@ -47,6 +47,8 @@ For Python/Jupyter documents, the executable block uses `{python}` and the docum
 
 Use labels that are unique, descriptive, lowercase, and hyphenated. Avoid underscores in labels that may be cross-referenced or rendered to PDF.
 
+For a meaningful generated figure, `fig-cap` supplies the caption and `fig-alt` supplies alternative text; one does not automatically replace the other. Write the alternative from the actual display's comparison or message, with a nearby longer description when needed. Do not invent a trend from an example caption. Markdown images can use `![Caption](figure.png){fig-alt="Description of the displayed evidence"}`. Verify that the chosen renderer retains the alternative; decoration may intentionally have empty alt text.
+
 ## Scoped Analytical Edits
 
 When a `.qmd` repeats model sections, sensitivity blocks, or cloned chunks, anchor edits narrowly:

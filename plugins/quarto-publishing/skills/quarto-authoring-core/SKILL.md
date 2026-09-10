@@ -41,7 +41,7 @@ When reviewing a `.qmd`, check:
 3. Executable code cells use Quarto `#|` cell options where practical.
 4. Cell labels are unique, descriptive, lowercase, and hyphenated.
 5. Cross-reference labels use valid prefixes such as `fig-`, `tbl-`, `eq-`, and `sec-`.
-6. Figures, tables, and equations that are referenced have captions or labels as needed; referenced sections have explicit `sec-` IDs when stable section references are required.
+6. Figures, tables, and equations that are referenced have captions or labels as needed; meaningful figures also have alternative text or an accessible description. Referenced sections have explicit `sec-` IDs when stable section references are required.
 7. Citations use valid Pandoc syntax and match bibliography keys.
 8. Callouts clarify communication instead of decorating the document.
 9. Markdown remains readable as plain text.

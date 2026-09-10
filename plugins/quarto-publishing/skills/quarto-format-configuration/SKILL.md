@@ -14,7 +14,7 @@ Use this skill to configure or review Quarto output formats and format-specific 
 - Keep authoring and project architecture out of scope unless a format option directly affects rendering or placement.
 - Review format options inside `_quarto.yml`, `_metadata.yml`, or document YAML only as format configuration; metadata architecture belongs to `quarto-project-configuration`.
 - Prefer built-in Quarto format options before custom mechanisms.
-- When customizing HTML colors, check foreground and background together in the active theme, including the title and subtitle. Judge figure text at its displayed size, not its SVG canvas size; simplify or split dense panels before shrinking the whole figure.
+- Check HTML foreground/background pairs in the active theme, including title, subtitle, captions, and generated diagram labels. Judge figure text at its displayed size at the intended reading widths, not its canvas size; reflow or split dense panels before shrinking the whole figure. Use the HTML reference below for theme controls and responsive choices.
 - Use CSS/SCSS, reference documents, LaTeX includes, Typst options, templates, custom formats, extensions, or Lua filters only when simpler format options are insufficient.
 - Be explicit about format limitations: HTML-specific features may not survive PDF, DOCX, PowerPoint, or ePub output.
 - When configuring HTML executive or executive-academic reports with figures that benefit from close inspection, enable lightbox treatment by default unless the user opts out or the image should remain inline or non-interactive. In review-only tasks, recommend the change without editing. Keep the base figure legible without enlargement and treat lightbox as an HTML-only enhancement.

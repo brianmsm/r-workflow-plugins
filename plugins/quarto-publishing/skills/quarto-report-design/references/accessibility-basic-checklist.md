@@ -12,7 +12,7 @@ This is a basic transitional checklist for report design. It is not a full acces
 - Links use descriptive text.
 - Color is not the only carrier of meaning.
 - Important conclusions are stated in text, not only encoded in figures.
-- Figures and tables are legible in the normal document view; zoom or lightbox behavior is an enhancement, not a substitute for readable base presentation.
+- Figures, tables, and diagrams remain legible at intended reading widths; zoom or lightbox is an enhancement, not a substitute for readable base presentation. Hand off displayed-size, contrast, local table scrolling, and keyboard checks to `quarto-render-troubleshooting`.
 - Collapsed callouts and appendices do not hide information needed to understand the main argument.
 - Acronyms and uncommon terms are defined near first use.
 - Reader-facing labels are clear, even when internal code names are ASCII and compact.

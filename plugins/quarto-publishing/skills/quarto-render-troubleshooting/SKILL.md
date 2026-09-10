@@ -85,6 +85,8 @@ Check, as applicable:
 - Mermaid diagrams for rendered SVG output, visible error placeholders, clipping, and legibility when they are part of the artifact.
 - Lightbox activation, target resources, captions, enlargement, closing behavior, and keyboard access when lightbox is configured and interactive verification is required.
 
+For HTML presentation changes, use the browser checks in `references/render-troubleshooting.md#html-verification`: intended reading widths, displayed label size and contrast, meaningful axis/reference labels, reachable table columns, and real keyboard operation. A successful click or full-page screenshot alone does not establish all of these.
+
 ## Boundary Rules
 
 Use other skills when the main task is not troubleshooting:

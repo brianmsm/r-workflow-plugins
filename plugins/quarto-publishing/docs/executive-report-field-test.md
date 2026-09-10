@@ -79,3 +79,5 @@ At evaluation close, source changes were local and Unreleased. The installed 0.2
 ## Release follow-up
 
 The user subsequently authorized publication of this calibration as patch version 0.2.1. Both plugin manifests use 0.2.1, with the release tag `quarto-publishing-v0.2.1`. This versioning step does not extend the evaluation claims: full-page visual/interactive verification and installed-context discovery remain unverified.
+
+The subsequent [presentation refinement review](presentation-refinement-review.md) adds scoped browser evidence from a later principal report and a new synthetic regression. It records additional presentation defects and reusable instruction changes without retroactively certifying the unavailable campaign artifacts.

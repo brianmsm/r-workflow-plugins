@@ -4,6 +4,8 @@ Use this reference when the report is meant to support decisions, summarize anal
 
 ## Default Structure
 
+Use this as a starting point, not a required outline. Preserve an approved structure when it serves the reader's task.
+
 1. Executive summary.
 2. Decision context.
 3. Key findings.
@@ -61,6 +63,22 @@ For reports with several populations or specifications, provide an early, compac
 
 When the conclusion depends on several diagnostics, explain their relationship. A short decision table or diagram can show which checks are necessary, which come next, and why success in one does not compensate for failure elsewhere. Separate unfavorable evidence from unavailable or unevaluated evidence. Present the supported interpretation before its limits, without burying a limit that changes the decision.
 
+### Orienting a Multi-Method Comparison
+
+For a long report with several kinds of evidence, consider a compact linked guide: section, question answered, and contribution to the decision. Link its entries to their evidence sections in HTML; an unlinked list of reading instructions is not a navigation aid. Organize navigation around meaningful comparison dimensions, such as outcome scale, population, and outcome, when that serves the reader's task. Preserve a method or execution-based order when that is the intended organizing principle. Keep the guide selective instead of duplicating every heading.
+
+When alternative procedures reuse the same fitted object, distinguish that shared starting point from new estimates or new candidate solutions. Explain what each procedure retains, transforms, or discards, what stays constant, and what result it produces. A short parallel-path diagram or comparison table can clarify the difference. Use a labeled hypothetical example only when it resolves a real interpretive difficulty; do not substitute it for observed evidence.
+
+Separate preliminary measurement or classification diagnostics, adjusted associations, whole-model fit, and predictive validation. Introduce each before its results and explain which later inference it informs; success on one does not establish the others. Preserve the supplied analytical sequence and avoid inventing a prerequisite, preferred sign, or significance requirement.
+
+### Reading Contrasts and Transformed Metrics
+
+For a consequential contrast, state what is compared, the reference group, whether it is raw or model-adjusted, the outcome scale, and the adjustment or conditioning relevant to interpretation. Explain magnitude and uncertainty together. A group contrast, a predictor coefficient, and a whole-model score answer different questions and should not share a misleading label or column. Use only quantities actually estimated.
+
+For a difference, reduction, ratio, or standardized score, distinguish it from the original metric: explain the transformation, its reference, what zero or the neutral value means, and which direction means more of the outcome or better performance. Put the essential direction and reference in the axis, subtitle, or caption, not only distant prose. A beneficial direction can differ across outcomes. Retain original values in an accessible table when the transformed display would otherwise be ambiguous; make paired displays use consistent labels and comparable scales where meaningful.
+
+Do not choose a scale merely to make a result look favorable. Magnification of small differences needs a visible scale and a substantive account of their size. Descriptive fit, uncertainty, and out-of-sample performance remain distinct claims.
+
 ## Tables and Figures
 
 - Prefer tables and figures that communicate one main idea.
@@ -74,6 +92,16 @@ When the conclusion depends on several diagnostics, explain their relationship. 
 - Use overview before detail when the available evidence supports a truthful overview. Explain analytical asymmetry instead of manufacturing a combined view.
 - Do not present an aggregate, subgroup, or comparison without supporting evidence. A joint display of existing estimates is not a pooled estimate. New summaries may be computed and verified within the authorized analytical scope, with their method, population, weighting where relevant, and limits stated; otherwise explain the missing evidence rather than inventing a symmetric panel.
 - For HTML executive or executive-academic reports with figures that benefit from close inspection, prefer lightbox treatment by default. The figure must remain legible in the page without opening the lightbox.
+
+### Tables for Comparison and Lookup
+
+When readers compare models, align common variables in rows and models in columns, using grouped statistic subcolumns where they make the comparison easier. Keep estimates, intervals, and significance measures identifiable; retain different scales in labeled blocks. Put sample sizes and fit summaries in a clearly separated part of the table when available. Do not require a particular statistic set for every report.
+
+For inventories, prefer one variable or coherent group per row over long comma-separated lists. Identify analytical roles, category labels, reference categories, and transformations before the coefficients that depend on them. Distinguish a term not included, a reference category, an unavailable or invalid estimate, and an estimated zero. Keep an intended comparison visible even when one result is unavailable, with its status explained rather than filled in.
+
+Judge static and generated tables together: harmonize typography, precision, alignment, and grouping. Compact by reorganizing headers and reducing redundant text before reducing font size. For a long or wide table, retain the row/model context during lookup and provide a usable narrow-screen route, such as an indicated local scroll region or smaller coherent tables. Do not silently hide models, uncertainty, or reference categories to make the table fit.
+
+For figures and diagrams, choose composition for the expected reading widths. Shorter or wrapped labels, stacked panels, or a reflowing native-text schematic can preserve legibility better than uniformly shrinking a large canvas. Keep all comparisons and branches meaningful after reflow. Format mechanisms and browser checks belong to the corresponding skills.
 
 ## Callouts and Appendices
 
