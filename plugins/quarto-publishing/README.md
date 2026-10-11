@@ -2,13 +2,15 @@
 
 `quarto-publishing` is a Quarto-first, engine-aware plugin for publishing workflows.
 
-Its initial scope includes Quarto documents, analytical reports, websites, books, manuscripts, revealjs slides, `_quarto.yml` configuration, render troubleshooting, and reproducible publishing workflows that may use R/knitr, Python/Jupyter, Julia, or prose-only Quarto documents.
+Its scope includes Quarto documents, analytical reports, websites, books, manuscripts, revealjs slides, `_quarto.yml` configuration, render troubleshooting, and reproducible publishing workflows that may use R/knitr, Python/Jupyter, Julia, or prose-only Quarto documents.
 
 Because this plugin lives in `r-workflow-plugins`, examples may emphasize R/knitr. The skills should still avoid assuming R when the user's files or project configuration indicate Python, Julia, Jupyter, or prose-only authoring.
 
 This plugin is not focused on classic R Markdown. R Markdown should appear only when migrating to Quarto, comparing behavior, or maintaining interoperability with Quarto projects.
 
-## Structure
+The latest published release is **v0.2.2**. Six skills are implemented. The plugin architecture describes ten target skills; planned skills are not yet available just because they appear in that design. The v0.2.x releases include presentation support and evidence-driven refinement of report design and output verification.
+
+## Implemented Structure
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
 - `.claude-plugin/plugin.json`: Claude Code plugin manifest.
@@ -23,7 +25,7 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 - `skills/quarto-render-troubleshooting/SKILL.md`: Quarto render failure and output verification troubleshooting skill.
 - `skills/*/agents/openai.yaml`: OpenAI-facing skill metadata.
 
-The plugin is in an early state and should stay small until real publishing workflows require more structure.
+The plugin remains under active development. New skills, scripts, and templates should be introduced only when repeated use and testing justify them.
 
 For the intended mature architecture of this plugin, see [`docs/architecture.md`](docs/architecture.md).
 For the staged implementation plan, see [`docs/roadmap.md`](docs/roadmap.md).

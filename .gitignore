@@ -34,6 +34,9 @@ Thumbs.db
 *.tmp
 *.bak
 
+# Local QA/render artifacts (not release payloads)
+/output/
+
 # Private pilot/testing notes
 plugins/quarto-publishing/docs/testing-log.md
 plugins/quarto-publishing/docs/testing-log.local.md

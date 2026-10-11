@@ -1,178 +1,108 @@
 # Agent Setup
 
-`r-workflow-plugins` keeps plugin content portable and adds small metadata adapters for each agent runtime.
+`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **Only `quarto-publishing` is currently available in the public marketplaces.** The validated `r-analytic-core` plugin is locally tagged at `v0.1.0` and awaits separate tag/catalog publication; all other plugin names in the [global roadmap](roadmap.md) are planned, not installable.
 
-Shared content lives in:
+Common content lives under `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`, with optional skill-local `references/`, `scripts/`, `assets/`, and `agents/openai.yaml`. Do not copy the same skill body into separate Codex, Claude, or Gemini trees.
 
-- `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`
-- `plugins/<plugin-name>/skills/<skill-name>/references/`
+## Published Catalog vs Local Development
 
-Agent-specific metadata lives in:
+The catalogs on `main` currently use **Git subdirectory sources pinned to plugin release tags**. The catalog itself may update on `main`, but a pinned plugin source does not install unreleased modifications from `main`. The latest `quarto-publishing` pin is `quarto-publishing-v0.2.2`.
 
-- `.agents/plugins/marketplace.json` for Codex.
-- `.claude-plugin/marketplace.json` for Claude Code.
-- `plugins/<plugin-name>/.codex-plugin/plugin.json` for Codex.
-- `plugins/<plugin-name>/.claude-plugin/plugin.json` for Claude Code.
-- `plugins/<plugin-name>/skills/<skill-name>/agents/openai.yaml` for OpenAI-facing skill UI metadata.
-- Possible future `gemini-extension.json` files for Gemini CLI, once a supported distribution shape is chosen.
+- Codex catalog: `.agents/plugins/marketplace.json`.
+- Claude Code catalog: `.claude-plugin/marketplace.json`.
+- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json`.
+- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json`.
+- A full Gemini CLI extension would require `plugins/quarto-publishing/gemini-extension.json`; no such adapter has been released.
 
-Do not add adapter folders for other agents until there is a real, documented plugin or marketplace format to support.
+Importantly, **adding a local clone as a marketplace does not automatically switch a `git-subdir` tag-pinned plugin to working-tree content**. To test unpublished Codex changes, use a temporary local catalog entry with `source: {"source": "local", "path": "./plugins/quarto-publishing"}` rooted in the appropriate local marketplace directory, then restore the release catalog before committing. Alternatively, test skill discovery independently through the development agent's skill-loading facilities. Do not repoint the published catalog to a development branch merely for personal testing.
+
+See [release process](release-process.md) for the publication sequence.
 
 ## Codex
 
-Codex can add this public marketplace from the CLI:
+Register the public catalog:
 
 ```bash
 codex plugin marketplace add brianmsm/r-workflow-plugins
 ```
 
-Codex reads the repo marketplace at:
-
-```text
-.agents/plugins/marketplace.json
-```
-
-The current Codex marketplace exposes:
-
-```text
-./plugins/quarto-publishing
-```
-
-For local development, clone or open this repository in Codex, use the repo-scoped marketplace at `.agents/plugins/marketplace.json`, and install or enable the `quarto-publishing` plugin from that local marketplace.
-
-The Codex plugin manifest is:
-
-```text
-plugins/quarto-publishing/.codex-plugin/plugin.json
-```
-
-Codex users can install or enable plugins from the Codex app, the Codex VS Code extension, or from Codex with `/plugins`.
-
-Codex skills can be invoked by name when needed:
+Install or enable `quarto-publishing` from the plugin directory in the ChatGPT/Codex app or with `/plugins` where available. Example skill invocation:
 
 ```text
 $quarto-render-troubleshooting
 ```
 
-## Claude Code
-
-Claude Code reads the repo marketplace at:
-
-```text
-.claude-plugin/marketplace.json
-```
-
-Claude plugin manifests live inside each plugin:
-
-```text
-plugins/quarto-publishing/.claude-plugin/plugin.json
-```
-
-Claude Code namespaces plugin skills as:
-
-```text
-/quarto-publishing:<skill-name>
-```
-
-For example:
-
-```text
-/quarto-publishing:quarto-render-troubleshooting
-```
-
-Local testing can use:
+To inspect/refresh registered catalogs, the Codex CLI also provides:
 
 ```bash
-claude --plugin-dir ./plugins/quarto-publishing
+codex plugin marketplace list
+codex plugin marketplace upgrade
 ```
 
-Marketplace installation can use:
+The current published catalog entry is a `git-subdir` source with a plugin-specific `ref` tag, not a `local` source. For live local plugin testing, keep your developer override separate from that published catalog. `r-analytic-core-v0.1.0` is tagged locally but cannot be installed from the public catalog until its tag has been pushed and the entry is published; the skill can be exercised locally as `$r-analytic-coding-principles` in an isolated development installation.
+
+Reference: [OpenAI's plugin packaging and marketplace documentation](https://developers.openai.com/plugins/build/plugins).
+
+## Claude Code
+
+Register the public catalog and install the plugin:
 
 ```bash
 claude plugin marketplace add brianmsm/r-workflow-plugins
 claude plugin install quarto-publishing@r-workflow-plugins
 ```
 
-Claude Code resolves plugin versions in this order:
+Claude Code plugin skills are namespaced, for example:
 
-1. `version` in the plugin's `.claude-plugin/plugin.json`
-2. `version` in the plugin entry inside `.claude-plugin/marketplace.json`
-3. the Git commit SHA of the plugin source
+```text
+/quarto-publishing:quarto-render-troubleshooting
+```
 
-For `r-workflow-plugins`, keep the marketplace as a catalog and keep plugin release versions inside each plugin manifest. Do not duplicate plugin `version` fields in `.claude-plugin/marketplace.json`.
+For testing **working-tree changes** directly from the repository root, use:
 
-Current policy:
+```bash
+claude --plugin-dir ./plugins/quarto-publishing
+```
 
-- `.claude-plugin/marketplace.json`: no per-plugin `version` field.
-- `plugins/<plugin-name>/.claude-plugin/plugin.json`: plugin-level `version` field.
-- `homepage`: point to the plugin subdirectory so users can jump directly to plugin-specific documentation.
-- `$schema`: optional editor tooling only; omit it unless validation/autocomplete becomes useful.
+Claude Code's plugin version resolution gives priority to the version in `.claude-plugin/plugin.json` over any marketplace-level plugin `version`, then falls back to a Git commit when no version is supplied. This repository therefore records each plugin release version in its own manifest and does **not** duplicate that field on marketplace entries. A pinned `git-subdir` `ref` determines which source commit is fetched; the manifest version controls the plugin's displayed release identity. These are distinct concerns.
 
-During scaffold or pre-release development, a plugin may use `0.0.0` or omit `version` temporarily if commit-SHA-based update behavior is preferred. For controlled plugin releases, keep `version` in the plugin manifest and bump it only when preparing an actual plugin release.
+The `homepage` points to plugin-specific documentation, while `repository` points to the whole monorepo. A `$schema` field is optional editor metadata, not a distribution requirement.
+
+Reference: [Claude Code plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
 
 ## Gemini CLI
 
-Gemini CLI support is experimental and local-only for now.
-
-Gemini CLI extensions currently expect the extension root to contain:
-
-```text
-gemini-extension.json
-```
-
-In this monorepo, each plugin lives under:
-
-```text
-plugins/<plugin-name>/
-```
-
-That means remote installation from a GitHub subdirectory is not currently a reliable supported path for this repository.
-
-Do not recommend this as a working installation command:
+**Native extension distribution is not implemented.** Gemini CLI extensions require a `gemini-extension.json` at the extension root, and `plugins/quarto-publishing/` does not currently contain it. Therefore these commands are **not ready for this repository**:
 
 ```bash
-gemini extensions install https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/quarto-publishing
-```
-
-That URL points to a GitHub web page for a subdirectory, not to a standalone extension root. Gemini CLI currently documents `gemini extensions install <source>` for a Git repository URL or a local path, but it does not document a `--subdir`, `--path`, or `git-subdir` style option for installing an extension rooted inside a monorepo. Gemini CLI would need to treat `plugins/quarto-publishing/` as the extension root, while current extension installation is oriented around the source root.
-
-Relevant upstream issues:
-
-- `google-gemini/gemini-cli#25676`: [Support installing extensions from a Git repository subdirectory](https://github.com/google-gemini/gemini-cli/issues/25676)
-- `google-gemini/gemini-cli#7808`: [Allow specifying a ref and path for Git-installed extensions](https://github.com/google-gemini/gemini-cli/issues/7808)
-
-### Workaround A: Clone And Link The Plugin Directory
-
-This is the preferred local workaround during development:
-
-```bash
-git clone https://github.com/brianmsm/r-workflow-plugins
-cd r-workflow-plugins
-gemini extensions link plugins/quarto-publishing
-```
-
-This treats `plugins/quarto-publishing` as the local extension root during development. Changes made in the checked-out plugin directory remain visible through the linked extension.
-
-### Workaround B: Clone And Install A Local Copy
-
-To install a local copy instead of linking the development directory:
-
-```bash
-git clone https://github.com/brianmsm/r-workflow-plugins
-cd r-workflow-plugins
+# Not supported yet for this plugin directory:
+gemini extensions link ./plugins/quarto-publishing
 gemini extensions install ./plugins/quarto-publishing
 ```
 
-This installs from the local plugin directory rather than from a GitHub subdirectory URL.
+However, Gemini CLI supports **standalone Agent Skills**, so individual Quarto skills can be used without turning the plugin into a native extension.
 
-### Workaround C: Copy Skills Manually
+### Link a local skill for development
 
-The most portable part of the plugin is the skill content under:
+From the root of a local clone:
 
-```text
-plugins/quarto-publishing/skills/
+```bash
+gemini skills link ./plugins/quarto-publishing/skills/quarto-report-design
+gemini skills list
 ```
 
-As a lower-level fallback, a user can manually copy relevant skill folders into a Gemini-recognized skills or extension structure. This is mainly useful when adapting skills from Codex or Claude Code workflows before a native Gemini distribution path is finalized.
+Repeat the link operation for other skills as needed. For remote installation of a specific skill, Gemini CLI documents `--path` to select a skill subdirectory in a Git repository:
 
-Do not present Gemini CLI as fully supported yet. Use wording such as experimental, local workaround, not currently the primary supported remote installation path, and pending upstream support for Git subdirectory extension installation.
+```bash
+gemini skills install https://github.com/brianmsm/r-workflow-plugins.git --path plugins/quarto-publishing/skills/quarto-report-design
+```
+
+These skill-level methods follow current Gemini CLI documentation but **have not been end-to-end verified for this repository**. They are not equivalent to installing `quarto-publishing` as one native Gemini extension. For a fully pinned test, use a checkout of the desired release tag rather than an in-progress branch when linking locally.
+
+Gemini CLI can also discover skills placed in `~/.gemini/skills/` or the workspace's `.gemini/skills/`, along with their `.agents/skills/` aliases. Do not copy or symlink skills into the public plugin tree just to support an additional runtime.
+
+References: [Gemini CLI Agent Skills](https://geminicli.com/docs/cli/skills/) and [extension reference](https://geminicli.com/docs/extensions/reference/).
+
+## Adding Another Runtime
+
+Before adding a new manifest or installation recipe, verify the target host's actual distribution format, whether it can load these `SKILL.md` directories directly, and how it resolves plugin versions and paths. Support for individual skills should not be described as support for complete plugin installation. Keep host-specific metadata small and leave substantive instructions in shared skill folders.

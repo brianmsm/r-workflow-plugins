@@ -1,6 +1,6 @@
 # Release Process
 
-The release process is intentionally lightweight while the repository is early.
+The release process is intentionally lightweight. `quarto-publishing` is currently available through the public catalogs; `r-analytic-core-v0.1.0` has been tagged locally but has not yet been pushed or cataloged publicly. Other plugin names remain plans.
 
 Each plugin is versioned independently. Public tags should follow:
 
@@ -14,7 +14,7 @@ For example:
 quarto-publishing-v0.1.0
 ```
 
-During local development, `.agents/plugins/marketplace.json` may point to local paths such as `./plugins/quarto-publishing`. For publication, marketplace entries can be updated to point to Git tags or other stable release sources.
+The **published** `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json` currently point to Git subdirectory sources pinned to plugin-specific release tags. A temporary local-path catalog is suitable for developer testing, but it must not replace the published tag pin. Merely adding the checkout as a marketplace does not override the catalog's remote tag-pinned source.
 
 Claude Code marketplaces live in `.claude-plugin/marketplace.json`. Keep the marketplace as a catalog and avoid declaring per-plugin `version` fields there unless there is a deliberate release-channel reason. For plugins with Claude support, `plugins/<plugin-name>/.claude-plugin/plugin.json` is the Claude-side source of truth for that plugin's release version.
 
@@ -73,12 +73,24 @@ Recommended changelog shape:
 - First functional release.
 ```
 
+## Release Sequence
+
+Keep unreleased work under `CHANGELOG.md` → `[Unreleased]`, without changing the released `version` fields or published marketplace pins. A normal commit on `main` is **not** a plugin release.
+
 Before releasing a plugin:
 
 - update the plugin `CHANGELOG.md`;
 - update `.codex-plugin/plugin.json`;
 - review any agent-specific manifests and marketplaces;
 - validate included skills;
-- create the plugin-specific Git tag.
+- create the plugin-specific Git tag at the commit containing the validated release manifests and changelog.
+
+After creating a plugin release tag:
+
+- push the release commit and tag to the remote and verify that the referenced tag exists both locally and on the remote;
+- only after that, add or update the entries in `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json` with `source.ref` pinned to `<plugin-name>-v<semver>`, then commit and push the catalog change;
+- keep plugin release versions in plugin manifests, not duplicated as marketplace `version` fields, unless there is a deliberate release-channel reason.
+
+Do not move or reuse release tags to point to a newer development commit. The catalog commit that advances `source.ref` can follow the plugin-tagged commit, as already done for `quarto-publishing-v0.2.2`. Consumers must refresh their catalog/installation according to their agent runtime to receive an updated pin; modifying `main` alone does not publish a new plugin version.
 
 Future release automation should be added only when repeated manual steps make it worthwhile.
