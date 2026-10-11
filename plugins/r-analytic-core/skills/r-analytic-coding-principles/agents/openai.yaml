@@ -1,0 +1,4 @@
+interface:
+  display_name: "R Analytic Coding Principles"
+  short_description: "Keep research R code locally editable."
+  default_prompt: "Use $r-analytic-coding-principles to revise this research R analysis without hiding models or plots in wrappers."

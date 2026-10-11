@@ -1,0 +1,36 @@
+{
+  "name": "r-analytic-core",
+  "version": "0.1.0",
+  "description": "Research-first R coding conventions for transparent, locally editable analysis and proportionate verification.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "research",
+    "analytical-code",
+    "coding-style",
+    "reproducibility"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "R Analytic Core",
+    "shortDescription": "Research-first, locally editable R analysis.",
+    "longDescription": "Write and revise R analyses so that each model, decision, and figure stays easy to inspect, modify, and rerun. Preserve research intent, favor explicit code over opaque wrappers, and validate proportionately without littering the analysis with speculative checks.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "R",
+      "Research Coding",
+      "Coding Conventions",
+      "Analysis Review"
+    ],
+    "defaultPrompt": [
+      "Review this R analysis for model-by-model editability and unnecessary wrappers.",
+      "Refactor this research R script while keeping each model and plot locally editable.",
+      "Check this R analysis proportionately without adding redundant runtime guards."
+    ]
+  }
+}
