@@ -88,3 +88,7 @@ The local candidate is **functionally ready for a human-reviewed `0.1.0` release
 After the two qualifying post-fix native Codex rounds and successful plugin, skill, R/Quarto and evidence validators, the project prepared the initial independent `r-analytic-core-v0.1.0` release. The shared skill body remains agent-neutral; Codex plugin activation and local installation were tested, while native Claude Code behavior was not. Historical pre-release findings above retain their original dates and statuses.
 
 The Git release tag identifies the immutable plugin source state. Making the tag available on GitHub and adding the tag-pinned public marketplace entries are separate publication steps; local versioning and commits alone do not imply remote distribution.
+
+## Public Marketplace Publication (2026-10-12)
+
+The immutable `r-analytic-core-v0.1.0` tag was pushed to the public GitHub repository and its dereferenced commit verified. The public Codex and Claude Code catalogs were then updated to fetch the plugin subdirectory from that tag, without changing either plugin manifest's `0.1.0` version or the validated skill instructions. This is a distribution change, not a new behavioral validation claim; see the repository release process for consumer refresh behavior.

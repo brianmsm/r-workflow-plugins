@@ -4,6 +4,10 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
+### Documentation
+
+- Updated installation guidance and publication status after registering the `v0.1.0` release in the public Codex and Claude Code marketplaces.
+
 ## [0.1.0] - 2026-10-11
 
 ### Added

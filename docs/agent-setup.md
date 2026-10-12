@@ -1,6 +1,6 @@
 # Agent Setup
 
-`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **Only `quarto-publishing` is currently available in the public marketplaces.** The validated `r-analytic-core` plugin is locally tagged at `v0.1.0` and awaits separate tag/catalog publication; all other plugin names in the [global roadmap](roadmap.md) are planned, not installable.
+`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are available in the public marketplaces**, each pinned to its independent Git release tag. Other plugins in the [global roadmap](roadmap.md) are planned, not installable.
 
 Common content lives under `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`, with optional skill-local `references/`, `scripts/`, `assets/`, and `agents/openai.yaml`. Do not copy the same skill body into separate Codex, Claude, or Gemini trees.
 
@@ -10,8 +10,8 @@ The catalogs on `main` currently use **Git subdirectory sources pinned to plugin
 
 - Codex catalog: `.agents/plugins/marketplace.json`.
 - Claude Code catalog: `.claude-plugin/marketplace.json`.
-- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json`.
-- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json`.
+- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json` (currently `quarto-publishing` and `r-analytic-core`).
+- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json` (currently `quarto-publishing` and `r-analytic-core`).
 - A full Gemini CLI extension would require `plugins/quarto-publishing/gemini-extension.json`; no such adapter has been released.
 
 Importantly, **adding a local clone as a marketplace does not automatically switch a `git-subdir` tag-pinned plugin to working-tree content**. To test unpublished Codex changes, use a temporary local catalog entry with `source: {"source": "local", "path": "./plugins/quarto-publishing"}` rooted in the appropriate local marketplace directory, then restore the release catalog before committing. Alternatively, test skill discovery independently through the development agent's skill-loading facilities. Do not repoint the published catalog to a development branch merely for personal testing.
@@ -26,7 +26,13 @@ Register the public catalog:
 codex plugin marketplace add brianmsm/r-workflow-plugins
 ```
 
-Install or enable `quarto-publishing` from the plugin directory in the ChatGPT/Codex app or with `/plugins` where available. Example skill invocation:
+Install or enable either plugin from the catalog in the Codex app, or from the Codex CLI, for example:
+
+```bash
+codex plugin add r-analytic-core@r-workflow-plugins
+```
+
+Explicit skill invocation for research-first R coding is `$r-analytic-coding-principles`. As another example, a publishing skill can be invoked with:
 
 ```text
 $quarto-render-troubleshooting
@@ -39,7 +45,7 @@ codex plugin marketplace list
 codex plugin marketplace upgrade
 ```
 
-The current published catalog entry is a `git-subdir` source with a plugin-specific `ref` tag, not a `local` source. For live local plugin testing, keep your developer override separate from that published catalog. `r-analytic-core-v0.1.0` is tagged locally but cannot be installed from the public catalog until its tag has been pushed and the entry is published; the skill can be exercised locally as `$r-analytic-coding-principles` in an isolated development installation.
+The published catalog entries are `git-subdir` sources pinned to `quarto-publishing-v0.2.2` and `r-analytic-core-v0.1.0`, not `local` sources. For testing later unpublished changes, keep any developer override separate from these public entries. Users must refresh their catalog/installation according to their runtime to pick up a new plugin or version.
 
 Reference: [OpenAI's plugin packaging and marketplace documentation](https://developers.openai.com/plugins/build/plugins).
 
@@ -50,12 +56,14 @@ Register the public catalog and install the plugin:
 ```bash
 claude plugin marketplace add brianmsm/r-workflow-plugins
 claude plugin install quarto-publishing@r-workflow-plugins
+claude plugin install r-analytic-core@r-workflow-plugins
 ```
 
 Claude Code plugin skills are namespaced, for example:
 
 ```text
 /quarto-publishing:quarto-render-troubleshooting
+/r-analytic-core:r-analytic-coding-principles
 ```
 
 For testing **working-tree changes** directly from the repository root, use:

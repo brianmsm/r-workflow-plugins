@@ -29,6 +29,30 @@
         "publishing",
         "reproducible-research"
       ]
+    },
+    {
+      "name": "r-analytic-core",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/r-analytic-core",
+        "ref": "r-analytic-core-v0.1.0"
+      },
+      "description": "Research-first R coding conventions for transparent, locally editable analysis and proportionate verification.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-analytic-core",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "research",
+        "analytical-code",
+        "coding-style",
+        "reproducibility"
+      ]
     }
   ]
 }

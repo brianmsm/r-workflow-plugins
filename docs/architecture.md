@@ -22,7 +22,7 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `quarto-publishing`: Quarto authoring, reports, formats, projects, slides, rendering, and delivery. The primary engine is detected from the actual project (R, Python, Julia, or prose-only), not assumed.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
-The domain map is provisional; see [global roadmap](roadmap.md). `quarto-publishing` is the only plugin currently available from the public catalogs. `r-analytic-core` has an independently versioned, locally tagged `v0.1.0` release with one skill; it remains unavailable from the public marketplaces until its tag and catalog entries are published. The remaining candidates have not been scaffolded. Avoid scaffolding more plugins before their boundaries and first useful skills are reviewed.
+The domain map is provisional; see [global roadmap](roadmap.md). Both `quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs, each pinned to its independent release tag. `r-analytic-core` provides one validated core skill. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
 
 ## Plugin Layout
 

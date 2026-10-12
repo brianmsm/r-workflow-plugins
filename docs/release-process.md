@@ -1,6 +1,6 @@
 # Release Process
 
-The release process is intentionally lightweight. `quarto-publishing` is currently available through the public catalogs; `r-analytic-core-v0.1.0` has been tagged locally but has not yet been pushed or cataloged publicly. Other plugin names remain plans.
+The release process is intentionally lightweight. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs**, each pinned to a plugin-specific tag. Other plugin names remain plans.
 
 Each plugin is versioned independently. Public tags should follow:
 

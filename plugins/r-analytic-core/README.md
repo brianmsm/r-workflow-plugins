@@ -2,7 +2,7 @@
 
 `r-analytic-core` provides **research-first coding conventions** for AI agents that create, review, or revise analytical R code. The default is code that a researcher can inspect and change **model by model, section by section, and figure by figure**—not a prematurely automated production pipeline.
 
-**Version:** `v0.1.0` (first validated local release, tagged `r-analytic-core-v0.1.0`). **Marketplace publication is separate:** until its release tag is pushed and the public catalogs are updated, consumers cannot install this version from the public marketplace. Other plugins, including `quarto-publishing`, do not depend on it.
+**Published version:** `v0.1.0`, pinned to the independent release tag `r-analytic-core-v0.1.0` in the Codex and Claude Code marketplaces. Other plugins, including `quarto-publishing`, do not depend on it.
 
 ## Implemented Skill
 
@@ -31,6 +31,26 @@ After installing this plugin in a supported agent, a short request can encourage
 
 A Spanish-language prompt tested in native Codex was: *"Usa el estilo de codificación para investigación en R"*, followed by the concrete task and file. Natural-language selection remains **opportunistic**, not guaranteed. For deterministic intent when the host supports explicit skills, use `$r-analytic-coding-principles`. The plugin must be installed and visible to the agent in either case. No `AGENTS.md` routing rule is required or added by this plugin.
 
+## Install the Released Plugin
+
+### Codex
+
+```bash
+codex plugin marketplace add brianmsm/r-workflow-plugins
+codex plugin add r-analytic-core@r-workflow-plugins
+```
+
+For editing R analysis in the research-first style, invoke `$r-analytic-coding-principles` or describe that intent naturally in the task. Natural-language activation is opportunistic rather than guaranteed.
+
+### Claude Code
+
+```bash
+claude plugin marketplace add brianmsm/r-workflow-plugins
+claude plugin install r-analytic-core@r-workflow-plugins
+```
+
+The corresponding namespaced skill is `/r-analytic-core:r-analytic-coding-principles`. The plugin manifest and marketplace have been validated; native Claude Code model behavior has not been field-tested.
+
 ## Local Development and Testing
 
 The skill directory follows the portable Agent Skills convention; `agents/openai.yaml` is optional Codex-facing UI metadata, not part of the substantive guidance. Codex and Claude Code plugin manifests provide distribution metadata only.
@@ -41,7 +61,7 @@ For direct local Claude Code testing from the monorepo root:
 claude --plugin-dir ./plugins/r-analytic-core
 ```
 
-For Codex, a **separate local development marketplace entry** can point to `./plugins/r-analytic-core`, or the skill can be installed via the agent's supported local skill workflow. The public `.agents/plugins/marketplace.json` does not expose this version until the release tag is available remotely and the catalog entry is added. See the repository [agent setup](../../docs/agent-setup.md).
+For **unreleased Codex development**, use a separate local marketplace entry pointing to `./plugins/r-analytic-core`, rather than overriding the tag-pinned public marketplace source. The released `v0.1.0` is available from the public catalog. See the repository [agent setup](../../docs/agent-setup.md).
 
 The first release passed its [scoped behavioral gate](docs/pilot-findings.md), including two independent post-fix test waves and checked R/Quarto results. [Validation cases](docs/validation-cases.md) remain available for subsequent changes. Public distribution still requires pushing the tagged release and adding the tag-pinned marketplace entry.
 

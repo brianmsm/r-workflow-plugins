@@ -4,15 +4,15 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 ## Current State
 
-As of 2026-10-11, `quarto-publishing` is the only **publicly cataloged** plugin. Its current public version is **v0.2.2**, with six independent skills. Its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills; its [roadmap](../plugins/quarto-publishing/docs/roadmap.md) records actual and candidate growth. The six existing skills cover `.qmd` authoring, project configuration, output formats, report design, computation strategy, and render troubleshooting/verification.
+As of 2026-10-12, `quarto-publishing` and `r-analytic-core` are **publicly cataloged** as independent plugins. `quarto-publishing` remains **v0.2.2**, with six independent skills. Its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills; its [roadmap](../plugins/quarto-publishing/docs/roadmap.md) records actual and candidate growth. The six existing skills cover `.qmd` authoring, project configuration, output formats, report design, computation strategy, and render troubleshooting/verification.
 
-`r-analytic-core` has completed a locally tagged **v0.1.0** release with one validated skill, but is not yet installed through the public marketplaces. Its [architecture](../plugins/r-analytic-core/docs/architecture.md) and [roadmap](../plugins/r-analytic-core/docs/roadmap.md) distinguish implemented guidance from candidates. All other plugin names are **working candidates** without scaffolds or releases; there is no fixed order of development.
+`r-analytic-core` is available as **v0.1.0** with one validated research-first R coding skill, distributed from its tag `r-analytic-core-v0.1.0`. Its [architecture](../plugins/r-analytic-core/docs/architecture.md) and [roadmap](../plugins/r-analytic-core/docs/roadmap.md) distinguish implemented guidance from candidates. All other plugin names are **working candidates** without scaffolds or releases; there is no fixed order of development.
 
 ## Plugin Candidates and Scope
 
 | Plugin | Intended role | Examples, not a committed skill list | State |
 | --- | --- | --- | --- |
-| `r-analytic-core` | Research-first, locally editable analytical R code | One validated core skill; optional future specialized workflows | **v0.1.0 tagged locally; marketplace publication pending** |
+| `r-analytic-core` | Research-first, locally editable analytical R code | One validated core skill; optional future specialized workflows | **Published v0.1.0** |
 | `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives; regression/GLM; missing data; reporting estimates | Planned |
 | `r-psychometrics` | Measurement modeling and interpretation | EFA/CFA; IRT; invariance/DIF; bifactor/ESEM; reliability and validity evidence | Planned |
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | DGPs; condition grids; replication; bias/RMSE/coverage/MCSE; `SimDesign` | Planned |

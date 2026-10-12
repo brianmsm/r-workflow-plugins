@@ -6,12 +6,12 @@ The repository is **plugin-oriented, not a package of R functions or an agent fr
 
 ## Plugin Map
 
-Only `quarto-publishing` is currently distributed through the public marketplaces. `r-analytic-core` has a **locally tagged `v0.1.0` release**, but is not yet in either public catalog; pushing its tag and updating both marketplaces are separate publication steps. The remaining entries are proposed areas, **not installed plugins or promised releases**; their scope can be refined before implementation.
+The public marketplaces distribute **`quarto-publishing v0.2.2`** and **`r-analytic-core v0.1.0`**, each pinned to its own plugin release tag. All remaining entries are proposed areas, **not installed plugins or promised releases**; their scope can be refined before implementation.
 
 | Plugin | Responsibility | Status |
 | --- | --- | --- |
 | [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.2** |
-| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Local release v0.1.0 (not yet marketplace-published)** |
+| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.0** |
 | `r-applied-analysis` | Applied statistical analysis workflows, from descriptive work through regression and related models. | Planned |
 | `r-psychometrics` | Measurement, factor analysis, IRT, invariance, DIF, and related psychometric workflows. | Planned |
 | `r-simulation-methods` | Data-generating mechanisms, Monte Carlo study design, execution, evaluation, and reporting. | Planned |
@@ -30,16 +30,17 @@ Register the public marketplace:
 codex plugin marketplace add brianmsm/r-workflow-plugins
 ```
 
-The published marketplace currently offers `quarto-publishing`; install or enable it from the catalog. A skill can be invoked by name, for example `$quarto-render-troubleshooting`. The separately versioned `r-analytic-core` release will be installable from this catalog only after its release tag is available remotely and its marketplace entry is added.
+Both `quarto-publishing` and `r-analytic-core` are available from the catalog. Install the R coding plugin with `codex plugin add r-analytic-core@r-workflow-plugins` (after registering the marketplace), or use the plugin directory. Its skill can be invoked as `$r-analytic-coding-principles`; a natural-language alternative is “Use the research-first R coding style” followed by the task. Natural-language activation is not guaranteed.
 
 ### Claude Code
 
 ```bash
 claude plugin marketplace add brianmsm/r-workflow-plugins
 claude plugin install quarto-publishing@r-workflow-plugins
+claude plugin install r-analytic-core@r-workflow-plugins
 ```
 
-Plugin skills are namespaced, e.g. `/quarto-publishing:quarto-render-troubleshooting`.
+Plugin skills are namespaced, e.g. `/quarto-publishing:quarto-render-troubleshooting` or `/r-analytic-core:r-analytic-coding-principles`.
 
 ### Gemini CLI
 

@@ -17,6 +17,20 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "r-analytic-core",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "./plugins/r-analytic-core",
+        "ref": "r-analytic-core-v0.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }
