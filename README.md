@@ -6,12 +6,13 @@ The repository is **plugin-oriented, not a package of R functions or an agent fr
 
 ## Plugin Map
 
-The public marketplaces distribute **`quarto-publishing v0.2.2`** and **`r-analytic-core v0.1.0`**, each pinned to its own plugin release tag. All remaining entries are proposed areas, **not installed plugins or promised releases**; their scope can be refined before implementation.
+The public marketplaces distribute **`quarto-publishing v0.2.2`** and **`r-analytic-core v0.1.0`**, each pinned to its own plugin release tag. `quarto-bento` is a local `0.0.0` companion-plugin draft, not yet in the public catalogs. Other entries are proposed areas, **not installed plugins or promised releases**; their scope can be refined before implementation.
 
 | Plugin | Responsibility | Status |
 | --- | --- | --- |
 | [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.2** |
 | [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.0** |
+| [`quarto-bento`](plugins/quarto-bento/) | Quarto-Bento CLI/Studio, retained design, reviewed source synchronization and recovery; optional Quarto/R companions. | **Local draft: 0.0.0** |
 | `r-applied-analysis` | Applied statistical analysis workflows, from descriptive work through regression and related models. | Planned |
 | `r-psychometrics` | Measurement, factor analysis, IRT, invariance, DIF, and related psychometric workflows. | Planned |
 | `r-simulation-methods` | Data-generating mechanisms, Monte Carlo study design, execution, evaluation, and reporting. | Planned |

@@ -20,9 +20,10 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `r-simulation-methods`: generating conditions/replications and evaluating operating characteristics, including psychometric simulations when a simulation is the principal task.
 - `r-package-development`: R package engineering and maintenance, not general data analysis.
 - `quarto-publishing`: Quarto authoring, reports, formats, projects, slides, rendering, and delivery. The primary engine is detected from the actual project (R, Python, Julia, or prose-only), not assumed.
+- `quarto-bento`: an independently distributed companion for the Quarto-Bento application: project identity, CLI/API/Studio operations, retained visual state, reviewed synchronization and recovery. Generic Quarto skills remain optional companions, not duplicates.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
-The domain map is provisional; see [global roadmap](roadmap.md). Both `quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs, each pinned to its independent release tag. `r-analytic-core` provides one validated core skill. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
+The domain map is provisional; see [global roadmap](roadmap.md). Both `quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs, each pinned to its independent release tag. `r-analytic-core` provides one validated core skill. `quarto-bento` now has a local `0.0.0` draft with one skill and three version-pinned operational references; it is not publicly cataloged. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
 
 ## Plugin Layout
 

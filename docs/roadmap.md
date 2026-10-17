@@ -4,9 +4,9 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 ## Current State
 
-As of 2026-10-12, `quarto-publishing` and `r-analytic-core` are **publicly cataloged** as independent plugins. `quarto-publishing` remains **v0.2.2**, with six independent skills. Its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills; its [roadmap](../plugins/quarto-publishing/docs/roadmap.md) records actual and candidate growth. The six existing skills cover `.qmd` authoring, project configuration, output formats, report design, computation strategy, and render troubleshooting/verification.
+As of 2026-10-17, `quarto-publishing` and `r-analytic-core` are **publicly cataloged** as independent plugins. `quarto-publishing` remains **v0.2.2**, with six independent skills. Its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills; its [roadmap](../plugins/quarto-publishing/docs/roadmap.md) records actual and candidate growth. The six existing skills cover `.qmd` authoring, project configuration, output formats, report design, computation strategy, and render troubleshooting/verification.
 
-`r-analytic-core` is available as **v0.1.0** with one validated research-first R coding skill, distributed from its tag `r-analytic-core-v0.1.0`. Its [architecture](../plugins/r-analytic-core/docs/architecture.md) and [roadmap](../plugins/r-analytic-core/docs/roadmap.md) distinguish implemented guidance from candidates. All other plugin names are **working candidates** without scaffolds or releases; there is no fixed order of development.
+`r-analytic-core` is available as **v0.1.0** with one validated research-first R coding skill, distributed from its tag `r-analytic-core-v0.1.0`. Its [architecture](../plugins/r-analytic-core/docs/architecture.md) and [roadmap](../plugins/r-analytic-core/docs/roadmap.md) distinguish implemented guidance from candidates. The `quarto-bento` companion is now a local `0.0.0` draft; its [own roadmap](../plugins/quarto-bento/docs/roadmap.md) covers CLI/Studio/source integration and real agent validation. All other plugin names are **working candidates** without scaffolds or releases; there is no fixed order of development.
 
 ## Plugin Candidates and Scope
 
@@ -18,6 +18,7 @@ As of 2026-10-12, `quarto-publishing` and `r-analytic-core` are **publicly catal
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | DGPs; condition grids; replication; bias/RMSE/coverage/MCSE; `SimDesign` | Planned |
 | `r-package-development` | Build and maintain R packages | API design; roxygen2; testthat; pkgdown; CI | Planned |
 | `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | QMD; formats; reports; slides; rendering; future deployment and accessibility | **Published v0.2.2** |
+| `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; JSON API, supported source components and reviewed sync/recovery | **Local draft 0.0.0** |
 | `rmarkdown-workflows` | Classic R Markdown support and interoperability | `.Rmd` reports; parameters; output maintenance | Planned |
 
 ### Cross-Plugin Boundaries
@@ -26,6 +27,7 @@ As of 2026-10-12, `quarto-publishing` and `r-analytic-core` are **publicly catal
 - `r-applied-analysis` handles general analyses; `r-psychometrics` handles measurement-specific methods. Statistical overlap is resolved by the **primary user task**, not by duplicating whole skills.
 - `r-simulation-methods` owns replication designs and evaluation machinery even when a simulation studies psychometric estimators; the psychometrics plugin can supply domain assumptions or model interpretation.
 - `r-package-development` concerns building software packages; analysis or publishing plugins may help with examples and documentation but should not own package engineering.
+- `quarto-bento` owns the Bento application state/identity/operation contracts, not generic Quarto authoring, narrative or performance. Its skill may consult available companions by capability; it does not depend on their installation paths or require all of them.
 - `quarto-publishing` is Quarto-first even for Python/Julia/prose projects. `rmarkdown-workflows` is for classic R Markdown; full migrations into Quarto should use the Quarto migration capability when implemented.
 
 ## Next Development Decisions

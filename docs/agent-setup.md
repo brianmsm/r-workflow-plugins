@@ -1,6 +1,6 @@
 # Agent Setup
 
-`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are available in the public marketplaces**, each pinned to its independent Git release tag. Other plugins in the [global roadmap](roadmap.md) are planned, not installable.
+`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are available in the public marketplaces**, each pinned to its independent Git release tag. `quarto-bento` is a local `0.0.0` draft requiring a separate development installation; it is not in these public catalogs. Other plugins in the [global roadmap](roadmap.md) remain planned.
 
 Common content lives under `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`, with optional skill-local `references/`, `scripts/`, `assets/`, and `agents/openai.yaml`. Do not copy the same skill body into separate Codex, Claude, or Gemini trees.
 
@@ -10,8 +10,8 @@ The catalogs on `main` currently use **Git subdirectory sources pinned to plugin
 
 - Codex catalog: `.agents/plugins/marketplace.json`.
 - Claude Code catalog: `.claude-plugin/marketplace.json`.
-- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json` (currently `quarto-publishing` and `r-analytic-core`).
-- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json` (currently `quarto-publishing` and `r-analytic-core`).
+- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json` (published: `quarto-publishing`, `r-analytic-core`; local draft: `quarto-bento`).
+- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json` (published: `quarto-publishing`, `r-analytic-core`; local draft: `quarto-bento`).
 - A full Gemini CLI extension would require `plugins/quarto-publishing/gemini-extension.json`; no such adapter has been released.
 
 Importantly, **adding a local clone as a marketplace does not automatically switch a `git-subdir` tag-pinned plugin to working-tree content**. To test unpublished Codex changes, use a temporary local catalog entry with `source: {"source": "local", "path": "./plugins/quarto-publishing"}` rooted in the appropriate local marketplace directory, then restore the release catalog before committing. Alternatively, test skill discovery independently through the development agent's skill-loading facilities. Do not repoint the published catalog to a development branch merely for personal testing.
