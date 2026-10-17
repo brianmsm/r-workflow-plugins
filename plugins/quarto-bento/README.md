@@ -1,8 +1,8 @@
 # Quarto-Bento Agent Plugin
 
-A portable companion for agents using **Quarto-Bento**: QMD authoring/computation, retained visual design, structured `qbento` operations, reviewed synchronization and recovery.
+A portable companion for agents using **Quarto-Bento**: QMD authoring/computation, retained visual design, structured `qbento` operations, selective source synchronization and conservative recovery.
 
-**Plugin status:** local development `0.0.0`, not published in the monorepo marketplaces. This is **not** the application release number: the application baseline is `@brianmsm/quarto-bento 0.1.0`, JSON agent protocol v1, with verified product scope on Linux. The plugin does not install or bundle the application, runtimes, assets or fonts.
+**Plugin status:** local development `0.0.0`, not published in the monorepo marketplaces. This is **not** the application release number: the installed and published application baseline is `@brianmsm/quarto-bento 0.1.1`, JSON agent protocol v1, with verified product scope on Linux. Product 0.1.0 is a historical compatibility baseline; the agent plugin remains local `0.0.0`. The plugin does not install or bundle the application, runtimes, assets or fonts.
 
 ## One Skill, Three Operational References
 

@@ -16,13 +16,15 @@ Initial implementation: **one skill**, `quarto-bento-workflow`, plus three local
 
 QMD is authoritative for meaning and computation; the sidecar normally governs design. Explicit source visual attributes are the non-obvious exception. A pending authored edit, computed provenance and a detached output are distinct states; no last-writer-wins policy is introduced by the skill.
 
-The operational entrypoint requires preflight only where relevant: an untouched new QMD cannot produce a saved snapshot until its first authorized render, while an existing deck must have its saved state inspected before mutation/recomputation. The product, not the skill, implements locking, compare-and-swap, schema checks and source patch atomicity.
+The operational entrypoint requires preflight only where relevant: an untouched, genuinely new QMD cannot produce a saved snapshot until an authorized render; a source-only edit without a Bento baseline need not render. **Before treating `NO_BASELINE` as new, inspect recovery artifacts:** the residual backup-only N01 scenario is not corrected by 0.1.1. Existing saved decks must have binding and pending work inspected before mutation/recomputation. The product, not the skill, implements locking, compare-and-swap, schema checks and source patch atomicity.
 
 ## Resources and Provenance
 
 `SKILL.md` owns selection, sequencing and authorization decisions. `agent-api.md` owns JSON operation details; `authoring-components.md` owns the implemented source subset; `sync-and-recovery.md` owns persistence, capture, execution effects and recovery. Each records the same supported product version and immutable source revision. Do not treat examples in a target roadmap as implemented API.
 
-Baseline: app CLI **0.1.0**, JSON **v1**, pinned Bento **1.2.6** contract, product documentation at `a1b8025f522a5c4c70d10e613f9a7923dc6f761c` (2026-10-17 review). Linux is the application's validated platform scope. Portable instruction layout does not establish Windows/macOS support, native Claude behavior, or identical pixels across machines.
+Baseline: locally installed and npm-published app CLI **0.1.1**, JSON **v1**, pinned Bento **1.2.6** contract, product documentation at `1b7e265bda07c060215051302f252a7289f4a1f9` (0.1.1 functional changes at `78c1641`; 2026-10-17 review). The plugin remains local **0.0.0**. Linux is the application's validated platform scope. Portable instruction layout does not establish Windows/macOS support, native Claude behavior, or identical pixels across machines.
+
+The 0.1.1 CLI/Studio expose selective source sync by pending change ID; a successful Apply may leave approved changes pending until render. The skill owns this lifecycle and refusal handling, not new product implementation.
 
 ## Optional Cross-Plugin Composition
 

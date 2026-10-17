@@ -1,14 +1,14 @@
 # State, Synchronization and Recovery
 
-**Reference baseline:** Quarto-Bento CLI `0.1.0`, Linux; product commit `a1b8025f522a5c4c70d10e613f9a7923dc6f761c`, reviewed 2026-10-17. Commands below are product operations, not agent-specific tools. Consult the installed help when versions differ; preserve work rather than guessing state-file formats.
+**Reference baseline:** installed Quarto-Bento CLI `0.1.1`, Linux; product commit `1b7e265bda07c060215051302f252a7289f4a1f9`, reviewed 2026-10-17. Commands below are product operations, not agent-specific tools. Consult the installed help when versions differ; preserve work rather than guessing state-file formats.
 
-**Contents:** environment; operation effects; safe plans; Studio; capture; refusals/recovery; verification.
+**Contents:** environment; operation effects; selected sync and post-Apply; Studio; capture; identity/recovery; diagnostics and verification.
 
 ## Environment Without Hidden Dependencies
 
-Prefer a user's existing `qbento`; inspect `--version`, `help`, and `doctor`. npm package `@brianmsm/quarto-bento@0.1.0` provides a Node launcher for bundled application source, executed by **external Deno**; **Quarto** and computation packages are also external. Node >=22 is declared. R is needed only when the source uses it; Chromium supports browser review, text measurement and certain rich-table/Plotly/PDF workflows. No automatic environment management is part of this plugin.
+Prefer a user's existing `qbento`; inspect `--version`, `help`, and `doctor`. npm package `@brianmsm/quarto-bento@0.1.1` provides a Node launcher for bundled application source, executed by **external Deno**; **Quarto** and computation packages are also external. Node >=22 is declared. R is needed only when the source uses it; Chromium supports browser review, text measurement and certain rich-table/Plotly/PDF workflows. No automatic environment management is part of this plugin.
 
-If installation is actually requested, follow the product's pinned npm guide rather than assuming the CLI is missing because it is not in one shell's `PATH`. A source checkout can run `deno task qbento` **from its root** with an absolute presentation path. Do not run a task named `qbento` in an arbitrary presentation folder. Source `src/cli.ts` has `help`/`doctor`; do not assume the npm launcher's `--version` switch exists in that source entrypoint.
+If installation is requested, consult the pinned npm guide. On the verified host, the installed `qbento 0.1.1` through mise is already available; prefer that executable. A source checkout can run `deno task qbento` **from its own root** against an absolute QMD path, but do not silently switch executables or versions mid-task. Check the executable's actual help and availability before making version-specific claims. The app version (`0.1.1`), JSON API (`1`) and companion plugin version (`0.0.0`) are independent.
 
 ## Operation Effects
 
@@ -16,8 +16,8 @@ If installation is actually requested, follow the product's pinned npm guide rat
 | --- | --- |
 | `status`, `diff`, `get` | Inspect an existing saved baseline; no new computation or HTML capture |
 | `patch` | Write checked saved state and pending edits; no QMD write and no Quarto execution |
-| `sync` | Build an inspectable source plan; no QMD write or model execution |
-| `sync --apply plan.json` | Apply the **exact reviewed plan** to QMD with identity/source/state checks; not a render |
+| `sync` / `sync --select selection.json` | Preview all changes or a reviewed selected subset (`0.1.1`); inspectable QMD plan, **no source write or Quarto execution** |
+| `sync --apply plan.json` | Apply the **exact reviewed plan** to QMD with identity/source/state checks; no Quarto execution; semantic pending/approval may remain until render |
 | `render` | Execute Quarto and publish combined generated content + retained design; may refuse pending conflicts |
 | `reconcile` | **Execute QMD** to compare current source results and saved state, then return a plan |
 | `reconcile --apply resolution.json` | **Re-execute QMD** to verify the reviewed plan, then apply its offered decisions to saved state; needs execution authorization, does not write QMD or replace reviewed source synchronization |
@@ -51,9 +51,34 @@ Approval to implement a specific edit can authorize its reviewed sync and reques
 
 A plan may cover several pending items. Do not automatically apply unrelated edits because they appear in the same file; use supported selective review in Studio or seek authorization. Do not assume a CLI `--select` flag exists. Preserve pending work not applied by this task. After a successful source sync, render only if allowed; otherwise explicitly leave the output stale and report what is saved versus generated.
 
+## Select Only Authorized Pending Changes (`0.1.1`)
+
+Obtain `qbento get` **successfully** before any ID/revision-bound operation. Use [agent-api.md](agent-api.md) for the strict versioned `selection.json` schema (fields `version: 1`, `docId`, `expectedRevision`, `selectedChangeIds`, optional `confirmedDeleteIds`). Selection uses exact `pending[].id`, not native slide/element IDs. Keep the same installed `qbento` throughout.
+
+```sh
+qbento get /path/to/deck.qmd > snapshot.json
+# Serialize the exact IDs from successful get into selection.json.
+qbento sync /path/to/deck.qmd --select selection.json > plan.json
+# Review all selected/excluded IDs, source spans, identities, annotations and destructive edits.
+qbento sync /path/to/deck.qmd --apply plan.json
+```
+
+**Selection is not source-edit authorization.** Deletion confirmation is separate. A selected deletion that consumes excluded element/subtree edits refuses `PARTIAL_DELETE_SELECTION`. A card/KPI's creation members must be selected together or entirely excluded. Supporting source identities and optional `.qbento-design` annotation patches can appear beyond the chosen text; inspect the **entire plan** and stop if any supporting patch exceeds authorized scope. Do not hand-edit plan contents to fabricate a selection. Studio's **Revisar cambios** starts with everything selected; changing checkboxes invalidates the old plan, and deletion confirmation has its own controls. Excluded pending changes remain. Ordinary `sync` still previews all; on CLI `0.1.0`, neither `--select` nor Studio selection is supported.
+
+## Successful Apply May Leave Pending Work
+
+A successful Apply receipt reports `appliedChangeIds`, `pendingRetained: true` and `renderNeeded: true`. **“QMD updated; render pending” can be a correct stopping state.** The source has been updated but the saved executed baseline is still old. Selected pending edits may remain until the next verified render; **excluded** pending changes remain even after that render. Confirm the receipt, applied IDs and actual QMD changes rather than interpreting nonempty `pending` as failure.
+
+Two normal post-Apply paths exist in CLI `0.1.1`:
+
+- **With an approval marker:** structural identity acquisition, creation, deletion or normalization can retain `.qbento/sync-approved.json`. A second Apply may return `APPROVAL_PENDING`, reconciliation may return `SYNC_APPROVAL_PENDING`, and a fresh sync preview may return `RECOVERY_OR_BUSY` **naming that marker**. Check the successful Apply receipt and marker before diagnosing an interrupted transaction.
+- **Without an approval marker:** for example, a selected authored-text edit with already stable QMD identities can Apply successfully while keeping `pending` and creating **no** `sync-approved.json`. A premature new `sync` preview may instead return `SOURCE_CONFLICT`, because QMD now contains the applied edit but the last **executed** baseline has not advanced. An absent marker does not invalidate a successful Apply.
+
+For either path, compare the prior successful Apply receipt (including `appliedChangeIds`, `sourceHash` and `receiptPath` where available), the current QMD/source, pending state and any **intervening independent edits**. `SOURCE_CONFLICT` is **not automatically benign**: if source or state changed independently, or the receipt does not establish the expected source, stop and review that conflict rather than rendering through it. If evidence instead confirms only the expected post-Apply baseline lag, run **one independently authorized** `qbento render deck.qmd` and verify the resulting state/output. If execution is not authorized, preserve source, receipt, all pending changes and any marker, and report the outstanding render. Never blindly repeat Apply, manually clear a marker or initiate recovery solely because a valid Apply awaits execution.
+
 ## Studio and Browser Work
 
-`qbento edit deck.qmd` prints a `127.0.0.1` URL and keeps a server alive. Track that process using the available terminal manager; do not launch duplicate servers because a tool read timed out. **Guardar proyecto** saves design/pending edits to `.qbento/`; Bento's native **Save** downloads an HTML copy instead. Other labels: **Revisar cambios** previews; **Aplicar** writes reviewed QMD; **Recalcular** executes; **Comparar con QMD** executes a comparison; **Guardar decisiones** applies reconciliation decisions to saved state and re-executes QMD for plan validation; it does not write source text.
+`qbento edit deck.qmd` prints a `127.0.0.1` URL and keeps a server alive. Track that process using the available terminal manager; do not launch duplicate servers because a tool read timed out. **Guardar proyecto** saves design/pending edits to `.qbento/`; Bento's native **Save** downloads an HTML copy instead. Other labels: **Revisar cambios** previews all or selected pending edits and invalidates prior previews when selection changes; **Aplicar** writes reviewed QMD; **Recalcular** executes; **Comparar con QMD** executes a comparison; **Guardar decisiones** applies reconciliation decisions to saved state and re-executes QMD for plan validation; it does not write source text.
 
 Use the browser for controls not exposed by the JSON API: supported card/KPI creation, source-aware layouts, diagram **Relaciones**, or visual checks. All members of a managed component's pending creation belong together; geometry alone does not establish membership. An absent browser tool is not permission to forge Studio HTTP payloads or internal `.qbento/` data. Explain unsupported tasks or author appropriate QMD within scope instead.
 
@@ -71,6 +96,14 @@ Capture checks publication receipt, identity and generation, and accepts one cap
 
 For reconstruction, retain QMD, input data/assets and required `.qbento/` project/state/design resources. Do not blanket-ignore or delete `.qbento/` as cache. A rebuilt base deck with missing retained design is not recovery of the old appearance.
 
+## Bound Project Identity Before Recovery
+
+One `.qbento/` directory belongs to **one QMD**. In installed 0.1.1, `status`, `diff`, `get` and Studio check this binding. `PROJECT_SOURCE_MISMATCH` means inspect the requested QMD and correct the project directory; do **not** rename a `docId`, delete a sidecar or adopt a sibling deck. `PROJECT_BINDING_MISSING` means saved/recoverable state exists without matching `.qbento/project.json`; restore the matching metadata from verified backup/Git, not an invented binding. For checked requests, a successful `get` is still needed to obtain the current `docId` and revision.
+
+**Residual N01 (observed in app 0.1.1, functional source `78c1641`):** with valid `project.json` and a recoverable `state.previous.json`, but missing `state.json` **and** generated HTML, readers return `NO_BASELINE`. A first `edit`/`render` can bootstrap another `docId`, discard the recoverable design/pending changes and later overwrite the previous-state backup. This is **not** fixed by the 0.1.1 source-binding corrections or later publication-only docs. Before acting on `NO_BASELINE`, inspect `.qbento/` non-destructively for `project.json`, `state.json`, `state.previous.json`, `render-transaction.json`, `sync-transaction.json`, `sync-approved.json`, other recovery evidence and relevant Git/backups. If recoverable artifacts remain, preserve them and stop automatic `edit`/render/initialization; determine a supported explicit recovery plan before any new baseline or writes. Do not silently promote `state.previous.json` into current state, adopt another identity, or claim a product fix. A completely fresh QMD with no such artifacts may be initialized by an **authorized** first render. A QMD-only wording change may be made without execution if that is the full authorized scope.
+
+This backup-only `NO_BASELINE` branch is **different** from a successful Apply awaiting render: that normal state has a valid current baseline, approved-source marker/receipt and retained pending changes. Do not run generic recovery merely because a successful Apply retained work.
+
 ## Refusals and Safe Recovery
 
 Inspect both the JSON `error` and `message`; some CLI paths report a generic `QBENTO_ERROR` with a more specific message prefix.
@@ -79,7 +112,12 @@ Inspect both the JSON `error` and `message`; some CLI paths report a generic `QB
 | --- | --- |
 | `STALE_REVISION` or project busy | Wait only for an identified live operation; reread, inspect intervening changes, and rebuild the remaining authorized intent. Persistent failure without progress: stop and report. |
 | `STALE_SOURCE` on creation | Source and last execution differ. Review pending changes; authorized recalculation may refresh the baseline. Do not discard changes or run expensive/no-execute source without permission. |
-| `UNRELATED_DOCUMENT`, conflicting `docId` | Confirm actual QMD association. Preserve both projects; never override identity to reuse another deck's state. |
+| `UNRELATED_DOCUMENT`, conflicting `docId`, `PROJECT_SOURCE_MISMATCH` | Confirm the QMD/project association; preserve both. Do not relabel the sidecar, overwrite another deck's state or assume multiple QMDs per directory. |
+| `PROJECT_BINDING_MISSING` | Restore verified metadata for the same QMD from backup/Git. Do not fabricate an association or replace saved state. |
+| `NO_BASELINE` | Inspect for project metadata, previous-state backup and transaction artifacts **before** bootstrap. N01 backup-only projects require preservation and diagnosis, not automatic `edit`/render. |
+| `APPROVAL_PENDING`, `SYNC_APPROVAL_PENDING`, `RECOVERY_OR_BUSY` naming `sync-approved.json` | Check a successful Apply receipt/marker: authorized render may be the normal continuation. Do not repeat Apply or delete state files. |
+| `SOURCE_CONFLICT` after Apply (including **without** `sync-approved.json`) | Compare successful receipt, QMD/resulting source, current pending state and external edits. An old executed baseline may explain the refusal; genuine divergence still requires review. Render only when that distinction is verified and execution authorized. |
+| `INVALID_SELECTION`, `PARTIAL_DELETE_SELECTION` | Reread `get`, inspect selected/excluded pending IDs and coupled component/deletion dependencies; build a fresh selection. |
 | `UNCAPTURED_HTML_EDITS` | Preserve and capture the matching local copy before rendering. Never remove it simply to bypass the guard. |
 | Computed-content conflict | Do not sync a rendered value into producer code. Inspect producer/input change options; restore or explicitly detach only when authorized. |
 | `UNSUPPORTED_SYNC`, `UNMAPPED_DESIGN`, ambiguous identity | Retain pending work. Use supported codecs/source ownership; request review rather than guessing a lossy conversion. |
@@ -87,7 +125,43 @@ Inspect both the JSON `error` and `message`; some CLI paths report a generic `QB
 | `DESIGN_REGISTRY_RECOVERY_REQUIRED` | Separate registry journal: preserve versions/marker and consult its product recovery contract. Generic `recover` does not repair it. |
 | `MISSING_DESIGN` | Restore the named retained resources from backup/Git, or explain unavailable appearance; no fabricated recovery. |
 
-For source/Bento conflicts, `qbento reconcile deck.qmd` executes QMD to produce a plan. **`qbento reconcile deck.qmd --apply resolution.json` executes QMD again** to verify that the source results and decisions still match before committing saved state. The `--apply` input wraps the exact plan and `choices`; use only the per-item actions offered by the plan. A previous preview or a reviewed file does not authorize another execution by itself. If the user already authorized the resolution and its required executions, proceed within that scope without a redundant confirmation; otherwise clarify the missing execution permission before either phase. Choices can include `keep-source`, `keep-bento`, or `detach`, but are not universally available. Confirm what is being discarded or detached. Resolution changes saved state; writing chosen authored content to QMD still needs a fresh reviewed sync. A source change can invalidate an earlier plan.
+For source/Bento conflicts, **both** reconciliation phases execute QMD and need execution permission: preview computes the current producer results, and a valid apply executes again to verify that its exact plan is still current. They are not read-only replacements for `status`. Never apply a fabricated resolution or assume that the reviewed plan is an authorization for another execution.
+
+A resolution file has the shape `{ "plan": <the complete, unchanged preview JSON>, "choices": [{ "changeId": <one observed change.id>, "action": <offered action> }] }`. For example, **after independently authorizing preview and apply**:
+
+```sh
+qbento reconcile /path/to/deck.qmd > reconcile-plan.json
+# Inspect change IDs, source/current values and the per-item offered actions.
+```
+
+```python
+import json
+from pathlib import Path
+
+plan = json.loads(Path("reconcile-plan.json").read_text())
+change_id = "PASTE_THE_REVIEWED_CHANGE_ID"
+action = "keep-source"  # Only if offered for that change.
+item = next(row for row in plan["changes"] if row["change"]["id"] == change_id)
+if action not in item["actions"]:
+    raise ValueError("Action is not offered for this change")
+payload = {"plan": plan, "choices": [{"changeId": change_id, "action": action}]}
+Path("resolution.json").write_text(json.dumps(payload, indent=2) + "\n")
+```
+
+```sh
+# This re-executes Quarto and saves checked decisions, not QMD source edits.
+qbento reconcile /path/to/deck.qmd --apply resolution.json
+```
+
+Use only offered actions, which can include `keep-source`, `keep-bento` or `detach` **when that item supports them**. Check the returned `resolved`, `remaining` and `renderNeeded`: a resolved choice can still require reviewed source sync or a later authorized render. `STALE_RECONCILE_STATE`, `STALE_RECONCILE_SOURCE` or `STALE_RECONCILE_PLAN` means fresh execution-authorized preview and re-evaluation of the choice, not changing hashes or force-applying the old file. Confirm newly destructive/detaching choices, but do not ask again if the user already authorized the exact decisions and their necessary executions.
+
+## Distinguish Layout Diagnostics
+
+- `OVERFLOW`: an **element box** extends past the slide bottom after retained design. Move/resize that box; this does not measure text clipping, rotation, horizontal edges or shadows.
+- `TEXT_OVERFLOW`: text/list/KaTeX/displayed code **content** escapes its saved box, even if the box is entirely on-slide. Increase height/width or adjust typography; semantic shortening requires separately authorized source sync. Studio read-only diagnostics after Save can clear the warning **without re-executing QMD**; later render rechecks it.
+- `TEXT_MEASUREMENT_UNAVAILABLE`: the text was **not reliably measured** (e.g. Chromium unavailable, rotated text). Do not call it a pass or pretend it is overflow; use an available local browser/visual inspection or report that measurement remains unverified, without changing global sandbox settings.
+- `NATIVE_CONTENT_OVERFLOW`: a simple native **table/chart's measured contents** no longer fit its saved frame; enlarge/reapply a suitable layout and verify final metrics. `NATIVE_CONTENT_UNMEASURED`: custom/unsupported native metrics cannot be measured by the simple adapter; inspect in Studio or retain the design, not an invented automatic fit.
+- Component-specific `KPI_CONTENT_OVERFLOW`, `CARD_CONTENT_OVERFLOW`, `LAYOUT_OVERFLOW`, `GRAPH_CONTENT_OVERFLOW` and related errors can **refuse** unsupported compositions. Fix roles, frames, source content or layout geometry within supported limits; do not suppress diagnostics, scale away content or rewrite producer results.
 
 ## Verification Appropriate to the Request
 
@@ -95,7 +169,10 @@ Check the mutated target and compare stable `docId`, expected IDs, requested val
 
 ## Pinned Product Sources
 
-- [Usage, exact Studio labels and recovery cases](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/USAGE.md)
-- [Ownership, sync and capture invariants](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/SYNC.md)
-- [Reconciliation contract](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/src/core/reconcile.ts)
-- [Linux npm installation and immutable package snapshot caveats](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/NPM.md)
+- [Usage, exact Studio labels and recovery cases](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/USAGE.md)
+- [Ownership, sync and capture invariants](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/SYNC.md)
+- [Reconciliation contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/src/core/reconcile.ts)
+- [Linux npm installation and immutable package snapshot caveats](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/NPM.md)
+
+- [0.1.1 selective sync, post-Apply and binding contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AGENT-API.md)
+- [0.1.1 npm publication and installed CLI evidence](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/evidence/SYNC-SELECTION-0.1.1.md)

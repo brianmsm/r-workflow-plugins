@@ -22,3 +22,11 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 - Recorded initial product/API checks, rendered reference examples and native Codex trials, including optional composition with Quarto performance guidance and explicit limits on visual/Studio coverage.
 - Recorded the R5 reconciliation-execution reproduction and ten fresh Codex trials against the corrected candidate; one wrong-version skill lookup is retained as a validation limitation, not counted as a successful candidate activation.
+
+### Compatibility Updates (Quarto-Bento CLI 0.1.1)
+
+- Raised the checked **application** baseline from 0.1.0 to installed and npm-published 0.1.1, while keeping plugin 0.0.0 and JSON agent protocol v1. Retained 0.1.0 distinctions only as compatibility notes.
+- Documented checked selective sync (`--select`), exact pending change IDs, deletion confirmations, atomic component selection and full-plan/auxiliary identity review.
+- Clarified post-Apply retained pending/approval markers and separated QMD writes from authorized execution and rendering.
+- Added strict project binding diagnostics, cautious `NO_BASELINE`/previous-state recovery preflight for unresolved N01, and practical design/annotation/delivery/overflow guidance.
+- Clarified both successful Apply variants (with approval marker, or without marker and a possible pre-render `SOURCE_CONFLICT`) and required checks for genuine intervening source changes. Distinguished Plotly generation dependencies from the offline viewer's recipient requirements.

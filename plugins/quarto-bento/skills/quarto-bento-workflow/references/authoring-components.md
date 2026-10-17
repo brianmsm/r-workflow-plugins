@@ -1,12 +1,12 @@
 # QMD Authoring for Quarto-Bento
 
-**Reference baseline:** CLI `0.1.0`, Linux; product commit `a1b8025f522a5c4c70d10e613f9a7923dc6f761c`, reviewed 2026-10-17. The product's authoring document mixes target design with implemented subsets; this reference uses the latter. Ordinary Quarto/revealjs behavior is not proof of Bento projection or round-trip support.
+**Reference baseline:** installed CLI `0.1.1`, Linux; product commit `1b7e265bda07c060215051302f252a7289f4a1f9`, reviewed 2026-10-17. The product's authoring document mixes target design with implemented subsets; this reference uses the latter. Ordinary Quarto/revealjs behavior is not proof of Bento projection or round-trip support.
 
-**Contents:** new source; identities; implemented components; producer boundaries; configuration and delivery.
+**Contents:** new source; identities; implemented components; reusable design; annotation levels; analytical examples; delivery and diagnostics.
 
 ## A New Presentation
 
-Use one QMD presentation per directory. Keep source and inputs together, and render only trusted, authorized source. A minimal file is sufficient; neither `format: revealjs` nor a guessed `format: bento` is required for the `qbento render` workflow.
+Use one QMD presentation per directory. Keep source and inputs together, and render only trusted, authorized source. Before rendering an existing QMD with `NO_BASELINE`, look for saved `.qbento/` recovery material (especially `state.previous.json`) as described in the synchronization reference; a missing current state is **not** proof of an empty design. A minimal file is sufficient; neither `format: revealjs` nor a guessed `format: bento` is required for the `qbento render` workflow.
 
 ```qmd
 ---
@@ -99,17 +99,89 @@ Here `120` is **literal text**. For a data-linked result, author an appropriate 
 
 For uncommon composition, consult the pinned product examples/implemented section before authoring rather than inventing new `.bento-*` syntax. A native API operation can support fewer creation types than Studio or QMD.
 
+## Reusable Design and Explicit Ownership
+
+The optional `.qbento/design.json` is a **user-facing registry**, not an internal state journal. Create/edit it only when the user requests design changes, within its schema; normally prefer Studio **Diseños y temas** → **Guardar diseños**. Example (trimmed to supported properties):
+
+```json
+{
+  "schemaVersion": 1,
+  "layouts": {"three": {"columns": 3, "gap": 20, "padding": 10}},
+  "themes": {"forest": {"background": "#e8fff0", "color": "#123a24", "accent": "#26734a", "fontFamily": "Arial, sans-serif"}},
+  "activeTheme": "forest"
+}
+```
+
+Layout names begin with a lowercase letter and contain lowercase letters, digits or hyphens (max 64 characters), with up to **64 layouts** and **32 themes**. Custom layouts require **1–6** columns; `two-column` is reserved. The number of identified **direct** QMD children must match `columns`, selected with `bento-layout-name="three"`. Themes support only `background`, `color`, `accent`, `fontFamily`; `activeTheme` must be explicit when themes are defined. This 256-KiB regular JSON file does not download fonts or run computations.
+
+**Precedence:** explicitly authored QMD visual attributes control their own fields; allowed saved native edits are sparse overrides for other fields; registry theme/layout values are defaults, not a license to overwrite authored or manually saved fields. Studio **Aplicar diseño** requires choosing a layout, **explicitly assigning each intended object to a column**, and inspecting **Vista previa de posiciones** before applying; unmatched objects keep their positions. Free objects save geometry as a snapshot: after changing a named definition in **Diseños y temas**, *reapply* it to those objects. Source components referencing a named layout use its regenerated defaults. Changes to sourced geometry or coupling need reviewed source synchronization; do not infer grouping from proximity. See the [pinned registry contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md).
+
+## Optional QMD Annotations
+
+Only the **top-level QMD frontmatter scalar** is implemented; the default is `minimal`:
+
+```yaml
+---
+title: Study summary
+qbento-annotations: minimal  # none | minimal | detailed
+---
+```
+
+- `none`: no optional `.qbento-design` heading class/reference comments; **technical IDs and required semantic edits remain**.
+- `minimal` (default): a `.qbento-design` heading class for identified slides that have externally retained design.
+- `detailed`: same class plus a bounded descriptive JSON comment referring to sidecar paths/categories, **not copied coordinates**.
+
+These are optional *source mutations* proposed only during reviewed sync. Neither Save nor render creates them. They require suitable stable heading identities; they do not replace required technical `qb:*`/source IDs. A data/design-only task forbidding QMD edits must **not** apply an annotation-only proposal. Keep existing user QMD declarations authoritative. The earlier nested `format: ... annotations:` proposal is not implemented.
+
+## Analytical Output Without Faking Provenance
+
+A plain identified Markdown table can project to a native table:
+
+```qmd
+## Descriptives {#descriptives}
+
+| Group | N | Mean |
+| --- | ---: | ---: |
+| A | 30 | 2.1 |
+| B | 35 | 2.8 |
+```
+
+A bounded native bar/line chart instead uses an empty category header and named numeric series:
+
+```qmd
+## Effects {#effects-slide}
+
+::: {#effects .bento-chart bento-chart-kind="bar"}
+| | Estimate | Other |
+| --- | ---: | ---: |
+| Alpha | -2.5 | 1.25 |
+| Beta | 0 | 3 |
+:::
+```
+
+For mathematics, author the actual QMD expression rather than editing native equation pixels:
+
+```qmd
+## Estimation {#estimation}
+
+$$
+\hat{\theta}=\frac{1}{n}\sum_{i=1}^n x_i
+$$
+```
+
+A computed number can use Quarto inline R such as `` `r mean(values$x)` `` **only if `values` is genuinely created by an executed source chunk**. Computed `knitr::kable(..., format="pipe")` tables retain producer provenance; `gt`/`gtsummary` tables are handled as rendered images. Literal cells are not valid substitutes for recalculated values. Reverse cell, chart-data and computed-figure edits into executable R/Python are unsupported. Native bar/line charts use bounded options, labels and precision; chart frames need at least 242px height and space for labels/legend. Unsupported rich table cells/captions/spans or unmapped producers must not be passed off as faithful conversions. Mathematical output uses the pinned KaTeX-supported subset; browser/font metrics determine actual fit. See the [pinned authoring contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md).
+
 ## Computation, Integration and Output
 
 R, Python and other engines require the actual document's runtime/dependencies; a prose-only QMD need not require R. Preserve the code/inputs, figure labels and provenance. A `.bento-kpi` computed value, figure image or generated table must update through execution. Performance guidance can come from `quarto-computation-performance` when available, but do not externalize analyses or change code organization simply because Bento is used.
 
 Only use ordinary `quarto render` integration **after** a deliberate `qbento init deck.qmd` installation. Its custom format is `qbento-html`, with product-supplied hooks/filters. `init` refuses replacing existing project configuration; `init ... --extension-only` leaves integration choices to the user. Do not rewrite an existing `_quarto.yml` or remove hooks as a shortcut.
 
-Save `.qbento/` project/state/design and needed resources with the QMD and inputs for editable reproduction. Generated `.bento.html` is a deliverable, not a substitute for retained project state. Bento's native print/PDF representation and the separate supported Plotly viewer are not CLI commands named `export`, `pdf` or `preview`. The installed CLI has no such general operations. A static image of a chart is not evidence of an editable or interactive native chart.
+Save the QMD, inputs, project identity, `.qbento/` state/design and other required resources for editable reproduction. The generated `.bento.html` is an **offline static presentation** (and can be edited through its supported native Save/capture cycle), not a substitute for durable project state. For PDF, use Bento's **native print/PDF representation** in a supported browser; hidden slides are omitted. Do not invent a `qbento pdf`/`export` command or claim all desktop print dialogs have been tested. For supported **Plotly**, Studio **Presentar con gráficos** opens/saves a separate offline viewer with interactive chart views; ordinary HTML/PDF show the **static SVG**, not a position-preserving interactive overlay. Generating/capturing the supported interactive Plotly views requires Chromium and a compatible local Plotly runtime (including its producer dependencies). **The delivered viewer bundles its interactive resources for offline viewing in a compatible browser**; recipients do not need a running R process, Plotly installation or local server merely to open that generated artifact. This does not certify every browser or platform. Supported `gt`/`gtsummary` tables need Chromium to generate faithful 2× PNGs and may refuse when content will not fit; adjust the producer/table layout rather than silently shrinking/removing rows. Report which output was actually generated and inspected.
 
 ## Pinned Product Sources
 
-- [Implemented authoring subsets and target-only cautions](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/AUTHORING.md)
-- [Canonical examples](https://github.com/brianmsm/quarto-bento/tree/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/examples)
-- [Usage, publication and composition limits](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/USAGE.md)
-- [Public design-registry schema](https://github.com/brianmsm/quarto-bento/blob/a1b8025f522a5c4c70d10e613f9a7923dc6f761c/docs/DESIGN_REGISTRY.md)
+- [Implemented authoring subsets and target-only cautions](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md)
+- [Canonical examples](https://github.com/brianmsm/quarto-bento/tree/1b7e265bda07c060215051302f252a7289f4a1f9/examples)
+- [Usage, publication and composition limits](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/USAGE.md)
+- [Public design-registry schema](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md)
