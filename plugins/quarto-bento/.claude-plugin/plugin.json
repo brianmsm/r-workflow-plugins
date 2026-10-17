@@ -1,0 +1,19 @@
+{
+  "name": "quarto-bento",
+  "version": "0.0.0",
+  "description": "Operate Quarto-Bento presentations with retained design, checked JSON edits, reviewed QMD synchronization and safe recovery.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "quarto",
+    "bento",
+    "qbento",
+    "presentations",
+    "synchronization"
+  ],
+  "skills": "./skills/",
+  "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/quarto-bento"
+}

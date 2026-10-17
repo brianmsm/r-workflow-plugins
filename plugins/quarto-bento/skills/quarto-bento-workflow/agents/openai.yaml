@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quarto-Bento Workflow"
+  short_description: "Retain Bento design and synchronize QMD safely."
+  default_prompt: "Use $quarto-bento-workflow to update this presentation while preserving its design and pending edits."

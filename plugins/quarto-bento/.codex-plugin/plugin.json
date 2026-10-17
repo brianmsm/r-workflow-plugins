@@ -1,0 +1,34 @@
+{
+  "name": "quarto-bento",
+  "version": "0.0.0",
+  "description": "Operate Quarto-Bento presentations with retained design, checked JSON edits, reviewed QMD synchronization and safe recovery.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "quarto",
+    "bento",
+    "qbento",
+    "presentations",
+    "synchronization"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Quarto-Bento",
+    "shortDescription": "Edit Bento presentations without losing QMD or design.",
+    "longDescription": "Create and revise Quarto-Bento presentations using the installed qbento CLI or a compatible source checkout. Keep authored and computed content distinct, preserve project identities and pending edits, and synchronize QMD only through reviewed, authorized operations.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "Quarto-Bento",
+      "Presentation Editing",
+      "Reviewed Synchronization"
+    ],
+    "defaultPrompt": [
+      "Use Quarto-Bento to update this presentation while retaining its design.",
+      "Review the pending Bento changes and synchronize the authorized edits to QMD."
+    ]
+  }
+}
