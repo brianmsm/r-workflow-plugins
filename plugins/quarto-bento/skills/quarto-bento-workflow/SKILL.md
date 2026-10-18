@@ -1,41 +1,81 @@
 ---
 name: quarto-bento-workflow
-description: Create, edit, synchronize, render or recover Quarto-Bento presentations using qbento, Bento Studio or .qbento/ state. Preserve QMD and visual design. Not for ordinary revealjs/PPTX/Beamer or a merely bento-shaped layout.
+description: Edits and verifies Quarto-Bento (qbento) presentations and retained .qbento/ state. Use for Bento Studio saved design, checked geometry edits, selective QMD sync, render, capture, or recovery; not ordinary Reveal.js or standalone HTML-copy editing.
 ---
 
 # Quarto-Bento Workflow
 
-This is an operational companion, not a replacement for general Quarto authoring or presentation design. Keep QMD/inputs, saved `.qbento/` state, and generated output distinct.
+QMD/inputs own semantics and computation; checked `.qbento/` state retains design unless QMD
+explicitly owns a visual field. Generated `*.bento.html` is **output**, never the saved design.
 
-## Identify the Project and Runtime
+## Use and References
 
-- Resolve the requested QMD and its directory (one QMD presentation per directory). Check the **actual selected launcher** with `qbento --version`, `qbento help` and `qbento doctor` as relevant. The verified Linux baseline is installed `qbento 0.1.1`, JSON protocol **v1**; these are not the agent plugin version (`0.0.0`). Do not silently install, switch from a source checkout or assume the same commands exist on `0.1.0`.
-- **Before treating `NO_BASELINE` as new**, inspect the existing `.qbento/` for project metadata, `state.previous.json`, transaction journals, approval markers or other recovery evidence without changing them. A valid binding and previous-state backup can coexist with missing `state.json`; the **known 0.1.1 N01 recovery gap** permits `edit`/`render` to replace recoverable identity/design. Preserve the files and stop bootstrap until recovery is resolved. Read [sync-and-recovery.md](references/sync-and-recovery.md).
-- A genuinely uninitialized Bento project requires a first **authorized** `qbento render` before `get`/`patch`. A previously written QMD with no Bento state can still receive an authorized source-only edit **without** render. For saved projects, inspect `status` and a successful `get` before mutations; wrong QMDs refuse `PROJECT_SOURCE_MISMATCH`, while missing binding metadata can refuse `PROJECT_BINDING_MISSING`.
+- **Use:** "Move a saved Bento heading", "sync one pending Bento text edit", or "recover
+  `.qbento/` state". For an authorized native HTML **capture**, also use this workflow.
+- **Do not use:** ordinary Reveal.js/PPTX/Beamer, Bento-like HTML styling, a notes-only
+  summary or editing an independent HTML copy without capturing it. A negative mention
+  of Bento does not turn an otherwise unrelated task into a Bento-state edit.
+- Read only what the operation needs: [agent-api.md](references/agent-api.md) for checked
+  JSON and selection; [sync-and-recovery.md](references/sync-and-recovery.md) for Apply,
+  execution, capture and recovery; [authoring-components.md](references/authoring-components.md)
+  for source components and the design registry.
 
-## Choose the Editing Surface
+## Required Checks
 
-| Intent | Supported surface |
-| --- | --- |
-| Source semantics, computation, data, unsupported native creation | QMD/inputs, after checking Bento ownership/pending work; read [authoring-components.md](references/authoring-components.md) as needed |
-| Existing object/slide fields and bounded slide actions | `get` then checked JSON `patch` with exact IDs and revision; read [agent-api.md](references/agent-api.md) |
-| Native layout preview, card/KPI creation, interactive visual controls | Studio/browser; not every Studio operation has a JSON agent equivalent |
+1. **MUST persist retained design.** On an existing saved object, use a successful
+   `qbento get` → revision/identity-checked `qbento patch` → **fresh `qbento get`**.
+   Confirm the requested fields, stable `docId` and other people's pending edits.
+   For Studio-only features, save **Guardar proyecto** and verify saved state.
+   For QMD-owned visual attributes, use the authorized source workflow instead.
+   **NEVER** edit generated `*.bento.html` or internal `.qbento/state.json` as a shortcut.
+   Editing a separate HTML copy is valid for its own scope, but is not retained
+   design unless a supported, matching-generation `qbento capture` succeeds.
+2. **MUST gate source edits before Apply.** Review the **complete** `sync` plan:
+   selected/excluded pending IDs, necessary technical identities, optional
+   `annotations.patches`, deletions and resulting QMD. Selecting an authored edit
+   does **not** authorize a separate `.qbento-design` heading class/comment.
+   If any optional patch exceeds the user's scope, **STOP before Apply**: request
+   that extra source authorization or report synchronization as deferred.
+   Do not rewrite the plan or invent `--no-annotations`. Changing the top-level
+   `qbento-annotations` setting also requires source-edit permission. Necessary
+   technical identity changes are distinct from optional annotations; do not
+   demand redundant consent for supporting edits already within scope.
+3. **MUST verify the requested outcome before claiming completion.** A tool success,
+   generated-HTML modification or updated computation intermediate is insufficient.
+   If a saved change or authorized render fails, preserve artifacts and report
+   what was actually saved, synchronized or delivered versus still incomplete.
 
-QMD owns meaning, producers and **visual fields explicitly declared in QMD**. `.qbento/` normally owns retained geometry, typography and decoration. Do not edit `state.json` or generated HTML to bypass checked operations. Computed content must come from a producer execution; an edited literal is not a new computed result without an explicitly authorized detach.
+## Choose the Task Path
 
-## Save, Select, Apply, and Render Are Separate
+- **Preflight:** resolve the single QMD Bento project and installed `qbento --version`;
+  verified Linux app is `0.1.1` (JSON v1), distinct from plugin `0.0.0`.
+  For saved work, inspect `status` and a successful `get`. Before interpreting
+  `NO_BASELINE` as fresh, check `.qbento/project.json`, `state.previous.json` and
+  recovery/approval journals. The unresolved **N01** backup-only state can be
+  destroyed by bootstrap: preserve it and **do not** run first `edit`/render.
+  A genuinely new project needs an authorized first render for `get`/`patch`;
+  an uninitialized source-only QMD edit need not render. See the recovery reference.
+- **Visual-only:** `get` → `patch` → `get`, or verified Studio project save.
+  Do not render or synchronize QMD merely to retain geometry or styling.
+- **Authored sync:** use exact `pending[].id` values from `get` (not element IDs),
+  preview `qbento sync ... --select selection.json`, apply the **unchanged** plan
+  only when every patch is authorized, and verify receipt/QMD/pending exclusions.
+- **Apply versus render:** Apply may leave `pendingRetained`/`renderNeeded`, with
+  or without `sync-approved.json`. `RECOVERY_OR_BUSY` or `SOURCE_CONFLICT` on a
+  premature new preview requires checking receipt, QMD and independent changes;
+  it is not proof of failed Apply or harmless divergence. Render only when
+  authorized. **Both** reconciliation preview and `reconcile --apply` execute QMD.
+- **Computation:** run producers only when permitted; never replace computed
+  output with an invented literal or edit source/optional annotations when QMD
+  bytes must remain unchanged.
 
-1. Inspect IDs, `provenance`, `ownership`, pending changes and revision through a **successful** `qbento get`. A saved `patch` or Studio **Guardar proyecto** changes Bento state/pending only; neither writes QMD nor updates HTML.
-2. For approved authored changes, use `pending[].id` from `get` to create a versioned `selection.json`, and preview with `qbento sync deck.qmd --select selection.json > plan.json`. On `0.1.0`, this selection interface does not exist. Read [agent-api.md](references/agent-api.md) for its exact envelope, deletion consent and atomic component grouping.
-3. Review the **entire** generated plan: selected/excluded change IDs, identity and optional annotation patches, source spans, deletions and conflicts. Apply the unchanged file with `qbento sync deck.qmd --apply plan.json` **only within the authorized source scope**. Studio selection changes invalidate its previous preview. A data/design-only task does not authorize source sync or optional `.qbento-design` annotation writes; preserve QMD bytes when source edits are prohibited. Never forge plan hashes or deletions, silently include excluded work, or request redundant confirmation for an already authorized reviewed change.
-4. After Apply, interpret `appliedChangeIds`, `pendingRetained` and `renderNeeded`. **QMD updated; render pending** can be a correct stopping state **with or without** `.qbento/sync-approved.json`. `APPROVAL_PENDING`, `SYNC_APPROVAL_PENDING`, `RECOVERY_OR_BUSY` naming the marker, or even `SOURCE_CONFLICT` on a new preview without a marker can reflect the old executed baseline. **Verify the successful receipt, resulting QMD and intervening edits** before deciding; never assume all `SOURCE_CONFLICT` errors are harmless, replay Apply, delete markers or discard pending work. Read [sync-and-recovery.md](references/sync-and-recovery.md).
-5. Execute `qbento render deck.qmd` only if needed **and authorized**; it recomputes the QMD independently and verifies applied changes while retaining excluded pending edits. Both reconciliation preview **and valid `reconcile --apply` execute QMD**; new-project `edit` also renders. No source write does not imply no code execution. Do not invent `qbento` passthrough flags to suppress execution.
-6. Verify the requested layer separately: source bytes and producer values, saved design and `docId`, selected/excluded pending work, receipt/approval, and regenerated HTML. A valid JSON envelope is not proof of visual or interactive quality.
+## Completion and Composition
 
-## Diagnose and Recover Without Resetting State
+Verify the **layer requested**: checked saved geometry/revision/pending state,
+reviewed QMD diff/receipt, or actually regenerated HTML/computed values.
+Distinguish **saved**, **source synchronized**, and **rendered** in the result.
+Do not claim visual acceptance from structural `qbento validate` alone.
 
-On `STALE_REVISION` reread and reconsider intervening work, not just the revision number. On foreign/missing binding, wrong HTML generation, `NO_BASELINE` with recovery artifacts, missing design, unsupported codecs, computed conflicts or interrupted journals, preserve QMD, `.qbento/`, HTML and backups. Use only supported and authorized recovery actions after inspection. Do not mistake a normal post-Apply approval for an interrupted transaction or automatically bootstrap N01 backup-only projects. See [sync-and-recovery.md](references/sync-and-recovery.md) for precise diagnostic branches, layout/overflow repairs, reconciliation choices and delivery modes.
-
-## Optional Composition
-
-Use available `quarto-authoring-core` and `quarto-report-design` for ordinary QMD/narrative guidance, `quarto-computation-performance` for execution strategy, `quarto-format-configuration` for conventional formats, `quarto-render-troubleshooting` for Quarto/runtime failures, and `r-analytic-coding-principles` for R source when relevant. None is a mandatory plugin dependency. Bento-specific state, pending and execution permissions remain in force across handoffs. Ordinary Reveal.js/PPTX/Beamer and Bento-like visual styles do not trigger this workflow; `format: bento` is not the installed integration format.
+Other Quarto/R skills are optional for their own task-specific advice, not required
+for a simple Bento edit. Keep Bento identity, source scope and no-execution
+constraints active when composing; installation is not proof another skill was read.

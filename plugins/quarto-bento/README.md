@@ -19,7 +19,7 @@ With the skill available to the agent, a request can be as simple as:
 
 > Use Quarto-Bento to update this presentation while preserving its design and pending edits.
 
-Codex can explicitly invoke `$quarto-bento-workflow`; optional `agents/openai.yaml` describes that interface. Substantive instructions are shared with other agents, and do not require a particular MCP server or terminal manager. Automatic selection must be tested, not assumed.
+Codex can explicitly invoke `$quarto-bento-workflow`; optional `agents/openai.yaml` describes that interface. Substantive instructions are shared with other agents, and do not require a particular MCP server or terminal manager. Automatic selection must be tested, not assumed. **Retained design changes are complete only when a fresh `qbento get` confirms the saved fields; editing generated `.bento.html` is not persistent design work.** Selected source sync must separately authorize optional `.qbento-design` annotations, even when the semantic pending ID is approved.
 
 To test the unpublished plugin in Codex, use a **separate local development marketplace** pointing at this plugin's directory, following the [repository setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/agent-setup.md). Adding the public marketplace alone will not install this draft. Claude Code has a matching manifest and can load a local directory via `claude --plugin-dir ./plugins/quarto-bento` from the monorepo root; manifest validity does not imply a Claude behavior test.
 

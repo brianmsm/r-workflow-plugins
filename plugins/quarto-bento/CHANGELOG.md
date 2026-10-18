@@ -14,6 +14,7 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 ### Changed
 
 - Clarified that data/design-only tasks do not authorize annotation-only QMD synchronization; preserve source bytes when the user prohibits source edits, even if a valid sync plan offers changes.
+- Tightened discovery with concrete positive/negative triggers and clear task-boundary exclusions; put MUST-level persistence verification, optional-annotation scope gating and honest completion checks at the start of the workflow, with deeper details in existing references. No executable hooks were added.
 - Corrected R2-C001/R5-F01: both reconciliation preview and apply re-execute QMD and need execution authorization; source hashes and execution counters are separate evidence.
 - Replaced contributor links that escaped an isolated plugin package with immutable repository-document URLs, including the same issue in its roadmap.
 - Added reconciliation authorization and uninitialized-QMD regression scenarios.
@@ -21,6 +22,7 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 ### Validation
 
 - Recorded initial product/API checks, rendered reference examples and native Codex trials, including optional composition with Quarto performance guidance and explicit limits on visual/Studio coverage.
+- Recorded R3's two non-clean agent-validation waves, subsequent H1/H2/H3 hook rejection (`REVISE_AND_RETEST`), and added regression rubrics for optional source annotations, false retained-design success and negative skill activation. Revised skill bytes require fresh independent agent tests before any release verdict changes.
 - Recorded the R5 reconciliation-execution reproduction and ten fresh Codex trials against the corrected candidate; one wrong-version skill lookup is retained as a validation limitation, not counted as a successful candidate activation.
 
 ### Compatibility Updates (Quarto-Bento CLI 0.1.1)

@@ -24,7 +24,7 @@ The implementation, eight focused product API tests, three rendered reference ex
 - Revalidate reference contracts as the app changes; different app, source docs and plugin versions must remain distinguishable.
 - Consider standalone visual-design or advanced recovery skills only after evidence shows a reference is insufficient. Do not scaffold future skills or hooks speculatively.
 
-The [repository release process](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/release-process.md) handles later version commits, tags and publication. Published companion plugins are not modified just to expose this draft.
+The [repository release process](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/release-process.md) handles later version commits, tags and publication. Published companion plugins are not modified just to expose this draft. The independent R3 agent-release adjudication on candidate `2cb1e5c` was **BLOCKED**: both waves had material/non-clean cases. Subsequent experimental Codex hook reviews ended **REVISE_AND_RETEST**; hooks were archived on a separate local research branch rather than added as a dependency. Updated skill guidance must itself pass two **new** independent clean post-fix agent waves on a frozen new commit. Neither hooks trials nor static validation replace that gate.
 
 ## Adversarial Remediation Follow-up (2026-10-17)
 

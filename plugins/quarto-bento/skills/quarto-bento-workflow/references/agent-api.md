@@ -109,7 +109,9 @@ qbento sync /path/to/deck.qmd --select selection.json > plan.json
 qbento sync /path/to/deck.qmd --apply plan.json
 ```
 
-Check `selectedChangeIds`, `excludedChangeIds`, proposed source fragments, **auxiliary identity patches**, optional design annotations, deletion spans, diagnostics and the complete resulting source. Selected changes can require supporting identity/annotation patches *outside* their immediate text span. These remain actual source changes and need appropriate authorization. Apply **the unchanged generated plan**; never edit its IDs, patches, hashes or deletion approvals to manufacture a selection. Excluded pending edits are preserved, not silently discarded or necessarily unblocked for the next strict render. Plain `qbento sync deck.qmd` still previews all changes.
+**Required source-scope gate before Apply:** check `selectedChangeIds`, `excludedChangeIds`, proposed source fragments, **auxiliary identity patches**, `annotations.patches` (including `.qbento-design`), deletion spans, diagnostics and the **complete resulting QMD**. Selecting one `pending[].id` authorizes only that requested semantic change, not every optional patch emitted by the planner. Technical identity patches may be needed to anchor selected changes and preserve excluded work; distinguish them from independent optional visual annotations rather than rejecting all supporting source edits.
+
+If an optional heading class/comment or any other patch exceeds the user's permitted source scope, **STOP before Apply**. Explain exactly which additional source edit the valid plan proposes and obtain authorization, or report the requested source sync as deferred. The installed CLI has no documented per-plan `--no-annotations` suppression flag. If the project **already** sets top-level `qbento-annotations: none`, verify the resulting preview; changing that frontmatter yourself requires separate permission and a new reviewed plan. Do **not** hand-edit a signed plan or source hashes, silently apply extra annotations, or declare a blocked text sync completed. Once the *entire* plan fits an already authorized scope, apply it without redundant confirmation. Excluded pending edits remain recoverable. Ordinary `qbento sync deck.qmd` previews all changes.
 
 - A Studio **Revisar cambios** selection starts with all changes selected; deselection invalidates the preceding preview. Review a fresh plan before **Aplicar**. Confirm only selected deletions in separate controls.
 - Studio-created card/KPI semantic members are **atomic**: select the complete creation group or exclude all of it. An incomplete group refuses; do not try to sync only its native geometry.
@@ -122,7 +124,7 @@ A successful source Apply reports `appliedChangeIds`, `pendingRetained: true`, `
 
 ## Interpreting Responses and Stopping Safely
 
-`get`/`patch` success exits 0 with JSON on stdout. A patch returns the snapshot envelope plus `sourceUnchanged: true`, `renderNeeded: true`. Verify the requested properties in the result or a subsequent `get`; preserve pending changes outside the task.
+`get`/`patch` success exits 0 with JSON on stdout. A patch returns the snapshot envelope plus `sourceUnchanged: true`, `renderNeeded: true`. **For retained visual-state tasks, MUST run a fresh successful `get` after `patch`** and independently check the requested field values, current `revision`, stable `docId`, unaffected collaborator overrides and pending entries. If the checked patch fails or those postconditions do not hold, do not rewrite generated HTML as a fallback or claim a saved edit completed. This required read is not a render or a new confirmation step.
 
 Failures exit 1 with JSON on stderr (`error`, `message`, optional `details`). The source-checkout task wrapper can add runner text; do not confuse that with application JSON. Some commands expose a generic `QBENTO_ERROR` with the specific condition in `message`, so inspect both.
 
