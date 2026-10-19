@@ -31,6 +31,20 @@ If installation is requested, consult the pinned npm guide. On the verified host
 
 **Neither reconciliation phase is a non-executing substitute for `status`.** A user prohibition on execution includes initial `edit`, `render`, `reconcile` preview **and `reconcile --apply`**, even with an existing resolution file. Source preservation and execution permission are separate: `sourceUnchanged: true` does not mean that no calculations or producer side effects occurred. Malformed/stale requests may be rejected before execution; do not depend on such a rejection to satisfy a no-execution constraint. Do not invent passthroughs such as `qbento render --no-execute`, `--cache-refresh`, or `--force`; check actual CLI arguments and engine behavior first.
 
+## Browser Render Handoff in Restricted Agent Environments
+
+A restricted Codex/Linux `workspace-write` sandbox can prevent Chromium from starting even when outbound networking is enabled: local browser IPC may fail with `Operation not permitted` before `DevToolsActivePort` appears. **A `qbento render` executes Quarto/R before Chromium capture.** If this failure mode is already known for the current runtime and the task needs browser-dependent publication, **do not invoke render as a diagnostic trial**; that can execute the producer, leave the saved/published result stale, and tempt an unsafe second execution. Checking `qbento get`, project binding, QMD source and pending work does **not** execute code.
+
+For inspected, trusted QMD, distinguish **permission to execute the source** from **permission to execute it outside the agent sandbox**. A capable host may grant a single native command escalation (`sandbox_permissions: "require_escalated"` with a justification in Codex's shell **tool call**, not a CLI flag). `--approve-for-me` changes who reviews requests; it does **not** elevate a regular `qbento render` automatically. The agent saying "I will ask" is not approval evidence. Never add a reusable `prefix_rule`, globally weaken the sandbox, disable Chromium's security, or grant broad network access to fix a local IPC restriction. A denial is binding.
+
+When native elevation cannot be demonstrated, a **separately authorized external operator** is the supported fallback; this is a handoff, not an undocumented `qbento` API feature:
+
+1. **Agent preflight (non-executing):** inspect the QMD and its computation/Quarto hooks, input files, successful `get`, `docId`, current revision, pending changes, source/input digests and execution counter when present. State exactly which source and command need approval. Leave the project intact; do not try to render/reconcile inside the known-broken sandbox.
+2. **Trusted operator:** independently inspect the code and approve executing the **whole QMD**, not just Chromium. Recheck source/input hashes, binding, pending/approval state and previous execution counter immediately before invoking the exact `qbento render <deck.qmd>` **once** in an appropriately authorized environment where Chromium works. Do not use a broad command allowlist or automatically repeat a failed render. For untrusted QMD or unattended production, use a separately isolated render worker rather than unconstrained host execution.
+3. **Independent verification:** after successful external execution, use non-executing `qbento get` and inspect the actual output. Verify the original `docId`, revision/retained design, still-pending foreign work, authorized QMD/input bytes, computed values in **both saved state and delivered HTML**, and the expected producer execution count. Distinguish an operator-rendered artifact from an agent-rendered one. If the operator denies/aborts, report render **pending**, not complete.
+
+A saved/source-only or no-execution task **does not require** this fallback. If a failed render already executed QMD, preserve it and report the partial computation rather than initiating a retry. This workflow is portable at the handoff boundary; specific Codex permission fields are advisory examples only and are not present in every agent runtime.
+
 ## Preview, Review, Apply
 
 ```sh

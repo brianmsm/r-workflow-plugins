@@ -65,6 +65,13 @@ explicitly owns a visual field. Generated `*.bento.html` is **output**, never th
   premature new preview requires checking receipt, QMD and independent changes;
   it is not proof of failed Apply or harmless divergence. Render only when
   authorized. **Both** reconciliation preview and `reconcile --apply` execute QMD.
+- **Chromium blocked by the agent sandbox:** NEVER trial-run an executing render
+  in a known-incompatible sandbox: R/Quarto can run before Chromium fails. For
+  trusted source, obtain a **separate, explicit** approval to run the exact render
+  outside that sandbox. If native one-command elevation is unavailable or denied,
+  STOP **before** executing QMD and hand off to an approved external renderer;
+  then verify real saved state and HTML. Do not assume Auto-review automatically
+  escalates Bash or rerun after a partial failure. See [sync-and-recovery.md](references/sync-and-recovery.md).
 - **Computation:** run producers only when permitted; never replace computed
   output with an invented literal or edit source/optional annotations when QMD
   bytes must remain unchanged.

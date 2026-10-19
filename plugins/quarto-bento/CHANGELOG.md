@@ -15,6 +15,7 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 - Clarified that data/design-only tasks do not authorize annotation-only QMD synchronization; preserve source bytes when the user prohibits source edits, even if a valid sync plan offers changes.
 - Tightened discovery with concrete positive/negative triggers and clear task-boundary exclusions; put MUST-level persistence verification, optional-annotation scope gating and honest completion checks at the start of the workflow, with deeper details in existing references. No executable hooks were added.
+- Documented a pre-execution browser-sandbox safety gate and an explicitly authorized external-render handoff: stop before a known-doomed QMD execution, verify source/identity/counter, execute the trusted project once in a compatible environment, and independently verify delivered HTML and retained state. No bundled renderer or permission bypass.
 - Corrected R2-C001/R5-F01: both reconciliation preview and apply re-execute QMD and need execution authorization; source hashes and execution counters are separate evidence.
 - Replaced contributor links that escaped an isolated plugin package with immutable repository-document URLs, including the same issue in its roadmap.
 - Added reconciliation authorization and uninitialized-QMD regression scenarios.
