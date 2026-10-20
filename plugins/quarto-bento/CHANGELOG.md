@@ -13,6 +13,8 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ### Changed
 
+- Scoped skill activation to genuine Quarto-Bento/qbento or `.qbento/` tasks; ordinary Quarto slide-format editing and independent HTML copies are excluded.
+- Added a separate saved-native-content publication gate: excluded authored changes can remain visible in HTML despite correct selected QMD sync; refuse unsafe or unclear publication, and review the full deck before a one-shot operator render. No selective-publish API was invented.
 - Clarified that data/design-only tasks do not authorize annotation-only QMD synchronization; preserve source bytes when the user prohibits source edits, even if a valid sync plan offers changes.
 - Tightened discovery with concrete positive/negative triggers and clear task-boundary exclusions; put MUST-level persistence verification, optional-annotation scope gating and honest completion checks at the start of the workflow, with deeper details in existing references. No executable hooks were added.
 - Documented a pre-execution browser-sandbox safety gate and an explicitly authorized external-render handoff: stop before a known-doomed QMD execution, verify source/identity/counter, execute the trusted project once in a compatible environment, and independently verify delivered HTML and retained state. No bundled renderer or permission bypass.
@@ -22,6 +24,7 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ### Validation
 
+- Evaluated focused native-agent publication scope with actual skill reads (8 actors; 4 private-output denials before render and 4 authorized one-shot host HTML publications). A one-line trigger-description A/B first found negative Bento reads 2/4 → 0/4 with an **unquoted, invalid-YAML** draft; retesting the **valid YAML-quoted** version found 1/4 false reads and 2/2 correct positive persisted geometry. This small, coordinator-run evidence is **not** two independent clean release waves or a zero-false-trigger guarantee.
 - Recorded initial product/API checks, rendered reference examples and native Codex trials, including optional composition with Quarto performance guidance and explicit limits on visual/Studio coverage.
 - Recorded R3's two non-clean agent-validation waves, subsequent H1/H2/H3 hook rejection (`REVISE_AND_RETEST`), and added regression rubrics for optional source annotations, false retained-design success and negative skill activation. Revised skill bytes require fresh independent agent tests before any release verdict changes.
 - Recorded the R5 reconciliation-execution reproduction and ten fresh Codex trials against the corrected candidate; one wrong-version skill lookup is retained as a validation limitation, not counted as a successful candidate activation.

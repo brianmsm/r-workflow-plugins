@@ -1,6 +1,6 @@
 ---
 name: quarto-bento-workflow
-description: Edits and verifies Quarto-Bento (qbento) presentations and retained .qbento/ state. Use for Bento Studio saved design, checked geometry edits, selective QMD sync, render, capture, or recovery; not ordinary Reveal.js or standalone HTML-copy editing.
+description: "Use ONLY for work with the Quarto-Bento application (qbento), its Bento QMD authoring, or retained .qbento/ project state: checked geometry, pending source sync, native render, capture and recovery. Exclude ordinary Quarto slide-format or YAML changes and independent HTML-copy edits."
 ---
 
 # Quarto-Bento Workflow
@@ -40,7 +40,15 @@ explicitly owns a visual field. Generated `*.bento.html` is **output**, never th
    `qbento-annotations` setting also requires source-edit permission. Necessary
    technical identity changes are distinct from optional annotations; do not
    demand redundant consent for supporting edits already within scope.
-3. **MUST verify the requested outcome before claiming completion.** A tool success,
+3. **MUST gate publication content separately from QMD sync.** `sync --select`
+   writes only approved source changes; excluded authored edits can remain visible
+   in the saved Bento deck and **appear in rendered HTML**. Before authorizing a
+   render, check the full saved deck and pending edits against the user's **HTML
+   publication** scope. If a pending draft is forbidden in output, STOP before
+   render without discarding it; if visibility is unclear, clarify first.
+   Do not treat `slide.hide` or an edited HTML copy as a privacy filter. See
+   [sync-and-recovery.md](references/sync-and-recovery.md).
+4. **MUST verify the requested outcome before claiming completion.** A tool success,
    generated-HTML modification or updated computation intermediate is insufficient.
    If a saved change or authorized render fails, preserve artifacts and report
    what was actually saved, synchronized or delivered versus still incomplete.
