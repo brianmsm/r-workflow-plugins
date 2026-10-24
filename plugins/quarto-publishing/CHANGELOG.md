@@ -4,6 +4,10 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Prefer concise nominal slide titles and add on-demand guidance for teaching explanations, worked examples, diagrams, spacing, and student-facing evidence, without duplicating format/rendering instructions.
+
 ## [0.2.2] - 2026-09-10
 
 ### Changed
