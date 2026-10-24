@@ -1,84 +1,44 @@
-# Classroom R Scripts: Research-Code Principles in a Teaching Setting
+# Student-Facing R Scripts
 
-Read this reference when the **primary deliverable is R code students will execute during a class**. It specializes [r-analytic-coding-principles](../SKILL.md): the core skill prioritizes researcher editability; here the additional priority is **learner comprehension at the point of execution**. This is not a mandate to simplify research pipelines or production code.
+Use this reference **only when writing or revising R code that students will execute during a lesson**. It specializes [r-analytic-coding-principles](../SKILL.md). The core skill already covers explicit analytical calls, repetition, editability, helper boundaries, and result preservation; do not restate or replace it here.
 
-## Decide what belongs in the student's path
+## Start from the classroom task
 
-Before editing, determine:
+Identify the specific **models, comparisons, or decisions learners must execute and interpret**. Distinguish those from teacher-side simulations, validation, advanced diagnostics, and answer keys.
 
-- What should learners **estimate, compare and interpret**, versus what the instructor has already simulated or checked?
-- Which R concepts are prerequisites and which are themselves the learning objective?
-- What can be prepared as data, teacher notes, backup script or a verified figure rather than computed live?
-- What are the student's actual files, working directory, packages, R experience and available time?
+**Teaching priority:** minimize *incidental concepts*, not line count. Keep analytical choices visible and explanations near the corresponding results.
 
-A script should match the lesson, **not demonstrate every capability of the package**.
+## Shape the script around what learners do
 
-## Keep the primary script local and sequential
+- Use a short sequence: **load data → specify → fit → inspect → interpret**. Name each section after the learning action (e.g., `# Comparación ML y MLR ----`).
+- Keep the model or formula and its native fit call (`cfa()`, `lm()`, etc.) in view. Adjacent repeated calls are useful when the lesson is **what changes between models**, even if the code could be looped.
+- Prefer a familiar summary or high-level comparison function when it already displays the requested result. Do not introduce `subset()`, joins, extraction plumbing, or several output objects **unless manipulation itself is the lesson**.
+- Use brief comments for the next choice or interpretation; put extensive reasoning, theory, and full solutions in the teaching notes or handout.
+- Prefer **one canonical script** per activity; label longer or exploratory variants as optional, not part of the required path.
 
-A typical classroom analytical unit is:
-
-1. Load a named dataset from a clear relative path.
-2. Write the model, formula or analytical choice visibly.
-3. Fit or compute it explicitly.
-4. Show its immediately relevant results with a familiar function.
-5. Pause to interpret before starting the next unit.
-
-Use short named sections (RStudio/Positron sections such as `# Estimación ML ----`), readable objects and minimal comments. Explain **why this step** in one or two short comments, not in a page of prose inside the R file.
-
-Keep the canonical student script runnable from **its own lesson folder** with local `data/` files when practical. A small verified copy of a previous lesson's dataset can be preferable to a fragile `../other-lesson/...` dependency; preserve and document the source. This is a portability preference, not an instruction to duplicate all large datasets.
-
-## Repeat analytical decisions deliberately
-
-Repeat visible native calls when they help comparison:
+For example, when the estimator is the learning choice, keep both calls together rather than hiding the difference:
 
 ```r
-fit_ml <- lavaan::cfa(modelo, data = datos, estimator = "ML")
+fit_ml  <- lavaan::cfa(modelo, data = datos, estimator = "ML")
 fit_mlr <- lavaan::cfa(modelo, data = datos, estimator = "MLR")
-
-summary(fit_ml, standardized = TRUE)
-summary(fit_mlr, standardized = TRUE)
 ```
 
-This makes the estimator change inspectable. Do **not** automatically wrap independent cases in `lapply()`, generate formulas dynamically or hide key choices behind a helper simply to remove a handful of repeated lines.
+Do not turn every script into a tutorial about loops, defensive programming, or a particular output package. If those are the **learning objectives**, the corresponding operations belong in the script.
 
-Use a loop/helper when students are learning that abstraction, or when repetition genuinely prevents understanding or introduces errors. Do not impose a minimum or maximum line count: **brevity means few incidental concepts**, not compressed syntax or code golf.
+## Keep classroom inputs self-contained
 
-## Show results without teaching incidental data manipulation
+- Make the script runnable from the **lesson folder** with documented local `data/` files where practical. A verified small copy of a prior lesson's dataset can be simpler than a dependency on an undistributed parent folder.
+- State packages in advance. Do not install packages or access the network during class unless installation is the exercise.
+- An optional script that uses objects from the main script must state **run the main script first** and have a name describing its actual content.
 
-- Prefer `summary()` or an existing high-level model comparison/estimate function when it already shows what the lesson requires. Do not calculate the same table twice just because a different API exists.
-- Use `psymetrics`, tidyverse, base R or another justified interface when it simplifies **that** class; do not make one package mandatory for every course.
-- Avoid `subset()`, `merge()`, manually aligned outputs, post-hoc joins, conditional formatting and large extraction pipelines when the course objective is to **interpret a model**, not manipulate tables.
-- Display enough information to defend the interpretation, including the **metric**, uncertainty, denominator and model identity when consequential.
-- Keep model formulas and visible `cfa()`/`lm()`/other native estimation calls at the student's point of use. Hiding these decisions behind wrappers defeats the teaching objective.
+## Keep teacher evidence separate
 
-## Separate teacher evidence from student work
+Long Monte Carlo runs, seed sweeps, validation logs, checksums, complex diagnostics, and answer keys may stay in teacher artifacts. **Do not delete substantive research computations** to shorten the student-facing script; separate the audience-facing path while preserving the evidence.
 
-A course may need long Monte Carlo simulations, numerical diagnostics, seeds, checksums, plotting generators, advanced estimation cases or answer keys. Keep them in **teacher/auxiliary scripts** or prepared artifacts, not the primary lesson file merely because they were necessary to build the slides.
+Projected "run this" snippets must refer to **objects and files present in the canonical student path**. Otherwise label the display as a **teacher demonstration**, not an executable student task.
 
-A teacher-only slide may show a verified computation even if the student cannot execute it; label it as a demonstration. Do not tell learners to run objects or helpers that do not exist in their script or distributed files.
+## Verify the student handoff, not only the development folder
 
-When a small optional extension reuses objects from the main script, state that it must run **after** the main script. Name the extension by **its actual content**, not by an adjacent topic.
+Run the canonical script in a **clean, lesson-shaped directory containing only the files students will receive**, using the documented installed packages. Check names, relative paths, representative numerical output, and consistency with the slides/handout. Run optional extensions after the main script when they depend on it.
 
-## Classroom package and execution rules
-
-- Prefer one documented working directory, local data and explicit package requirements; do not install packages or fetch data during a timed lesson unless installation is the exercise.
-- Avoid defensive `tryCatch()`, `file.exists()` branches, elaborate configuration, environmental probing or hashes in the student script when the instructor can verify the inputs beforehand.
-- Expose genuine statistical warnings that affect interpretation; do not suppress problems merely to keep output clean.
-- Keep substantive analytical assumptions explicit (e.g., estimator, ordinal declaration, orthogonality), but spare students a second full lesson on software internals unless requested.
-- Match every object and function shown on slides, in handouts and in the student script. **A correct render with nonexistent code objects is not a valid classroom handoff.**
-
-## Minimal handoff verification
-
-Before distribution, copy **only the student-facing script and required data** to a clean temporary lesson-shaped directory and run from that directory with the documented packages already installed. This catches hidden dependencies on parent folders, unpublished outputs and teacher-only helpers.
-
-Run the optional extension separately **after** the main script if that dependency is intended. Compare key student outputs with prepared evidence and report the extent of verification (execution, numerical consistency, not automatic scientific validity).
-
-## Anti-patterns
-
-- Do not refactor repeated `cfa()` calls into a generic fitting factory when the visible difference between models is the point.
-- Do not force learners to build manual tables or extract every available diagnostic.
-- Do not mix a simulation engine, instructor QA and student exercises into one oversized file.
-- Do not distribute only a script while its required CSV lives in another undistributed session folder.
-- Do not impose an "advanced" software architecture on an introductory or intermediate classroom workflow simply because it looks reusable.
-
-If the user explicitly wants a package/tutorial, course on loops, data-wrangling lesson or engineering workflow, **those topics themselves become learning targets** and the appropriate abstractions belong in the student script.
+Avoid adding defensive wrappers, file-location detection, or QA checks to the student's code merely because the agent needed them during verification. Preserve genuine warnings that affect interpretation.

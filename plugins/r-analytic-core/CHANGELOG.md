@@ -6,7 +6,7 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ### Added
 
-- Added optional guidance for classroom R scripts: locally editable repeated model calls, short student-facing steps, self-contained session data, and teacher-only analysis separation.
+- Added scoped guidance for student-facing R scripts: simple lesson steps, local inputs, teacher-only analysis separation, and student handoff verification, without repeating research-code principles.
 
 ### Documentation
 

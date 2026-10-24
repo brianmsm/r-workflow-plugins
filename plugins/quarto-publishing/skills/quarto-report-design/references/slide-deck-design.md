@@ -23,7 +23,7 @@ A projected deck should usually be lighter and more visual than a standalone dec
 - Academic or research deck: prioritize the research question, argument, evidence chain, methods needed for credibility, limitations, and contribution.
 - Executive or stakeholder deck: prioritize the decision, recommendation, risk, implication, confidence level, and next action.
 - Technical or reproducibility deck: prioritize assumptions, diagnostics, model behavior, implementation detail, reproducibility, and evidence that supports technical review.
-- Teaching or training deck: prioritize concept progression, examples, worked steps, pauses, checks for understanding, and progressive reveal of complexity. For teaching-specific explanations, visual choice, worked examples and learner activities, read [pedagogical-communication.md](pedagogical-communication.md) on demand.
+- Teaching or training deck: organize for concept progression and learner practice. For **how to explain or test understanding** (not general slide layout), consult [pedagogical-communication.md](pedagogical-communication.md) on demand.
 - Progress or update deck: prioritize what changed, what was learned, what is blocked, what decisions are needed, and what comes next.
 
 Mixed decks should keep the main path readable and move secondary detail into backup slides, appendices, handouts, or a companion report.
