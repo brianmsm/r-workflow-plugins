@@ -12,9 +12,9 @@ Identify the specific **models, comparisons, or decisions learners must execute 
 
 - Use a short sequence: **load data → specify → fit → inspect → interpret**. Name each section after the learning action (e.g., `# Comparación ML y MLR ----`).
 - Keep the model or formula and its native fit call (`cfa()`, `lm()`, etc.) in view. Adjacent repeated calls are useful when the lesson is **what changes between models**, even if the code could be looped.
-- Prefer a familiar summary or high-level comparison function when it already displays the requested result. Do not introduce `subset()`, joins, extraction plumbing, or several output objects **unless manipulation itself is the lesson**.
+- Prefer a familiar summary or high-level comparison function when it already displays the requested result. Keep immediate inspection beside the fit; if extracting specific results (`fitMeasures()`, `parameterEstimates()`, etc.) is a learning objective, teach it in a later, clearly labeled section instead of repeating equivalent output after each `summary()`. Do not introduce `subset()`, joins, extraction plumbing, or several output objects **unless manipulation itself is the lesson**.
 - Use brief comments for the next choice or interpretation; put extensive reasoning, theory, and full solutions in the teaching notes or handout.
-- Prefer **one canonical script** per activity; label longer or exploratory variants as optional, not part of the required path.
+- Prefer **one canonical script** per unit students receive: this can be a full session with multiple exercises separated by editor sections, or a standalone activity. Do not split a session into multiple files merely because it contains several exercises; label longer or exploratory variants as optional, not part of the required path.
 
 For example, when the estimator is the learning choice, keep both calls together rather than hiding the difference:
 
