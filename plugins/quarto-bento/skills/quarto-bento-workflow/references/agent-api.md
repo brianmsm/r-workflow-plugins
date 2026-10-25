@@ -10,7 +10,10 @@
 qbento get deck.qmd > snapshot.json
 ```
 
-Check the exit code before treating stdout as a snapshot. A successful snapshot contains `version`, `contractRevision`, `docId`, `revision`, `deck`, `provenance`, `ownership` and `pending`. It reflects **saved** state, not a fresh calculation or uncaptured browser/HTML edits. Render a genuinely new, trusted project once **only with execution authorization** before calling `get`; inspect `.qbento/` for recoverable state before interpreting `NO_BASELINE` as fresh. Another QMD beside an already bound `.qbento/` refuses `PROJECT_SOURCE_MISMATCH` (also on `status`, `diff` and Studio in 0.1.1). Saved state without matching `project.json` reports `PROJECT_BINDING_MISSING`: restore matching metadata, not another `docId`. One QMD per directory remains the supported model.
+Treat stdout as a snapshot **only after a successful exit**. It includes `version`, `contractRevision`, `docId`, `revision`, `deck`, `provenance`, `ownership` and `pending`; it is saved state, not fresh computation or uncaptured HTML edits.
+
+- **New source:** an authorized first render is needed before `get`; `NO_BASELINE` on an existing project requires checking recoverable `.qbento/` state before bootstrap (see [recovery](sync-and-recovery.md#bound-project-identity-before-recovery)).
+- **Bound project:** one QMD per directory. `PROJECT_SOURCE_MISMATCH` means another QMD is bound; `PROJECT_BINDING_MISSING` means metadata is missing. Preserve the native `docId` and restore only verified matching metadata.
 
 Select the requested slide/element by inspecting the snapshot. Existing element IDs are **slide-scoped**; use the returned ID verbatim, including slashes. `provenance` and `ownership` use JSON-encoded `[slideId, elementId]` keys (`null` for the slide level). These distinguish authored, computed, Bento-only and detached content, and field ownership. Do not infer editable authorship just from `type: "text"`.
 
@@ -105,22 +108,27 @@ Write `selection.json` as a **regular UTF-8 JSON file**, at most 1 MiB, using on
 
 ```sh
 qbento sync /path/to/deck.qmd --select selection.json > plan.json
-# Confirm success; inspect the FULL plan before proceeding.
+```
+
+**Before Apply, review the *complete* plan:**
+
+- **Selection and identity:** `selectedChangeIds`, `excludedChangeIds`, source spans, `docId`/revision and necessary auxiliary identity patches.
+- **Scope:** `annotations.patches` (including `.qbento-design`), deletion spans/confirmation, diagnostics and the complete resulting QMD. Selecting one `pending[].id` does **not** authorize independent optional annotations. Supporting technical identities may already be within scope.
+- **Decision:** if any patch is outside the authorized source edits, **STOP before Apply**, describe the change and seek authorization or leave sync deferred. Never hand-edit plan hashes, change `qbento-annotations` frontmatter without source permission, or invent a `--no-annotations` suppression flag. If `qbento-annotations: none` already exists, inspect the resulting plan. Apply a fully in-scope plan without redundant confirmation; excluded pending work stays recoverable.
+
+Only after a successful preview and complete in-scope review:
+
+```sh
 qbento sync /path/to/deck.qmd --apply plan.json
 ```
 
-**Required source-scope gate before Apply:** check `selectedChangeIds`, `excludedChangeIds`, proposed source fragments, **auxiliary identity patches**, `annotations.patches` (including `.qbento-design`), deletion spans, diagnostics and the **complete resulting QMD**. Selecting one `pending[].id` authorizes only that requested semantic change, not every optional patch emitted by the planner. Technical identity patches may be needed to anchor selected changes and preserve excluded work; distinguish them from independent optional visual annotations rather than rejecting all supporting source edits.
-
-If an optional heading class/comment or any other patch exceeds the user's permitted source scope, **STOP before Apply**. Explain exactly which additional source edit the valid plan proposes and obtain authorization, or report the requested source sync as deferred. The installed CLI has no documented per-plan `--no-annotations` suppression flag. If the project **already** sets top-level `qbento-annotations: none`, verify the resulting preview; changing that frontmatter yourself requires separate permission and a new reviewed plan. Do **not** hand-edit a signed plan or source hashes, silently apply extra annotations, or declare a blocked text sync completed. Once the *entire* plan fits an already authorized scope, apply it without redundant confirmation. Excluded pending edits remain recoverable. Ordinary `qbento sync deck.qmd` previews all changes.
-
-- A Studio **Revisar cambios** selection starts with all changes selected; deselection invalidates the preceding preview. Review a fresh plan before **Aplicar**. Confirm only selected deletions in separate controls.
-- Studio-created card/KPI semantic members are **atomic**: select the complete creation group or exclude all of it. An incomplete group refuses; do not try to sync only its native geometry.
-- A selected slide/element deletion that would eliminate excluded edits on the same target/subtree refuses `PARTIAL_DELETE_SELECTION`. Review/include the dependent edits or preserve the target; do not bypass by editing the plan.
-- Version `0.1.0` lacks the public `--select` and Studio selection contract. If actually running it, preserve unrelated pending work and use only its supported workflow or ask before switching versions. JSON protocol `version: 1` does **not** imply the CLI has 0.1.1 capabilities.
+- Studio **Revisar cambios** starts with all changes selected; changed selection invalidates the preceding preview. Deletion confirmation has separate controls.
+- Native card/KPI creation members form atomic selection groups. A parent deletion consuming excluded descendant edits refuses `PARTIAL_DELETE_SELECTION`; preserve work rather than bypass it.
+- **Application CLI `0.1.0`** (not the independently versioned agent plugin) lacks the 0.1.1 `--select`/Studio selection contract. Inspect actual installed help rather than inferring features from JSON protocol v1.
 
 ### Successful Apply Is Not Render
 
-A successful source Apply reports `appliedChangeIds`, `pendingRetained: true`, `renderNeeded: true` and its transaction/backup receipt. QMD has changed but the previously executed projection and semantic pending records remain until an authorized render confirms them. An excluded change stays pending after render. An approval marker is **conditional**, not guaranteed: a new preview after successful Apply may refuse `RECOVERY_OR_BUSY` (with `sync-approved.json`) **or** `SOURCE_CONFLICT` (without one, because the last executed baseline is old). Check the receipt, current QMD and intervening edits before deciding whether an authorized render is the normal continuation; not all `SOURCE_CONFLICT` responses are harmless. See [sync-and-recovery.md](sync-and-recovery.md). A pending edit immediately after Apply is **not** proof the Apply failed.
+A successful Apply writes reviewed **QMD**, not new native HTML. Check `appliedChangeIds`, `pendingRetained`, `renderNeeded` and the transaction/backup receipt. A pending item after successful Apply is not evidence of failed source sync; neither `RECOVERY_OR_BUSY` (with an approval marker) nor `SOURCE_CONFLICT` (possibly without one) alone proves that Apply failed. **Before rendering or retrying**, follow the [post-Apply state checks](sync-and-recovery.md#successful-apply-may-leave-pending-work) and distinguish independent intervening changes from expected baseline lag.
 
 ## Interpreting Responses and Stopping Safely
 

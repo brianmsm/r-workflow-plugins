@@ -6,7 +6,7 @@
 
 ## A New Presentation
 
-Use one QMD presentation per directory. Keep source and inputs together, and render only trusted, authorized source. Before rendering an existing QMD with `NO_BASELINE`, look for saved `.qbento/` recovery material (especially `state.previous.json`) as described in the synchronization reference; a missing current state is **not** proof of an empty design. A minimal file is sufficient; neither `format: revealjs` nor a guessed `format: bento` is required for the `qbento render` workflow.
+Use one QMD per directory and keep its inputs nearby. Render only within the authorized execution/publication scope; an existing project reporting `NO_BASELINE` needs the [recovery preflight](sync-and-recovery.md#bound-project-identity-before-recovery) before initialization. A fresh QMD needs neither `format: revealjs` nor an invented `format: bento` for `qbento render`.
 
 ```qmd
 ---
@@ -114,7 +114,9 @@ The optional `.qbento/design.json` is a **user-facing registry**, not an interna
 
 Layout names begin with a lowercase letter and contain lowercase letters, digits or hyphens (max 64 characters), with up to **64 layouts** and **32 themes**. Custom layouts require **1–6** columns; `two-column` is reserved. The number of identified **direct** QMD children must match `columns`, selected with `bento-layout-name="three"`. Themes support only `background`, `color`, `accent`, `fontFamily`; `activeTheme` must be explicit when themes are defined. This 256-KiB regular JSON file does not download fonts or run computations.
 
-**Precedence:** explicitly authored QMD visual attributes control their own fields; allowed saved native edits are sparse overrides for other fields; registry theme/layout values are defaults, not a license to overwrite authored or manually saved fields. Studio **Aplicar diseño** requires choosing a layout, **explicitly assigning each intended object to a column**, and inspecting **Vista previa de posiciones** before applying; unmatched objects keep their positions. Free objects save geometry as a snapshot: after changing a named definition in **Diseños y temas**, *reapply* it to those objects. Source components referencing a named layout use its regenerated defaults. Changes to sourced geometry or coupling need reviewed source synchronization; do not infer grouping from proximity. See the [pinned registry contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md).
+**Ownership:** QMD visual attributes own explicitly sourced fields; compatible saved native edits override other fields; registry theme/layout values provide defaults. Reconcile source-owned geometry before moving coupled children; proximity does not establish grouping.
+
+**Studio:** **Aplicar diseño** requires a selected layout, explicit object-to-column assignments and **Vista previa de posiciones** before applying; unmatched objects retain position. Free-object geometry is a saved snapshot: after editing a named definition in **Diseños y temas**, reapply it. Source components using a named layout pick up regenerated defaults. See the [pinned registry contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md).
 
 ## Optional QMD Annotations
 
@@ -131,19 +133,13 @@ qbento-annotations: minimal  # none | minimal | detailed
 - `minimal` (default): a `.qbento-design` heading class for identified slides that have externally retained design.
 - `detailed`: same class plus a bounded descriptive JSON comment referring to sidecar paths/categories, **not copied coordinates**.
 
-These are optional *source mutations* proposed only during reviewed sync. Neither Save nor render creates them. They require suitable stable heading identities; they do not replace required technical `qb:*`/source IDs. A data/design-only task forbidding QMD edits must **not** apply an annotation-only proposal. Keep existing user QMD declarations authoritative. The earlier nested `format: ... annotations:` proposal is not implemented.
+Annotation options affect **optional QMD source patches** during reviewed sync; Save/render do not add them. They require stable heading identities but never replace technical `qb:*` IDs. Preserve user-authored declarations; source-edit authorization is handled in [selected sync](agent-api.md#selectively-synchronize-authored-changes-011). Nested `format: ... annotations:` is not implemented.
 
 ## Analytical Output Without Faking Provenance
 
-A plain identified Markdown table can project to a native table. **Keep every
-header and cell short enough to fit on one line in its allotted native column**;
-`qbento 0.1.1` conservatively refuses tables needing unmeasured cell wrapping with
-`UNSUPPORTED_TABLE_LAYOUT`. For instance, prefer `| Group | N | Mean |` and put
-"Mean outcome (arbitrary units)" in adjacent prose rather than as a long
-column header. An identified table wrapper must contain exactly one literal pipe
-table and no accompanying prose or other semantic blocks; place explanatory
-paragraphs outside it. Refusal means no completed render: shorten/split the
-source table, then require fresh review and authorization before trying again.
+**Literal tables:** a bare Markdown pipe table or an identified wrapper containing **exactly one contiguous literal pipe table** can project to native state. Keep prose and other semantic blocks outside that wrapper. Keep headers and cells short enough to fit on one line at their allotted native width (`qbento 0.1.1` refuses unsupported wrapping with `UNSUPPORTED_TABLE_LAYOUT`); place long units, such as "Mean outcome (arbitrary units)", in nearby prose instead of a column heading.
+
+**Computed tables are a separate supported path:** an identified, single-producer R chunk emitting a compatible pipe table (for example `knitr::kable(..., format="pipe")`) is not a *literal* table wrapper and retains its execution provenance. See the computed-output rules below. If a render refuses either table type, preserve the source and obtain review/authorization before a new execution.
 
 ```qmd
 ## Descriptives {#descriptives}
@@ -177,7 +173,8 @@ $$
 $$
 ```
 
-A computed number can use Quarto inline R such as `` `r mean(values$x)` `` **only if `values` is genuinely created by an executed source chunk**. Computed `knitr::kable(..., format="pipe")` tables retain producer provenance; `gt`/`gtsummary` tables are handled as rendered images. Literal cells are not valid substitutes for recalculated values. Reverse cell, chart-data and computed-figure edits into executable R/Python are unsupported. Native bar/line charts use bounded options, labels and precision; chart frames need at least 242px height and space for labels/legend. Unsupported rich table cells/captions/spans or unmapped producers must not be passed off as faithful conversions. Mathematical output uses the pinned KaTeX-supported subset; browser/font metrics determine actual fit. See the [pinned authoring contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md).
+- **Computed content:** use an inline expression such as `` `r mean(values$x)` `` only when `values` is produced by a real executed chunk. Supported `knitr::kable(..., format="pipe")` tables retain producer provenance; `gt`/`gtsummary` need image generation. Do not substitute literal values for computed results or reverse-edit native cells, charts or figures into executable code.
+- **Fidelity limits:** native bar/line charts have bounded labels/precision and require a frame at least 242px tall with space for labels/legend. Rich table cells/captions/spans and unbound producers may refuse. Math uses the pinned KaTeX subset; browser/font metrics determine fit. Check the [pinned authoring contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md) before unusual output.
 
 ## Computation, Integration and Output
 
@@ -185,7 +182,10 @@ R, Python and other engines require the actual document's runtime/dependencies; 
 
 Only use ordinary `quarto render` integration **after** a deliberate `qbento init deck.qmd` installation. Its custom format is `qbento-html`, with product-supplied hooks/filters. `init` refuses replacing existing project configuration; `init ... --extension-only` leaves integration choices to the user. Do not rewrite an existing `_quarto.yml` or remove hooks as a shortcut.
 
-Save the QMD, inputs, project identity, `.qbento/` state/design and other required resources for editable reproduction. The generated `.bento.html` is an **offline static presentation** (and can be edited through its supported native Save/capture cycle), not a substitute for durable project state. For PDF, use Bento's **native print/PDF representation** in a supported browser; hidden slides are omitted. Do not invent a `qbento pdf`/`export` command or claim all desktop print dialogs have been tested. For supported **Plotly**, Studio **Presentar con gráficos** opens/saves a separate offline viewer with interactive chart views; ordinary HTML/PDF show the **static SVG**, not a position-preserving interactive overlay. Generating/capturing the supported interactive Plotly views requires Chromium and a compatible local Plotly runtime (including its producer dependencies). **The delivered viewer bundles its interactive resources for offline viewing in a compatible browser**; recipients do not need a running R process, Plotly installation or local server merely to open that generated artifact. This does not certify every browser or platform. Supported `gt`/`gtsummary` tables need Chromium to generate faithful 2× PNGs and may refuse when content will not fit; adjust the producer/table layout rather than silently shrinking/removing rows. Report which output was actually generated and inspected.
+- **Editable handoff:** preserve the QMD, inputs/assets, project binding and `.qbento/` state/design. Generated `.bento.html` is a static offline presentation, not a substitute for saved state; native HTML edits require the matching Save/capture workflow.
+- **PDF/print:** use Bento's supported browser print/PDF representation; hidden slides are omitted. Do not invent `qbento pdf`/`export` or claim untested print dialogs.
+- **Plotly:** Studio **Presentar con gráficos** can save a separate offline interactive viewer; ordinary HTML/PDF display static SVG. Generating the viewer requires compatible local Plotly/producer dependencies and Chromium, but opening the saved viewer does not require R, Plotly or a local server. This is not universal browser certification.
+- **Rich tables:** supported `gt`/`gtsummary` need Chromium for faithful 2× PNGs and may refuse oversized output; adjust producer/layout instead of dropping rows or silently shrinking. Report the output actually generated and verified.
 
 ## Pinned Product Sources
 

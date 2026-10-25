@@ -17,6 +17,7 @@ _No subsequent changes recorded._
 
 ### Changed
 
+- Reduced duplicate runtime guidance across the skill and references, separated inspection/Apply/render examples, and clarified literal versus computed tables and application-versus-plugin versions. Source, publication, recovery and execution safeguards remain; the editorial changes have static validation, not a new exact-byte agent trial.
 - Scoped skill activation to genuine Quarto-Bento/qbento or `.qbento/` tasks; ordinary Quarto slide-format editing and independent HTML copies are excluded.
 - Added a separate saved-native-content publication gate: excluded authored changes can remain visible in HTML despite correct selected QMD sync; refuse unsafe or unclear publication, and review the full deck before a one-shot operator render. No selective-publish API was invented.
 - Clarified that data/design-only tasks do not authorize annotation-only QMD synchronization; preserve source bytes when the user prohibits source edits, even if a valid sync plan offers changes.
