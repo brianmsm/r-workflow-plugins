@@ -4,7 +4,7 @@
 
 This plugin is the independently installable, versioned **agent companion** for the Quarto-Bento application. A separate application repository or JSON API does not automatically require a new plugin; independence is chosen here so consumers can adopt and update Bento-specific operating guidance separately from general Quarto skills.
 
-Initial implementation: **one skill**, `quarto-bento-workflow`, plus three local task references. No router, duplicate performance/design/troubleshooting skills, runtime clone, MCP wrapper or global `AGENTS.md` rule. The monorepo's [architecture](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/architecture.md) and [release procedure](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/release-process.md) govern distribution; draft `0.0.0` was never published and the prepared `0.1.0` candidate has no public tag/catalog entry yet.
+Initial implementation: **one skill**, `quarto-bento-workflow`, plus three local task references. No router, duplicate performance/design/troubleshooting skills, runtime clone, MCP wrapper or global `AGENTS.md` rule. The monorepo's [architecture](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/architecture.md) and [release procedure](https://github.com/brianmsm/r-workflow-plugins/blob/feeaf6c71b70a1f5cac46b5f723d3ba613ac32e0/docs/release-process.md) govern distribution; draft `0.0.0` was unpublished and setting manifest `0.1.0` alone does not create a public tag/catalog entry.
 
 ## Three Editing Surfaces
 
@@ -22,7 +22,7 @@ The operational entrypoint requires preflight only where relevant: an untouched,
 
 `SKILL.md` owns selection, sequencing and authorization decisions. `agent-api.md` owns JSON operation details; `authoring-components.md` owns the implemented source subset; `sync-and-recovery.md` owns persistence, capture, execution effects and recovery. Each records the same supported product version and immutable source revision. Do not treat examples in a target roadmap as implemented API.
 
-Baseline: locally installed and npm-published app CLI **0.1.1**, JSON **v1**, pinned Bento **1.2.6** contract, product documentation at `1b7e265bda07c060215051302f252a7289f4a1f9` (0.1.1 functional changes at `78c1641`; 2026-10-17 review). The agent plugin is prepared as an **unpublished `0.1.0` release candidate**; its version is independent of application `0.1.1`. Linux is the application's validated platform scope. Portable instruction layout does not establish Windows/macOS support, native Claude behavior, or identical pixels across machines.
+Baseline: locally installed and npm-published app CLI **0.1.1**, JSON **v1**, pinned Bento **1.2.6** contract, product documentation at `1b7e265bda07c060215051302f252a7289f4a1f9` (0.1.1 functional changes at `78c1641`; 2026-10-17 review). The agent plugin manifest declares **`0.1.0`** for the scoped first release; its version is independent of application `0.1.1`. Linux is the application's validated platform scope. Portable instruction layout does not establish Windows/macOS support, native Claude behavior, or identical pixels across machines.
 
 The 0.1.1 CLI/Studio expose selective source sync by pending change ID; a successful Apply may leave approved changes pending until render. The skill owns this lifecycle and refusal handling, not new product implementation.
 
