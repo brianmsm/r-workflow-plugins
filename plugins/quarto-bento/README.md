@@ -2,7 +2,13 @@
 
 A portable companion for agents using **Quarto-Bento**: QMD authoring/computation, retained visual design, structured `qbento` operations, selective source synchronization and conservative recovery.
 
-**Plugin status:** local development `0.0.0`, not published in the monorepo marketplaces. This is **not** the application release number: the installed and published application baseline is `@brianmsm/quarto-bento 0.1.1`, JSON agent protocol v1, with verified product scope on Linux. Product 0.1.0 is a historical compatibility baseline; the agent plugin remains local `0.0.0`. The plugin does not install or bundle the application, runtimes, assets or fonts.
+**Plugin status:** `0.1.0` **release candidate**, prepared but **not yet tagged, published, or listed** in the public marketplaces. This version belongs to the agent plugin, **not** to the application: the separately installed/published application baseline is `@brianmsm/quarto-bento 0.1.1`, JSON agent protocol v1, with verified product scope on Linux. Application `0.1.0` remains a historical compatibility baseline. The plugin does not install or bundle the application, runtimes, assets or fonts.
+
+## Scoped 0.1.0 Support and Evidence
+
+The first-release candidate targets **reviewed, trusted local QMD projects on Linux** using the installed `qbento 0.1.1` CLI. Native Codex actor evidence covers saved-design edits, approved selective source synchronization, conservative privacy/recovery stops, ordinary non-Bento negative controls, and one **completed first-render authoring case with a short-header Markdown table**. For executable QMD and public-facing HTML, review all QMD chunks, hooks, inputs, native pending content, and the complete potential HTML visibility before a separately authorized one-shot host render. Source-only `sync --select` never filters retained native HTML content.
+
+This is a deliberately **narrower local acceptance policy** than the earlier strict experimental gate: neither R1-NEW (`NOT_CLEAN`) nor R2-LOCAL (`PASS_LOCAL` under a different protocol) has been reclassified as one of two strict H2 CLEAN rounds. The new table/first-render trial passed the local S/T/A/H checks; its `TEXT_MEASUREMENT_UNAVAILABLE` diagnostics mean **visual text fit was not independently measured**. The native app's backup-only N01 recovery risk remains; do not bootstrap a recoverable project as new. No Windows/macOS, native Claude-agent task execution, unrestricted untrusted QMD execution, complete Studio/browser acceptance, rich/wrapped tables, or cross-machine pixel fidelity is certified. Claude manifest validity is **structural compatibility only**.
 
 ## One Skill, Three Operational References
 

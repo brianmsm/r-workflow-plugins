@@ -56,7 +56,8 @@ explicitly owns a visual field. Generated `*.bento.html` is **output**, never th
 ## Choose the Task Path
 
 - **Preflight:** resolve the single QMD Bento project and installed `qbento --version`;
-  verified Linux app is `0.1.1` (JSON v1), distinct from plugin `0.0.0`.
+  verified Linux app is `0.1.1` (JSON v1); the agent plugin has its own
+  independent version declared in its distribution manifest.
   For saved work, inspect `status` and a successful `get`. Before interpreting
   `NO_BASELINE` as fresh, check `.qbento/project.json`, `state.previous.json` and
   recovery/approval journals. The unresolved **N01** backup-only state can be

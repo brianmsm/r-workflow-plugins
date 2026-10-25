@@ -8,7 +8,7 @@
 
 Prefer a user's existing `qbento`; inspect `--version`, `help`, and `doctor`. npm package `@brianmsm/quarto-bento@0.1.1` provides a Node launcher for bundled application source, executed by **external Deno**; **Quarto** and computation packages are also external. Node >=22 is declared. R is needed only when the source uses it; Chromium supports browser review, text measurement and certain rich-table/Plotly/PDF workflows. No automatic environment management is part of this plugin.
 
-If installation is requested, consult the pinned npm guide. On the verified host, the installed `qbento 0.1.1` through mise is already available; prefer that executable. A source checkout can run `deno task qbento` **from its own root** against an absolute QMD path, but do not silently switch executables or versions mid-task. Check the executable's actual help and availability before making version-specific claims. The app version (`0.1.1`), JSON API (`1`) and companion plugin version (`0.0.0`) are independent.
+If installation is requested, consult the pinned npm guide. On the verified host, the installed `qbento 0.1.1` through mise is already available; prefer that executable. A source checkout can run `deno task qbento` **from its own root** against an absolute QMD path, but do not silently switch executables or versions mid-task. Check the executable's actual help and availability before making version-specific claims. The app version (`0.1.1`), JSON API (`1`), and the companion plugin version declared in its own manifest are independent.
 
 ## Operation Effects
 

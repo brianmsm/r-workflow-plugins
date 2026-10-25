@@ -1,6 +1,14 @@
 # Quarto-Bento Plugin Roadmap
 
-## Local Initial Scope (`0.0.0`)
+## Scoped First-Release Candidate (`0.1.0`, prepared 2026-10-25; unpublished)
+
+The owner selected a prospective **trusted-local, reviewed-source Linux** acceptance policy for preparing the first release, deliberately narrower than the earlier two-CLEAN-round H2 gate. That historical strict gate remains **not met**: R1-NEW is formally `NOT_CLEAN`; R2-LOCAL passed its pragmatic local protocol but is not H2-qualifying; R2-NEW was preparation-only. None is retrospectively relabeled CLEAN. Earlier documentation below records the strict default rule at the time; this prospective owner decision **does not rewrite the historical outcomes**.
+
+One new first-render QMD with a table initially failed on `UNSUPPORTED_TABLE_LAYOUT` due to a long header (a documented native width refusal). A single targeted authoring-reference correction then underwent a **separate new Codex authoring case**, with complete model-visible skill/reference delivery, independent nonexecuting review, one local one-shot host render, and physical native-state/HTML verification: two slides, correct 3-column table and saved document identity. The F02 local S/T/A/H matrix passed; the older failed F01 evidence remains immutable. Static package checks passed on the corrected candidate. **F02 exercised the pre-release correction commit `61aacaa`; the later `0.1.0` preparation changes version labels, manifests, changelog and scope documentation, not the table authoring rule tested by F02.** Those final release-preparation bytes have structural checks but were not subjected to another agent wave. Chromium could not measure text bounds (`TEXT_MEASUREMENT_UNAVAILABLE`), so output semantics are verified but visual text fit is not.
+
+This candidate is not a general-purpose safety certification or unrestricted distribution claim. Scope remains Linux with installed application `qbento 0.1.1`, local trusted/known-source operation and explicit review before QMD execution or HTML publication. **Not validated:** native Claude behavior, Windows/macOS, arbitrary untrusted input, universal negative triggering, advanced rich/wrapped tables, reliable browser text measurement, full Studio/visual UI workflows, or recovery of app backup-only N01. Public release still requires a separate owner go/no-go, plugin-specific tag/push and later pinned catalogs; preparing branch metadata at `0.1.0` does **not** publish it.
+
+## Historical Local Initial Scope (`0.0.0`)
 
 Create one operational skill and three references, with independent Codex/Claude manifests. Keep the application external. Record app/JSON/source compatibility and avoid assumptions about unsupported platforms, new source syntax, or parity between API and Studio.
 
@@ -10,7 +18,7 @@ Validate naming, metadata, references, embedded examples and native plugin insta
 
 Cover new-project initialization, visual-only changes, authorized semantic sync, changed-data regeneration, stale revisions, computed-content conflicts, unrelated-document binding, no-execution constraints and false-positive triggers. Test at least one composition with `quarto-publishing` without copying its content. Use [validation-cases.md](validation-cases.md) as a reviewer rubric, not as the acting agent's answer key.
 
-A release gate should include fresh independent trials with inspected artifacts, resolved material findings and explicit residual limits. The default field-test stopping rule is two clean post-fix waves with at least three distinct cases per wave, plus successful structural/product checks. A small initial smoke is not that release gate. Keep `0.0.0`/`[Unreleased]` until an explicit release decision; do not add a public catalog pin to an unpublished tag.
+A release gate should include fresh independent trials with inspected artifacts, resolved material findings and explicit residual limits. The default field-test stopping rule is two clean post-fix waves with at least three distinct cases per wave, plus successful structural/product checks. A small initial smoke is not that release gate. The initial draft stayed at `0.0.0`/`[Unreleased]` pending a release decision. In the owner-approved prospective preparation branch, manifest version `0.1.0` and a release-candidate changelog section may be staged without a public tag or catalog pin.
 
 ## Initial Evidence (2026-10-17)
 
