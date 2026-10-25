@@ -135,7 +135,15 @@ These are optional *source mutations* proposed only during reviewed sync. Neithe
 
 ## Analytical Output Without Faking Provenance
 
-A plain identified Markdown table can project to a native table:
+A plain identified Markdown table can project to a native table. **Keep every
+header and cell short enough to fit on one line in its allotted native column**;
+`qbento 0.1.1` conservatively refuses tables needing unmeasured cell wrapping with
+`UNSUPPORTED_TABLE_LAYOUT`. For instance, prefer `| Group | N | Mean |` and put
+"Mean outcome (arbitrary units)" in adjacent prose rather than as a long
+column header. An identified table wrapper must contain exactly one literal pipe
+table and no accompanying prose or other semantic blocks; place explanatory
+paragraphs outside it. Refusal means no completed render: shorten/split the
+source table, then require fresh review and authorization before trying again.
 
 ```qmd
 ## Descriptives {#descriptives}
