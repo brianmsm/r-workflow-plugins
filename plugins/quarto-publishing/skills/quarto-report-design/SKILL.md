@@ -107,8 +107,11 @@ Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell 
 
 For a Quarto-Bento presentation, keep audience, slide-design and pedagogical decisions here;
 when `quarto-bento-workflow` is available, use it for Bento-native components, saved design,
-source sync and rendering. Reveal.js-specific transitions (including `auto-animate`) are not
-portable Bento instructions unless product compatibility has actually been verified. Neither
-plugin is required merely because the other was invoked.
+source sync and rendering. Decide the teaching progression independently of the
+engine; choose actual motion syntax by format. `auto-animate` belongs to
+Reveal.js, not the verified Bento source codec. For Reveal.js-to-Bento
+migration, preserve the original source and explain that the motion requires a
+Bento-native recreation or a readable static alternative. Neither plugin is
+required merely because the other was invoked.
 
 Do not use this skill as the primary guide for scripts, assets, reusable templates, full accessibility audits, deployment workflows, or broad academic-writing guidance. If the user asks for those while designing a report, keep the report-design part limited and route the rest to the appropriate skill boundary.

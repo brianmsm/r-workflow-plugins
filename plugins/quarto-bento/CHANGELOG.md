@@ -7,7 +7,7 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 ### Changed
 
 - Clarified optional consultation of `quarto-report-design` for teaching explanations and slide communication, keeping Bento-native authoring, state, sync and rendering independent; do not transfer Reveal.js animation settings without verified support.
-- Recorded a scoped `qbento 0.1.1` test showing that Quarto/Reveal.js Auto-Animate attributes are not mapped to native Bento morph/IDs, and native morph transitions do not synchronize back to QMD as Auto-Animate; this is an application interoperability gap, not a failure of native motion persistence.
+- Recorded a scoped `qbento 0.1.1` test showing that Quarto/Reveal.js Auto-Animate attributes are not mapped to native Bento morph/IDs, and native morph transitions do not synchronize back to QMD as Auto-Animate; this is an application interoperability gap, not a failure of native motion persistence. A second synthetic check confirmed saved Bento `morph` survives a same-identity QMD wording edit without `.qbento-design`. Added destination-specific guidance for Reveal.js-to-Bento migration, static alternatives and native animation recreation.
 
 ## [0.1.0]
 

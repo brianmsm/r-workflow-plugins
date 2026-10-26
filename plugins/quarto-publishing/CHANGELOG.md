@@ -8,7 +8,7 @@ _Changes in this section are intended for plugin v0.2.3; manifests and public ca
 
 ### Changed
 
-- Clarified optional cooperation with `quarto-bento-workflow`: share pedagogical/slide-communication decisions but let Bento own native components, state, and rendering; Reveal.js animation syntax must not be assumed portable.
+- Clarified optional cooperation with `quarto-bento-workflow`: share pedagogy and deck design but select animation mechanisms per output format; preserve authored Reveal.js transitions and disclose Bento motion-fidelity limitations during migration.
 - Prefer concise nominal slide titles and add focused guidance for teaching explanations and learning activities, separate from general slide layout and rendering.
 
 ## [0.2.2] - 2026-09-10

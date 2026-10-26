@@ -72,9 +72,13 @@ explicitly owns a visual field. Generated `*.bento.html` is output, not saved de
 For teaching or presentation-communication decisions, consult `quarto-report-design` **when
 available and relevant**: its pedagogical guidance owns the explanation, while its slide-deck
 guidance owns audience, structure and density. Read only the needed advice; an ordinary native
-Bento edit does not require another skill. Bento still owns supported QMD constructs, persistent
-design, source synchronization and authorized rendering. Do not assume Reveal.js animation or
-format attributes have equivalent Bento behavior without a verified product mapping.
+Bento edit does not require another skill. Choose the output engine before applying motion:
+use Reveal.js-specific `auto-animate` only for Reveal.js, and Bento-native
+motion for Bento. When migrating a Reveal.js QMD, retain its original source
+attributes and disclose loss of animation fidelity in the Bento projection;
+see [motion and migration](references/authoring-components.md#progressive-motion-and-revealjs-migration).
+Bento still owns supported QMD constructs, retained design, source synchronization
+and authorized rendering.
 
 Other Quarto/R skills remain optional, never runtime dependencies. Preserve Bento identity,
 source ownership and execution boundaries when composing; installation alone is not proof a

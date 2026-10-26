@@ -17,6 +17,7 @@ A useful sequence is **intuition → example → mechanism → formalization →
 - **Counterexample:** challenge a tempting overgeneralization, then explain the condition under which the claim does or does not hold.
 - **Formalization:** introduce equations and notation after the underlying relationship is understandable, unless formal reasoning itself is the learning goal.
 - **Derivations:** when a transformation is the learning objective, show the starting quantity, the justified operation or assumption, the terms retained or removed, and the resulting meaning. Define consequential symbols at first use, including numerators and denominators.
+- **Progressive reveal:** use successive states or motion only when seeing what persists and what changes helps learning. Plan readable states first; choose a static sequence or a supported animation *after* the presentation format is known. This guidance does not prescribe Reveal.js or Bento syntax.
 - **Interpretation:** match claims to the evidence's origin, level of aggregation, and selection criteria; state what it supports **and what it cannot establish**. For example, distinguish known population parameters, estimates from one sample, and summaries across replications; if a summary includes only admissible solutions, disclose that restriction and its denominator.
 - **Reference values:** distinguish descriptive conventions, simulation-dependent heuristics, and validated decision criteria. Explain their applicable conditions rather than turning contextual guidance into universal pass/fail rules.
 

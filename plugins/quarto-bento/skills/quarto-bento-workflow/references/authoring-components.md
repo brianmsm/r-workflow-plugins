@@ -35,17 +35,35 @@ The regular native projection starts slides at **top-level H1 or H2**; H3–H6 a
 
 Explicit heading/block IDs and named executable chunks aid stable mapping. Plain headings/paragraphs are also supported: sync may propose visible identity patches for weak source bindings. Preserve existing IDs; do not mass-generate `qb:*` markers or rename identities once design is attached. A semantic source ID, native slide-scoped element ID and animation/morph identity are different concepts.
 
-**Reveal.js Auto-Animate is not a Bento source round-trip in `qbento 0.1.1`.** In a
-verified two-slide QMD probe, `auto-animate=true`, `auto-animate-id` and matching
-`data-id` survived the Quarto intermediate but did **not** become native Bento
-`morph` transitions or paired `morphId` values; the emitted deck used `fade`.
-Conversely, a checked native `slide.transition: "morph"` persisted in `.qbento/`,
-but `qbento sync` proposed only an optional `.qbento-design` reference, not
-Reveal.js animation attributes. Preserve sequential, meaningful source slides;
-use Bento's own motion editor only within an authorized visual-design task, and
-verify native playback separately. Do not promise bidirectional Auto-Animate
-translation or copy Reveal.js-specific syntax into Bento as if it were mapped.
-Track upstream compatibility as [qbento issue #1](https://github.com/brianmsm/quarto-bento/issues/1).
+### Progressive motion and Reveal.js migration
+
+Choose the target engine *after* deciding what each teaching stage must show:
+
+- **New Bento presentation:** author stable, independently readable QMD stages.
+  Use supported native Bento `morph` / `morphId` or other effects only as a
+  separately reviewed visual-design edit; retain the project's `.qbento/` state.
+  The optional `.qbento-design` QMD annotation is a **pointer**, not the motion
+  definition or a prerequisite for persisting native transitions.
+- **Existing Reveal.js QMD imported into Bento:** preserve authored
+  `auto-animate`, `auto-animate-id`, `data-id` and semantic IDs in the original
+  source. In the tested `qbento 0.1.1`, those attributes survive Quarto's
+  intermediate HTML but **do not become** native `morph` transitions or paired
+  `morphId` values; the native projection uses `fade`. Warn about lost motion
+  fidelity and use readable static stages, or obtain approval to reconstruct
+  native motion manually and verify its playback. Do not remove the source
+  animation declarations merely to make a Bento output.
+- **Subsequent edits or migration back:** a native `morph` transition survived
+  an ordinary QMD wording edit and subsequent render with stable slide IDs in
+  one additional synthetic test **without** `.qbento-design`. This does not
+  establish safety for changing/deleting identities. `qbento sync` proposes
+  only an optional annotation for native motion, **not** Reveal.js attributes;
+  copying QMD back to Reveal.js therefore does not automatically export Bento
+  effects. Retain the native sidecar for future Bento edits and reauthor
+  transitions for the target engine when needed.
+
+These are compatibility observations, not equivalent animation semantics or a
+universal visual acceptance. The observed source/native gap is tracked in
+[qbento issue #1](https://github.com/brianmsm/quarto-bento/issues/1).
 
 ## Declarative Components
 
