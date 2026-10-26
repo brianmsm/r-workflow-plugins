@@ -50,6 +50,21 @@ A shared import, cleaning step, or input data object still belongs upstream when
 
 **Avoid accidental dependencies on interactive history:** write objects in source order so the document/script can be run from the beginning when required. A local, re-runnable section may use shared, clearly defined upstream objects. Do not promise each section runs from an empty session unless it truly does.
 
+## Keep Setup Minimal and Native
+
+For `.R` scripts and `.Rmd`/`.qmd` notebooks, **setup is shared context, not a warehouse for analysis**. A small opening section may attach repeatedly used packages, read common inputs and define a genuinely reusable constant or helper. Put per-section recodings, model definitions/fits, tables, plots and interpretation-adjacent calculations where they are first needed. Split meaningful activities into named chunks; do not create extra chunks solely for formatting or for one trivial line. Keep source order executable without relying on forgotten interactive objects.
+
+Use ordinary, separately written R calls rather than an invented environment/bootstrap framework:
+
+```r
+library(dplyr)
+
+# One-time readr use: no library(readr) needed.
+datos <- readr::read_csv("datos.csv", show_col_types = FALSE)
+```
+
+In ordinary researcher-controlled work, **do not add** package-presence loops, automatic package installers, `renv::restore()`, `.libPaths()` guessing, OS/locale probing, `setwd()`, file-location search helpers, or generic `file.exists()`/`stopifnot()` preflights. `library()`, qualified calls and file reads already supply informative errors for common missing dependencies. Investigate them through the agent's tools rather than embedding a second error framework. A brief commented `# install.packages("pkg")` can help first-time students when appropriate; it must never execute on source/run. Honor an *existing, required* project environment configuration or a deliberately automated handoff instead of deleting it for stylistic reasons.
+
 ## Copy-and-Adapt Is Often Intentional
 
 When a researcher may want to change variables, estimator options, factor structure, axes, or visual emphasis separately, repeating native function calls gives them an immediately visible editing surface. Duplication is therefore not automatically a refactoring defect.
@@ -117,9 +132,24 @@ fig_group
 
 Do not replace such displays with `make_plot(kind = ..., ...)` unless the researcher actually wants a consistent, automated family of figures. Distinguish shared constants from independent design decisions.
 
+## Apply a Tidyverse Preference Consistently
+
+When the user or project says **"prefer tidyverse"**, apply that idiom coherently to **new or modified** imports, column operations, joins, reshaping and routine iteration. Do not use `dplyr` only for a few verbs while silently reverting to `read.csv()` or repeated `for` loops elsewhere. This is a preference, not permission to rewrite unrelated established code or alter results.
+
+| Analytical intent | Tidyverse-preferred starting point |
+| --- | --- |
+| Read a CSV | `readr::read_csv()` if used occasionally; `library(readr)` and `read_csv()` if frequent |
+| Transform the same set of columns | `mutate(across(...))` when semantics are genuinely uniform |
+| Uniform repeated work over a collection | `purrr::map()` / `map2()` / `imap()` as fits the inputs; `walk()` for side effects |
+| Ordinary data selection, joins and reshaping | Existing project conventions using `dplyr` / `tidyr` |
+
+Do not replace independently designed models or editable plots with `map()` solely to reduce repeated calls; uniform batch iteration and distinct analytical decisions are different tasks. Prefer clear, native base R where it is simpler or its behavior is specifically required (e.g., `rowSums()`, `weighted.mean()`, stateful/early-exit loops), and **honor an explicit `for`-loop preference**. If a user expressly asks for consistent/strict tidyverse style, use the applicable tidyverse functions throughout without creating custom adapters for APIs that do not exist. No global "full" or "balanced" toggle is needed: read the actual project preference and explain any material exceptions.
+
+`read.csv()` and `readr::read_csv()` can produce different classes, inferred types, column names and missing-value behavior; a style request does **not** establish that an existing import is equivalent after replacement. Verify affected inputs/results or preserve the existing call when equivalence is uncertain.
+
 ## Packages and Namespace Style
 
-Choose `library()` versus `pkg::fun()` from **actual package use**: attach packages used widely; keep one-off functions qualified instead of loading an entire package. For already attached packages, prefer unqualified calls **only after confirming no package masks the intended function**. This is a heuristic, not a fixed threshold of exactly two calls.
+Choose `library()` versus `pkg::fun()` from **actual package use**: attach packages used widely with **one explicit `library(package)` call per line**; keep one-off functions qualified instead of loading an entire package. Do not generate package lists plus loops over `library()`/`require()` or insert `requireNamespace()` checks before every attachment. For already attached packages, prefer unqualified calls **only after confirming no package masks the intended function**. This is a heuristic, not a fixed threshold of exactly two calls.
 
 ```r
 library(dplyr)

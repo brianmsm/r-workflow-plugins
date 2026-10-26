@@ -4,6 +4,13 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
+### Changed
+
+- Clarified that an explicit tidyverse preference governs imports, repeated-column transforms and ordinary iteration as well as `dplyr` calls, without imposing a strict global mode or refactoring unaffected code.
+- Kept `.R`, `.Rmd` and `.qmd` setups small: shared imports and literal per-package `library()` calls, one-off `pkg::fun()`, no upfront analytical mega-chunks, automatic installation, dependency/path/locale discovery or `renv` bootstrap by default.
+- Strengthened the default against new `stopifnot()`/defensive wrappers for ordinary missing packages, files and objects: use native R errors and agent-side inspection; retain meaningful diagnostics and narrowly justified protections against demonstrated silent corruption.
+- Extended student-facing R guidance explicitly to notebook chunks; added scoped positive and exception cases for style consistency and execution requirements.
+
 ### Added
 
 - Added scoped guidance for student-facing R scripts: simple lesson steps, local inputs, teacher-only analysis separation, and student handoff verification, without repeating research-code principles.

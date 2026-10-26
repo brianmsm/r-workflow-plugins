@@ -8,14 +8,14 @@ Read when checking live R objects, editing potentially consequential statistical
 | --- | --- | --- |
 | Does a column or object exist **right now**? | Inspect with R tools or available session access | One-time agent fact-finding is not necessarily research output |
 | Are joins, exclusions, or duplicates part of the research justification or **reported result**? | Retain the supplied descriptive statistic in the analysis | Supports a methodological decision or reported denominator; not merely a throwaway guard |
-| Could a changing input silently corrupt later results? | Consider a targeted source guard or an external reusable check | The risk persists after this agent session |
+| Could an input change **silently** corrupt later results? | Inspect with tools first; consider a native argument constraint or targeted check only for a demonstrated ongoing risk | A missing file/package normally fails naturally; the check must protect something R would not detect |
 | Do duplicated model sections remain mutually consistent where intended? | Review affected sections and, if needed, test using external tooling | Intentional differences must not be overwritten mechanically |
 
 **Removing a temporary guard never authorizes dropping or replacing an analytical step or a report-facing statistic.** Preserve names, meanings, and values of requested tables/results unless the user authorizes a substantive change. Different quantities (number of distinct matching keys, number of matched rows, total records) are not interchangeable.
 
 **Do not use downstream usage as a deletion criterion.** A grouped source table, a joined dataset, or a calculated diagnostic may be intentionally kept for interactive inspection, later exploratory decisions, or manual reruns even if the present report prints only a small coverage table. When asked to simplify validation, change only the validations that warrant change; preserve independent aggregations, joins and named intermediate objects. If removal might be useful, propose it explicitly instead of performing it silently.
 
-**Never conflate one-time live inspection with a permanent guarantee.** A column observed in today's session may disappear in tomorrow's updated data. Conversely, do not insert a `stopifnot()` for every fact already inspected merely because the code *might* be rerun.
+**Never conflate one-time live inspection with a permanent guarantee.** A column observed today may disappear with updated data, but this does **not** justify adding `stopifnot()` to ordinary researcher-controlled `.R`, `.Rmd` or `.qmd` by default. A missing package called by `library()` or `pkg::fun()`, a missing file read by ordinary input functions, or an undefined function already commonly produces a useful R error. Prefer debugging that actual error in the agent's inspection session to permanently adding `file.exists()`, `requireNamespace()`, `tryCatch()` or custom environment-stop wrappers. Some data changes **do not** raise errors (e.g., a missing `$column` returning `NULL`); assess those with proportionate inspection instead of assuming all failures are naturally caught.
 
 ## Inspect Through Tools Before Writing Defensive Code
 
@@ -45,15 +45,15 @@ A call via `Rscript` usually starts a different process and may not share live o
 
 ## When Persistent Guards Are Justified
 
-Consider a small explicit check **at the point of risk**, not a large generic diagnostic preamble, when there is evidence of:
+Consider a small persistent check **at the point of risk** only if native R/API behavior would not already reveal a **known consequential failure**, such as:
 
-- Input files or schemas being updated by another party.
-- A join whose wrong cardinality would silently multiply rows.
-- Repeated, unattended, or delegated execution with no researcher present.
-- A transformation that may irreversibly overwrite outputs or silently change the target population.
-- A previously observed defect that could recur and is cheap to detect.
+- An observed changing schema that could silently change variable definitions or records.
+- A join whose unexpected cardinality would multiply rows (prefer a justified native `relationship` constraint).
+- An unattended, irreversible write or a specific previously observed silent defect.
 
-The check should express the **known invariant** (e.g., expected cardinality), give a useful failure message, and avoid checking every speculative condition. Keep implementation in the script only when it protects that script's future execution or documents the analytical rationale. Avoid catch-all `tryCatch()` that returns `NULL`, `NA`, or a default model on error and silently changes what is reported.
+An ordinary missing package, file, path or function does **not** meet this threshold. Project-specified production/pipeline safeguards remain valid; do not remove them merely because a researcher-oriented default is lighter.
+
+When a guard is genuinely required, express the **specific known invariant** with a native operation or a small check and an actionable failure. Do not insert `stopifnot()` as a generic availability/preflight ritual. Keep a check inside the source only when the user's/project's ongoing execution needs it; prefer external inspection for one-time facts. Avoid catch-all `tryCatch()` that returns `NULL`, `NA`, or a default model and silently changes what is reported.
 
 By default, avoid injecting `*_safe()` wrappers around native modelling functions solely to suppress or recover from ordinary model errors. Failures during exploratory fitting often need direct diagnosis, not hidden fallback behavior.
 

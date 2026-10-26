@@ -21,6 +21,9 @@ Applies to the **R code** in `.R`, `.Rmd`, and `.qmd` files. It does not replace
 - Keep `ggplot2` calls and their per-figure scales, labels, and themes directly editable.
 - Use plain calls after `library()` for frequently used, unambiguous functions; keep one-off calls qualified. For important overlapping packages, use a deliberate conflict policy (such as `library(MASS, exclude = "select")`) rather than assuming `library()` order resolves collisions.
 - Inspect live data with authorized tools before adding defensive code. Preserve existing reported diagnostics and their denominators even when removing transient guards; persist checks that protect against concrete future failures.
+- Respect the project's R idiom; when tidyverse is explicitly preferred, use it consistently for imports (`readr`), column transforms (`across`) and ordinary iteration (`purrr`) where semantics fit. Honor explicit base R or `for` preferences; do not restyle unrelated code.
+- Keep `.R` and `.qmd`/`.Rmd` setup minimal: separate literal `library()` calls for frequently used packages, `pkg::fun()` for one-offs, and analysis near its section rather than a mega-setup.
+- Use native R errors and inspect live inputs through agent tools; do not introduce package installers, `.libPaths`/`renv` detection or generic `stopifnot()`/fallback wrappers by default. Preserve real execution contracts and substantive diagnostics.
 - Respect the chosen style and reproducibility requirements of the project, including intentionally automated pipelines when they are the actual task.
 
 ## Natural-Language Use
