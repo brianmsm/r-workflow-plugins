@@ -69,6 +69,7 @@ Practical options and patterns:
 - `show-slide-number` limits where slide numbers appear: `all`, `print`, or `speaker`.
 - `incremental: true` makes lists incremental globally. Use `.incremental` and `.nonincremental` divs to control individual lists.
 - Insert `. . .` on its own line to create a pause within a slide.
+- For adjacent slides showing a transformation, `auto-animate=true` can animate matching elements; use `data-id` for explicit matches and `auto-animate-id` to group stages when needed. Keep each state readable without motion and test navigation (see [Quarto Auto Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)).
 - Use `.columns` and `.column` divs for multi-column slides.
 - Use `.smaller` on crowded slides before reaching for dense formatting.
 - Use `.scrollable` when content must overflow vertically, but treat it as a practical fallback rather than a design goal.

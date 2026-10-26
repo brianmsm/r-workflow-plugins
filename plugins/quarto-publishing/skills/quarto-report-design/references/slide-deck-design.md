@@ -35,6 +35,7 @@ Prefer **short, nominal titles** naming the concept, comparison, finding, or pro
 - Name the specific object: "Indirect-path stability" or "Indirect effects across robustness checks", not "Results" or "Methods".
 - Avoid headings that narrate or pre-announce the conclusion ("The indirect pathway was stable across robustness checks").
 - Use questions only when they serve a deliberate teaching, prediction, or discussion purpose.
+- Omit title-slide subtitles or slogans when they only repeat an idea introduced on the next slide.
 - Make each slide carry one main idea, supported by a figure, diagram, model, equation, or concise comparison.
 - Split complex explanations across slides instead of shrinking text or using long prose-filled cards.
 - Avoid using projected slides as the speaker's script.
@@ -52,7 +53,7 @@ When converting a report, thesis section, manuscript, or technical note into sli
 - Organize results by argument, research question, decision, or teaching sequence rather than by analysis script order.
 - Convert dense tables into visual summaries when pattern recognition matters.
 - Keep exact-value tables only when the values are central and readable.
-- Move full model tables, diagnostics, derivations, robustness checks, and secondary results into backup slides, appendices, handouts, or companion reports.
+- Move full model tables, secondary diagnostics, lengthy supporting derivations, robustness checks, and secondary results into backup material; retain essential derivation steps in the main deck when understanding them is the learning objective.
 - Do not oversimplify results in ways that change the meaning, uncertainty, limitation, or evidentiary support of the original analysis.
 
 Avoid mechanical section-to-slide mapping. A report section may become several slides, one slide, a backup slide, or no slide at all depending on the audience task.
@@ -81,7 +82,7 @@ If a slide takes too long to explain in practice, it probably contains more than
 - Use tables only when exact values matter and the table remains legible.
 - Break dense tables into smaller tables, key-number callouts, visual summaries, or backup material.
 - Code should usually be short, pedagogical, or diagnostic. Do not put long production code on projected slides unless code review is the point.
-- Equations should be introduced progressively when possible. Show only the terms needed for the audience's current task.
+- Introduce equations progressively when useful. Across adjacent states of the same object, keep unchanged terms aligned and make additions, removals, or changed contributions perceptible; use aligned static slides or animation only when it clarifies the mechanism.
 - Diagnostics belong in the main deck only when they are central to the argument, decision, or technical review. Otherwise, place them in technical or backup slides.
 - Captions on projected slides should usually be shorter than manuscript captions. Use notes, backup slides, or companion reports for extended explanation.
 
@@ -104,7 +105,7 @@ For academic decks, the narrative should preserve the research logic. For execut
 Before treating a deck as ready:
 
 - Practice transitions between slides.
-- Check timing against the time limit.
+- Check timing against the time limit, including realistic time for learner exercises, interpretation, and pauses.
 - Confirm each slide has one main message.
 - Identify slides that are slow to explain and split or simplify them.
 - Create static fallbacks for videos, animations, embedded web content, or fragile interactive elements.

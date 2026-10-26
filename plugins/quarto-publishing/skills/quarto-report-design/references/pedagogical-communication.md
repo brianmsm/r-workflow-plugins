@@ -16,7 +16,9 @@ A useful sequence is **intuition → example → mechanism → formalization →
 - **Worked example:** show the decision and evidence, not just the final value. Identify units, model, reference, and assumptions when they affect its meaning.
 - **Counterexample:** challenge a tempting overgeneralization, then explain the condition under which the claim does or does not hold.
 - **Formalization:** introduce equations and notation after the underlying relationship is understandable, unless formal reasoning itself is the learning goal.
+- **Derivations:** when a transformation is the learning objective, show the starting quantity, the justified operation or assumption, the terms retained or removed, and the resulting meaning. Define consequential symbols at first use, including numerators and denominators.
 - **Interpretation:** match claims to the evidence's origin, level of aggregation, and selection criteria; state what it supports **and what it cannot establish**. For example, distinguish known population parameters, estimates from one sample, and summaries across replications; if a summary includes only admissible solutions, disclose that restriction and its denominator.
+- **Reference values:** distinguish descriptive conventions, simulation-dependent heuristics, and validated decision criteria. Explain their applicable conditions rather than turning contextual guidance into universal pass/fail rules.
 
 ### Choose the depiction that reveals the concept
 
@@ -26,7 +28,7 @@ A useful sequence is **intuition → example → mechanism → formalization →
 | Process, failure, or next diagnostic step is unclear | Branching flow or **explicitly hypothetical** trajectory |
 | One condition changes an outcome | Side-by-side comparison with common scale and controlled inputs |
 | Magnitude, uncertainty, or variation matters | Quantitative plot, with denominator and metric identified |
-| Formula or output is necessary | Short, annotated equation/output emphasizing the decisive element |
+| Formula transformation or output is unclear | Staged, annotated expressions showing what changes and why, or cropped output highlighting the decisive field |
 
 **Example:** to teach why convergence is insufficient, show **optimization → stopping criterion → further checks**. Do not replace that relationship with several prose-filled cards. A graphical example must be labeled **schematic**, **simulated**, or **observed**, as appropriate.
 
@@ -35,6 +37,8 @@ A useful sequence is **intuition → example → mechanism → formalization →
 Use **anticipate → execute/inspect → interpret** when a prediction and its resolution add value. Ask for a comparison or defensible explanation, not an activity on every slide. Prefer a familiar case over a new dataset unless the new case reveals something the first cannot.
 
 When the task uses R or other software, decide what students actually run; teacher-only calculations may be precomputed illustrations. Do not require incidental programming or table manipulation merely to access evidence for the intended lesson.
+
+Projected runnable code must match the **canonical material learners receive** (paths, objects, and outputs). When it changes, reconcile slides, notes, and handouts. For R script design and clean handoff checks, use `r-analytic-coding-principles` → `classroom-r-scripts.md`.
 
 ## Avoid
 
