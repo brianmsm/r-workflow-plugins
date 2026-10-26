@@ -4,10 +4,20 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ## [Unreleased]
 
+_No subsequent changes recorded._
+
+## [0.1.1] - 2026-10-26
+
 ### Changed
 
-- Clarified optional consultation of `quarto-report-design` for teaching explanations and slide communication, keeping Bento-native authoring, state, sync and rendering independent; do not transfer Reveal.js animation settings without verified support.
-- Recorded a scoped `qbento 0.1.1` test showing that Quarto/Reveal.js Auto-Animate attributes are not mapped to native Bento morph/IDs, and native morph transitions do not synchronize back to QMD as Auto-Animate; this is an application interoperability gap, not a failure of native motion persistence. A second synthetic check confirmed saved Bento `morph` survives a same-identity QMD wording edit without `.qbento-design`. Added destination-specific guidance for Reveal.js-to-Bento migration, static alternatives and native animation recreation.
+- Clarified optional `quarto-report-design` cooperation and output-engine-specific animation choices without introducing cross-plugin runtime dependencies.
+- Added migration guidance: preserve existing Reveal.js `auto-animate` source declarations, explain that `qbento 0.1.1` does not map them into native morph, and provide static-stage or separately authorized native-motion alternatives.
+- Explained that native Bento `morph` retained in `.qbento/` survived an ordinary same-identity QMD wording change without the optional `.qbento-design` annotation; `qbento sync` cannot export it as Reveal.js Auto-Animate.
+
+### Validation
+
+- Scoped Linux app-CLI probes: two successful synthetic first renders and a checked `get → patch → get → sync` preview established missing Auto-Animate interoperability; an additional synthetic QMD edit-and-render preserved a native `morph`. Neither study establishes browser playback compatibility or an all-format migration adapter. Evidence is stored outside the distributed plugin and the product gap is tracked in [qbento issue #1](https://github.com/brianmsm/quarto-bento/issues/1).
+- Static skill/packaging validation passed; the revised instruction bytes have **not** undergone a new independent agent-behavior wave. No claim is made that the historical strict H2 gate became satisfied.
 
 ## [0.1.0]
 

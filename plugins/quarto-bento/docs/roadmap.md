@@ -1,5 +1,26 @@
 # Quarto-Bento Plugin Roadmap
 
+## Guidance-only Agent Plugin Patch (`0.1.1`, 2026-10-26)
+
+The independently versioned **agent plugin** adds optional composition with
+Quarto presentation pedagogy and destination-specific motion guidance, while
+continuing to target the installed **application** `qbento 0.1.1`.
+
+Synthetic CLI tests found that Reveal.js `auto-animate`/`data-id` declarations
+are preserved in a Quarto intermediate but are **not translated** into native
+Bento `morph` or shared `morphId`; checked native motion saves do not sync into
+Reveal.js animation attributes. An additional same-identity QMD wording edit
+preserved a saved `morph` on re-render **without** the optional `.qbento-design`
+annotation. These bounded results justify source-preserving migration, explicit
+fidelity warnings and static or native-motion alternatives, **not** claiming a
+new native converter or universal cross-platform playback.
+
+The stricter historical H2 adjudication remains unchanged. This patch is an
+instruction/compatibility update with structural checks and synthetic product
+experiments, **not** a new native-agent evaluation wave. See
+[qbento issue #1](https://github.com/brianmsm/quarto-bento/issues/1) for the
+product codec/diagnostic request.
+
 ## Scoped First-Release Acceptance (`0.1.0`, 2026-10-25)
 
 The owner selected a prospective **trusted-local, reviewed-source Linux** acceptance policy for preparing the first release, deliberately narrower than the earlier two-CLEAN-round H2 gate. That historical strict gate remains **not met**: R1-NEW is formally `NOT_CLEAN`; R2-LOCAL passed its pragmatic local protocol but is not H2-qualifying; R2-NEW was preparation-only. None is retrospectively relabeled CLEAN. Earlier documentation below records the strict default rule at the time; this prospective owner decision **does not rewrite the historical outcomes**.
