@@ -53,6 +53,30 @@
         "coding-style",
         "reproducibility"
       ]
+    },
+    {
+      "name": "quarto-bento",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/quarto-bento",
+        "ref": "quarto-bento-v0.1.0"
+      },
+      "description": "Quarto-Bento workflows for reviewed, trusted local Linux projects with qbento 0.1.1: retained design, checked edits, QMD synchronization and conservative recovery.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/quarto-bento",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "quarto",
+        "bento",
+        "qbento",
+        "presentations",
+        "synchronization"
+      ]
     }
   ]
 }
