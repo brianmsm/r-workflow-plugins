@@ -4,6 +4,10 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
+### Added
+
+- Added scoped guidance for student-facing R scripts: simple lesson steps, local inputs, teacher-only analysis separation, and student handoff verification, without repeating research-code principles.
+
 ### Documentation
 
 - Updated installation guidance and publication status after registering the `v0.1.0` release in the public Codex and Claude Code marketplaces.

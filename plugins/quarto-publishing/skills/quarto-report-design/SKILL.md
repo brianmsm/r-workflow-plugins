@@ -89,7 +89,8 @@ When working autonomously, state the assumption before editing; ask only when th
 - For decision-oriented reports, including reading guides, method comparisons, grouped tables, and interpretation of contrasts or transformed metrics, read `references/executive-report-structure.md`.
 - For technical review, audit, reproducibility, and diagnostic reports, read `references/technical-report-structure.md`.
 - For research, thesis, manuscript, methodological, and scholarly reports, read `references/academic-report-structure.md`.
-- For Quarto slide deck communication design, audience, purpose, message-oriented slide titles, deck structure, report-to-slides conversion, slide density, and backup or appendix slides, read `references/slide-deck-design.md`.
+- For **slide organization and delivery** (titles, hierarchy, density, visuals, timing), read `references/slide-deck-design.md`.
+- For **teaching explanations or learning activities** (examples, misconceptions, controlled contrasts, interpretation), read `references/pedagogical-communication.md`. Read **both only when both types of decisions are in scope**; neither is required for an ordinary report.
 - For basic transitional accessibility checks, read `references/accessibility-basic-checklist.md`.
 
 ## Boundaries

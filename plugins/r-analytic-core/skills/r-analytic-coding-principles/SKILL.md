@@ -1,6 +1,6 @@
 ---
 name: r-analytic-coding-principles
-description: "Use when editing research R code (.R, .Rmd, .qmd) to keep models and figures locally editable, resolve package function conflicts, or simplify checks while preserving analytical results."
+description: "Use when editing analytical or classroom R code (.R, .Rmd, .qmd) to keep models and figures locally editable, support understandable student scripts, resolve package conflicts, or simplify checks without changing results."
 ---
 
 # R Analytic Coding Principles
@@ -24,7 +24,7 @@ Make R code easy for a researcher to inspect, edit at the point of use, rerun se
 - **Keep semantics and reported outputs intact.** Treat formulas, estimator arguments, case selection, missing-value handling, joins, factor levels, random seeds, **diagnostic counts, table fields, and result definitions** as analytical decisions. Removing temporary checks must not remove, rename, or replace the substantive statistics they support. Before using a new data-frame field, establish where it is created; never treat a syntax-only pass as evidence of unchanged values.
 - **Preserve analytical intermediates.** Data aggregations, joins, derived datasets, diagnostics, and named working objects are inspectable research work products even if no current report table references them. Do not delete them as “unused” while simplifying guards or reorganizing code; ask before removing any substantive computation.
 
-For model/figure examples and mode-specific exceptions, read [research-first-coding-style.md](references/research-first-coding-style.md) when organizing or changing substantive R code. For attachment order, collisions, or requests to simplify `pkg::`, read [package-conflicts.md](references/package-conflicts.md) **before editing**.
+Choose **one primary reference by audience**: for research analyses or editable research reports, use [research-first-coding-style.md](references/research-first-coding-style.md); for **student-facing scripts**, use [classroom-r-scripts.md](references/classroom-r-scripts.md). Read both only if the task also edits substantive research code. For attachment order, collisions, or requests to simplify `pkg::`, read [package-conflicts.md](references/package-conflicts.md) **before editing**.
 
 ## Validation Without Boilerplate
 

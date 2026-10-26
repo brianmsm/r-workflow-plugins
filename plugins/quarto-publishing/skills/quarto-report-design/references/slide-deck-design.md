@@ -23,24 +23,23 @@ A projected deck should usually be lighter and more visual than a standalone dec
 - Academic or research deck: prioritize the research question, argument, evidence chain, methods needed for credibility, limitations, and contribution.
 - Executive or stakeholder deck: prioritize the decision, recommendation, risk, implication, confidence level, and next action.
 - Technical or reproducibility deck: prioritize assumptions, diagnostics, model behavior, implementation detail, reproducibility, and evidence that supports technical review.
-- Teaching or training deck: prioritize concept progression, examples, worked steps, pauses, checks for understanding, and progressive reveal of complexity.
+- Teaching or training deck: organize for concept progression and learner practice. For **how to explain or test understanding** (not general slide layout), consult [pedagogical-communication.md](pedagogical-communication.md) on demand.
 - Progress or update deck: prioritize what changed, what was learned, what is blocked, what decisions are needed, and what comes next.
 
 Mixed decks should keep the main path readable and move secondary detail into backup slides, appendices, handouts, or a companion report.
 
-## Build the Deck Around Messages
+## Use Concise, Descriptive Titles
 
-Use message-oriented slide titles whenever possible:
+Prefer **short, nominal titles** naming the concept, comparison, finding, or procedure, rather than sentence-length claims or conclusions. The slide body, figure, and speaker notes should develop the argument.
 
-- Prefer titles that state the claim, result, takeaway, question, or decision.
-- Avoid generic section labels such as "Results", "Methods", or "Discussion" when a more informative title is available.
-- Make each slide carry one main message.
-- Support that message with visual or compact evidence: a figure, diagram, plot, model summary, equation, short table, or structured comparison.
-- Split complex points across several slides rather than making one crowded slide.
-- Use bullets sparingly and only when they genuinely structure the message.
+- Name the specific object: "Indirect-path stability" or "Indirect effects across robustness checks", not "Results" or "Methods".
+- Avoid headings that narrate or pre-announce the conclusion ("The indirect pathway was stable across robustness checks").
+- Use questions only when they serve a deliberate teaching, prediction, or discussion purpose.
+- Make each slide carry one main idea, supported by a figure, diagram, model, equation, or concise comparison.
+- Split complex explanations across slides instead of shrinking text or using long prose-filled cards.
 - Avoid using projected slides as the speaker's script.
 
-Good message titles should let a skimming audience understand the argument. For example, prefer "The indirect pathway was stable across robustness checks" over "Robustness Checks" when that is the actual takeaway.
+Titles identify **what is being examined**; the evidence and interpretation establish **what it means**.
 
 ## Convert Reports or Manuscripts into Slides
 
