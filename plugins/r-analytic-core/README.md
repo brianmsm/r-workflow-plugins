@@ -2,7 +2,7 @@
 
 `r-analytic-core` provides **research-first coding conventions** for AI agents that create, review, or revise analytical R code. The default is code that a researcher can inspect and change **model by model, section by section, and figure by figure**—not a prematurely automated production pipeline.
 
-**Published version:** `v0.1.0`, pinned to the independent release tag `r-analytic-core-v0.1.0` in the Codex and Claude Code marketplaces. Other plugins, including `quarto-publishing`, do not depend on it.
+**Agent plugin version:** `v0.1.1`, independently tagged as `r-analytic-core-v0.1.1`. Distribution depends on the marketplace's pinned tag, not the manifest field alone. This patch strengthens tidyverse-style consistency, minimal setup and student notebook guidance without adding a second skill or runtime dependency.
 
 ## Implemented Skill
 
@@ -10,6 +10,7 @@
   - [`research-first-coding-style.md`](skills/r-analytic-coding-principles/references/research-first-coding-style.md): detailed R examples and style decisions.
   - [`verification-and-guardrails.md`](skills/r-analytic-coding-principles/references/verification-and-guardrails.md): live inspections, preserved diagnostic outputs, durable checks, reproducibility, and optional external guardrails.
   - [`package-conflicts.md`](skills/r-analytic-coding-principles/references/package-conflicts.md): selecting between `library()` and `::` according to actual usage; base R conflict resolution and optional `{conflicted}`.
+  - [`classroom-r-scripts.md`](skills/r-analytic-coding-principles/references/classroom-r-scripts.md): on-demand guidance for R code students execute in scripts or Quarto notebooks.
 
 Applies to the **R code** in `.R`, `.Rmd`, and `.qmd` files. It does not replace statistical-method expertise, Quarto/R Markdown authoring skills, or R package development guidance.
 
@@ -64,9 +65,9 @@ For direct local Claude Code testing from the monorepo root:
 claude --plugin-dir ./plugins/r-analytic-core
 ```
 
-For **unreleased Codex development**, use a separate local marketplace entry pointing to `./plugins/r-analytic-core`, rather than overriding the tag-pinned public marketplace source. The released `v0.1.0` is available from the public catalog. See the repository [agent setup](../../docs/agent-setup.md).
+For **unreleased Codex development**, use a separate local marketplace entry pointing to `./plugins/r-analytic-core`, rather than overriding the tag-pinned public marketplace source. The public catalog installs its currently pinned release; verify that its `source.ref` matches `r-analytic-core-v0.1.1` after publication. See the repository [agent setup](../../docs/agent-setup.md).
 
-The first release passed its [scoped behavioral gate](docs/pilot-findings.md), including two independent post-fix test waves and checked R/Quarto results. [Validation cases](docs/validation-cases.md) remain available for subsequent changes. Public distribution still requires pushing the tagged release and adding the tag-pinned marketplace entry.
+The first `0.1.0` release passed its [scoped behavioral gate](docs/pilot-findings.md), including two independent post-fix test waves. The `0.1.1` instruction changes passed structural and synthetic R/Quarto checks but have **not** undergone a new independent agent-behavior wave. See the [validation cases](docs/validation-cases.md); public distribution requires the tag and matching marketplace pin to be available remotely.
 
 ## Design Documents
 

@@ -41,7 +41,7 @@ Plugins are independently usable; do not introduce hard dependency chains or clo
 
 ## Current Skill and Resources
 
-### Current working-tree resources (`v0.1.0` baseline plus unreleased additions)
+### Current skill and resources (`v0.1.1`)
 
 `r-analytic-coding-principles` is one general skill with meaningful conditional guidance:
 

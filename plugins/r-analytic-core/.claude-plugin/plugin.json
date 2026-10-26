@@ -1,6 +1,6 @@
 {
   "name": "r-analytic-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Research-first R coding conventions for transparent, locally editable analysis and proportionate verification.",
   "author": {
     "name": "Brian Norman Peña-Calero"

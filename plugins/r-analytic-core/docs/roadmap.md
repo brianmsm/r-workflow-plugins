@@ -46,6 +46,8 @@ A separate Quarto-format-only case correctly did not activate `r-analytic-core`,
 
 ## Phase 2: `v0.1.x` Correction Cycle
 
+The `0.1.1` patch addresses explicit tidyverse-preference consistency, excessive setup/environment scaffolding, optional student-executed notebook guidance and proportional native-error handling. Its check scope is structural plus synthetic R/Quarto execution; a fresh independent agent-behavior wave was not run. Existing project/pipeline safeguards and previously published `0.1.0` evidence remain distinct.
+
 Fix observed activation errors, unnecessary abstraction, package namespace inconsistencies, misplaced diagnostics, and false claims of verification. Prefer corrections to `SKILL.md` and its existing references over new scripts/skills. Summarize reusable, non-sensitive findings in the plugin docs; keep raw case data local.
 
 ## Phase 3: Conditional Specialized Skills
@@ -58,4 +60,4 @@ Consider standalone read-only consistency checks only if actual cases recur: mis
 
 ## Version and Distribution
 
-The first validated release is `v0.1.0`, recorded in both plugin manifests and the changelog and pinned by the public Codex and Claude Code catalogs to `r-analytic-core-v0.1.0`. Later development commits on `main` do not change the published plugin; a new independently tagged release and a separate catalog update are required. See the repository [release process](../../../docs/release-process.md).
+The first validated release was `v0.1.0`; the `v0.1.1` instruction patch is recorded separately in both plugin manifests and the changelog, with the independent tag `r-analytic-core-v0.1.1`. Consumers receive whichever release tag their remote marketplace pins; updating `main` alone does not publish a plugin. See the repository [release process](../../../docs/release-process.md).

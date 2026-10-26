@@ -4,20 +4,23 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
-### Changed
+_No subsequent changes recorded._
 
-- Clarified that an explicit tidyverse preference governs imports, repeated-column transforms and ordinary iteration as well as `dplyr` calls, without imposing a strict global mode or refactoring unaffected code.
-- Kept `.R`, `.Rmd` and `.qmd` setups small: shared imports and literal per-package `library()` calls, one-off `pkg::fun()`, no upfront analytical mega-chunks, automatic installation, dependency/path/locale discovery or `renv` bootstrap by default.
-- Strengthened the default against new `stopifnot()`/defensive wrappers for ordinary missing packages, files and objects: use native R errors and agent-side inspection; retain meaningful diagnostics and narrowly justified protections against demonstrated silent corruption.
-- Extended student-facing R guidance explicitly to notebook chunks; added scoped positive and exception cases for style consistency and execution requirements.
+## [0.1.1] - 2026-10-26
 
 ### Added
 
-- Added scoped guidance for student-facing R scripts: simple lesson steps, local inputs, teacher-only analysis separation, and student handoff verification, without repeating research-code principles.
+- Added scoped, optional classroom R guidance for student-executed `.R`, `.Rmd` and `.qmd` work, emphasizing familiar analyses, local inputs, coherent code and teacher-only evidence separation.
 
-### Documentation
+### Changed
 
-- Updated installation guidance and publication status after registering the `v0.1.0` release in the public Codex and Claude Code marketplaces.
+- Applied an explicitly preferred tidyverse style consistently to new/edited CSV imports, uniform column operations and routine iteration, without converting unrelated base R code or obscuring independently editable model decisions.
+- Kept analytical R scripts and Quarto notebooks free of initial mega-chunks and unrequested environment bootstrapping: literal `library()` lines for commonly used packages, `pkg::fun()` for occasional calls, and no automatic package installation, `renv`, `.libPaths()` discovery or speculative preflights by default.
+- Prefer ordinary R errors and agent-side investigation over `stopifnot()`, missing-file/package wrappers or catch-all handlers in user-facing code. Retained substantive reported checks, analytical intermediates, existing project requirements and evidence-backed safeguards against silent failures.
+
+### Validation
+
+- Structural/semantic review passed 31/31 scoped checks plus the official skill validator; isolated synthetic `Rscript` and Quarto runs completed with expected tabulated values. These checks do not constitute a fresh independent agent-behavior wave; the prior `0.1.0` field-test gate remains historical evidence, not a new `0.1.1` result.
 
 ## [0.1.0] - 2026-10-11
 
