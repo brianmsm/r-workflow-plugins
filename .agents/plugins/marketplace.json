@@ -24,7 +24,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/r-analytic-core",
-        "ref": "r-analytic-core-v0.1.0"
+        "ref": "r-analytic-core-v0.1.1"
       },
       "policy": {
         "installation": "AVAILABLE",

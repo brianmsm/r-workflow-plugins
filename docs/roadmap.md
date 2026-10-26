@@ -6,13 +6,13 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 As of 2026-10-26, `quarto-publishing`, `quarto-bento` and `r-analytic-core` have **independent tagged versions and marketplace entries** in this repository. The new Quarto Publishing `0.2.3` guidance maintains six implemented skills, including pedagogical communication and progressive slide design; its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills, while the [roadmap](../plugins/quarto-publishing/docs/roadmap.md) distinguishes implemented and planned work. Tag/pin changes reach remote consumers only after publication.
 
-`r-analytic-core` retains its released **v0.1.0** tag and one research-first R coding skill. The `quarto-bento` agent plugin now has a **v0.1.1** guidance patch (distinct from the installed `qbento 0.1.1` application), with one skill and three operational references. Its [roadmap](../plugins/quarto-bento/docs/roadmap.md) documents native app/agent evidence and residual limits. All other plugin names remain **working candidates** without scaffolds or releases; no next-plugin order is committed.
+`r-analytic-core` has a new **v0.1.1** guidance patch and one research-first R coding skill; its published `v0.1.0` tag remains immutable. The `quarto-bento` agent plugin now has a **v0.1.1** guidance patch (distinct from the installed `qbento 0.1.1` application), with one skill and three operational references. Its [roadmap](../plugins/quarto-bento/docs/roadmap.md) documents native app/agent evidence and residual limits. All other plugin names remain **working candidates** without scaffolds or releases; no next-plugin order is committed.
 
 ## Plugin Candidates and Scope
 
 | Plugin | Intended role | Examples, not a committed skill list | State |
 | --- | --- | --- | --- |
-| `r-analytic-core` | Research-first, locally editable analytical R code | One validated core skill; optional future specialized workflows | **Published v0.1.0** |
+| `r-analytic-core` | Research-first, locally editable analytical R code | One core skill; optional future specialized workflows | **Tagged v0.1.1** |
 | `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives; regression/GLM; missing data; reporting estimates | Planned |
 | `r-psychometrics` | Measurement modeling and interpretation | EFA/CFA; IRT; invariance/DIF; bifactor/ESEM; reliability and validity evidence | Planned |
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | DGPs; condition grids; replication; bias/RMSE/coverage/MCSE; `SimDesign` | Planned |
