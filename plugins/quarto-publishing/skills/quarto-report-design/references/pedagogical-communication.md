@@ -12,11 +12,11 @@ Use this reference when the task is **helping people understand a concept or pra
 
 A useful sequence is **intuition → example → mechanism → formalization → interpretation**. Choose only the steps this concept needs; it is not a five-slide template.
 
-- **Controlled contrast:** hold relevant conditions fixed, change one salient thing, and make **what remained fixed, what changed, and what followed** explicit.
+- **Controlled contrast:** make **what remains fixed, what varies, and what follows** explicit across scenarios. If an additional scenario changes a different dimension, present it as a separate contrast rather than another step in the same gradient.
 - **Worked example:** show the decision and evidence, not just the final value. Identify units, model, reference, and assumptions when they affect its meaning.
 - **Counterexample:** challenge a tempting overgeneralization, then explain the condition under which the claim does or does not hold.
 - **Formalization:** introduce equations and notation after the underlying relationship is understandable, unless formal reasoning itself is the learning goal.
-- **Interpretation:** ask what the evidence supports **and what it cannot establish**; do not list every caveat on the projected material.
+- **Interpretation:** match claims to the evidence's origin, level of aggregation, and selection criteria; state what it supports **and what it cannot establish**. For example, distinguish known population parameters, estimates from one sample, and summaries across replications; if a summary includes only admissible solutions, disclose that restriction and its denominator.
 
 ### Choose the depiction that reveals the concept
 
