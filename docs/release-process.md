@@ -1,6 +1,6 @@
 # Release Process
 
-The release process is intentionally lightweight. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs**, each pinned to a plugin-specific tag. `quarto-bento` is a local `0.0.0` draft without a public tag/catalog entry; other plugin names remain plans.
+The release process is intentionally lightweight. **`quarto-publishing`, `r-analytic-core` and `quarto-bento`** have independently versioned, tag-pinned entries in both catalogs. Actual published versions are determined by each remote `source.ref`, not by local manifests alone; other plugin names remain plans.
 
 Each plugin is versioned independently. Public tags should follow:
 
@@ -90,6 +90,8 @@ After creating a plugin release tag:
 - push the release commit and tag to the remote and verify that the referenced tag exists both locally and on the remote;
 - only after that, add or update the entries in `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json` with `source.ref` pinned to `<plugin-name>-v<semver>`, then commit and push the catalog change;
 - keep plugin release versions in plugin manifests, not duplicated as marketplace `version` fields, unless there is a deliberate release-channel reason.
+
+**Atomic publication alternative:** when the remote supports `git push --atomic`, a local catalog commit can follow the independently tagged release commits and **branch plus new tags** can be pushed together atomically. Verify remote branch and peeled tag targets first; on failure, do not advertise the catalog pin as public. Otherwise use the two-phase remote-tag-first sequence above. The catalog commit must never move the release tags.
 
 Do not move or reuse release tags to point to a newer development commit. The catalog commit that advances `source.ref` can follow the plugin-tagged commit, as already done for `quarto-publishing-v0.2.2`. Consumers must refresh their catalog/installation according to their agent runtime to receive an updated pin; modifying `main` alone does not publish a new plugin version.
 

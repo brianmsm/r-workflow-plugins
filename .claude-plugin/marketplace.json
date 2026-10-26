@@ -11,7 +11,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/quarto-publishing",
-        "ref": "quarto-publishing-v0.2.2"
+        "ref": "quarto-publishing-v0.2.3"
       },
       "description": "Quarto-first publishing workflows for analytical, academic, technical, and reproducible outputs.",
       "author": {
@@ -60,7 +60,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/quarto-bento",
-        "ref": "quarto-bento-v0.1.0"
+        "ref": "quarto-bento-v0.1.1"
       },
       "description": "Quarto-Bento workflows for reviewed, trusted local Linux projects with qbento 0.1.1: retained design, checked edits, QMD synchronization and conservative recovery.",
       "author": {

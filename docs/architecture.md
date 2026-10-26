@@ -23,7 +23,7 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `quarto-bento`: an independently distributed companion for the Quarto-Bento application: project identity, CLI/API/Studio operations, retained visual state, reviewed synchronization and recovery. Generic Quarto skills remain optional companions, not duplicates.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
-The domain map is provisional; see [global roadmap](roadmap.md). Both `quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are distributed through the public catalogs, each pinned to its independent release tag. `r-analytic-core` provides one validated core skill. `quarto-bento` now has a local `0.0.0` draft with one skill and three version-pinned operational references; it is not publicly cataloged. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
+The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list `quarto-publishing`, `r-analytic-core` and `quarto-bento` with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
 
 ## Plugin Layout
 
