@@ -69,6 +69,13 @@ explicitly owns a visual field. Generated `*.bento.html` is output, not saved de
 
 ## Composition
 
-Other Quarto/R skills are optional for their own relevant tasks, not dependencies of a simple Bento
-edit. Preserve Bento identity, source ownership and execution boundaries when composing; installation
-of another skill is not evidence it was actually read.
+For teaching or presentation-communication decisions, consult `quarto-report-design` **when
+available and relevant**: its pedagogical guidance owns the explanation, while its slide-deck
+guidance owns audience, structure and density. Read only the needed advice; an ordinary native
+Bento edit does not require another skill. Bento still owns supported QMD constructs, persistent
+design, source synchronization and authorized rendering. Do not assume Reveal.js animation or
+format attributes have equivalent Bento behavior without a verified product mapping.
+
+Other Quarto/R skills remain optional, never runtime dependencies. Preserve Bento identity,
+source ownership and execution boundaries when composing; installation alone is not proof a
+companion skill was read.

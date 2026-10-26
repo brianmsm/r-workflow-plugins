@@ -105,4 +105,10 @@ Use `quarto-computation-performance` for cache, freeze, long renders, externaliz
 
 Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell or chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, rendered artifact checks, or verification claims.
 
+For a Quarto-Bento presentation, keep audience, slide-design and pedagogical decisions here;
+when `quarto-bento-workflow` is available, use it for Bento-native components, saved design,
+source sync and rendering. Reveal.js-specific transitions (including `auto-animate`) are not
+portable Bento instructions unless product compatibility has actually been verified. Neither
+plugin is required merely because the other was invoked.
+
 Do not use this skill as the primary guide for scripts, assets, reusable templates, full accessibility audits, deployment workflows, or broad academic-writing guidance. If the user asks for those while designing a report, keep the report-design part limited and route the rest to the appropriate skill boundary.

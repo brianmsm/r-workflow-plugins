@@ -35,6 +35,18 @@ The regular native projection starts slides at **top-level H1 or H2**; H3–H6 a
 
 Explicit heading/block IDs and named executable chunks aid stable mapping. Plain headings/paragraphs are also supported: sync may propose visible identity patches for weak source bindings. Preserve existing IDs; do not mass-generate `qb:*` markers or rename identities once design is attached. A semantic source ID, native slide-scoped element ID and animation/morph identity are different concepts.
 
+**Reveal.js Auto-Animate is not a Bento source round-trip in `qbento 0.1.1`.** In a
+verified two-slide QMD probe, `auto-animate=true`, `auto-animate-id` and matching
+`data-id` survived the Quarto intermediate but did **not** become native Bento
+`morph` transitions or paired `morphId` values; the emitted deck used `fade`.
+Conversely, a checked native `slide.transition: "morph"` persisted in `.qbento/`,
+but `qbento sync` proposed only an optional `.qbento-design` reference, not
+Reveal.js animation attributes. Preserve sequential, meaningful source slides;
+use Bento's own motion editor only within an authorized visual-design task, and
+verify native playback separately. Do not promise bidirectional Auto-Animate
+translation or copy Reveal.js-specific syntax into Bento as if it were mapped.
+Track upstream compatibility as [qbento issue #1](https://github.com/brianmsm/quarto-bento/issues/1).
+
 ## Declarative Components
 
 Use small, directly inspectable source structures. Syntax below is Quarto-Bento-specific, not native Bento object types.
