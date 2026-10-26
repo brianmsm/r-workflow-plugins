@@ -8,7 +8,7 @@ Because this plugin lives in `r-workflow-plugins`, examples may emphasize R/knit
 
 This plugin is not focused on classic R Markdown. R Markdown should appear only when migrating to Quarto, comparing behavior, or maintaining interoperability with Quarto projects.
 
-The latest published release is **v0.2.2**. Six skills are implemented. The plugin architecture describes ten target skills; planned skills are not yet available just because they appear in that design. The v0.2.x releases include presentation support and evidence-driven refinement of report design and output verification.
+**Agent plugin version:** `0.2.3` in the Codex and Claude manifests; distribution is determined by its independent `quarto-publishing-v0.2.3` tag and pinned marketplace entries, not by the version field alone. Six skills are implemented, including on-demand pedagogical communication and slide-design references within `quarto-report-design`. The architecture proposes ten target skills; planned skills are not available merely because they appear there. Reveal.js animation instructions belong to its output-format reference, not to Bento.
 
 ## Implemented Structure
 

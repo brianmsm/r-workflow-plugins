@@ -4,12 +4,18 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
-_Changes in this section are intended for plugin v0.2.3; manifests and public catalog remain pinned to v0.2.2 until release._
+_No subsequent changes recorded._
+
+## [0.2.3] - 2026-10-26
+
+### Added
+
+- Added on-demand pedagogical communication guidance covering learner outcomes, controlled comparisons, derivations, evidence levels and progressive explanations without binding pedagogy to a presentation engine.
 
 ### Changed
 
-- Clarified optional cooperation with `quarto-bento-workflow`: share pedagogy and deck design but select animation mechanisms per output format; preserve authored Reveal.js transitions and disclose Bento motion-fidelity limitations during migration.
-- Prefer concise nominal slide titles and add focused guidance for teaching explanations and learning activities, separate from general slide layout and rendering.
+- Prefer concise nominal slide titles, aligned successive states and explanation-driven slide transitions, including Reveal.js-only `auto-animate` usage in the format reference.
+- Clarified optional cooperation with `quarto-bento-workflow`: keep teaching and slide-design decisions format-independent, choose implementation by output engine, and disclose animation-fidelity limits when migrating Reveal.js QMD to Bento.
 
 ## [0.2.2] - 2026-09-10
 
