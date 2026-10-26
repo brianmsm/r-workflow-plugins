@@ -186,7 +186,7 @@ Practical guidance:
 - Use `quarto-authoring-core` for slide Markdown, chunks, labels, figures, tables, citations, equations, and cross-references.
 - Use `quarto-render-troubleshooting` for failed renders, generated artifact verification, browser inspection, PowerPoint inspection, PDF inspection, or LaTeX/Beamer errors.
 - Use `quarto-computation-performance` if slides execute expensive models, simulations, or external artifact generation.
-- Use future `quarto-multiformat-compatibility` only when the real problem is maintaining equivalent slides or handouts across several output formats.
+- If the task requires equivalent slides/handouts across formats, state the unsupported differences and evaluate those outputs separately; a dedicated multiformat skill is not currently implemented.
 
 ## Official Sources Checked
 

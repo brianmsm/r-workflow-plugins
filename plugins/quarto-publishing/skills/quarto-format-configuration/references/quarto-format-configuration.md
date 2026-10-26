@@ -2,6 +2,13 @@
 
 Use these compact patterns when reviewing or editing Quarto output-format configuration. Prefer official project conventions already present in the user's repository.
 
+## Contents
+
+- [Format selection](#format-decision-matrix) · [YAML shape](#yaml-shape-patterns)
+- [HTML](#html-output) · [LaTeX PDF](#pdf-via-latex) · [Typst PDF](#pdf-via-typst) · [DOCX](#docx)
+- [Citations](#citations-and-rendered-references) · [Presentations](#presentations) · [Books/sites](#books-websites-manuscripts-and-epub)
+- [Multiformat](#minimal-multiformat-notes) · [Extensions/filters](#custom-formats-extensions-and-lua-filters)
+
 ## Format Decision Matrix
 
 - `html`: interactive or browser-first reports, websites, notebooks, dashboards, and shareable HTML.

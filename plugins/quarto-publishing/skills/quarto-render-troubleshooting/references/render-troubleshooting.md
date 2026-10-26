@@ -2,6 +2,13 @@
 
 Use these compact patterns when diagnosing and fixing concrete Quarto render failures or rendered-output defects. Start from the exact command, error message, input file, output format, active profile, and environment.
 
+## Contents
+
+- [Failure triage](#failure-triage) · [Diagnostic commands](#diagnostic-commands)
+- [YAML](#yaml-and-metadata-errors) · [Execution/working directory](#execution-errors-and-working-directory) · [Assets/paths](#paths-assets-and-resources) · [Bibliography/references](#bibliography-citations-and-cross-references)
+- Output: [LaTeX](#latex-pdf-failures) · [Typst](#typst-failures) · [HTML](#html-verification) · [DOCX](#docx-verification) · [PDF](#pdf-verification) · [Slides](#presentation-output-verification)
+- [Citations/CSL](#citation-and-csl-verification) · [Post-render](#post-render-verification) · [No render](#no-render-requested-or-available) · [Local/CI](#local-vs-ci-differences) · [Verification claims](#verification-discipline)
+
 ## Failure Triage
 
 Classify the failure before editing:

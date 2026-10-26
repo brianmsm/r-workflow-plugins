@@ -2,6 +2,12 @@
 
 Use this reference when a researcher needs to **understand, revise, or rerun an individual analytical decision** in `.R`, `.Rmd`, or `.qmd`. These rules concern R code, not how reports should be formatted. Apply explicit user/project style choices before the defaults here.
 
+## Contents
+
+- [Researcher editability](#organize-by-the-researchers-next-edit) · [Minimal setup](#keep-setup-minimal-and-native) · [Intentional repetition](#copy-and-adapt-is-often-intentional)
+- [Stable helpers](#helpers-stable-mechanism-versus-research-choice) · [Editable figures](#graphs-are-independent-analytical-displays)
+- [Tidyverse preference](#apply-a-tidyverse-preference-consistently) · [Packages](#packages-and-namespace-style) · [Working modes](#modes-and-authoring-surfaces) · [Review](#review-questions)
+
 ## Organize by the Researcher's Next Edit
 
 The unit of organization is a meaningful analytical step: a question, a model/specification, a diagnostic, or an independently editable figure. Each model's **formula or syntax + fit + immediate inspection** normally appear together, including an independently revised `lavaan` CFA syntax string; move both, not only the `cfa()` call. In notebooks/reports, its code should be adjacent to the relevant analysis narrative; in scripts, use the project's section/cell conventions.

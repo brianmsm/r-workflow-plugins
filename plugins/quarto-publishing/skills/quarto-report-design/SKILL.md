@@ -1,88 +1,60 @@
 ---
 name: quarto-report-design
-description: Use when designing, reviewing, reducing, or restructuring Quarto reports or manuscripts so analytical results are communicated coherently for a specific audience, purpose, profile, and deliverable type. Use for executive, executive-academic, technical, academic, public or institutional, reproducible, applied, psychometric, simulation, teaching, and slide-oriented reports; Results/Discussion boundaries; objective or hypothesis alignment; public-versus-internal terminology; analytical narrative; result placement; evidence-linked tables and figures; appendices; supplements; reviewer or advisor comments; local writing guidelines; and contractual objectives. Do not use as the primary skill for ordinary .qmd syntax, output-format YAML, project-level configuration, render failures, computation or cache strategy, deployment, accessibility audits, or general prose editing unless the main task is report structure and communication design.
+description: "Use to design or revise Quarto report, manuscript or teaching-slide communication: reader purpose, analytical argument, Results/Discussion, claims and evidence, tables/figures, technical depth, and reviewer-driven structure. Choose audience and report profile without inventing findings. Not for routine QMD syntax, format/project YAML, execution strategy, render verification or unrelated prose editing."
 ---
 
 # Quarto Report Design
 
-Use this skill to turn analytical content into a coherent Quarto deliverable. Focus on report purpose, reader task, section hierarchy, narrative flow, technical density, placement of results, appendices, callouts, tables, figures, diagnostics, and executive, technical, or academic framing.
-
-Do not treat this as a generic writing skill. The main question is whether the report structure helps the reader understand what was evaluated, why it matters, what the evidence suggests, and what follows from it.
+Make the reader's path from the substantive question through evidence, interpretation, limits and implications clear. This is communication design, not general prose polishing.
 
 ## Operating Workflow
 
-1. Establish a communication brief: report goal, intended reader task, deliverable type, public or internal status, current-state or change-history voice, expected technical depth, and local style or terminology constraints. Infer this brief from even a short request and the available project context; do not require the user to supply a detailed outline or repeat known preferences.
-2. Select a primary profile and any secondary layer: executive, executive-academic, technical, academic, or another mixed profile.
-3. For public-facing work, distinguish substantive reader-facing labels, necessary technical terms that need explanation, and operational identifiers that belong in an appendix, sidecar, audit record, or delivery note.
-4. Map the reader's main questions and central claims to the evidence, tables, figures, citations, or technical sections that support them.
-5. Propose a hierarchy ordered by the reader's questions rather than by software steps, pipeline phases, or editorial history.
-6. For each analytical block, present the object, comparison, or candidate before the evidence that evaluates it; then connect evidence, interpretation, limits, implication, and the route to supporting detail.
-7. Define uncommon or consequential technical terms at or before first substantive use. Explain what a diagnostic measures, why it matters, what was observed, and what it does and does not support.
-8. Decide which content belongs in the body, oriented collapsed callouts, appendices, supplements, technical notes, or sidecars. The main argument must remain understandable with optional sections closed.
-9. Classify each planned visual as observed evidence, transformed evidence, diagnostic, didactic illustration, or process diagram, and verify that its scope matches what was actually estimated or observed.
-10. When figures, tables, or generated artifacts change, revisit captions, alt text, surrounding prose, Results, Discussion, objectives, hypotheses, and evidence links.
-11. Before delivery, compare central claims, numerical summaries, and decision rules back to the supplied evidence. Preserve the user's analytical intent. Do not invent findings, aggregates, subgroups, or other results for narrative symmetry, and do not claim rendered-output inspection unless it actually happened.
-12. Apply basic accessibility and readability checks only at a transitional level, then hand off format configuration and rendered-artifact verification to their responsible skills.
+1. Infer the **reader task and communication brief** from the request/project: audience, deliverable, public/internal scope, technical depth and local terms. Do not demand an outline or re-ask known preferences.
+2. Select the lightest suitable report profile and, if needed, a secondary technical layer; use a routed profile reference for substantial detail.
+3. Map objectives, questions, claims and recommendations to actual evidence; preserve observational units, populations, source values and denominators.
+4. Organize by the reader's questions, **not** by software steps or editorial history. Introduce an object/comparison before its results; link evidence to interpretation, limits and implication.
+5. Define consequential terms and derived measures where needed. Explain the purpose and limitations of diagnostics and how supplied decision criteria combine; do not invent thresholds or requirements.
+6. Choose tables/figures for their evidentiary role (observed, transformed, diagnostic, didactic or process) and make labels, reference scales and uncertainty truthful and readable.
+7. Keep the argument understandable with optional callouts closed; route supporting calculations, specifications or inventories into oriented technical detail without hiding decision-changing limits.
+8. Before delivery, check central claims, numbers, figures, captions, objectives and linked evidence **against the actual sources**. Distinguish reviewed source from completed render or visual inspection; do not imply checks you did not perform.
 
 ## Profile Defaults
 
-- Executive: Use when the report supports decisions or non-specialist interpretation. Prioritize plain language, key findings, implications, recommendations, and readable tables or figures. Technical details may go in collapsed callouts or appendices, but the main argument must be understandable without opening them.
-- Executive-academic: Use when the body must remain decision-oriented or accessible while the evidence must meet scholarly or methodological expectations. Keep the body executive; preserve academic precision through first-use definitions, citations, inferential cautions, evidence links, and inspectable appendices or collapsed sections. Include source code only when reproducibility is part of the reader's task.
-- Technical: Use when the report supports analytical review, audit, reproducibility, debugging, or methodological inspection. Include assumptions, diagnostics, validation checks, model details, and inspectable outputs when useful. Raw outputs are acceptable only when they improve technical inspection.
-- Academic: Use when the report supports a thesis, manuscript, research report, methodological evaluation, or scholarly deliverable. Organize around research questions, objectives, hypotheses, or analytical aims. Connect analyses into a coherent argument and keep routine technical checks outside the main body unless they affect interpretation.
-- Mixed: Use when signals conflict or the report must serve more than one reader task not covered by the executive-academic pattern. Name the primary reader task, keep the main narrative readable, and retain secondary technical detail in clearly marked sections. For HTML mixed reports that need auditability, prefer folded source code over hidden source code.
+- **Executive:** decision, finding, implication, next step; keep extended methods in supporting detail.
+- **Executive-academic:** readable decision-oriented body with scholarly definitions, inferential caution, citations, explicit evidence links and inspectable technical support.
+- **Technical:** assumptions, model behavior, diagnostics and checks needed for analytical review; raw output only when useful to inspect.
+- **Academic:** research questions/hypotheses, methods and findings organized as a supported argument, not a pipeline narrative.
+- **Mixed:** name the primary reader task; present a readable main path with a deliberate secondary layer. For auditable HTML, use inspectable/folded source rather than hiding it by default.
 
-When the user does not specify a profile, infer the lightest reasonable profile from the task. Decision, recommendation, stakeholder, or summary language usually points to executive. Diagnostics, assumptions, reproducibility, model checks, or validation usually points to technical. Thesis, manuscript, research questions, objectives, hypotheses, methods, or academic evaluation usually points to academic. For ambiguous R/Quarto analytical reports without a decision-making signal, prefer an academic-technical mixed profile and ask before major restructuring.
+Infer the profile from the task; do not impose a generic report template. Without a clear decision-making signal, an analytical R/Quarto report often calls for an academic-technical blend; confirm before **major** restructuring that changes reader purpose or scientific meaning.
 
 ## Cross-Profile Rules
 
-- Contextualize before reporting numbers.
-- Each major section should open with its central idea and close with an implication, decision, limitation, or transition.
-- The body should explain what is evaluated, why it matters, what the result suggests, and what decision or next step it enables.
-- Use final-product voice for public reports. Keep version history, editorial changes, pipeline states, receipts, hashes, and operational identifiers in the delivery note or technical traceability layer unless they are part of the reader's task.
-- Use substantive labels before technical identifiers. Preserve exact technical names as supporting detail when they matter for auditability.
-- Define uncommon terms in the point-of-need context rather than relying on a distant glossary alone.
-- When a supplied method or criterion is underspecified, separate a general explanation or possible design from the procedure actually documented. Do not silently choose a particular validation design, threshold, or interpretation and attribute it to the study.
-- Introduce variables and derived measures before interpreting model results. For a consequential derived measure, identify its reader-facing label, source variables or codes, transformation, missing-value treatment, scale, and analytical role; use a diagram only when the construction has meaningful branching or sequence.
-- When several populations or specifications could be confused, orient the reader with a compact scope map: units, variable roles, what varies, and which analyses were actually run. Preserve the observational unit, population, and denominators across summaries, recommendations, tables, and visuals; do not silently replace the measured unit with its parent organization or territory. Preserve readable labels with a consistent mapping to analytical identifiers and coding in supporting detail.
-- Explain how consequential criteria combine, not just what each measures: whether they are sequential, necessary, sufficient, or non-compensatory. Distinguish a failed check from one not evaluated; favorable evidence on one criterion cannot automatically offset another. Attribute decision rules to their actual source and distinguish supplied requirements from additional recommendations; do not invent a protocol or promote a diagnostic into a mandatory criterion.
-- Make each central conclusion traceable to its supporting evidence through descriptive cross-references or links. In a long comparison report, a short linked reading guide can explain which question each section answers and how it contributes to the decision; a table of contents alone does not explain that logic.
-- Distinguish didactic illustrations from observed or estimated results in titles, captions, alt text, and surrounding prose.
-- Review visuals as a sequence: introduce what to look for, connect each display to its interpretation, and reconcile labels, direction, and scales between didactic and empirical displays. For transformed scores and contrasts, identify the reference, units, direction, and meaning of zero in the display; retain original values when needed for interpretation.
-- Do not present combined, national, subgroup, or average views without supporting evidence. A new derivation is appropriate when it is within the authorized analytical scope, can be computed and verified from available evidence, and its method, population, weighting where relevant, and interpretive limits are explicit. Do not expand the analysis solely for narrative symmetry; distinguish a display of existing estimates from a newly computed result.
-- With incomplete observation or classification, distinguish recorded counts from complete population totals. Unknown status is not absence: qualify lower bounds and the known subset behind conditional percentages, rather than treating sums of classified states as exhaustive event totals.
-- Avoid raw console output in executive and polished academic bodies unless it directly supports understanding; do not confuse this with hiding source code that should remain inspectable.
-- Use inline computed values only when they support a substantive sentence.
-- Do not use generic boilerplate around inline values when rendered results can be inspected.
-- Prefer clean ASCII names for code-facing objects and columns. Reserve accents, spaces, and reader-facing labels for final tables, figures, captions, and prose.
-- Avoid hiding the core argument in collapsed callouts or appendices.
-- Treat local writing guidelines, reviewer notes, advisor feedback, and contractual objectives as report-design constraints before cutting, moving, or deleting analytical content.
-- Preserve stated terminology, punctuation, labeling, and visual conventions across later revisions and across prose, headings, captions, tables, legends, alt text, and navigation.
-- When reducing length, preserve the argument sequence, objectives or hypotheses, and the role of central figures and tables; remove redundancy before removing evidence.
-- Do not change captions, chunks, cross-references, or generated artifacts while doing prose-only design work unless the user asks for those edits.
+- Lead each major section with its question or point and end with an implication, limitation, decision or transition. Explain the object and comparison before presenting numbers.
+- Use **current-result voice** in public deliverables. Show substantive names first with a traceable mapping to internal identifiers; keep pipeline states, hashes, receipts, editorial chronology and sensitive operational IDs in internal records unless the reader needs them.
+- Define consequential terms at first use; introduce variables before interpreting model results. Explain derived measures through original variables, transformation, missingness, scale and role rather than unexplained new quantities.
+- Preserve **unit, population and denominator** across prose, figures, tables and conclusions; never treat unknown/unclassified cases as absent or classified subtotals as complete population totals. State lower-bound or conditional-percentage scope.
+- Distinguish diagnostic fit, measurement/classification, association and prediction claims. When criteria interact, say which are necessary/sequential/non-compensatory, attribute any mandated rule and distinguish failure from missing evaluation; favorable evidence on one criterion does not cancel another.
+- Keep every central claim linked to supporting evidence. A selective linked reading guide may help long comparisons; neither a full TOC nor a symmetric figure layout justifies creating an unestimated group or result.
+- A **new** derived summary/combined view is permissible only within the authorized analytical scope and when verified from the actual data with method, population, weighting and limits stated. Otherwise display existing estimates faithfully or explain missing evidence; never fabricate statistics for narrative symmetry.
+- Label figures/tables as observed, transformed, diagnostic, didactic or process. For transformed scores and contrasts, show reference, direction, units, neutral/zero value and relevant uncertainty, retaining original values when interpretation depends on them. Keep labels, populations and scales consistent across related displays.
+- Introduce what to notice in each figure/table and connect it to the interpretation afterwards. Avoid raw console output in executive/polished bodies, but keep source code inspectable when the reader's task needs it.
+- Honor user/local terminology, punctuation, reviewer comments, contractual objectives and format constraints. Reduce repeated prose **before** cutting evidence; preserve the supplied argument, claims, limitations, objectives and central displays.
+- For prose-only edits, do not silently change calculations, source chunks, captions, cross-references or generated outputs; when artifacts **are** changed, revisit the associated text and evidence links.
 
 ## Code Visibility
 
-Distinguish source code from raw console output. Avoiding raw output does not mean hiding all executable source code.
-
-For technical, reproducible, debug-oriented, or mixed executive-technical reports, keep source code inspectable by default when the medium supports it. For HTML, prefer visible-but-folded code with `echo: true` and `code-fold: true`, while hiding messages and warnings unless they are diagnostically relevant.
-
-Use global `echo: false` mainly for reader-only executive, executive-academic, or polished academic deliverables, or when source code is intentionally moved to appendices, supplements, or a separate technical version.
-
-Do not set global `echo: false` for mixed, technical, reproducible, or debug-oriented reports unless the user explicitly asks for a reader-only document or the source code is exposed elsewhere.
+Distinguish executable source from raw console output: avoiding console noise does **not** justify hiding the code a researcher needs to inspect. For technical, reproducible, debug-oriented, auditable or mixed HTML, default to folded source (`echo: true`, `code-fold: true`), suppressing routine messages/warnings only when not diagnostically relevant. Reserve global `echo: false` for reader-only executive/academic deliverables or when the same source is exposed elsewhere. Follow explicit visibility requests and do not silently change existing chunk outputs.
 
 ## User-Supervised Decisions
 
-When working autonomously, state the assumption before editing; ask only when the change would alter the report purpose, claims, reader task, or evidentiary meaning. Apply that rule before changing:
+Infer ordinary choices when evidence and user preferences are clear; avoid repeated approval gates. Seek direction **before** a change that alters the report's purpose, intended audience, substantive claims, scientific meaning or required delivery medium. Examples include:
 
-- The primary report profile or intended reader task.
-- The amount of technical detail exposed in the body.
-- Whether diagnostics, assumptions, code, or raw outputs move to collapsed callouts, appendices, supplements, or unlisted sections.
-- Removing, merging, summarizing, or substantially shortening analytical sections, results, diagnostics, or appendices.
-- The order of analyses when it affects the analytical argument.
-- Research questions, objectives, hypotheses, substantive claims, recommendations, or decisions.
-- Separate deliverable versions, such as executive and technical variants.
-- The deliverable medium when switching between report, slides, website, manuscript, PDF, DOCX, or HTML materially changes the communication.
+- Changing objectives/hypotheses, interpretation, recommendations, observational unit or order of analyses in a way that changes the argument.
+- Removing, merging or substantially shrinking central sections, diagnostics, findings or appendices; relocating information needed for the main decision behind collapsed content.
+- Replacing approved executive/academic/technical depth or creating a separate output version with different claims or audience.
+
+Explain a bounded assumption when proceeding with ordinary edits; do not expand the analytical or publication task merely to satisfy a profile convention.
 
 ## References
 

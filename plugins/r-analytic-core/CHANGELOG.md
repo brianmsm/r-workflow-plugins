@@ -4,7 +4,10 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
-_No subsequent changes recorded._
+### Changed
+
+- Made detailed research, classroom and namespace references conditional on the actual editing task rather than an obligatory read for simple R changes.
+- Added navigation to the existing research-first style reference without changing the plugin's activation description, statistical safeguards, or published API.
 
 ## [0.1.1] - 2026-10-26
 

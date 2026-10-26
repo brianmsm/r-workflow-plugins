@@ -1,6 +1,6 @@
 ---
 name: quarto-computation-performance
-description: Use when designing or reviewing Quarto workflows where execution cost, render time, user requests not to execute, caching, freezing, precomputed or external artifacts, generated figures/tables, simulations, model fitting, repeated or parameterized renders, pipeline-like execution, random seeds, engine-specific execution behavior for R/knitr, Python/Jupyter, or Julia, or proportional validation are central. Use for deciding whether computation belongs inside .qmd files, scripts, stored artifacts, or an external pipeline. Do not use for ordinary .qmd authoring, general cell-option cleanup, project YAML architecture unrelated to execution cost, format styling, report writing/design, deployment/CI, accessibility, or deep render troubleshooting except when the main issue is excessive recomputation or unsafe long renders.
+description: Use when Quarto execution cost, safety or recomputation governs decisions about calculations in QMD versus scripts, cache/freeze, external artifacts, model or simulation runs, random seeds and pipelines. Respect no-execution constraints and validate proportionally. Not for ordinary QMD syntax, output styling, project configuration, report design, or render-error diagnosis.
 ---
 
 # Quarto Computation Performance
@@ -47,7 +47,7 @@ Use `quarto-format-configuration` for output-format YAML, styling, templates, PD
 
 Use `quarto-render-troubleshooting` for failed renders, logs, LaTeX/Typst errors, missing files, broken links, or output inspection unless the core issue is long-running recomputation.
 
-Use future `quarto-publishing-deployment` for CI, hosting, publishing, and release automation.
+CI, hosting, and release automation are outside the current skill's scope; do not invoke an unimplemented deployment skill.
 
 ## References
 

@@ -1,11 +1,11 @@
 ---
 name: quarto-render-troubleshooting
-description: Use when diagnosing, fixing, or verifying Quarto render failures or rendered-output problems, including failed renders; YAML, execution, dependency, path, LaTeX, Typst, citation, cross-reference, asset, extension, theme, or CSS problems; generated HTML inspection; Mermaid or lightbox behavior; DOCX or PDF checks; screenshots or browser review; links, anchors, navigation, post-render output, local-versus-CI differences, and honest structural, visual, or interactive verification claims. Use source or static checks only when the user says not to render. Do not use as the primary skill for ordinary .qmd authoring, planned project architecture, output-format design, cache or performance strategy, report design, deployment, accessibility review, or broad refactoring unless the main task is to fix or verify rendered output.
+description: "Use to diagnose Quarto render failures or verify rendered HTML, DOCX, PDF or slide artifacts: YAML/execution/dependency issues, links, assets, citations, layout and browser interactions. Distinguish source, rendered, structural, visual and interactive evidence; use static review when execution is forbidden, unsafe or unavailable. Not for ordinary authoring, planned format/project design, report structure or cache strategy."
 ---
 
 # Quarto Render Troubleshooting
 
-Use this skill to diagnose, fix, and verify Quarto render failures or rendered-output defects. A successful render and a verified artifact are different claims.
+Diagnose and verify Quarto render or artifact defects; a successful render command alone does not establish a sound output.
 
 ## Core Role
 
@@ -15,27 +15,15 @@ Never claim that a render, screenshot, browser path, link, anchor, or output was
 
 ## First Triage
 
-Classify the problem before changing files:
-
-1. Command or environment failure: Quarto, R, Python, Jupyter, LaTeX, Typst, Pandoc, or missing dependencies.
-2. YAML or metadata failure: invalid indentation, wrong key placement, unsupported option, or profile mismatch.
-3. Execution failure: cell or chunk error, missing package, missing object, bad parameter, or wrong working directory.
-4. File/path failure: missing data, bibliography, CSL, image, include, extension, theme, or resource.
-5. Format failure: LaTeX/PDF, Typst/PDF, DOCX/PPTX, revealjs, HTML asset, or CSS issue.
-6. Output verification issue: rendered file exists but links, anchors, navigation, images, tables, citations, or layout are wrong.
-7. Local-vs-CI issue: different Quarto/R/Python/TeX/Typst versions, missing system dependency, different working directory, missing files, or profile differences.
+Classify the observed problem before changing files: **command/environment**, **YAML/metadata**, **execution/data**, **assets/paths**, **format**, or **rendered-output defect**. Identify the actual engine and first meaningful error; local-versus-CI mismatches may change which explanation fits. For failure signatures and diagnostic commands, consult `references/render-troubleshooting.md`.
 
 ## Preferred Workflow
 
-When tools are available:
-
-1. Inspect the exact command, file, format, profile, and error message.
-2. Prefer a targeted render over a full project render when sufficient.
-3. Use diagnostic commands proportionally: `quarto check`, `quarto check all`, `quarto render <file>`, `quarto render <file> --to <format>`, `quarto render <file> --log-level debug`, `quarto render <file> --log <path>`, `quarto render <file> --execute-debug`, and `quarto render <file> --debug` when intermediate files are needed.
-4. Read the first meaningful error, not only the final failure line.
-5. Fix the smallest relevant source of failure.
-6. Re-run the smallest render or verification check needed.
-7. Report exactly what was verified and what remains unverified.
+1. Inspect the exact user-requested operation, QMD, output format, profile and relevant error/claim.
+2. **Before running Quarto**, check whether the render would execute source code or other side effects. A rendering/verification request permits only its authorized, trusted scope; do not execute untrusted or unapproved computation to test a visual fix. If execution is forbidden, unsafe or unavailable, stay with source/static review and state the limit.
+3. Prefer the smallest authorized render or output inspection that can answer the question. Use `quarto check` for engine problems and escalate to logs, `--debug` or `--execute-debug` only when the initial error is insufficient; exact commands are in the reference.
+4. Fix the smallest relevant cause, then repeat only the affected verification under the same permission boundary.
+5. Report source, render, structural, visual and interactive outcomes **separately**, including what was not checked.
 
 ## Rendered Artifact Verification
 
@@ -66,26 +54,14 @@ If the user explicitly says not to render, says they will render themselves, or 
 
 ## Common Fix Areas
 
-Check, as applicable:
+Diagnose the specific failing layer rather than running a universal checklist:
 
-- YAML syntax, indentation, nesting, quoting, and option placement.
-- Project vs document metadata placement.
-- Active profile and selected output format.
-- Execution engine: R/knitr, Python/Jupyter, Julia, prose-only, or mixed.
-- `execute-dir`, relative paths, `here`, `getwd()`, and `QUARTO_PROJECT_DIR`.
-- R/knitr: package availability, `.libPaths()`, `sessionInfo()`, and environment mismatch.
-- Python/Jupyter: `jupyter`, kernels, virtual environments, `quarto check jupyter`, Python path issues, and notebook execution settings.
-- Julia: whether the document uses `engine: julia` or Jupyter/IJulia, Julia installation, package environments, and kernel availability.
-- Bibliography and CSL file paths, citation keys, and cite processor behavior.
-- Cross-reference labels, prefixes, captions, duplicate labels, and section numbering.
-- Image paths, generated figure paths, static assets, includes, and project resources.
-- LaTeX installation, missing packages, Unicode/font issues, `keep-tex`, and intermediate `.tex`.
-- Typst format options, bibliography handling, and Typst syntax errors.
-- HTML assets, CSS/SCSS, theme/extension effects, links, anchors, and navigation.
-- Mermaid diagrams for rendered SVG output, visible error placeholders, clipping, and legibility when they are part of the artifact.
-- Lightbox activation, target resources, captions, enlargement, closing behavior, and keyboard access when lightbox is configured and interactive verification is required.
+- **Source/configuration:** YAML placement, profile, engine and document-versus-project metadata.
+- **Execution/inputs:** cell and package errors, working-directory/paths, input assets, bibliography/CSL and generated files; inspect `.libPaths()` or runtime versions only when an observed environment failure requires it.
+- **Output engines:** LaTeX/Typst PDF, DOCX sections/tables/captions, presentation navigation, HTML themes and assets.
+- **Rendered fidelity:** anchor targets, citations, Mermaid SVG, lightbox and readable labels/contrast at actual display widths; verify configured browser interactions when warranted.
 
-For HTML presentation changes, use the browser checks in `references/render-troubleshooting.md#html-verification`: intended reading widths, displayed label size and contrast, meaningful axis/reference labels, reachable table columns, and real keyboard operation. A successful click or full-page screenshot alone does not establish all of these.
+Use `references/render-troubleshooting.md` for format-specific procedures. Do not create environment checks, caches or wrappers inside the user's QMD as a default response to troubleshooting.
 
 ## Boundary Rules
 
@@ -96,26 +72,12 @@ Use other skills when the main task is not troubleshooting:
 - `quarto-format-configuration`: choosing or configuring output formats before a failure occurs.
 - `quarto-computation-performance`: reducing expensive recomputation, cache/freeze strategy, precomputed artifacts, or pipeline escalation.
 - `quarto-report-design`: report structure, audience, and communication design.
-- Future `quarto-publishing-deployment`: publishing targets, hosting, and CI/CD setup.
-- Future `quarto-accessibility-quality`: accessibility and publication-readiness review beyond failure verification.
+
+Hosting/CI deployment and comprehensive accessibility audits are outside the currently implemented skills; do not route work to nonexistent skills.
 
 ## Verification Discipline
 
-Say "verified" only for checks actually performed.
-
-Acceptable wording:
-
-- "I rendered `report.qmd` to HTML successfully."
-- "I inspected the generated `report.html` and confirmed the figure appears."
-- "I checked the internal link to `#sec-methods`."
-- "I did not run the PDF render, so the LaTeX fix is not verified."
-- "I checked source-level citations only; I did not render the DOCX, so reference formatting is not verified."
-
-Do not say:
-
-- "This should render now" as if it was verified.
-- "The links work" without checking them.
-- "The screenshot looks good" without actually opening or capturing the output.
+Use **"verified" only for actions performed**. A successful `quarto render` does not establish readable figures, resolved links or working interactive controls. Distinguish source/static, rendered, structural, visual and interactive evidence; explicitly name any untested format or medium rather than implying it passed.
 
 ## References
 

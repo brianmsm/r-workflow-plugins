@@ -4,7 +4,12 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
-_No subsequent changes recorded._
+### Changed
+
+- Reduced activation-description length in four skills and condensed `quarto-report-design`, `quarto-format-configuration` and render troubleshooting instructions without removing evidence, source-scope, or honest verification boundaries.
+- Clarified that slide titles should be concise/descriptive rather than simultaneously prescribing nominal titles and message-sentence headings; routed presentation-format tasks directly to their dedicated reference.
+- Distinguished untrusted or unauthorized QMD execution from read-only troubleshooting, and replaced references to future, unimplemented skills with explicit scope boundaries.
+- Added selective navigation indexes to long format and troubleshooting references; retained the existing bounded HTML structural checker and its tests.
 
 ## [0.2.3] - 2026-10-26
 

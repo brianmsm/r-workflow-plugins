@@ -48,7 +48,7 @@ When converting a report, thesis section, manuscript, or technical note into sli
 
 - Extract the argument, not the prose.
 - Preserve objectives, hypotheses, analytical intent, and the evidence chain.
-- Convert paragraphs into message titles plus supporting evidence.
+- Replace paragraphs with short, descriptive nominal titles and supporting evidence; put the actual finding or implication in the slide body or spoken explanation.
 - Simplify methods to the level the audience needs without distorting what was done.
 - Organize results by argument, research question, decision, or teaching sequence rather than by analysis script order.
 - Convert dense tables into visual summaries when pattern recognition matters.
@@ -77,7 +77,7 @@ If a slide takes too long to explain in practice, it probably contains more than
 
 ## Use Figures, Tables, Code, and Equations
 
-- Figures should support the slide title's message. Redesign dense manuscript figures when needed.
+- Figures should support the slide's main idea. Redesign dense manuscript figures when needed.
 - Prefer figures over tables when the goal is pattern recognition.
 - Use tables only when exact values matter and the table remains legible.
 - Break dense tables into smaller tables, key-number callouts, visual summaries, or backup material.
