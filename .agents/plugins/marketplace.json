@@ -38,7 +38,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/quarto-bento",
-        "ref": "quarto-bento-v0.1.1"
+        "ref": "quarto-bento-v0.2.0"
       },
       "policy": {
         "installation": "AVAILABLE",
