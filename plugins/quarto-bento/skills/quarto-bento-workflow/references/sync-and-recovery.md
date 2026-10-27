@@ -1,12 +1,24 @@
 # State, Synchronization and Recovery
 
-**Reference baseline:** installed Quarto-Bento CLI `0.1.1`, Linux; product commit `1b7e265bda07c060215051302f252a7289f4a1f9`, reviewed 2026-10-17. Commands below are product operations, not agent-specific tools. Consult the installed help when versions differ; preserve work rather than guessing state-file formats.
+**Version scope:** published Linux app `0.1.1` remains the pinned source for
+ordinary sync/recovery. The installed **isolated, unpublished 0.2.0 tarball**
+passed focused Linux synthetic checks for design initialization, output,
+widget import and native state; additional 0.2 Studio/print behavior is grounded
+in the product's local test evidence, **not** a clean published source release.
+Commands are product operations, not agent tools. Confirm the actual CLI/help
+before using version-specific syntax; do not guess internal state formats.
 
 **Contents:** environment; operation effects; selected sync and post-Apply; Studio; capture; identity/recovery; diagnostics and verification.
 
 ## Environment Without Hidden Dependencies
 
-Use the `qbento` already available to the user; check `qbento --version` and installed `help`/`doctor` before relying on version-specific behavior. The published `@brianmsm/quarto-bento@0.1.1` npm launcher uses Node >=22 plus external Deno; Quarto and computation engines remain external. Only QMD using R requires R; Chromium serves browser review/measurement and certain rich-output workflows. The plugin installs none of these.
+Use the intended **exact CLI** and confirm its version with `--version` and
+`doctor`; a separate candidate installed under an npm prefix must be invoked
+through its absolute launcher, **not** by replacing PATH/mise globally. The
+published `0.1.1` app and unpublished `0.2.0` candidate both keep Quarto/R,
+Deno and Chromium as external runtimes; this agent plugin installs none of them.
+Use approved source execution only; an installed CLI does not grant render
+permission.
 
 For installation, consult the [pinned npm guide](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/NPM.md). If the user deliberately selects a source checkout, run its documented `deno task qbento` from that checkout against an absolute QMD path. Keep the chosen binary/version stable within a task; do not assume mise or any developer checkout is present. App `0.1.1`, JSON protocol v1 and the **agent plugin version in its own manifest** are independent.
 
@@ -25,6 +37,8 @@ For installation, consult the [pinned npm guide](https://github.com/brianmsm/qua
 | `capture [edited.html]` | Import a matching publication-generation native HTML edit into saved state; no general HTML import |
 | `recover ... inspect` | Inspect supported interrupted render/sync transaction evidence |
 | `recover ... finish/rollback` | Mutating recovery, only when offered and authorized |
+| `design inspect/init/export/preview/apply` (**app 0.2 only**) | Inspect/export reusable themes, initialize a truly new QMD with a local package or preview/apply a reviewed design update; **init/apply mutate registry**, not QMD computed data |
+| **Studio Save view** (**app 0.2**) | Persist a reviewed Plotly3D camera and refresh static PNG; visual state/capture, **not** a QMD source patch or execution receipt |
 | `init [--extension-only]` | Install offline Quarto extension/configuration; not document creation |
 | `quarto-recover` | Specific interrupted ordinary Quarto integration recovery; not a generic reset |
 | `validate deck.bento.html` | Validate native document envelope and IDs; not visual correctness |
@@ -79,7 +93,10 @@ Use exact `pending[].id` values from a **successful** `qbento get`, not slide/el
 
 The resulting plan may include **necessary technical identities** and separately optional `.qbento-design` annotations. Inspect every proposed source patch before Apply; an out-of-scope optional patch means defer Apply or seek approval, **not** alter a signed plan or change frontmatter to suppress it. A selection does not imply HTML publication permission. In Studio **Revisar cambios**, changing the default all-selected set invalidates the previous preview; obtain a fresh plan and confirm deletions separately. Creation groups are atomic.
 
-**Version distinction:** **application CLI 0.1.0** lacks `--select`/Studio selection; this is unrelated to the **agent-plugin version** in its own manifest. Use installed **application CLI 0.1.1** for the selected-sync contract.
+**Version distinction:** application `0.1.0` lacks the selected-sync contract;
+app `0.1.1` provides it, and the candidate `0.2.0` retains bounded checked sync.
+Neither is the independently versioned **agent plugin**. Detect the installed
+app instead of inferring its commands from a plugin tag.
 
 ## Source Selection Is Not an HTML Publication Filter
 
@@ -87,7 +104,12 @@ The resulting plan may include **necessary technical identities** and separately
 
 **Before authorizing HTML publication:** compare the **entire** `qbento get` saved deck and all pending authored values with QMD and the user-approved visible/forbidden content. If saved text is forbidden in output, **STOP before render** without deleting pending work. If visibility is unclear, clarify the publication scope; if explicitly accepted, a reviewed sync and separately authorized render may proceed. The operator repeats this review against the final saved deck before the one-shot execution and checks the delivered HTML afterwards.
 
-`slide.hide` is not a privacy filter: HTML may retain hidden content. Never rewrite the generated master HTML, change internal state, discard native drafts or invent a selective-publication switch to appear compliant. A separate sanitized publication project requires its own review/authorization; app 0.1.1 has no documented selective-HTML-publish option.
+`slide.hide` is not a privacy filter: HTML may retain hidden content. In app
+0.2, **scrollable complete-output continuations** and offline widget data also
+belong to the publication-scope review; a clipped viewport is not evidence
+that excluded content stays unpublished. Never rewrite the master HTML,
+change internal state, discard drafts or invent selective publication. A
+separate sanitized project requires explicit review/authorization.
 
 ## Successful Apply May Leave Pending Work
 
@@ -106,7 +128,46 @@ Use the original successful receipt (`appliedChangeIds`, `sourceHash`, `receiptP
 
 Use the browser for controls not exposed by the JSON API: supported card/KPI creation, source-aware layouts, diagram **Relaciones**, or visual checks. All members of a managed component's pending creation belong together; geometry alone does not establish membership. An absent browser tool is not permission to forge Studio HTTP payloads or internal `.qbento/` data. Explain unsupported tasks or author appropriate QMD within scope instead.
 
-The documented `.qbento/design.json` registry is a user-facing design configuration with its own schema. Editing it, when explicitly requested, is different from rewriting internal `project.json`/`state.json`/journals; preserve revision/recovery rules and confirm referenced layouts.
+The user-facing `.qbento/design.json` registry is separate from internal
+`project.json`/`state.json`/journals. In app 0.2, prefer checked local design
+packages and **Diseños y temas** (role styles, variants, slots) before applying
+many one-off positional patches; new `design init` and existing `design
+preview/apply` have distinct mutation scopes. Do not copy another project's
+state or `docId` to reuse its theme. Preserve authored QMD selectors and
+current saved overrides; verify the applied presentation, not just JSON syntax.
+
+## Interactive Widgets, Scroll and PDF in App 0.2.0 Candidate
+
+For supported **2D scatter/bar and 3D `scatter3d` points/lines**, use
+**Interactuar** to interact with the actual inline widget in Studio/HTML/
+Presenter and **Escape / Volver al diseño** to restore native editing. This
+is temporary exploration, not a QMD change. In 3D **Save view** explicitly
+persists the live camera and refreshes the static PNG; Studio checks project,
+source, revision and current image identity. Verify through supported saved
+state/reopening and the real PNG, **not** a fabricated `slide.patch` camera
+field, a hand-edited HTML camera blob or a reversed update to R.
+
+A standalone HTML view additionally needs **native Save** of the edited copy
+and the normal *same-generation* checked `qbento capture` if it is to be
+retained by the bound QMD project. Changing the camera does not authorize
+publishing other pending native drafts. R computation and imported inert
+htmlwidget data remain separate provenance paths; read-only import **does
+not** execute the exported original htmlwidget script.
+
+For computed source/code/stdout/table with `bento-overflow: scroll`, check
+actual scrolling (including the last row) in the correct native rectangle.
+The full computed payload must survive Save/reopen; interactive clipping is
+**not** permission to truncate it. Combined Presenter PDF uses **labeled
+continuation pages** after native slides, with static SVG/PNG widget fallbacks.
+Before asserting print completeness, inspect actual PDF pages and last output
+values; the product's 0.2 Linux evidence checked 14 pages with `ROW120` and
+`CELL040`. PDF/print can still differ across browsers/platforms, and there
+is no invented `qbento pdf` command.
+
+A `widget-src` path is a checked local inert-data import, **not** an exemption
+from QMD execution/publication safety, arbitrary HTML rendering or offline
+network restrictions. Do not treat its scripts as producer receipts or allow
+unsafe Chromium flags to manufacture a passing interaction.
 
 ## Native HTML Capture and Rebuild
 
@@ -116,7 +177,12 @@ Preserve a local HTML file edited via native Save. Capture only a compatible cop
 qbento capture deck.qmd edited-copy.html
 ```
 
-Capture checks publication receipt, identity and generation, and accepts one capture per publication generation. Re-render an accepted project before another native-copy editing cycle. A foreign, stale, receipt-less, encrypted or collaborative copy is not a general import source; never edit its receipt or the project's `docId` to match.
+Capture checks publication receipt, identity and generation, and accepts one
+capture per publication generation. App 0.2 camera metadata in a native Save
+copy is only a **request**: capture checks matching original static/widget
+identity and recaptures the approved pixels locally; it is not trusted R
+execution evidence. Re-render an accepted project before another native-copy
+editing cycle. A foreign, stale, receipt-less, encrypted or collaborative copy is not a general import source; never edit its receipt or the project's `docId` to match.
 
 For reconstruction, retain QMD, input data/assets and required `.qbento/` project/state/design resources. Do not blanket-ignore or delete `.qbento/` as cache. A rebuilt base deck with missing retained design is not recovery of the old appearance. **Generated master `deck.bento.html` is not the saved design database.** Never use Python/string replacement or a direct HTML edit to claim a retained position/style change; use supported `get`/`patch`/fresh `get` or a verified Studio project save instead. Copying and editing a **separate** HTML artifact is legitimate within its explicit scope, but it is not a persistent Bento design edit unless the supported matching-generation `capture` succeeds.
 
@@ -170,7 +236,12 @@ Use only offered actions, which can include `keep-source`, `keep-bento` or `deta
 - `OVERFLOW`: an **element box** extends past the slide bottom after retained design. Move/resize that box; this does not measure text clipping, rotation, horizontal edges or shadows.
 - `TEXT_OVERFLOW`: text/list/KaTeX/displayed code **content** escapes its saved box, even if the box is entirely on-slide. Increase height/width or adjust typography; semantic shortening requires separately authorized source sync. Studio read-only diagnostics after Save can clear the warning **without re-executing QMD**; later render rechecks it.
 - `TEXT_MEASUREMENT_UNAVAILABLE`: the text was **not reliably measured** (e.g. Chromium unavailable, rotated text). Do not call it a pass or pretend it is overflow; use an available local browser/visual inspection or report that measurement remains unverified, without changing global sandbox settings.
-- `NATIVE_CONTENT_OVERFLOW`: a simple native **table/chart's measured contents** no longer fit its saved frame; enlarge/reapply a suitable layout and verify final metrics. `NATIVE_CONTENT_UNMEASURED`: custom/unsupported native metrics cannot be measured by the simple adapter; inspect in Studio or retain the design, not an invented automatic fit.
+- `NATIVE_CONTENT_OVERFLOW`: measured table/chart content exceeds its saved
+  frame; reapply a compatible layout and inspect full metrics. `NATIVE_CONTENT_UNMEASURED`:
+  unknown native metrics require review, not an invented fit. For app 0.2,
+  also treat `EXECUTION_LAYOUT`/invalid overflow options as pre-execution
+  refusals: fix the original literal chunk options rather than suppress the
+  error, dropping computed rows or re-running blindly.
 - Component-specific `KPI_CONTENT_OVERFLOW`, `CARD_CONTENT_OVERFLOW`, `LAYOUT_OVERFLOW`, `GRAPH_CONTENT_OVERFLOW` and related errors can **refuse** unsupported compositions. Fix roles, frames, source content or layout geometry within supported limits; do not suppress diagnostics, scale away content or rewrite producer results.
 
 ## Verification Appropriate to the Request
@@ -178,6 +249,14 @@ Use only offered actions, which can include `keep-source`, `keep-bento` or `deta
 Check the mutated target and compare stable `docId`, expected IDs, requested values, unrelated work and pending items. When execution is requested, verify regenerated data output **and** retained geometry/style, not just command exit status. `validate` checks structure only. Open the actual rendered HTML/Studio for visual layout or interaction claims; warnings such as `OVERFLOW`, `TEXT_OVERFLOW`, or `TEXT_MEASUREMENT_UNAVAILABLE` are not a substitute for the relevant check. Never claim PDF export, pixel identity, a GUI operation, or a computation happened without evidence.
 
 ## Pinned Product Sources
+
+The sources below describe **published app 0.1.1**. The 0.2.0 addendum was
+reviewed from the app's dirty local candidate and its exact review tarball:
+`docs/USAGE.md`, `docs/EXECUTION_LAYOUT.md`,
+`docs/features/THEME_SLOTS.md` and
+`docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md`. Replace these provisional
+product descriptions with a release-tagged source contract after 0.2 closes;
+the currently published 0.1.1 links are **not** proofs of inline 0.2 widgets.
 
 - [Usage, exact Studio labels and recovery cases](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/USAGE.md)
 - [Ownership, sync and capture invariants](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/SYNC.md)

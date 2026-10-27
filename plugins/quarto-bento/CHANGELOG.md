@@ -4,7 +4,17 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ## [Unreleased]
 
-_No subsequent changes recorded._
+### Changed
+
+- Added **version-gated compatibility guidance for the unpublished application `qbento 0.2.0` Linux candidate**: expanded reusable themes (role/named styles, variants, slots, checked design packages), measured code/result composition and full-data scroll, and bounded inline 2D/3D Plotly with explicit camera saving. The published application `0.1.1` lacks these additions; the **agent plugin stays version `0.1.1`** until an independent plugin release decision.
+- Distinguish display-code fences from computed chunks, prevent generic API/HTML-widget execution or camera-patch inventions, prefer reusable native design before per-element styling scripts, and maintain source/pending/publication and offline-widget security boundaries.
+- Document full-content PDF continuation and static SVG/PNG fallback without inventing PDF CLI options or treating visible clipping as permission to omit data.
+
+### Validation and provenance
+
+- Reviewed the app's `docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md` and current implementation; the supplied Linux product gate reports **705 passing tests + 4 steps, 0 failures, 1 optional ignored check**, with browser camera, long output and a 14-page PDF. These are **application tests**, not an agent-skill behavioral trial.
+- Independently installed the exact **dirty-source review tarball** (`ae96fc64…`) in an isolated npm prefix. Two synthetic QMDs completed real CLI renders plus checked `get`/`validate`; **43/43** physical/integrity checks passed, including retained design/slots, computed output, inline widget import and final rows. No user presentation, global CLI, app source or sealed evidence was changed. The app is not yet tagged/immutable; tests do not prove cross-platform UI or full agent activation/composition.
+
 
 ## [0.1.1] - 2026-10-26
 

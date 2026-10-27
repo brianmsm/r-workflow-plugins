@@ -1,6 +1,12 @@
 # QMD Authoring for Quarto-Bento
 
-**Reference baseline:** installed CLI `0.1.1`, Linux; product commit `1b7e265bda07c060215051302f252a7289f4a1f9`, reviewed 2026-10-17. The product's authoring document mixes target design with implemented subsets; this reference uses the latter. Ordinary Quarto/revealjs behavior is not proof of Bento projection or round-trip support.
+**Compatibility:** published Linux app `qbento 0.1.1` is the pinned baseline. The
+**unpublished 0.2.0 Linux candidate** (review tarball SHA-256 `ae96fc64…`, source
+HEAD `b52772e` **with uncommitted changes**, 2026-10-27) adds capabilities
+explicitly marked below. These were exercised using an isolated npm CLI on
+synthetic projects; they are **not yet an immutable application release**.
+Check the *actual application version*, independently of the agent plugin;
+do not issue `qbento design` or 0.2-only QMD options on app `0.1.1`.
 
 **Contents:** new source; identities; implemented components; reusable design; annotation levels; analytical examples; delivery and diagnostics.
 
@@ -131,22 +137,62 @@ For uncommon composition, consult the pinned product examples/implemented sectio
 
 ## Reusable Design and Explicit Ownership
 
-The optional `.qbento/design.json` is a **user-facing registry**, not an internal state journal. Create/edit it only when the user requests design changes, within its schema; normally prefer Studio **Diseños y temas** → **Guardar diseños**. Example (trimmed to supported properties):
+`.qbento/design.json` is a **user-facing design registry**, not an internal
+journal. Prefer a theme/variant/slot for repeated course styling; use bounded
+checked `get → patch → get` for **exceptions**, not as the default way to set
+hundreds of repeated coordinates. A one-time composition script is reasonable
+when a design cannot be expressed by native reusable mechanisms, but rerunning
+it may overwrite later manual edits.
 
-```json
-{
-  "schemaVersion": 1,
-  "layouts": {"three": {"columns": 3, "gap": 20, "padding": 10}},
-  "themes": {"forest": {"background": "#e8fff0", "color": "#123a24", "accent": "#26734a", "fontFamily": "Arial, sans-serif"}},
-  "activeTheme": "forest"
-}
+**Installed app 0.1.1:** named themes contain only `background`, `color`,
+`accent`, `fontFamily`; `qbento design` commands, role styles and slots are **not
+available**. Studio **Diseños y temas → Guardar diseños** saves a basic registry;
+**Aplicar diseño** assigns existing objects explicitly into a selected layout.
+Saved free-object positions are snapshots; modifying a layout name alone does
+not relocate them.
+
+**Candidate app 0.2.0:** registry schema **remains 1** and a theme may additionally
+define `styles` (`title`, `heading`, `body`, `code`, `card`), bounded
+`namedStyles` targeting `text`/`code`/`card`, and `variants` with role styles
+and **up to 32 absolute slots** per variant on the existing 1280×720 canvas.
+Select a variant on a top-level source heading (`bento-variant`) and a slot on
+an identified top-level QMD div (`bento-slot`). The optional `defaultVariant`
+applies where no variant is declared. A row/column slot accepts 1–6 identified
+direct children; a named slot style must match their actual element targets.
+This is **not** a recursive layout language or an automatic source-template
+mechanism. Named styles for `code` affect code typography/color, **not** code
+panel fill; use an authored `.bento-card` or supported native backing shape for
+that decoration.
+
+```qmd
+## Explanation {#explanation bento-variant="teaching"}
+
+::: {#instruction bento-slot="task"}
+Interpret the result before continuing.
+:::
 ```
 
-Layout names begin with a lowercase letter and contain lowercase letters, digits or hyphens (max 64 characters), with up to **64 layouts** and **32 themes**. Custom layouts require **1–6** columns; `two-column` is reserved. The number of identified **direct** QMD children must match `columns`, selected with `bento-layout-name="three"`. Themes support only `background`, `color`, `accent`, `fontFamily`; `activeTheme` must be explicit when themes are defined. This 256-KiB regular JSON file does not download fonts or run computations.
+To share design **without sharing content or `docId`**, use a local validated
+`qbento/design` **version-1 package**. Only on app 0.2: inspect it with
+`qbento design inspect package.json`, then initialize a **fresh** QMD *before*
+its first render via `qbento design init deck.qmd package.json`. On an existing
+bound presentation, use checked `design preview` → reviewed `design apply`, or
+Studio's supported **Diseños y temas** workflow. Never replace `.qbento/`,
+skip a recovery marker or edit internal `state.json` to apply a theme. The
+registry can be exported/reused, but has **no content, arbitrary CSS, scripts,
+remote fonts or computation**.
 
-**Ownership:** QMD visual attributes own explicitly sourced fields; compatible saved native edits override other fields; registry theme/layout values provide defaults. Reconcile source-owned geometry before moving coupled children; proximity does not establish grouping.
+**Precedence:** explicit sourced QMD fields own their properties; theme/variant/
+slot values are regenerated defaults; compatible native visual overrides retain
+their independent ownership. Theme changes do not necessarily recolor or move
+old literal/native overrides. Reapply the layout or inspect sparse overrides;
+parent-coupled adjustments may refuse `UNMAPPED_DESIGN`.
 
-**Studio:** **Aplicar diseño** requires a selected layout, explicit object-to-column assignments and **Vista previa de posiciones** before applying; unmatched objects retain position. Free-object geometry is a saved snapshot: after editing a named definition in **Diseños y temas**, reapply it. Source components using a named layout pick up regenerated defaults. See the [pinned registry contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md).
+For candidate syntax see the application's local
+`docs/features/THEME_SLOTS.md`, `docs/DESIGN_PACKAGES.md` and
+`docs/DESIGN_REGISTRY.md`. The [pinned 0.1.1 registry
+contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md)
+**does not** contain the 0.2-only vocabulary.
 
 ## Optional QMD Annotations
 
@@ -206,6 +252,85 @@ $$
 - **Computed content:** use an inline expression such as `` `r mean(values$x)` `` only when `values` is produced by a real executed chunk. Supported `knitr::kable(..., format="pipe")` tables retain producer provenance; `gt`/`gtsummary` need image generation. Do not substitute literal values for computed results or reverse-edit native cells, charts or figures into executable code.
 - **Fidelity limits:** native bar/line charts have bounded labels/precision and require a frame at least 242px tall with space for labels/legend. Rich table cells/captions/spans and unbound producers may refuse. Math uses the pinned KaTeX subset; browser/font metrics determine fit. Check the [pinned authoring contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md) before unusual output.
 
+## Computed Code and Output Layout (App 0.2.0 Candidate)
+
+Use these **literal options on the original executable chunk**, not on a
+non-executing `{#id .r}` display fence. A displayed example does not run R;
+turning it into `{r}` changes its provenance and execution permission.
+
+````qmd
+```{r}
+#| label: full-output
+#| echo: true
+#| output-location: column
+#| bento-code-width: 40
+#| bento-overflow: scroll
+#| bento-overflow-height: 220
+cat(sprintf("ROW%03d", seq_len(120)), sep = "\n")
+```
+````
+
+- `output-location: default` preserves the source/result order; `column`
+  arranges echoed source left and results right with a 24px gap. Source width
+  `bento-code-width` is a percentage **10–90** (default 50). `slide` creates
+  a derived result slide associated with its source chunk; it does **not**
+  authorize a new QMD heading and refuses inside card/layout components.
+- `layout-ncol: 1–6` distributes **multiple computed results**, not the
+  echoed source. Multiple tables from one producer remain subject to identity
+  limits. Keep independent R model decisions close to their explanation.
+- `bento-overflow: scroll` is opt-in for **computed** echoed code, stdout and
+  supported tables; `bento-overflow-height` is a literal **80–600 px** (default
+  240). Scrolling retains full native content, not a truncated snapshot. In
+  combined PDF, complete output appears in **labeled continuation pages**
+  after the corresponding native slides. Verify final lines/rows and page
+  extraction before declaring a PDF complete. This is not a general scrolling
+  option for arbitrary authored HTML or unsized native card text.
+- Ordinary compatible R 2D static figures default to **SVG** only when no
+  explicit `dev`, `fig-format`, project or producer choice already controls
+  the output. Generated computed charts/tables keep their source data/producer
+  authority while compatible native layout/style remains saved.
+
+The parser refuses unsupported, repeated, indirect or out-of-range options
+**before** running the producer. Do not silently shrink computed metrics,
+drop table rows or turn computed output into authored text to obtain a pass.
+
+## Inline 2D/3D Plotly and Widget Imports (App 0.2.0 Candidate)
+
+Supported inline offline interaction is restricted to Plotly **2D scatter/bar**
+and **3D scatter3d points/lines**. Studio, standalone HTML and Presenter host
+the widget in its native image rectangle; the static fallback is **SVG for 2D**
+and **PNG for 3D**, including print/PDF and unavailable WebGL. Enable input
+using **Interactuar**; **Escape / Volver al diseño** restores native editing.
+Exploration does not change source R, data or saved native geometry.
+
+For 3D, **Save view** is a separate, explicit authorization to persist the
+*current camera* and refresh its PNG fallback. Unapproved rotation/zoom is
+transient. Studio checks saved source/revision/static-image identity before
+saving camera visual state, which stays **outside QMD** and BentoDoc's general
+property grammar. After a standalone HTML Save, import the matching generation
+via checked `qbento capture` rather than manually editing state or trusting
+embedded pixels as an execution receipt. Recalculation can keep approved
+camera/geometry while recomputing source data; verify both.
+
+To import a preexisting **local R Plotly htmlwidget as inert data** rather than
+execute or embed its scripts:
+
+```qmd
+## Result {#result}
+
+::: {#local-widget widget-src="figures/plot.html"}
+:::
+```
+
+`widget-src` must refer to a project-relative **regular** `.html`/`.htm`
+file, valid UTF-8, ≤16 MiB, with no symlink/hardlink/path traversal. The
+reader requires one supported identified Plotly htmlwidget payload and a
+matching container. Its byte hash and source wrapper bind the import;
+changed input requires recomputation. The restricted adapter imports **data**,
+not arbitrary HTML execution, callbacks or proof that an R producer ran.
+Network access is blocked inside the offline widget sandbox, but a QMD's
+own executable chunks still require normal execution review.
+
 ## Computation, Integration and Output
 
 R, Python and other engines require the actual document's runtime/dependencies; a prose-only QMD need not require R. Preserve the code/inputs, figure labels and provenance. A `.bento-kpi` computed value, figure image or generated table must update through execution. Performance guidance can come from `quarto-computation-performance` when available, but do not externalize analyses or change code organization simply because Bento is used.
@@ -214,10 +339,22 @@ Only use ordinary `quarto render` integration **after** a deliberate `qbento ini
 
 - **Editable handoff:** preserve the QMD, inputs/assets, project binding and `.qbento/` state/design. Generated `.bento.html` is a static offline presentation, not a substitute for saved state; native HTML edits require the matching Save/capture workflow.
 - **PDF/print:** use Bento's supported browser print/PDF representation; hidden slides are omitted. Do not invent `qbento pdf`/`export` or claim untested print dialogs.
-- **Plotly:** Studio **Presentar con gráficos** can save a separate offline interactive viewer; ordinary HTML/PDF display static SVG. Generating the viewer requires compatible local Plotly/producer dependencies and Chromium, but opening the saved viewer does not require R, Plotly or a local server. This is not universal browser certification.
+- **Plotly by version:** app `0.1.1` has a separate **Presentar con gráficos**
+  interactive viewer and static SVG in ordinary output; the isolated 0.2.0
+  candidate embeds a bounded inline 2D/3D viewer in Studio/HTML/Presenter
+  with SVG/PNG fallback. Neither establishes universal browser/platform fit.
 - **Rich tables:** supported `gt`/`gtsummary` need Chromium for faithful 2× PNGs and may refuse oversized output; adjust producer/layout instead of dropping rows or silently shrinking. Report the output actually generated and verified.
 
 ## Pinned Product Sources
+
+The links below describe **published 0.1.1**. App `0.2.0` is currently a
+**dirty local source candidate**, not a published immutable pin; its relevant
+local files are `docs/AUTHORING.md`, `docs/EXECUTION_LAYOUT.md`,
+`docs/features/THEME_SLOTS.md` and
+`docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md`. Do not cite HEAD `b52772e`
+as if it captured the uncommitted 0.2 changes. Replace provisional product
+provenance with an immutable app tag/commit after its release and recheck the
+contracts then.
 
 - [Implemented authoring subsets and target-only cautions](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md)
 - [Canonical examples](https://github.com/brianmsm/quarto-bento/tree/1b7e265bda07c060215051302f252a7289f4a1f9/examples)

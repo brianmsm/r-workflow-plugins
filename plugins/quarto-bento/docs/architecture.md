@@ -20,11 +20,11 @@ The operational entrypoint requires preflight only where relevant: an untouched,
 
 ## Resources and Provenance
 
-`SKILL.md` owns selection, sequencing and authorization decisions. `agent-api.md` owns JSON operation details; `authoring-components.md` owns the implemented source subset; `sync-and-recovery.md` owns persistence, capture, execution effects and recovery. Each records the same supported product version and immutable source revision. Do not treat examples in a target roadmap as implemented API.
+`SKILL.md` owns selection, sequencing and authorization decisions. `agent-api.md` owns checked JSON operations; `authoring-components.md` owns version-gated source and visual syntax; `sync-and-recovery.md` owns persistence, capture, execution effects and recovery. The **published 0.1.1 app** has a pinned source revision. The **local, dirty-source app 0.2.0 candidate** has isolated synthetic verification but **no immutable product tag**, so 0.2 guidance is explicitly provisional until the app release closes. Do not treat a target-only roadmap item or an app product test as agent-skill acceptance.
 
 Baseline: locally installed and npm-published app CLI **0.1.1**, JSON **v1**, pinned Bento **1.2.6** contract, product documentation at `1b7e265bda07c060215051302f252a7289f4a1f9` (0.1.1 functional changes at `78c1641`; 2026-10-17 review). The agent plugin manifest declares **`0.1.1`** for a guidance-only patch after the scoped first `0.1.0` release; its version is independent of application `0.1.1`. Linux is the application's validated platform scope. Portable instruction layout does not establish Windows/macOS support, native Claude behavior, or identical pixels across machines.
 
-The 0.1.1 CLI/Studio expose selective source sync by pending change ID; a successful Apply may leave approved changes pending until render. The skill owns this lifecycle and refusal handling, not new product implementation.
+The 0.1.1 CLI/Studio expose selected sync by pending change ID; a successful Apply may leave pending changes until render. App 0.2 adds a **separate** `design` package/slot/role-style surface, source-declared computed layout/scroll options, and native inline-widget/camera saving on Linux. It does not promote visual state to QMD computation, add arbitrary `patch` camera fields or remove the requirement to review full HTML visibility. The plugin describes these workflows without implementing them or introducing a new skill, router or host dependency.
 
 ## Optional Cross-Plugin Composition
 

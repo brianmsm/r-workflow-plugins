@@ -1,6 +1,12 @@
 # Checked JSON Operations
 
-**Reference baseline:** installed Linux Quarto-Bento CLI `0.1.1` (npm-published); agent protocol `version: 1`; Bento contract revision `3d6f7f1fcdf2308e875345ce4f1e0ec0820c914b` (Bento 1.2.6). Reviewed 2026-10-17 against product commit `1b7e265bda07c060215051302f252a7289f4a1f9` (functional corrections through `78c1641`). This is a local operational summary, not a replacement schema. For another version, inspect its own contract before writing.
+**Compatibility:** pinned product source here describes published Linux CLI `0.1.1`
+with JSON agent protocol `version: 1` and Bento 1.2.6 contract revision
+`3d6f7f1f…`. An **isolated local 0.2.0 candidate** returned the same snapshot
+keys and successful checked `get`; this does not turn new Studio widgets,
+scroll/code layout or camera state into generic JSON `patch` operations.
+Check the installed CLI and actual schema before writing a payload. Product
+0.2.0 is not yet an immutable published release.
 
 **Contents:** snapshot and identity; patch envelope; operation limits; supported slide creation; selected sync; result/error handling.
 
@@ -68,7 +74,14 @@ html content src markup rows columns header option
 
 Slide fields: `background name notes transition unnumbered`.
 
-The native **element type's schema still applies**. A listed field is not valid on every type; `src` on text, negative widths, string coordinates, unknown enums and prototype keys are rejected. Nested properties cannot be patched through dotted names; supported arrays/data are replaced as whole validated values. `null` is not a delete instruction. Do not use a field absent from this API merely because Studio can edit it (for example, displayed-code language selection has a Studio workflow).
+The native **element type's schema still applies**. A listed field is not valid on every type; `src` on text, negative widths, string coordinates, unknown enums and prototype keys are rejected. Nested properties cannot be patched through dotted names; supported arrays/data are replaced as whole validated values. `null` is not a delete instruction. Do not use a field absent from this API merely because Studio can edit it
+(for example, displayed-code language selection has a Studio workflow).
+On the 0.2 candidate, **widget camera Save view, design registry/slots and
+computed-scroll viewports use their own Studio/source/registry contracts**.
+Do not invent a `camera`/`morph` JSON patch, insert arbitrary widget HTML,
+change computed chart data via `option`, or edit internal `.qbento/` files to
+simulate these operations. See the [versioned authoring
+reference](authoring-components.md#inline-2d3d-plotly-and-widget-imports-app-020-candidate).
 
 For a simple authored paragraph, its native text is `html`; bounded emphasis/links must remain within the source codec. Editing `html` on **computed** output does not change its producer and creates a conflict, not a valid shortcut to changing results. Visual-only property changes may also become pending source changes when QMD explicitly owns those properties.
 

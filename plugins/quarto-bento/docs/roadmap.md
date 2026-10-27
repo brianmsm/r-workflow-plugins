@@ -1,5 +1,36 @@
 # Quarto-Bento Plugin Roadmap
 
+## Application `0.2.0` Candidate Compatibility (Unreleased, 2026-10-27)
+
+Retain agent-plugin `0.1.1` manifests and published catalog pins until an
+independent plugin release. The **application** is only a dirty-source local
+`0.2.0` Linux candidate: product HEAD `b52772e` does not capture its
+uncommitted changes, while the tested npm review archive SHA-256 is
+`ae96fc64…`. Do **not** cite the app as publicly released yet.
+
+An isolated installation (`qbento 0.2.0`, ordinary CLI still `0.1.1`) rendered
+two trusted synthetic projects: theme/style/slot + executable 3D Plotly,
+scrollable code/stdout/tables + SVG figures, and bounded local widget data.
+`get`/`validate`, exact QMD input hashes, state/HTML docIds, role-style code
+font, full `ROW120`/`CELL040`/`INSTALLED120` output and app's 14-page PDF
+receipt passed **43/43** checks. The product's reported 705 passing tests and
+UI/camera evidence were reviewed but **not rerun** as fresh agent behavior
+trials. Original project files, global mise/npm and app source were preserved.
+
+The plugin's **existing** three references now gate 0.2-only features:
+reusable theme role/named styles, slide variants/slots and checked
+`qbento design` imports; chunk-local source/result columns, multi-result
+layout and opt-in output scroll; offline 2D/3D widgets, explicit Save view,
+static SVG/PNG fallback, inert widget-src inputs and full PDF continuations.
+No claim of arbitrary widgets/CSS/HTML execution, cross-platform fidelity,
+new QMD reverse chart-data sync or unconditional access to the app release.
+
+**Next gate:** once the app's working tree is committed and its `0.2.0` release
+artifact is immutable, compare the released bytes to the review tarball,
+update product references to a pinned tag/commit, repeat focused source/render
+checks, and assess a new native agent-task sample before releasing a new
+**independently versioned** agent plugin. Do not rewrite historical H2 outcomes.
+
 ## Guidance-only Agent Plugin Patch (`0.1.1`, 2026-10-26)
 
 The independently versioned **agent plugin** adds optional composition with
