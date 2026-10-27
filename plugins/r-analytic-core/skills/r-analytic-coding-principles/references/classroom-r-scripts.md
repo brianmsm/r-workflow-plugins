@@ -15,6 +15,7 @@ Identify the specific **models, comparisons, or decisions learners must execute 
 - Prefer a familiar summary or high-level comparison function when it already displays the requested result. Keep immediate inspection beside the fit; if extracting specific results (`fitMeasures()`, `parameterEstimates()`, etc.) is a learning objective, teach it in a later, clearly labeled section instead of repeating equivalent output after each `summary()`. Do not introduce `subset()`, joins, extraction plumbing, or several output objects **unless manipulation itself is the lesson**.
 - Use brief comments for the next choice or interpretation; put extensive reasoning, theory, and full solutions in the teaching notes or handout.
 - Prefer **one canonical student code path** per teaching unit: an `.R` script with editor sections, a `.qmd` with exercise chunks, or a standalone activity. Do not split a session into files merely because it has several exercises; label longer/exploratory variants as optional.
+- When a student script or notebook accompanies live slides, keep executable steps, inputs, outputs and brief interpretation prompts near the activity without automatically duplicating the slide narrative. If it is standalone or asynchronous, include enough conceptual context to work without the slides. Use descriptive, role-revealing names for learner-facing objects unless mathematical symbols are themselves being taught.
 
 For example, when the estimator is the learning choice, keep both calls together rather than hiding the difference:
 

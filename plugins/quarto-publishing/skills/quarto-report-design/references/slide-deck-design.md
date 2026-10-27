@@ -23,7 +23,7 @@ A projected deck should usually be lighter and more visual than a standalone dec
 - Academic or research deck: prioritize the research question, argument, evidence chain, methods needed for credibility, limitations, and contribution.
 - Executive or stakeholder deck: prioritize the decision, recommendation, risk, implication, confidence level, and next action.
 - Technical or reproducibility deck: prioritize assumptions, diagnostics, model behavior, implementation detail, reproducibility, and evidence that supports technical review.
-- Teaching or training deck: organize for concept progression and learner practice. For **how to explain or test understanding** (not general slide layout), consult [pedagogical-communication.md](pedagogical-communication.md) on demand.
+- Teaching or training deck: organize for concept progression and learner practice. For a **new or substantially redesigned teaching sequence**, consult [pedagogical-communication.md](pedagogical-communication.md) before composing slides; narrow visual-only revisions need it only when explanations are affected.
 - Progress or update deck: prioritize what changed, what was learned, what is blocked, what decisions are needed, and what comes next.
 
 Mixed decks should keep the main path readable and move secondary detail into backup slides, appendices, handouts, or a companion report.
@@ -56,7 +56,7 @@ When converting a report, thesis section, manuscript, or technical note into sli
 - Move full model tables, secondary diagnostics, lengthy supporting derivations, robustness checks, and secondary results into backup material; retain essential derivation steps in the main deck when understanding them is the learning objective.
 - Do not oversimplify results in ways that change the meaning, uncertainty, limitation, or evidentiary support of the original analysis.
 
-Avoid mechanical section-to-slide mapping. A report section may become several slides, one slide, a backup slide, or no slide at all depending on the audience task.
+Avoid mechanical section-to-slide mapping. A report section may become several slides, one slide, a backup slide, or no slide at all depending on the audience task. Within an authorized pedagogical redesign, reconsider the existing slides rather than merely reordering or accumulating them: merge, replace, omit, or move redundant material to backup while retaining needed evidence.
 
 ## Manage Slide Density
 
@@ -98,7 +98,7 @@ Design the main path as a talk, not as a file dump:
 6. End the main deck with takeaways, recommendation, contribution, next actions, or a teaching synthesis.
 7. Put backup slides after the main ending so expected questions can be answered without bloating the main path.
 
-For academic decks, the narrative should preserve the research logic. For executive decks, it should preserve the decision logic. For technical decks, it should preserve the inspection logic. For teaching decks, it should preserve the learning progression.
+For academic decks, the narrative should preserve the research logic. For executive decks, it should preserve the decision logic. For technical decks, it should preserve the inspection logic. For teaching decks, it should preserve the learning progression. Several adjacent slides may form **one continuous explanation**: do not force a separate takeaway, question or task at every intermediate stage.
 
 ## Design for Delivery and Failure
 

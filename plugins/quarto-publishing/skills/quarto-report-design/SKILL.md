@@ -62,7 +62,7 @@ Explain a bounded assumption when proceeding with ordinary edits; do not expand 
 - For technical review, audit, reproducibility, and diagnostic reports, read `references/technical-report-structure.md`.
 - For research, thesis, manuscript, methodological, and scholarly reports, read `references/academic-report-structure.md`.
 - For **slide organization and delivery** (titles, hierarchy, density, visuals, timing), read `references/slide-deck-design.md`.
-- For **teaching explanations or learning activities** (examples, misconceptions, controlled contrasts, interpretation), read `references/pedagogical-communication.md`. Read **both only when both types of decisions are in scope**; neither is required for an ordinary report.
+- For **teaching explanations or learning activities** (examples, misconceptions, controlled contrasts, interpretation), read `references/pedagogical-communication.md`. A **new or substantially restructured teaching deck** involves both progression and layout: read both references **before authoring**. Narrow edits need only the relevant reference; neither is required for an ordinary report.
 - For basic transitional accessibility checks, read `references/accessibility-basic-checklist.md`.
 
 ## Boundaries

@@ -8,6 +8,8 @@ Use this reference when the task is **helping people understand a concept or pra
 - Define the observable outcome: what should the learner be able to **explain, compare, predict, or decide** afterward?
 - Distinguish **projected explanation**, **self-study handout**, **speaker notes**, and **teacher-only evidence**. They need different levels of detail.
 
+For a multi-concept lesson, plan the **learning progression before composing slides**: begin with a familiar problem or example, then introduce each unfamiliar concept when it helps answer the next question. Carry a common case, labels and reference objects across stages when continuity makes what changes and what stays fixed easier to understand. This is a sequencing choice, not a mandatory series of slides.
+
 ## Make the mechanism intelligible
 
 A useful sequence is **intuition → example → mechanism → formalization → interpretation**. Choose only the steps this concept needs; it is not a five-slide template.
@@ -22,6 +24,8 @@ A useful sequence is **intuition → example → mechanism → formalization →
 - **Reference values:** distinguish descriptive conventions, simulation-dependent heuristics, and validated decision criteria. Explain their applicable conditions rather than turning contextual guidance into universal pass/fail rules.
 
 ### Choose the depiction that reveals the concept
+
+When teaching a mechanism or transformation, first consider depicting its **input, operation and output**, rather than explaining the process through prose-filled cards. Use text instead when it communicates the relationship more clearly.
 
 | Learning difficulty | Useful depiction |
 | --- | --- |
@@ -40,6 +44,10 @@ Use **anticipate → execute/inspect → interpret** when a prediction and its r
 When the task uses R or other software, decide what students actually run; teacher-only calculations may be precomputed illustrations. Do not require incidental programming or table manipulation merely to access evidence for the intended lesson.
 
 Projected runnable code must match the **canonical material learners receive** (paths, objects, and outputs). When it changes, reconcile slides, notes, and handouts. For R script design and clean handoff checks, use `r-analytic-coding-principles` → `classroom-r-scripts.md`.
+
+### Coordinate companion materials when present
+
+Decide which material carries the conceptual explanation, executable learner actions, instructor caveats and independent reference. Avoid repeating long explanations across projected slides, notebooks and notes when learners can use them together; keep the context needed to complete each activity. A live-session notebook may focus on code, outputs and short interpretation prompts, while an asynchronous or standalone notebook may require fuller explanation. Neither division is a universal requirement, and a companion notebook is not mandatory.
 
 ## Avoid
 

@@ -160,9 +160,12 @@ an identified top-level QMD div (`bento-slot`). The optional `defaultVariant`
 applies where no variant is declared. A row/column slot accepts 1–6 identified
 direct children; a named slot style must match their actual element targets.
 This is **not** a recursive layout language or an automatic source-template
-mechanism. Named styles for `code` affect code typography/color, **not** code
-panel fill; use an authored `.bento-card` or supported native backing shape for
-that decoration.
+mechanism. Slots are **layout opportunities, not content requirements**: omit
+unnecessary optional task, takeaway or card slots rather than filling them
+with decorative text; select a different supported variant if a required role
+does not fit the teaching stage. Named styles for `code` affect code
+typography/color, **not** code panel fill; use an authored `.bento-card` or
+supported native backing shape for that decoration.
 
 ```qmd
 ## Explanation {#explanation bento-variant="teaching"}
