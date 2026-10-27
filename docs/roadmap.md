@@ -4,9 +4,9 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 ## Current State
 
-As of 2026-10-26, `quarto-publishing`, `quarto-bento` and `r-analytic-core` have **independent tagged versions and marketplace entries** in this repository. The new Quarto Publishing `0.2.3` guidance maintains six implemented skills, including pedagogical communication and progressive slide design; its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills, while the [roadmap](../plugins/quarto-publishing/docs/roadmap.md) distinguishes implemented and planned work. Tag/pin changes reach remote consumers only after publication.
+As of 2026-10-27, `quarto-publishing`, `quarto-bento` and `r-analytic-core` have **independent tagged versions and marketplace entries** in this repository. The new Quarto Publishing `0.2.3` guidance maintains six implemented skills, including pedagogical communication and progressive slide design; its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills, while the [roadmap](../plugins/quarto-publishing/docs/roadmap.md) distinguishes implemented and planned work. Tag/pin changes reach remote consumers only after publication.
 
-`r-analytic-core` has a new **v0.1.1** guidance patch and one research-first R coding skill; its published `v0.1.0` tag remains immutable. The `quarto-bento` agent plugin now has a **v0.1.1** guidance patch (distinct from the installed `qbento 0.1.1` application), with one skill and three operational references. Its [roadmap](../plugins/quarto-bento/docs/roadmap.md) documents native app/agent evidence and residual limits. All other plugin names remain **working candidates** without scaffolds or releases; no next-plugin order is committed.
+`r-analytic-core` has a new **v0.1.1** guidance patch and one research-first R coding skill; its published `v0.1.0` tag remains immutable. The `quarto-bento` agent plugin has a separate **v0.2.0** compatibility-guidance release (the installed application remains `qbento 0.1.1` until independently updated), with one skill and three operational references. Its [roadmap](../plugins/quarto-bento/docs/roadmap.md) documents native app/agent evidence and residual limits. All other plugin names remain **working candidates** without scaffolds or releases; no next-plugin order is committed.
 
 ## Plugin Candidates and Scope
 
@@ -18,7 +18,7 @@ As of 2026-10-26, `quarto-publishing`, `quarto-bento` and `r-analytic-core` have
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | DGPs; condition grids; replication; bias/RMSE/coverage/MCSE; `SimDesign` | Planned |
 | `r-package-development` | Build and maintain R packages | API design; roxygen2; testthat; pkgdown; CI | Planned |
 | `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | Six skills: QMD; formats; reports; slides; computation; rendering | **Tagged v0.2.3** |
-| `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; JSON API, reviewed sync/recovery, scoped animation migration | **Tagged v0.1.1** |
+| `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; sync/recovery, animation migration and conditional app 0.2 composition/widget guidance | **Tagged v0.2.0** |
 | `rmarkdown-workflows` | Classic R Markdown support and interoperability | `.Rmd` reports; parameters; output maintenance | Planned |
 
 ### Cross-Plugin Boundaries

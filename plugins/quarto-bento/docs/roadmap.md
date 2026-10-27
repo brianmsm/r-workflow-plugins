@@ -1,12 +1,14 @@
 # Quarto-Bento Plugin Roadmap
 
-## Application `0.2.0` Candidate Compatibility (Unreleased, 2026-10-27)
+## Agent Plugin `0.2.0` Advance Release: Application `0.2.0` Candidate (2026-10-27)
 
-Retain agent-plugin `0.1.1` manifests and published catalog pins until an
-independent plugin release. The **application** is only a dirty-source local
-`0.2.0` Linux candidate: product HEAD `b52772e` does not capture its
-uncommitted changes, while the tested npm review archive SHA-256 is
-`ae96fc64…`. Do **not** cite the app as publicly released yet.
+The owner explicitly authorized publishing **agent-plugin `0.2.0` ahead of the
+application's independent release**. The reviewed application is still only a
+dirty-source local `0.2.0` Linux candidate: product HEAD `b52772e` does not
+capture its uncommitted files; the tested npm archive SHA-256 is `ae96fc64…`.
+**Do not represent the application as publicly tagged, npm-released, or
+verified from a clean final package.** The agent plugin must gate 0.2-only
+commands on the actual installed app version and keep app `0.1.1` workflows.
 
 An isolated installation (`qbento 0.2.0`, ordinary CLI still `0.1.1`) rendered
 two trusted synthetic projects: theme/style/slot + executable 3D Plotly,
@@ -25,11 +27,13 @@ static SVG/PNG fallback, inert widget-src inputs and full PDF continuations.
 No claim of arbitrary widgets/CSS/HTML execution, cross-platform fidelity,
 new QMD reverse chart-data sync or unconditional access to the app release.
 
-**Next gate:** once the app's working tree is committed and its `0.2.0` release
-artifact is immutable, compare the released bytes to the review tarball,
-update product references to a pinned tag/commit, repeat focused source/render
-checks, and assess a new native agent-task sample before releasing a new
-**independently versioned** agent plugin. Do not rewrite historical H2 outcomes.
+**Post-release follow-up (not a precondition for this owner-authorized
+agent-plugin release):** after the app's own `0.2.0` release is committed and
+immutable, compare its actual published bytes with the reviewed dirty-tree
+tarball, update product links to the app tag, repeat focused render/camera
+checks and run independent agent task samples as evidence for any broader
+compatibility claim or later plugin correction. Historical strict H2 remains
+unmet and must not be retroactively relabeled CLEAN.
 
 ## Guidance-only Agent Plugin Patch (`0.1.1`, 2026-10-26)
 

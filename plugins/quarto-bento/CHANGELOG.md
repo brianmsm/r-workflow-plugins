@@ -4,16 +4,25 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ## [Unreleased]
 
+_No subsequent changes recorded._
+
+## [0.2.0] - 2026-10-27
+
+### Added
+
+- Version-gated **agent guidance** for application `qbento 0.2.0` advanced composition: reusable theme role/named styles, variants and slots; inspected `design` packages; code/result column layouts, complete-output scroll and PDF continuation; bounded offline 2D/3D Plotly, explicit camera Save view and inert local widget imports.
+- Prospective source/state/UI regression scenarios for new-versus-existing theme imports, camera persistence, complete computed output and negative activation/version controls. No new skill, helper script, hook, renderer or required dependency.
+
 ### Changed
 
-- Added **version-gated compatibility guidance for the unpublished application `qbento 0.2.0` Linux candidate**: expanded reusable themes (role/named styles, variants, slots, checked design packages), measured code/result composition and full-data scroll, and bounded inline 2D/3D Plotly with explicit camera saving. The published application `0.1.1` lacks these additions; the **agent plugin stays version `0.1.1`** until an independent plugin release decision.
-- Distinguish display-code fences from computed chunks, prevent generic API/HTML-widget execution or camera-patch inventions, prefer reusable native design before per-element styling scripts, and maintain source/pending/publication and offline-widget security boundaries.
-- Document full-content PDF continuation and static SVG/PNG fallback without inventing PDF CLI options or treating visible clipping as permission to omit data.
+- Prefer reusable native design before bulk hard-coded element positioning; distinguish displayed code fences from computed chunks; retain source/revision, producer authority, pending content and publication authorization when layouts, camera or scrolling change.
+- Require checking the **actual installed application version**: the published app `0.1.1` does not provide the candidate-only `design` and inline-widget commands. This **plugin release is independent** of the application's future `0.2.0` release.
 
-### Validation and provenance
+### Validation and limitations
 
-- Reviewed the app's `docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md` and current implementation; the supplied Linux product gate reports **705 passing tests + 4 steps, 0 failures, 1 optional ignored check**, with browser camera, long output and a 14-page PDF. These are **application tests**, not an agent-skill behavioral trial.
-- Independently installed the exact **dirty-source review tarball** (`ae96fc64…`) in an isolated npm prefix. Two synthetic QMDs completed real CLI renders plus checked `get`/`validate`; **43/43** physical/integrity checks passed, including retained design/slots, computed output, inline widget import and final rows. No user presentation, global CLI, app source or sealed evidence was changed. The app is not yet tagged/immutable; tests do not prove cross-platform UI or full agent activation/composition.
+- The application's local Linux acceptance report states **705 passing tests and four steps**, zero failures and one optional comparison omitted. These are product tests, **not** an independent agent-skill trial.
+- Independently installed the exact product **dirty-tree 0.2.0 review tarball** (SHA-256 `ae96fc64…`) without changing the global CLI; two synthetic renders and checked `get`/`validate` produced **43/43** passing content/integrity checks. Guidance structural QA passed **46/46**, with 33 relative links checked and the official skill validator. No new exact-byte independent agent evaluation, camera mouse/UI rerun, non-Linux platform validation or final clean-product-release comparison was performed.
+- **Owner-approved advance release:** publish the agent plugin `0.2.0` with explicitly **conditional and provisional application 0.2.0 guidance** before the application itself is tagged or released. Do not claim the app is generally installable, that its future release bytes match the tested dirty-tree tarball, or that the strict historical H2 gate has become satisfied.
 
 
 ## [0.1.1] - 2026-10-26
