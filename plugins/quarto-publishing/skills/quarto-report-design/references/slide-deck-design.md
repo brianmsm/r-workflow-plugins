@@ -102,6 +102,8 @@ For academic decks, the narrative should preserve the research logic. For execut
 
 ## Design for Delivery and Failure
 
+For live teaching, plan timing, breaks, activities and optional branches when useful, but keep **facilitation plans separate from projected content**. A timed agenda, break slide, task instruction or fixed exercise duration belongs on screen only when the audience needs it or the user requests it; otherwise put it in speaker notes or companion materials. Leave room to extend a discussion, adjust pacing or skip optional activities without compromising the conceptual thread.
+
 Before treating a deck as ready:
 
 - Practice transitions between slides.

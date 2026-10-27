@@ -39,6 +39,10 @@ When teaching a mechanism or transformation, first consider depicting its **inpu
 
 ## Turn explanation into learning
 
+### Connect concepts to informed use
+
+When theory, abstractions, methodological alternatives or results have practical consequences, bridge from **what they mean** to **how the intended audience can use them**. At a meaningful transition, not after every slide, synthesize the question the idea helps answer; when to apply it or favor an alternative; relevant comparative evidence, conditions and trade-offs; and what action or follow-up the evidence warrants. Choose the lightest helpful form, such as a concise recommendation, conditional rule, comparison, worked example or visual decision aid. Provide reference values or cutoffs only with their source and applicable conditions (see *Reference values* above); distinguish observed advantage from unsupported rankings, and say explicitly when no universal threshold, winner or action is justified. Abstract topics may warrant an application or implication rather than an immediate decision.
+
 Use **anticipate → execute/inspect → interpret** when a prediction and its resolution add value. Ask for a comparison or defensible explanation, not an activity on every slide. Prefer a familiar case over a new dataset unless the new case reveals something the first cannot.
 
 When the task uses R or other software, decide what students actually run; teacher-only calculations may be precomputed illustrations. Do not require incidental programming or table manipulation merely to access evidence for the intended lesson.
