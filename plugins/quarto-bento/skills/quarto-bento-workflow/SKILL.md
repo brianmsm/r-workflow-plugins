@@ -43,11 +43,12 @@ explicitly owns a visual field. Generated `*.bento.html` is output, not saved de
 
 ## Choose the Task Path
 
-- **Preflight and version gate:** identify QMD/project and **actual CLI** (`qbento --version`). The
-  published app `0.1.1` remains a tested baseline; app `0.2.0` is a **local Linux release candidate**,
-  verified through an isolated npm tarball, not a published or universally installed upgrade. JSON
-  agent API v1 and plugin version are independent. **Do not call `design` or use 0.2-only QMD options
-  with a 0.1.1 CLI.** On existing state inspect binding, `status` and successful `get`. Before treating
+- **Preflight and version gate:** identify QMD/project and **actual CLI** (`qbento --version`). Both
+  Linux app versions `0.1.1` and `0.2.0` are npm-published; `0.2.0` is tagged in the app repository
+  and adds version-gated features. Earlier isolated candidate tests remain historical evidence,
+  not proof of every released UI workflow. JSON agent API v1 and agent-plugin version are
+  independent. **Do not call `design` or use 0.2-only QMD options with a 0.1.1 CLI.** On
+  existing state inspect binding, `status` and successful `get`. Before treating
   `NO_BASELINE` as new, inspect `.qbento/` previous state/recovery journals (backup-only **N01** may
   lose design/pending). New QMD needs authorized first render before native `get`; source-only edits do
   not.
@@ -68,10 +69,10 @@ explicitly owns a visual field. Generated `*.bento.html` is output, not saved de
   QMD execution. Do not rely on Auto-review elevation, weaken browser security or retry partial
   execution blindly. See [host-render handoff](references/sync-and-recovery.md#browser-render-handoff-in-restricted-agent-environments).
 - **Computed source and 0.2 output:** execute producers only within the user's scope. Preserve source
-  and computed provenance; consult [authoring](references/authoring-components.md#computed-code-and-output-layout-app-020-candidate)
+  and computed provenance; consult [authoring](references/authoring-components.md#computed-code-and-output-layout-app-020)
   for opt-in source/result layouts and scrolling. Output visibility/scroll/PDF and Plotly camera
   saving are **not** permission to reverse-write R/data or to publish unapproved native content; use
-  [Studio/output workflow](references/sync-and-recovery.md#interactive-widgets-scroll-and-pdf-in-app-020-candidate).
+  [Studio/output workflow](references/sync-and-recovery.md#interactive-widgets-scroll-and-pdf-in-app-020).
   Preserve runnable `{r}` versus displayed `{#id .r}` code identity.
 
 ## Composition

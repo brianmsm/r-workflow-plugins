@@ -1,12 +1,14 @@
 # QMD Authoring for Quarto-Bento
 
-**Compatibility:** published Linux app `qbento 0.1.1` is the pinned baseline. The
-**unpublished 0.2.0 Linux candidate** (review tarball SHA-256 `ae96fc64…`, source
-HEAD `b52772e` **with uncommitted changes**, 2026-10-27) adds capabilities
-explicitly marked below. These were exercised using an isolated npm CLI on
-synthetic projects; they are **not yet an immutable application release**.
-Check the *actual application version*, independently of the agent plugin;
-do not issue `qbento design` or 0.2-only QMD options on app `0.1.1`.
+**Compatibility:** both Linux app `qbento 0.1.1` and `0.2.0` are published
+on npm. App `0.2.0` is pinned to the immutable
+[`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0)
+source tag (commit `5b17bf6`); it adds the features marked below.
+Earlier isolated-candidate verification (review tarball SHA-256
+`ae96fc64…`, dirty-source HEAD `b52772e`) remains historical evidence,
+**not** a byte-equivalence or complete UI acceptance claim for the released
+package. Check the *actual application version*, independently of the agent
+plugin; never issue `qbento design` or 0.2-only QMD options on app `0.1.1`.
 
 **Contents:** new source; identities; implemented components; reusable design; annotation levels; analytical examples; delivery and diagnostics.
 
@@ -151,7 +153,7 @@ available**. Studio **Diseños y temas → Guardar diseños** saves a basic regi
 Saved free-object positions are snapshots; modifying a layout name alone does
 not relocate them.
 
-**Candidate app 0.2.0:** registry schema **remains 1** and a theme may additionally
+**Published Linux app 0.2.0:** registry schema **remains 1** and a theme may additionally
 define `styles` (`title`, `heading`, `body`, `code`, `card`), bounded
 `namedStyles` targeting `text`/`code`/`card`, and `variants` with role styles
 and **up to 32 absolute slots** per variant on the existing 1280×720 canvas.
@@ -191,7 +193,7 @@ their independent ownership. Theme changes do not necessarily recolor or move
 old literal/native overrides. Reapply the layout or inspect sparse overrides;
 parent-coupled adjustments may refuse `UNMAPPED_DESIGN`.
 
-For candidate syntax see the application's local
+For released 0.2.0 syntax see the application's pinned
 `docs/features/THEME_SLOTS.md`, `docs/DESIGN_PACKAGES.md` and
 `docs/DESIGN_REGISTRY.md`. The [pinned 0.1.1 registry
 contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md)
@@ -255,7 +257,7 @@ $$
 - **Computed content:** use an inline expression such as `` `r mean(values$x)` `` only when `values` is produced by a real executed chunk. Supported `knitr::kable(..., format="pipe")` tables retain producer provenance; `gt`/`gtsummary` need image generation. Do not substitute literal values for computed results or reverse-edit native cells, charts or figures into executable code.
 - **Fidelity limits:** native bar/line charts have bounded labels/precision and require a frame at least 242px tall with space for labels/legend. Rich table cells/captions/spans and unbound producers may refuse. Math uses the pinned KaTeX subset; browser/font metrics determine fit. Check the [pinned authoring contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md) before unusual output.
 
-## Computed Code and Output Layout (App 0.2.0 Candidate)
+## Computed Code and Output Layout (App 0.2.0)
 
 Use these **literal options on the original executable chunk**, not on a
 non-executing `{#id .r}` display fence. A displayed example does not run R;
@@ -297,7 +299,7 @@ The parser refuses unsupported, repeated, indirect or out-of-range options
 **before** running the producer. Do not silently shrink computed metrics,
 drop table rows or turn computed output into authored text to obtain a pass.
 
-## Inline 2D/3D Plotly and Widget Imports (App 0.2.0 Candidate)
+## Inline 2D/3D Plotly and Widget Imports (App 0.2.0)
 
 Supported inline offline interaction is restricted to Plotly **2D scatter/bar**
 and **3D scatter3d points/lines**. Studio, standalone HTML and Presenter host
@@ -343,23 +345,25 @@ Only use ordinary `quarto render` integration **after** a deliberate `qbento ini
 - **Editable handoff:** preserve the QMD, inputs/assets, project binding and `.qbento/` state/design. Generated `.bento.html` is a static offline presentation, not a substitute for saved state; native HTML edits require the matching Save/capture workflow.
 - **PDF/print:** use Bento's supported browser print/PDF representation; hidden slides are omitted. Do not invent `qbento pdf`/`export` or claim untested print dialogs.
 - **Plotly by version:** app `0.1.1` has a separate **Presentar con gráficos**
-  interactive viewer and static SVG in ordinary output; the isolated 0.2.0
-  candidate embeds a bounded inline 2D/3D viewer in Studio/HTML/Presenter
+  interactive viewer and static SVG in ordinary output; app 0.2.0
+  embeds a bounded inline 2D/3D viewer in Studio/HTML/Presenter
   with SVG/PNG fallback. Neither establishes universal browser/platform fit.
 - **Rich tables:** supported `gt`/`gtsummary` need Chromium for faithful 2× PNGs and may refuse oversized output; adjust producer/layout instead of dropping rows or silently shrinking. Report the output actually generated and verified.
 
 ## Pinned Product Sources
 
-The links below describe **published 0.1.1**. App `0.2.0` is currently a
-**dirty local source candidate**, not a published immutable pin; its relevant
-local files are `docs/AUTHORING.md`, `docs/EXECUTION_LAYOUT.md`,
-`docs/features/THEME_SLOTS.md` and
-`docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md`. Do not cite HEAD `b52772e`
-as if it captured the uncommitted 0.2 changes. Replace provisional product
-provenance with an immutable app tag/commit after its release and recheck the
-contracts then.
+The links below retain the **historical 0.1.1 contract**, while the current
+0.2.0 behavior has an immutable product tag (`v0.2.0`, commit `5b17bf6`).
+Earlier dirty-source verification must not be misrepresented as a test of the
+published npm package. The pinned 0.2.0 sources document the released feature
+surfaces; full independent agent and cross-platform acceptance are separate.
 
 - [Implemented authoring subsets and target-only cautions](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AUTHORING.md)
 - [Canonical examples](https://github.com/brianmsm/quarto-bento/tree/1b7e265bda07c060215051302f252a7289f4a1f9/examples)
 - [Usage, publication and composition limits](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/USAGE.md)
 - [Public design-registry schema](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/DESIGN_REGISTRY.md)
+
+- [0.2.0 source authoring contract](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/AUTHORING.md)
+- [0.2.0 theme/slot authoring](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/features/THEME_SLOTS.md)
+- [0.2.0 computation layouts](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/EXECUTION_LAYOUT.md)
+- [0.2.0 release qualification ledger](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md)

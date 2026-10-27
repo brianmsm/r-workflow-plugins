@@ -1,12 +1,13 @@
 # Checked JSON Operations
 
-**Compatibility:** pinned product source here describes published Linux CLI `0.1.1`
-with JSON agent protocol `version: 1` and Bento 1.2.6 contract revision
-`3d6f7f1f…`. An **isolated local 0.2.0 candidate** returned the same snapshot
-keys and successful checked `get`; this does not turn new Studio widgets,
-scroll/code layout or camera state into generic JSON `patch` operations.
-Check the installed CLI and actual schema before writing a payload. Product
-0.2.0 is not yet an immutable published release.
+**Compatibility:** the historical pinned `0.1.1` CLI contract uses JSON agent
+protocol `version: 1` and Bento 1.2.6 (revision `3d6f7f1f…`).
+The Linux application `0.2.0` is now npm-published and tagged at
+[`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0);
+the earlier isolated-candidate `get` checks remain historical evidence.
+Neither version exposes new Studio widgets, scroll/code layouts or camera
+state as generic JSON `patch` operations. Check the installed CLI and actual
+schema before writing a payload.
 
 **Contents:** snapshot and identity; patch envelope; operation limits; supported slide creation; selected sync; result/error handling.
 
@@ -76,12 +77,12 @@ Slide fields: `background name notes transition unnumbered`.
 
 The native **element type's schema still applies**. A listed field is not valid on every type; `src` on text, negative widths, string coordinates, unknown enums and prototype keys are rejected. Nested properties cannot be patched through dotted names; supported arrays/data are replaced as whole validated values. `null` is not a delete instruction. Do not use a field absent from this API merely because Studio can edit it
 (for example, displayed-code language selection has a Studio workflow).
-On the 0.2 candidate, **widget camera Save view, design registry/slots and
+On app 0.2.0, **widget camera Save view, design registry/slots and
 computed-scroll viewports use their own Studio/source/registry contracts**.
 Do not invent a `camera`/`morph` JSON patch, insert arbitrary widget HTML,
 change computed chart data via `option`, or edit internal `.qbento/` files to
 simulate these operations. See the [versioned authoring
-reference](authoring-components.md#inline-2d3d-plotly-and-widget-imports-app-020-candidate).
+reference](authoring-components.md#inline-2d3d-plotly-and-widget-imports-app-020).
 
 For a simple authored paragraph, its native text is `html`; bounded emphasis/links must remain within the source codec. Editing `html` on **computed** output does not change its producer and creates a conflict, not a valid shortcut to changing results. Visual-only property changes may also become pending source changes when QMD explicitly owns those properties.
 

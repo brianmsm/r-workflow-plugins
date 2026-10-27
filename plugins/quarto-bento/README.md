@@ -2,21 +2,38 @@
 
 A portable companion for agents using **Quarto-Bento**: QMD authoring/computation, retained visual design, structured `qbento` operations, selective source synchronization and conservative recovery.
 
-**Agent plugin release:** `0.2.0`, independently tagged as `quarto-bento-v0.2.0`. This **does not** mean the application `qbento 0.2.0` has been published: the broadly available and installed baseline remains application `0.1.1` on Linux (JSON agent protocol v1). The skill detects the **actual application version**, retaining 0.1.1 workflows and enabling candidate-only 0.2 features **only** with a matching installed app. The plugin installs neither the app nor Quarto, R, runtimes, assets or fonts. Consumers receive the version pinned by their marketplace, not automatically `main`.
+**Agent plugin release:** `0.2.0`, independently tagged as `quarto-bento-v0.2.0`.
+The **application** `@brianmsm/quarto-bento@0.2.0` is now npm-published
+(dist-tag `latest`; Linux), with immutable source tag
+[`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0).
+The plugin version is independent of the app version. The skill checks the
+**actual installed application version**, keeps 0.1.1 workflows and enables
+0.2-only features only on a matching app. The plugin installs neither the app nor Quarto, R, runtimes, assets or fonts. Consumers receive the version pinned by their marketplace, not automatically `main`.
 
-## Scoped Support and Evidence (0.1.0 Baseline, 0.1.1 Guidance)
+## Historical Scoped Support and Evidence (0.1.0–0.1.1)
 
-The scoped initial release targets **reviewed, trusted local QMD projects on Linux** using the installed `qbento 0.1.1` CLI. Native Codex actor evidence covers saved-design edits, approved selective source synchronization, conservative privacy/recovery stops, ordinary non-Bento negative controls, and one **completed first-render authoring case with a short-header Markdown table**. For executable QMD and public-facing HTML, review all QMD chunks, hooks, inputs, native pending content, and the complete potential HTML visibility before a separately authorized one-shot host render. Source-only `sync --select` never filters retained native HTML content.
+The original acceptance review targeted **trusted local QMD projects on Linux** with app `qbento 0.1.1`. Native Codex actor evidence covers saved-design edits, approved selective source synchronization, conservative privacy/recovery stops, ordinary non-Bento negative controls, and one **completed first-render authoring case with a short-header Markdown table**. For executable QMD and public-facing HTML, review all QMD chunks, hooks, inputs, native pending content, and the complete potential HTML visibility before a separately authorized one-shot host render. Source-only `sync --select` never filters retained native HTML content.
 
 This is a deliberately **narrower local acceptance policy** than the earlier strict experimental gate: neither R1-NEW (`NOT_CLEAN`) nor R2-LOCAL (`PASS_LOCAL` under a different protocol) has been reclassified as one of two strict H2 CLEAN rounds. The F02 table/first-render trial passed local S/T/A/H on the earlier correction commit; later editorial instruction changes have **not** been behavior-tested as a new exact-byte candidate. Its `TEXT_MEASUREMENT_UNAVAILABLE` diagnostics mean **visual text fit was not independently measured**. The `0.1.1` **agent-plugin** patch adds optional `quarto-report-design` cooperation and engine-specific guidance for Reveal.js Auto-Animate versus native Bento motion. A synthetic `qbento 0.1.1` experiment confirmed that `auto-animate` does not become a native `morph`, and native `morph` does not sync back to QMD as Auto-Animate; an ordinary same-identity QMD wording edit retained saved native morph without `.qbento-design`. The issue is tracked in [qbento #1](https://github.com/brianmsm/quarto-bento/issues/1). These tests do **not** validate the new skill bytes through fresh native-agent trials or certify cross-format animation fidelity. The native app's backup-only N01 recovery risk remains; do not bootstrap a recoverable project as new. No Windows/macOS, native Claude-agent task execution, unrestricted untrusted QMD execution, complete Studio/browser acceptance, rich/wrapped tables, or cross-machine pixel fidelity is certified. Claude manifest validity is **structural compatibility only**.
 
-## Application 0.2.0: Conditional Candidate-Tested Capabilities
+## Application 0.2.0: Published Linux Capabilities
 
-The **application** `qbento 0.2.0` is a locally reviewed **Linux release candidate**, **not** an npm-published or tagged app yet. Its review tarball (SHA-256 `ae96fc64…`) was created from product HEAD `b52772e` **with uncommitted changes**. It is distinct from both the published app `0.1.1` and this **independently released agent-plugin `0.2.0`**. Users must check `qbento --version` and choose the intended executable explicitly. Do not replace the global installation merely to try a candidate: invoke an isolated prefix and **copy the entire QMD project including `.qbento/`** for mutation/render tests.
+The application is published as npm package `@brianmsm/quarto-bento@0.2.0`
+and tagged as `v0.2.0` at commit `5b17bf6`. It is distinct from the
+independently versioned agent plugin `0.2.0` and from the older app `0.1.1`.
+The earlier candidate smoke used a dirty-source tarball (SHA-256
+`ae96fc64…` at `b52772e`); it is **historical evidence**, not a claim
+that the candidate and final published package have byte-identical artifacts.
+Always inspect `qbento --version` and choose the intended executable.
+Use an isolated prefix and a copied project, including `.qbento/`, for tests
+that intentionally compare installed versions.
 
-The added guidance is **only for verified app `0.2.0` candidates**: `design` commands/packages and reusable theme styles, variants and QMD slots; source-code/result columns, multi-result layout and opt-in complete-output scrolling; bounded 2D/3D Plotly interaction offline with static SVG/PNG fallback, **Save view** for a 3D camera, and matching-generation native capture. PDF uses complete-output continuations and checked print output, not a new generic `qbento pdf` command. Generated results and widget cameras remain distinct from authorized source edits. For code backgrounds use cards; a code role style alone changes typography/color, not its own panel fill.
+The version-gated guidance is **for installed app `0.2.0`**: `design` commands/packages and reusable theme styles, variants and QMD slots; source-code/result columns, multi-result layout and opt-in complete-output scrolling; bounded 2D/3D Plotly interaction offline with static SVG/PNG fallback, **Save view** for a 3D camera, and matching-generation native capture. PDF uses complete-output continuations and checked print output, not a new generic `qbento pdf` command. Generated results and widget cameras remain distinct from authorized source edits. For code backgrounds use cards; a code role style alone changes typography/color, not its own panel fill.
 
-The source/behavior contracts are summarized in the existing [authoring](skills/quarto-bento-workflow/references/authoring-components.md) and [sync/output](skills/quarto-bento-workflow/references/sync-and-recovery.md) references; no new skill or runtime dependency is introduced. The product's Linux suite reports 705 passing tests plus four steps, zero failures, one optional omitted comparison; a separate **isolated tarball smoke** verified two real QMD renders and **43/43** structural/content checks. The synthetic smoke did not re-run real mouse/3D-camera or fresh-agent behavior experiments. Once the application has a clean, immutable `0.2.0` release, compare its installed bytes with the reviewed tarball, rerun focused behavior/agent checks and update product references before advertising general application 0.2 compatibility. Until then this plugin release describes **version-checked candidate behavior**, not certified compatibility with an as-yet-unpublished app release.
+The source/behavior contracts are summarized in the existing [authoring](skills/quarto-bento-workflow/references/authoring-components.md) and [sync/output](skills/quarto-bento-workflow/references/sync-and-recovery.md) references; no new skill or runtime dependency is introduced. The product's Linux suite reports 705 passing tests plus four steps, zero failures, one optional omitted comparison; a separate **isolated tarball smoke** verified two real QMD renders and **43/43** structural/content checks. The synthetic smoke did not re-run real mouse/3D-camera or fresh-agent behavior experiments. The final npm release and Git tag are now confirmed. The earlier tests do
+not by themselves certify parity with the published package, complete Studio
+camera workflows or wider cross-platform compatibility; those would need
+separate follow-up validation before expanding acceptance claims.
 
 ## One Skill, Three Operational References
 
@@ -25,7 +42,12 @@ The source/behavior contracts are summarized in the existing [authoring](skills/
 - [`authoring-components.md`](skills/quarto-bento-workflow/references/authoring-components.md): new-source branch, stable IDs, supported components and authoring limits.
 - [`sync-and-recovery.md`](skills/quarto-bento-workflow/references/sync-and-recovery.md): operation effects, execution permissions, plan review, Studio, capture, recovery and verification.
 
-Published app `0.1.1` contracts remain linked to immutable product sources. New `0.2.0` guidance is explicitly **provisional**, drawn from the inspected local candidate and its immutable tarball hash rather than a nonexistent release tag. Users can apply the instructions without the developer checkout after installing an appropriate CLI; always check its actual version.
+The `0.1.1` links remain for historical compatibility. For the released
+0.2.0 behavior, use the
+[tagged app source](https://github.com/brianmsm/quarto-bento/tree/v0.2.0)
+and the pinned contracts in the references. Always check the installed CLI
+version; release documentation is not evidence that every GUI workflow was
+independently tested.
 
 ## Use and Local Development
 

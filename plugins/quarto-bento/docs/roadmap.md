@@ -1,6 +1,20 @@
 # Quarto-Bento Plugin Roadmap
 
+## Current Application Status (2026-10-28)
+
+The Linux application `@brianmsm/quarto-bento@0.2.0` is **published on npm**
+under the `latest` dist-tag, with Git source tag
+[`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0)
+(commit `5b17bf6`). This supersedes the pre-publication status in the
+historical 2026-10-27 advance-release record below. Its candidate-test
+results remain historical: publication does not retroactively establish
+byte equivalence to the candidate tarball, independent agent activation,
+complete Studio acceptance or cross-platform coverage.
+
 ## Agent Plugin `0.2.0` Advance Release: Application `0.2.0` Candidate (2026-10-27)
+
+**Historical snapshot:** the pre-publication restrictions in this section applied before the
+npm/tag release confirmed above; they are not current installation status.
 
 The owner explicitly authorized publishing **agent-plugin `0.2.0` ahead of the
 application's independent release**. The reviewed application is still only a

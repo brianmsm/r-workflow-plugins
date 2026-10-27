@@ -1,5 +1,11 @@
 # Initial Validation Findings — 2026-10-17
 
+**Historical test record:** references below to the then-current 0.1.1
+installation and unpublished plugin describe the original October 17 tests.
+The Linux application is now npm-published at 0.2.0 with product source tag
+v0.2.0; current operation/version guidance lives in the skill and references.
+No old test outcome is upgraded by that later publication.
+
 This is evidence for the local **agent plugin draft `0.0.0`**, not a release announcement. Application baseline: installed `qbento 0.1.0`, JSON protocol v1, Linux; product checkout `a1b8025f522a5c4c70d10e613f9a7923dc6f761c`. The application's version and the companion plugin's version are independent.
 
 ## Checks and Their Meaning

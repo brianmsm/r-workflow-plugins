@@ -1,26 +1,27 @@
 # State, Synchronization and Recovery
 
-**Version scope:** published Linux app `0.1.1` remains the pinned source for
-ordinary sync/recovery. The installed **isolated, unpublished 0.2.0 tarball**
-passed focused Linux synthetic checks for design initialization, output,
-widget import and native state; additional 0.2 Studio/print behavior is grounded
-in the product's local test evidence, **not** a clean published source release.
-Commands are product operations, not agent tools. Confirm the actual CLI/help
-before using version-specific syntax; do not guess internal state formats.
+**Version scope:** Linux apps `0.1.1` and `0.2.0` are npm-published.
+Historical `0.1.1` recovery behavior remains documented at its pinned source;
+released `0.2.0` behavior is pinned at
+[`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0).
+The earlier isolated-candidate tests cover focused synthetic workflows, not
+automatic verification of all released Studio/print paths. Commands are
+product operations, not agent tools. Check actual CLI/help before using
+version-specific syntax; do not guess internal state formats.
 
 **Contents:** environment; operation effects; selected sync and post-Apply; Studio; capture; identity/recovery; diagnostics and verification.
 
 ## Environment Without Hidden Dependencies
 
 Use the intended **exact CLI** and confirm its version with `--version` and
-`doctor`; a separate candidate installed under an npm prefix must be invoked
-through its absolute launcher, **not** by replacing PATH/mise globally. The
-published `0.1.1` app and unpublished `0.2.0` candidate both keep Quarto/R,
-Deno and Chromium as external runtimes; this agent plugin installs none of them.
+`doctor`. For an optional isolated version comparison, invoke the alternate
+npm prefix explicitly rather than silently changing PATH/mise. Both published
+versions keep Quarto/R, Deno and Chromium as external runtimes; this agent
+plugin installs none of them.
 Use approved source execution only; an installed CLI does not grant render
 permission.
 
-For installation, consult the [pinned npm guide](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/NPM.md). If the user deliberately selects a source checkout, run its documented `deno task qbento` from that checkout against an absolute QMD path. Keep the chosen binary/version stable within a task; do not assume mise or any developer checkout is present. App `0.1.1`, JSON protocol v1 and the **agent plugin version in its own manifest** are independent.
+For installation, consult the [0.2.0 npm guide](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/NPM.md). If the user deliberately selects a source checkout, run its documented `deno task qbento` from that checkout against an absolute QMD path. Keep the chosen binary/version stable within a task; do not assume mise or any developer checkout is present. The installed app version, JSON protocol v1 and the **agent plugin version in its own manifest** are independent.
 
 ## Operation Effects
 
@@ -94,7 +95,7 @@ Use exact `pending[].id` values from a **successful** `qbento get`, not slide/el
 The resulting plan may include **necessary technical identities** and separately optional `.qbento-design` annotations. Inspect every proposed source patch before Apply; an out-of-scope optional patch means defer Apply or seek approval, **not** alter a signed plan or change frontmatter to suppress it. A selection does not imply HTML publication permission. In Studio **Revisar cambios**, changing the default all-selected set invalidates the previous preview; obtain a fresh plan and confirm deletions separately. Creation groups are atomic.
 
 **Version distinction:** application `0.1.0` lacks the selected-sync contract;
-app `0.1.1` provides it, and the candidate `0.2.0` retains bounded checked sync.
+app `0.1.1` provides it, and published app `0.2.0` retains bounded checked sync.
 Neither is the independently versioned **agent plugin**. Detect the installed
 app instead of inferring its commands from a plugin tag.
 
@@ -136,7 +137,7 @@ preview/apply` have distinct mutation scopes. Do not copy another project's
 state or `docId` to reuse its theme. Preserve authored QMD selectors and
 current saved overrides; verify the applied presentation, not just JSON syntax.
 
-## Interactive Widgets, Scroll and PDF in App 0.2.0 Candidate
+## Interactive Widgets, Scroll and PDF in App 0.2.0
 
 For supported **2D scatter/bar and 3D `scatter3d` points/lines**, use
 **Interactuar** to interact with the actual inline widget in Studio/HTML/
@@ -250,13 +251,11 @@ Check the mutated target and compare stable `docId`, expected IDs, requested val
 
 ## Pinned Product Sources
 
-The sources below describe **published app 0.1.1**. The 0.2.0 addendum was
-reviewed from the app's dirty local candidate and its exact review tarball:
-`docs/USAGE.md`, `docs/EXECUTION_LAYOUT.md`,
-`docs/features/THEME_SLOTS.md` and
-`docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md`. Replace these provisional
-product descriptions with a release-tagged source contract after 0.2 closes;
-the currently published 0.1.1 links are **not** proofs of inline 0.2 widgets.
+The original links below capture **published app 0.1.1** behavior.
+Released 0.2.0 is pinned at the immutable `v0.2.0` tag; these new links
+supersede the prior dirty-source candidate as the feature documentation.
+Previous candidate tests remain historical and do not establish complete
+Studio/GUI acceptance or equivalence with the published npm tarball.
 
 - [Usage, exact Studio labels and recovery cases](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/USAGE.md)
 - [Ownership, sync and capture invariants](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/SYNC.md)
@@ -265,3 +264,8 @@ the currently published 0.1.1 links are **not** proofs of inline 0.2 widgets.
 
 - [0.1.1 selective sync, post-Apply and binding contract](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/AGENT-API.md)
 - [0.1.1 npm publication and installed CLI evidence](https://github.com/brianmsm/quarto-bento/blob/1b7e265bda07c060215051302f252a7289f4a1f9/docs/evidence/SYNC-SELECTION-0.1.1.md)
+
+- [0.2.0 usage, capture and publication](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/USAGE.md)
+- [0.2.0 state and sync](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/SYNC.md)
+- [0.2.0 native widget and scroll guide](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/EXECUTION_LAYOUT.md)
+- [0.2.0 release qualification](https://github.com/brianmsm/quarto-bento/blob/5b17bf6acda597c3403ee6abf6ba4d396eba7ad6/docs/evidence/COMPOSITION-INTERACTIVITY-0.2.0.md)
