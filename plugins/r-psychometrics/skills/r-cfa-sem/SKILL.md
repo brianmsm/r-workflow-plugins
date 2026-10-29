@@ -21,7 +21,7 @@ Keep the scientific specification and native estimation visible. This is the tec
 
 ## Diagnose Before Reporting
 
-Inspect native warnings, `lavInspect(fit, "converged")`, `lavInspect(fit, "post.check")`, residual/latent variances, covariance matrices and standardized solutions. Diagnose nonconvergence, inadmissibility, extreme correlations, unavailable SEs, sparse categories and residual dependence before substantive inference. A returned object or successful extractor is insufficient evidence of an acceptable solution.
+Inspect native warnings, `lavInspect(fit, "converged")`, `lavInspect(fit, "post.check")`, residual/latent variances, covariance matrices and standardized solutions. Diagnose nonconvergence, inadmissibility, extreme correlations, unavailable SEs, sparse categories and residual dependence before substantive inference. For free-parameter SE checks use `parTable(fit)` fields `free` and `se`; `parameterEstimates()` has no `free` column. An empty selection is not a successful diagnostic. A returned object or successful extractor is insufficient evidence of an acceptable solution.
 
 Report global and local diagnostics with model size, df, sample, estimator and uncertainty. Do not accept/reject a model using universal CFI/RMSEA/SRMR cutoffs. Modification indices and expected parameter changes are exploratory diagnostic information; changes require substantive justification and later validation, not automatic correlated residuals or item deletion.
 

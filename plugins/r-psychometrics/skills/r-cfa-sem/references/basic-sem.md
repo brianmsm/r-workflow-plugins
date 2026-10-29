@@ -112,4 +112,4 @@ Interaction, nonlinear, categorical-outcome and multilevel indirect effects need
 - [Maxwell and Cole (2007)](https://doi.org/10.1037/1082-989X.12.1.23): bias in cross-sectional analyses of longitudinal mediation.
 - [psymetrics parameter reporting](https://brianmsm.github.io/psymetrics/reference/model_estimates.html): supported extraction.
 
-Executed with lavaan 0.7.3 and psymetrics 0.5.0. The [validation record](../../../docs/validation.md) checks observed-path slopes against native linear regressions and the indirect estimate/SE against an explicit delta calculation; it does not validate a causal claim.
+Executed with lavaan 0.7.3 and psymetrics 0.5.0. The [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md) checks observed-path slopes against native linear regressions and the indirect estimate/SE against an explicit delta calculation; it does not validate a causal claim.

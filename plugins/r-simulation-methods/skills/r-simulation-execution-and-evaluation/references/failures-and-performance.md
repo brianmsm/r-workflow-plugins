@@ -58,6 +58,8 @@ For paired methods, compute differences on the same replication IDs and the pres
 
 The starter compares interval rules sharing the same slope estimate, so their bias/RMSE coincide; it does not pretend to compare different point estimators.
 
+Calculate theoretical benchmarks with the stated distribution and df rather than an unverified approximation. Return every claimed performance measure and MCSE with the eligibility set used to compute it; computing an MCSE locally but omitting it from the summary does not report it.
+
 ## Optional rsimsum
 
 [rsimsum::simsum()](https://ellessenne.github.io/rsimsum/reference/simsum.html) can complement a well-defined results table. It was **documentation-reviewed, not runtime-tested**, because it was not installed in the validation environment. It is not a dependency of this slice.

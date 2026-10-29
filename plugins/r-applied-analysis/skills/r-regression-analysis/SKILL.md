@@ -1,6 +1,6 @@
 ---
 name: r-regression-analysis
-description: "Use to specify, diagnose and interpret ordinary linear, binary logistic or count regression in R, including interactions and adjusted contrasts. Route probability samples to r-survey-analysis and latent-variable models to a measurement/SEM workflow."
+description: "Use to specify, diagnose and interpret ordinary linear, binary logistic, Poisson or quasi-Poisson regression in R, including interactions and adjusted contrasts. Route probability samples to r-survey-analysis and latent-variable models to a measurement/SEM workflow."
 ---
 
 # Regression Analysis

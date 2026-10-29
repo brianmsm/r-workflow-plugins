@@ -9,7 +9,7 @@ Establish what score is being interpreted, for which population and use. Reliabi
 
 ## Establish the Measurement Task
 
-- Identify the item response scale, valid categories, key direction, intended subscales, sampling unit and missing-item rule. Check labels against actual values before recoding.
+- Identify the item response scale, valid categories, key direction, intended subscales, sampling unit and missing-item rule. Check labels and observed frequencies against the declared valid categories before recoding. Resolve impossible responses explicitly, and inspect constant items on the rows used for each coefficient.
 - Preserve raw items. Reverse only items identified by the instrument's key, using the declared scale endpoints. Do not reverse from sample correlations or delete items to maximize a coefficient.
 - Inspect category counts, missingness, floor/ceiling patterns and corrected item-rest associations within the intended score. Keep available-item and complete-score denominators explicit.
 - For scoring and classical internal consistency, read [items-and-consistency.md](references/items-and-consistency.md). Its synthetic example includes a declared reverse key and an explicit complete-score rule; those are example decisions, not defaults for every instrument.

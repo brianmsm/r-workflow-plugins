@@ -11,7 +11,7 @@ Match the analysis to a measurement question. EFA models common variance; PCA de
 
 1. Establish the item universe, sampling unit, response categories, keying, missingness and whether there is an independent confirmation sample. Inspect sparse categories, near-constant items, pairwise counts and the correlation matrix before extraction.
 2. Use Pearson-based common-factor analysis for a justified approximately continuous target. Polychoric/tetrachoric approaches assume latent response distributions and thresholds; integer storage alone does not make an item continuous.
-3. Read [retention-and-psych.md](references/retention-and-psych.md) for `psych::fa.parallel()`, `psych::fa()` and interpretation. Combine parallel analysis, scree, residual structure, factor definition, content and replication. Do not select solely by eigenvalues greater than one, a fit cutoff, KMO, Bartlett significance or a cases-per-item rule.
+3. Read [retention-and-psych.md](references/retention-and-psych.md) for `psych::fa.parallel()`, `psych::fa()` and interpretation. Combine parallel analysis, scree, residual structure, factor definition, content and replication. Do not select solely by eigenvalues greater than one, a fit cutoff, KMO, Bartlett significance or a cases-per-item rule. A measurement-invariance delta-CFI heuristic is not a validated EFA factor-retention rule.
 4. If categories are ordered and an ordinal WLSMV analysis is appropriate, read [ordinal-lavaan.md](references/ordinal-lavaan.md). Use the actual item columns with `lavaan::efa(..., ordered = TRUE, estimator = "WLSMV")`; exclude identifiers and covariates from that shorthand.
 
 ## Extract, Rotate and Inspect
@@ -25,6 +25,6 @@ Match the analysis to a measurement question. EFA models common variance; PCA de
 
 ## Interpret and Hand Off
 
-Describe the retained alternatives, substantive factor meaning, weak or complex indicators, local dependence, uncertainty and sample limits. Item removal must consider content and replication, not just a loading threshold. Factor scores are estimates with indeterminacy and uncertainty, not observed error-free traits.
+Describe the retained alternatives, substantive factor meaning, weak or complex indicators, local dependence, uncertainty and sample limits. Item removal must consider content and replication, not just a loading threshold. Treat loading magnitudes, number of indicators and factor correlations as contextual evidence, not automatic exclusion cutoffs. Factor scores are estimates with indeterminacy and uncertainty, not observed error-free traits.
 
 Use locally editable native model blocks; optionally combine with `r-analytic-coding-principles`. Item keying/reliability can use `r-item-and-reliability-analysis`; a genuinely prespecified or independently tested structure can use `r-cfa-sem`. Ordinary EFA-only rotated measurement models are in scope. ESEM with structural regressions, complex-sampling/MI combinations and advanced latent structures are deferred. This plugin does not promise psymetrics support for psych objects or the lavaan EFA-list class.

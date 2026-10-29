@@ -1,0 +1,5 @@
+{
+  "name": "r-simulation-methods",
+  "version": "0.0.0",
+  "description": "ADEMP-based Monte Carlo study design, SimDesign execution, explicit failure accounting, and performance evaluation with Monte Carlo uncertainty."
+}

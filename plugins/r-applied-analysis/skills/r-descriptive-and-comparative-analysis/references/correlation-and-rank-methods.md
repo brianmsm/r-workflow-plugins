@@ -68,4 +68,4 @@ For model-based simultaneous contrasts, keep the family, `by` groups and interva
 
 See native [cor.test](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/cor.test.html), [wilcox.test](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/wilcox.test.html), [p.adjust](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html) and [emmeans confidence intervals and tests](https://rvlenth.github.io/emmeans/articles/confidence-intervals.html).
 
-R 4.6.1 executes these examples. Pearson coefficients/intervals and the Wilcoxon statistic are checked against independent calculations in [validation](../../../docs/validation.md); Spearman interval estimation is outside this slice.
+R 4.6.1 executes these examples. Pearson coefficients/intervals and the Wilcoxon statistic are checked against independent calculations in [validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-applied-analysis-v0.1.0/plugins/r-applied-analysis/docs/validation.md); Spearman interval estimation is outside this slice.

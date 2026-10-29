@@ -116,8 +116,12 @@ With additional categorical covariates, equal-cell and proportional weighting di
 
 Standardization is optional. `parameters(..., standardize = "refit")` refits using transformed variables and changes coefficient interpretation. An equivalent reparameterization can preserve fitted means; inspect interactions and factor coding because standardized coefficients are not interchangeable merely because predictions agree. Do not exponentiate an ordinary identity-link coefficient.
 
+For targeted numerical checks, align terms/contrast labels before comparing values on the same scale. `all.equal()` also checks names and classes, so equal numeric values can fail if one vector retains labels. Compare deliberately aligned numeric values when attributes are not the target; do not strip identifiers before alignment or add generic assertion scaffolds to research scripts.
+
+HC3 weights squared residual contributions by `(1 - h_ii)^(-2)`. It changes uncertainty, not fitted coefficients; it does not guarantee every SE exceeds every alternative estimator. Inspect leverage and support rather than treating robust covariance as a cure.
+
 ## Sources and validation
 
 See [lm](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html), [parameters ordinary models](https://easystats.github.io/parameters/reference/model_parameters.default.html), [performance](https://easystats.github.io/performance/reference/model_performance.html), [HC covariance](https://sandwich.r-forge.r-project.org/reference/vcovHC.html), [emmeans interactions](https://rvlenth.github.io/emmeans/articles/interactions.html) and [weighting/reference grids](https://rvlenth.github.io/emmeans/articles/basics.html). Harrell's [Regression Modeling Strategies](https://hbiostat.org/rmsc/) supplies methodological context for specification, functional form and model assessment.
 
-Checked examples use R 4.6.1, parameters 0.30.0, performance 0.18.2, sandwich 3.1-3, lmtest 0.9-40 and emmeans 2.0.4. [Validation](../../../docs/validation.md) separates coefficient, covariance, contrast and behavior checks. No universal support claim is made for other classes or marginaleffects.
+Checked examples use R 4.6.1, parameters 0.30.0, performance 0.18.2, sandwich 3.1-3, lmtest 0.9-40 and emmeans 2.0.4. [Validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-applied-analysis-v0.1.0/plugins/r-applied-analysis/docs/validation.md) separates coefficient, covariance, contrast and behavior checks. No universal support claim is made for other classes or marginaleffects.

@@ -70,6 +70,6 @@ Before `bind_rows()`, align column names, types, units, factor schemes, missing 
 
 Use `purrr::map()` with `list_rbind()` for genuinely uniform collections only when useful. Do not build a reader/cleaner framework for two differently documented inputs. `bind_cols()` aligns positions and must not substitute for an identity join.
 
-Checked: dplyr 1.2.1 and haven 2.5.5, including deliberately failing multiplicity and unmatched-direction cases. See [validation](../../../docs/validation.md).
+Checked: dplyr 1.2.1 and haven 2.5.5, including deliberately failing multiplicity and unmatched-direction cases. See [validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/docs/validation.md).
 
 Sources: [dplyr joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), [binding rows](https://dplyr.tidyverse.org/reference/bind_rows.html), [R4DS joins](https://r4ds.hadley.nz/joins.html), [haven labelled coercion source](https://github.com/tidyverse/haven/blob/main/R/labelled.R).

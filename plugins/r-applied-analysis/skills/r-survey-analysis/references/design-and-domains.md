@@ -54,6 +54,10 @@ For actual multistage designs, use the documented stage-specific IDs/FPCs and PP
 
 ## Domains preserve the parent design
 
+Read degrees of freedom from the actual domain object. A domain can have fewer contributing PSUs or strata, so `degf(domain)` need not equal `degf(full_design)` even though its variance uses the parent sampling design.
+
+`survey::SE()` can return a matrix, not a named vector. Inspect its shape rather than assuming `SE(statistic)[["term"]]` works. For a native single-statistic object, pair `names(coef(statistic))` and `as.numeric(coef(statistic))` with `sqrt(diag(vcov(statistic)))` in coefficient order; establish correspondence before combining different objects.
+
 Build the design on the full sampled records covered by the sampling documentation, with valid design metadata, then subset the design. Express analytic eligibility as a domain when appropriate. PSUs with no domain members still contribute zeros to the parent design's domain variance calculation. Rebuilding from filtered rows can discard that information.
 
 ```r
@@ -85,6 +89,12 @@ confint(domain_proportion)
 
 domain_totals <- survey::svytotal(~eligible + event + observed_score, domain_design)
 domain_totals
+domain_total_table <- tibble::tibble(
+  term = names(coef(domain_totals)),
+  estimate = as.numeric(coef(domain_totals)),
+  se = as.numeric(sqrt(diag(vcov(domain_totals))))
+)
+domain_total_table
 domain_observed_mean <- survey::svymean(
   ~score_observed, domain_design, na.rm = TRUE
 )
@@ -125,4 +135,4 @@ Replicate df depend on the replicate design/rank. A ratio mean's finite-replicat
 
 Primary [survey manual](https://cran.r-project.org/web/packages/survey/refman/survey.html): sections `svydesign`, `subset.survey.design`, `surveyoptions`, `svyciprop`, `svyby`, `as.svrepdesign` and `svrepdesign`. Lumley's [Complex Surveys companion](https://r-survey.r-forge.r-project.org/survey/) provides the book/software context; use the CRAN manual or installed help if that site is unavailable.
 
-Checked with survey 4.5 and R 4.6.1. [Validation](../../../docs/validation.md) checks a weighted mean against an explicit ratio, its Taylor variance against stratum/PSU influence totals including zero-domain PSUs, and replicate variance against the actual replicate-weight formula. BRR/Fay/bootstrap/PPS and real provider metadata are not certified by the JKn example.
+Checked with survey 4.5 and R 4.6.1. [Validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-applied-analysis-v0.1.0/plugins/r-applied-analysis/docs/validation.md) checks a weighted mean against an explicit ratio, its Taylor variance against stratum/PSU influence totals including zero-domain PSUs, and replicate variance against the actual replicate-weight formula. BRR/Fay/bootstrap/PPS and real provider metadata are not certified by the JKn example.

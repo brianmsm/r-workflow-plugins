@@ -100,4 +100,4 @@ Constant items and impossible values should be investigated before running alpha
 - [Raykov and Marcoulides (2019), Thanks coefficient alpha, we still need you!](https://pmc.ncbi.nlm.nih.gov/articles/PMC6318747/): conditions under which alpha remains useful.
 - [semTools composite reliability](https://rdrr.io/cran/semTools/man/compRelSEM.html): a distinct model-based path, developed in the companion reference.
 
-Executable API checked with psych 2.6.9, dplyr 1.2.1 and tidyr 1.3.2. Numerical evidence and its limits are in the plugin's [validation record](../../../docs/validation.md).
+Executable API checked with psych 2.6.9, dplyr 1.2.1 and tidyr 1.3.2. Numerical evidence and its limits are in the plugin's [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md).

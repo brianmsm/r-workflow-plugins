@@ -69,6 +69,6 @@ The recorded missing reading at `0007/2` keeps `record_present = TRUE`; the abse
 
 Carry participant, occasion and design variables into the analysis handoff. A long-format table does not justify an independent-observation model, and a participant mean changes the target compared with a visit-level outcome.
 
-Checked: tidyr 1.3.2 and dplyr 1.2.1. The [synthetic checks](../../../tests/synthetic-cases.R) cover single/multiple measures, duplicate cells, missingness and completion. See [validation](../../../docs/validation.md) for actual outcomes.
+Checked: tidyr 1.3.2 and dplyr 1.2.1. The [synthetic checks](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/tests/synthetic-cases.R) cover single/multiple measures, duplicate cells, missingness and completion. See [validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/docs/validation.md) for actual outcomes.
 
 Sources: [pivot_longer](https://tidyr.tidyverse.org/reference/pivot_longer.html), [pivot_wider](https://tidyr.tidyverse.org/reference/pivot_wider.html), [complete](https://tidyr.tidyverse.org/reference/complete.html), [R4DS missing values](https://r4ds.hadley.nz/missing-values.html).

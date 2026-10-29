@@ -87,7 +87,7 @@ The EFA-list overview can show a different fit-index family than the intended re
 
 ## Interpretation and support
 
-Check native convergence/admissibility and residual structure. Compare rotated solutions after acknowledging factor permutations and sign changes; compare implied correlations when testing equivalent representations. Report pattern coefficients, factor correlations and threshold/uniqueness behavior. Investigate substantive reasons for weak factors or cross-loadings before deleting items.
+Check native convergence/admissibility and residual structure. Compare rotated solutions after acknowledging factor permutations and sign changes; compare implied correlations when testing equivalent representations. Report pattern coefficients, factor correlations and threshold/uniqueness behavior. Investigate substantive reasons for weak factors or cross-loadings before deleting items. Combine category-appropriate parallel analysis, residuals, factor definition and replication; do not import a delta-CFI threshold from invariance testing as a factor-count acceptance rule.
 
 The default return class is `efaList`; `output = "lavaan"` is available for one count. This recipe uses native EFA/lavaan reporting. It does not claim psymetrics support for `efaList` or a broadly validated EFA extractor, even if a converted object has class `lavaan`.
 
@@ -98,4 +98,4 @@ The default return class is `efaList`; `output = "lavaan"` is available for one 
 - [Flora and Curran (2004)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3153362/): ordinal factor-estimation assumptions and finite-sample behavior.
 - [psych parallel analysis](https://personality-project.org/r/psych/help/fa.parallel.html): category-aware retention evidence.
 
-Executed with lavaan 0.7.3 and psych 2.6.9. In lavaan 0.7.3, rotation options in `rotation = list(...)` replace the deprecated `rotation_args` interface; inspect help for the actual installed version instead of changing an established environment. Validation is recorded [here](../../../docs/validation.md).
+Executed with lavaan 0.7.3 and psych 2.6.9. In lavaan 0.7.3, rotation options in `rotation = list(...)` replace the deprecated `rotation_args` interface; inspect help for the actual installed version instead of changing an established environment. Validation is recorded [here](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md).

@@ -94,4 +94,4 @@ For multiple domains, report subscale-specific coefficients when those are the i
 - [McNeish (2018)](https://doi.org/10.1037/met0000144): model assumptions and reliability alternatives.
 - [lavaan categorical estimation](https://lavaan.ugent.be/tutorial/cat.html): the ordinal measurement model.
 
-Executed with semTools 0.5.10 and lavaan 0.7.3. The [validation record](../../../docs/validation.md) separates direct covariance-formula checks from the ordinal correction's API execution.
+Executed with semTools 0.5.10 and lavaan 0.7.3. The [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md) separates direct covariance-formula checks from the ordinal correction's API execution.

@@ -49,6 +49,6 @@ The six codes remain inspectable; the derived numeric values are `1, 2, 7, NA, N
 
 A transformed variable needs a reviewed label/unit and possibly a new value map. Do not carry an old label map onto different codes. Check metadata conflicts when stacking waves; sharing numeric codes does not establish equivalent categories.
 
-Checked APIs and installed S3 method bodies: haven 2.5.5; dictionary accessors: labelled 2.16.1. [Validation](../../../docs/validation.md) separates SPSS round-trip tests, in-memory tagged-missing tests and formats not executed.
+Checked APIs and installed S3 method bodies: haven 2.5.5; dictionary accessors: labelled 2.16.1. [Validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/docs/validation.md) separates SPSS round-trip tests, in-memory tagged-missing tests and formats not executed.
 
 Sources: [haven semantics](https://haven.tidyverse.org/articles/semantics.html), [SPSS import](https://haven.tidyverse.org/reference/read_spss.html), [factor conversion](https://haven.tidyverse.org/reference/as_factor.html), [missing conversion](https://haven.tidyverse.org/reference/zap_missing.html), [labelled introduction](https://larmarange.github.io/labelled/articles/labelled.html).

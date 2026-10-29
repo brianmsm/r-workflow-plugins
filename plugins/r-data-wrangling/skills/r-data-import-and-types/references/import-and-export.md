@@ -51,6 +51,6 @@ Use `col_date(format = ...)` or a deliberate parser such as `lubridate::dmy()` f
 - Use a format-specific writer only for a requested format. Verify supported attributes and any timezone handling. CSV, Excel and statistical formats do not preserve every R attribute.
 - Compare a small read-back with the intended IDs, counts, dates, category levels and missingness. A successful write establishes neither metadata preservation nor correct interpretation by another program.
 
-Checked APIs: readr 2.2.0, readxl 1.5.0.1, stringr 1.6.0 and lubridate 1.9.5. The online readxl site described 1.6.0 during review; local evidence is for 1.5.0.1. See [validation](../../../docs/validation.md) for executed cases and limitations.
+Checked APIs: readr 2.2.0, readxl 1.5.0.1, stringr 1.6.0 and lubridate 1.9.5. The online readxl site described 1.6.0 during review; local evidence is for 1.5.0.1. See [validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/docs/validation.md) for executed cases and limitations.
 
 Sources: [readr readers](https://readr.tidyverse.org/reference/read_delim.html), [readxl cell/column types](https://readxl.tidyverse.org/articles/cell-and-column-types.html), [R4DS import](https://r4ds.hadley.nz/data-import.html), [R serialization](https://stat.ethz.ch/R-manual/R-devel/library/base/html/readRDS.html).

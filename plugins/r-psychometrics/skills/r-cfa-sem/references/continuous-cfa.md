@@ -125,4 +125,4 @@ Raw off-diagonal `~~` rows are covariances, even when psymetrics labels them “
 - [lavTestLRT documentation](https://search.r-project.org/CRAN/refmans/lavaan/html/lavTestLRT.html): estimator-specific difference tests.
 - [psymetrics scope](https://brianmsm.github.io/psymetrics/): CFA/SEM reporting for supported lavaan objects.
 
-Executed with lavaan 0.7.3 and psymetrics 0.5.0. A continuous ML case and native estimate/uncertainty checks are also included in the [validation record](../../../docs/validation.md).
+Executed with lavaan 0.7.3 and psymetrics 0.5.0. A continuous ML case and native estimate/uncertainty checks are also included in the [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md).

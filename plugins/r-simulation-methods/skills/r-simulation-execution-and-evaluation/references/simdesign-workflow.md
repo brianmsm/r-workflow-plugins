@@ -38,7 +38,7 @@ For this use case, the meaningful controls are:
 
 ```r
 runSimulation(
-  Design, replications = 500L,
+  design = Design, replications = 500L,
   generate = Generate, analyse = Analyse, summarise = Summarise,
   fixed_objects = fixed_objects,
   seed = genSeeds(Design, iseed = 87105L),
@@ -51,7 +51,7 @@ runSimulation(
 )
 ```
 
-This fragment assumes the callbacks and design were already defined. It is not a replacement for their scientific specification.
+This fragment assumes the callbacks and design were already defined. Use lowercase `design`, even when its object is named `Design`. `store_results` is a top-level argument; `allow_na`, `allow_nan` and `stop_on_fatal` belong in `control`. Check `formals(SimDesign::runSimulation)` when adapting a call rather than guessing names or nesting. The fragment does not replace scientific specification.
 
 The missing-value controls allow unavailable results to reach `Summarise()`; flags and explicit eligibility sets give those values meaning. A thrown unexpected error terminates this strict run at the first failed engine attempt. Expected method failure must instead return its status and unavailable fields. Do not catch all exceptions into the same missing-value category.
 

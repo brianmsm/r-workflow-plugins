@@ -10,7 +10,7 @@ Execute the specified experiment and retain enough evidence to explain every den
 ## Implement and Pilot
 
 1. Confirm the installed package version and relevant API against its help/source. A local source checkout or website can describe a different version.
-2. Use visible `createDesign()`, `Generate()`, `Analyse()`, `Summarise()` and `runSimulation()` calls. Keep fixed population quantities in `fixed_objects`; generate replicate-varying quantities in `Generate()`. Keep native models, interval rules and diagnostics inside an understandable analysis callback.
+2. Use visible `createDesign()`, `Generate()`, `Analyse()`, `Summarise()` and `runSimulation(design = Design, ...)` calls. Keep `store_results` at top level, not inside `control`. Keep fixed population quantities in `fixed_objects`; generate replicate-varying quantities in `Generate()`. Keep native models, interval rules and diagnostics inside an understandable analysis callback.
 3. Run one or two conditions with a few replications serially. Inspect raw results, return names/types, diagnostic counts, and one analytical or independently computed target before scaling.
 4. Compare methods on the same generated data. Record a stable condition/replication/method identity before filtering, reshaping or pairing results.
 

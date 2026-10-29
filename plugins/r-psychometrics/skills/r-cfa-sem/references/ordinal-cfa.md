@@ -75,6 +75,10 @@ summary(fit_ordinal, fit.measures = TRUE, standardized = TRUE,
         ci = TRUE, rsquare = TRUE)
 lavInspect(fit_ordinal, "converged")
 lavInspect(fit_ordinal, "post.check")
+ordinal_parameter_table <- tibble::as_tibble(parTable(fit_ordinal))
+ordinal_se_problems <- ordinal_parameter_table |>
+  filter(free > 0, !is.finite(se))
+ordinal_se_problems
 lavInspect(fit_ordinal, "nobs")
 lavInspect(fit_ordinal, "theta")
 lavInspect(fit_ordinal, "cor.lv")
@@ -146,6 +150,10 @@ The optional `cfi.robust`, `tli.robust` and `rmsea.robust` use separate correcti
 
 Neither family supplies a universal model-acceptance threshold. Evaluate category behavior, residual dependence, factor definition, sample information and plausible alternative explanations. WLSMV does not produce ordinary likelihood AIC/BIC for ranking these models.
 
+For SE diagnostics, `parTable()` supplies the free-parameter indicator; `parameterEstimates()` does not. Select from actual fields rather than a missing `$free` that silently produces no rows.
+
+Fewer observed categories do not automatically change model degrees of freedom: with freely estimated thresholds, observed statistics and free parameters can decrease together. Inspect native df and the model constraints rather than deriving df or a model comparison from category counts alone.
+
 ## Sources and checked API
 
 - [lavaan categorical variables](https://lavaan.ugent.be/tutorial/cat.html) and [options](https://search.r-project.org/CRAN/refmans/lavaan/html/lavOptions.html): ordered estimation, parameterization and missing-data support.
@@ -153,4 +161,4 @@ Neither family supplies a universal model-acceptance threshold. Evaluate categor
 - [lavaan fitMeasures](https://search.r-project.org/CRAN/refmans/lavaan/html/fitMeasures.html) and [lavTestLRT](https://search.r-project.org/CRAN/refmans/lavaan/html/lavTestLRT.html): index families and valid difference tests.
 - [psymetrics model_fit source](https://github.com/brianmsm/psymetrics/blob/v0.5.0/R/model_fit-lavaan.R): default scaled selection.
 
-Executed with lavaan 0.7.3 and psymetrics 0.5.0. Default, explicit standard/scaled/robust extraction and native uncertainty are checked in the [validation record](../../../docs/validation.md).
+Executed with lavaan 0.7.3 and psymetrics 0.5.0. Default, explicit standard/scaled/robust extraction and native uncertainty are checked in the [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md).

@@ -61,6 +61,6 @@ For a supplied weighted mean, define what the weights represent and which observ
 
 Use `.by` for a single operation or `group_by()` plus a deliberate grouping endpoint. Do not rely on inherited grouping or output row order for identity. Review labels and units of derived summaries; `summarise()` creates a new table and does not promise arbitrary attribute preservation. A participant-to-site aggregation supports a site-level description, not an individual-level association.
 
-Checked APIs: dplyr 1.2.1, forcats 1.0.1, stringr 1.6.0 and lubridate 1.9.5. See [validation](../../../docs/validation.md).
+Checked APIs: dplyr 1.2.1, forcats 1.0.1, stringr 1.6.0 and lubridate 1.9.5. See [validation](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/plugins/r-data-wrangling/docs/validation.md).
 
 Sources: [case_when](https://dplyr.tidyverse.org/reference/case_when.html), [summarise](https://dplyr.tidyverse.org/reference/summarise.html), [across](https://dplyr.tidyverse.org/reference/across.html), [factor releveling](https://forcats.tidyverse.org/reference/fct_relevel.html), [R4DS missingness](https://r4ds.hadley.nz/missing-values.html).

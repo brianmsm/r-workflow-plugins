@@ -86,4 +86,4 @@ Factor-score methods have different targets and determinacy. If scores will ente
 - [Fabrigar et al. (1999)](https://doi.org/10.1037/1082-989X.4.3.272): consequential EFA design and analysis decisions.
 - [MacCallum et al. (1999)](https://doi.org/10.1037/1082-989X.4.1.84): sample adequacy depends on model conditions, not a universal ratio.
 
-Checked with psych 2.6.9 and lavaan 0.7.3. Native loading/structure/residual relationships are tested in the [validation record](../../../docs/validation.md); this does not establish population recovery for arbitrary applications.
+Checked with psych 2.6.9 and lavaan 0.7.3. Native loading/structure/residual relationships are tested in the [validation record](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/plugins/r-psychometrics/docs/validation.md); this does not establish population recovery for arbitrary applications.
