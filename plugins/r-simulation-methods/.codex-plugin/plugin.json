@@ -1,0 +1,36 @@
+{
+  "name": "r-simulation-methods",
+  "version": "0.0.0",
+  "description": "ADEMP-based Monte Carlo study design, SimDesign execution, explicit failure accounting, and performance evaluation with Monte Carlo uncertainty.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "simulation",
+    "monte-carlo",
+    "ademp",
+    "simdesign",
+    "research"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "R Simulation Methods",
+    "shortDescription": "Design and evaluate reproducible Monte Carlo studies.",
+    "longDescription": "Plan research simulations with ADEMP and implement small, transparent SimDesign experiments. Preserve method failures, explicit performance denominators, Monte Carlo uncertainty, and reproducible seed provenance.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "R",
+      "Simulation Design",
+      "Monte Carlo Evaluation"
+    ],
+    "defaultPrompt": [
+      "Plan this Monte Carlo comparison using ADEMP and a defensible precision budget.",
+      "Implement a small SimDesign study that keeps failed fits in its attempt counts.",
+      "Review these simulation summaries, denominators, MCSEs and replay seeds."
+    ]
+  }
+}
