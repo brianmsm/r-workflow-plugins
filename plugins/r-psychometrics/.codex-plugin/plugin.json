@@ -1,6 +1,6 @@
 {
   "name": "r-psychometrics",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Research-editable item, reliability, EFA and CFA/SEM workflows with native R estimation and verified reporting.",
   "author": {
     "name": "Brian Norman Peña-Calero"

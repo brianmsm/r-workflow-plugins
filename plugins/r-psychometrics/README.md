@@ -2,7 +2,7 @@
 
 Research-editable measurement workflows for R: item diagnostics and reliability, exploratory factor analysis, and conventional CFA/basic SEM.
 
-**Status:** first functional development slice, unreleased. Manifest version `0.0.0` is development metadata, not a public release or a marketplace entry. No invariance or IRT skill is included yet. See the [integration handoff](docs/integration-handoff.md) for the commit identity, verification commands and coordination work.
+**Release: 0.1.0.** Independently versioned as `r-psychometrics-v0.1.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Implemented skills
 
@@ -39,4 +39,15 @@ The second script uses a separately designed ordinal fixture to check fit famili
 
 [Architecture](docs/architecture.md) defines ownership and [roadmap](docs/roadmap.md) separates the next delivery from advanced deferred methods. Standard invariance and basic unidimensional IRT require additional validated procedures. ESEM, DIF, networks, bifactor/S-1, linking, mixtures, advanced SEM and survey/MI/latent combinations are not covered by the initial support claim.
 
-Source examples are newly written synthetic cases. Private source collections informed reusable workflow requirements only and are not bundled. Host manifests follow this monorepo's Codex/Claude layout; structural validation is not a claim of end-to-end host installation.
+Source examples are newly written synthetic cases. Private source collections informed reusable workflow requirements only and are not bundled. Host manifests preserve this monorepo's Codex/Claude layout and add the minimal Antigravity adapter; see release evidence for actual native-host coverage.
+
+## Installation
+
+From the registered `r-workflow-plugins` marketplace:
+
+```sh
+codex plugin add r-psychometrics@r-workflow-plugins
+claude plugin install --scope user r-psychometrics@r-workflow-plugins
+```
+
+For Antigravity CLI, install a local directory extracted from `r-psychometrics-v0.1.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

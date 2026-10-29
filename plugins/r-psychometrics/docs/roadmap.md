@@ -1,6 +1,6 @@
 # R Psychometrics Roadmap
 
-## Implemented, unreleased first slice
+## First slice: released as 0.1.0
 
 - Item distributions, declared keying/scoring, raw and standardized alpha, item-rest diagnostics and bounded bootstrap illustration.
 - Conventional CFA-based reliability for a continuous composite and an ordered-category composite, with explicit metric and denominator.

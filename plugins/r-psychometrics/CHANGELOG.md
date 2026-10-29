@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-29
+
 ### Added
 
 - Initial item/reliability, exploratory factor analysis and conventional CFA/basic SEM skills.
@@ -14,6 +16,11 @@
 
 ### Limits
 
-- No public release or catalog registration in this development slice.
+- First release covers only the initial three skills; advanced methods remain out of scope.
 - Invariance and basic IRT remain a second delivery; advanced psychometric methods remain deferred.
 - psymetrics covariance labeling is documented under existing issue #55; no package source changes.
+
+### Release hardening
+
+- Use native parameter-table fields for unavailable-SE diagnostics; clarify threshold/df behavior and contextual EFA retention evidence; inspect invalid responses and analysis-sample constant items.
+- Preserve the intentional scaled WLSMV index default and add the native Antigravity adapter.
