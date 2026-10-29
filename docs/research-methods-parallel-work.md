@@ -20,6 +20,16 @@ The coordinator handles root `README.md`, `AGENTS.md`, `docs/architecture.md`, `
 
 The current source baseline is `61b41dd5c0a4f8ecdcc32e72cd9f55869b7ec516`. Before dispatch, fast-forward all **clean** worker branches to the latest accepted planning commit so they share the revised proposal. Record the actual starting commit in each handoff. Do not silently rebase a running worker onto a newer integration state.
 
+## Creator Guidance for Skills and Plugins
+
+`AGENTS.md` already calls for official skill/plugin creator and validator tooling when available. Treat this as **build-time authoring guidance**, not as an additional runtime dependency of any distributed plugin.
+
+- **Codex `skill-creator` (primary for each skill):** read its local `SKILL.md` when available. Apply concise, discriminating `name`/`description` frontmatter, clear activation boundaries, task-specific instructions, progressive disclosure and explicit reference routing. Add `references/`, `scripts/`, `assets/` or `agents/openai.yaml` only when there is a demonstrated need. Use its `quick_validate.py` (or an equivalent available validator) for each completed skill; a successful structural check does not prove correct routing or methodology. Forward-test realistic independent requests when the task's complexity/risk justifies it, without supplying the evaluator the intended result.
+- **OpenAI `plugin-creator` (conditional for plugin components):** read the installed `create-plugin` / `update-plugin` guidance and applicable skills-only/local-plugin component checks when manifest, packaging or installation details actually need review. Its general **cloud/Sites default**, account-save/submission operations and **Agent Plugins 1.0 root `plugin.json`** are not a mandate to change this Git-distributed monorepo. Keep the current `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json`, marketplaces, tag pins and independent release flow unless the user expressly authorizes a separate migration.
+- **Precedence and portability:** preserve the user's explicit decisions, `AGENTS.md`, `docs/architecture.md`, `docs/naming-conventions.md` and `docs/release-process.md` over incompatible creator defaults. Do not copy creator templates blindly, generate unused metadata, add a new MCP server/app, publish to an account, or hardcode local creator/cache paths inside public plugins. The local creator versions may change; locate and inspect the available tools rather than treating one cached version as a pinned dependency.
+
+Review each initial skill for meaningful automatic activation, misleading cross-plugin triggers, correct on-demand references, minimal scaffold and an evidence-backed behavior test. Report which validators and agent tests were actually run, and do not claim a manifest is portable to a host that was not tested.
+
 ## Common Dispatch Contract
 
 Use the following text with the relevant domain assignment below. Supply the actual worktree path and any private reference locations in the session, not in this public document.
@@ -27,6 +37,8 @@ Use the following text with the relevant domain assignment below. Supply the act
 > Work only in your assigned worktree and plugin directory. Read the root `AGENTS.md`, architecture, roadmap, naming and release instructions, and the Research Methods EPIC documents. Inspect Git status and the current commit before editing. Preserve unrelated changes and existing worktrees.
 >
 > Apply `r-analytic-coding-principles` explicitly to R examples and generated analysis code. Read its supporting references only when needed. Default to tidyverse for data work and ggplot2 for researcher-authored graphics. Keep native models, arguments, diagnostics and figures locally editable. Preserve explicit project/user exceptions. Simulation replication is a deliberate automation task.
+>
+> Apply the Creator Guidance section above when authoring skills or plugin components: use available creator and validator references selectively, preserve this repository's manifests and release contract, and report structural versus real-behavior validation separately.
 >
 > Implement the assigned vertical slice with concise task-triggered skills, specific on-demand references and only demonstrably useful assets. Do not create empty directories, placeholder skills, a generic router or a framework of custom statistical wrappers. Do not install or change users' project environments merely to demonstrate a skill.
 >
