@@ -8,7 +8,7 @@ Register the catalog once, then refresh it before installing new releases:
 
 ```sh
 codex plugin marketplace add brianmsm/r-workflow-plugins
-codex plugin marketplace update r-workflow-plugins
+codex plugin marketplace upgrade r-workflow-plugins
 codex plugin add r-data-wrangling@r-workflow-plugins
 codex plugin add r-applied-analysis@r-workflow-plugins
 codex plugin add r-psychometrics@r-workflow-plugins

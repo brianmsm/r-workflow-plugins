@@ -77,6 +77,103 @@
         "presentations",
         "synchronization"
       ]
+    },
+    {
+      "name": "r-data-wrangling",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/r-data-wrangling",
+        "ref": "r-data-wrangling-v0.1.0"
+      },
+      "description": "Research data import, types, labels, transformations and integration with editable tidyverse-first R code.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-data-wrangling",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "research",
+        "tidyverse",
+        "data-import",
+        "data-wrangling"
+      ]
+    },
+    {
+      "name": "r-applied-analysis",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/r-applied-analysis",
+        "ref": "r-applied-analysis-v0.1.0"
+      },
+      "description": "Research-editable descriptive, regression and complex-survey analysis in R with explicit estimands and uncertainty.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-applied-analysis",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "research",
+        "statistics",
+        "regression",
+        "survey"
+      ]
+    },
+    {
+      "name": "r-psychometrics",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/r-psychometrics",
+        "ref": "r-psychometrics-v0.1.0"
+      },
+      "description": "Research-editable item, reliability, EFA and CFA/SEM workflows with native R estimation and verified reporting.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-psychometrics",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "psychometrics",
+        "reliability",
+        "factor-analysis",
+        "sem"
+      ]
+    },
+    {
+      "name": "r-simulation-methods",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "plugins/r-simulation-methods",
+        "ref": "r-simulation-methods-v0.1.0"
+      },
+      "description": "ADEMP-based Monte Carlo study design, SimDesign execution, explicit failure accounting, and performance evaluation with Monte Carlo uncertainty.",
+      "author": {
+        "name": "Brian Norman Peña-Calero"
+      },
+      "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-simulation-methods",
+      "repository": "https://github.com/brianmsm/r-workflow-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "r",
+        "simulation",
+        "monte-carlo",
+        "ademp",
+        "simdesign",
+        "research"
+      ]
     }
   ]
 }

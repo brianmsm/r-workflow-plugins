@@ -24,7 +24,7 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `quarto-bento`: an independently distributed companion for the Quarto-Bento application: project identity, CLI/API/Studio operations, retained visual state, reviewed synchronization and recovery. Generic Quarto skills remain optional companions, not duplicates.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
-The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list `quarto-publishing`, `r-analytic-core` and `quarto-bento` with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. Four additional research-methods plugins now have implemented but unreleased first slices (ten skills total), with `0.0.0` manifests and no catalog entries. `r-package-development` and `rmarkdown-workflows` remain unscaffolded candidates. Avoid creating further plugins before their boundaries and useful initial skills are reviewed.
+The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list seven plugins with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. Four research-methods plugins provide released first slices (ten skills total), with version-matched Codex, Claude and Antigravity adapters. `r-package-development` and `rmarkdown-workflows` remain unscaffolded candidates. Avoid creating further plugins before their boundaries and useful initial skills are reviewed.
 
 ## Plugin Layout
 
@@ -49,7 +49,7 @@ Plugin-specific architecture documents describe an **intended mature scope**; pl
 
 - Codex public marketplace: `.agents/plugins/marketplace.json`.
 - Claude Code public marketplace: `.claude-plugin/marketplace.json`.
-- Plugin-specific manifests: `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json` where enabled.
+- Plugin-specific manifests: `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json` and `.antigravity-plugin/plugin.json` where supported. Antigravity CLI can install a local directory extracted from a plugin-specific tag.
 - Published plugin entries currently use Git subdirectory sources pinned to plugin-specific release tags (`<plugin-name>-v<semver>`).
 - Working on `main` or updating a plugin's `Unreleased` changelog does **not** change what a tag-pinned install receives.
 - Local development may use a temporary local-path marketplace; it must not replace the released catalog unintentionally.

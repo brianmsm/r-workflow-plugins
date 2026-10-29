@@ -45,6 +45,62 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "r-data-wrangling",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "./plugins/r-data-wrangling",
+        "ref": "r-data-wrangling-v0.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "r-applied-analysis",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "./plugins/r-applied-analysis",
+        "ref": "r-applied-analysis-v0.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "r-psychometrics",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "./plugins/r-psychometrics",
+        "ref": "r-psychometrics-v0.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "r-simulation-methods",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/brianmsm/r-workflow-plugins.git",
+        "path": "./plugins/r-simulation-methods",
+        "ref": "r-simulation-methods-v0.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

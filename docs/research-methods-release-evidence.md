@@ -55,3 +55,14 @@ An initial survey follow-up returned no answer after a denied attempt to inspect
 Each plugin has its own `0.1.0` manifest set, changelog and immutable `<plugin>-v0.1.0` tag. Catalog entries follow the tags; release commits and catalogs are separate from raw testing. Installation must preserve other plugins, runtime versions, authentication and existing user settings.
 
 The supported scientific slice remains bounded. Missing-data and mixed-model skills, measurement invariance and basic IRT are still planned. ESEM, DIF, networks, advanced latent models and combined survey/MI/multilevel inference remain outside this release. Successful loading and sampled follow-ups do not remove the need to execute and review generated research code.
+
+## Immutable Release Targets
+
+| Plugin | Tag | Release commit |
+| --- | --- | --- |
+| `r-data-wrangling` | `r-data-wrangling-v0.1.0` | `714f7ff3c4dbb79fc7429436d88867601b1f045a` |
+| `r-applied-analysis` | `r-applied-analysis-v0.1.0` | `2f0fe3a29f8404adf8b005aff31cd1b8279fd2aa` |
+| `r-psychometrics` | `r-psychometrics-v0.1.0` | `3c28a1e2e0ffea58d2ca3020aaaf6c65ebc3c4cc` |
+| `r-simulation-methods` | `r-simulation-methods-v0.1.0` | `93f59c0864b448557b0dbb552b25ebedbd38c548` |
+
+The catalog commit follows these release commits. Codex CLI 0.165.0 refreshes a marketplace with `plugin marketplace upgrade`; Claude Code uses `plugin marketplace update`. Consult the current agent setup guide for host-specific command spelling.

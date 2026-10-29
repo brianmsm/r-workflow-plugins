@@ -1,6 +1,6 @@
 # Release Process
 
-The release process is intentionally lightweight. **`quarto-publishing`, `r-analytic-core` and `quarto-bento`** have independently versioned, tag-pinned entries in both catalogs. Actual published versions are determined by each remote `source.ref`, not by local manifests alone; other plugin names remain plans.
+The release process is intentionally lightweight. The seven released plugins in the [plugin map](../README.md) have independently versioned, tag-pinned entries in both catalogs. Actual published versions are determined by each remote `source.ref`, not by local manifests alone; other plugin names remain plans.
 
 Each plugin is versioned independently. Public tags should follow:
 
