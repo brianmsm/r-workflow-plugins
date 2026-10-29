@@ -2,7 +2,7 @@
 
 Prepare research tables while keeping identifiers, variable meanings, missingness and units of observation explicit. This plugin provides editable R procedures, not an R package or pipeline framework.
 
-**State:** functional development draft for an initial `0.1.0` release. The manifests remain `0.0.0` and changes are recorded under `Unreleased` until the coordinator performs the repository's release step. No public tag, catalog entry or host installation is claimed.
+**Release: 0.1.0.** Independently versioned as `r-data-wrangling-v0.1.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Implemented Skills
 
@@ -41,4 +41,15 @@ Rscript --vanilla plugins/r-data-wrangling/tests/synthetic-cases.R
 
 The script creates only synthetic in-memory inputs and temporary round-trip files. Its assertions and expected-error handling are test infrastructure, not boilerplate to inject into research scripts. It installs nothing and does not execute existing user analyses. `writexl` is used only to construct a small Excel test fixture; it is not a plugin runtime dependency.
 
-The two manifests follow this monorepo's Codex and Claude compatibility layout. JSON/skill validation is separate from a host installation test; native host loading and cross-plugin integration remain coordinator work before release.
+The three host adapters preserve the same shared skill bodies. JSON/skill validation, native loading and statistical correctness remain separate evidence levels.
+
+## Installation
+
+From the registered `r-workflow-plugins` marketplace:
+
+```sh
+codex plugin add r-data-wrangling@r-workflow-plugins
+claude plugin install --scope user r-data-wrangling@r-workflow-plugins
+```
+
+For Antigravity CLI, install a local directory extracted from `r-data-wrangling-v0.1.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-data-wrangling-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

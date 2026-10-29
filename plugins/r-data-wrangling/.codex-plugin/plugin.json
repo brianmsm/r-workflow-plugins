@@ -1,6 +1,6 @@
 {
   "name": "r-data-wrangling",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Research data import, types, labels, transformations and integration with editable tidyverse-first R code.",
   "author": {
     "name": "Brian Norman Peña-Calero"
