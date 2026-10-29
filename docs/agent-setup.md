@@ -58,7 +58,7 @@ agy plugin install "$stage/plugins/r-data-wrangling"
 agy plugin list --json
 ```
 
-Repeat with the corresponding plugin name/tag for the other three releases. Retain the staged directory if needed for provenance; do not package ignored simulation output from a working directory. The CLI stages installed plugins under its own user profile, distinct from the Antigravity IDE's configuration location.
+Repeat with the corresponding plugin name/tag for the other three releases. Retain the staged directory if needed for provenance; do not package ignored simulation output from a working directory. Use the installation location reported by `agy plugin list --json`; do not assume that a workspace test directory or a historical profile layout is the global install root. Global installation was verified with CLI 1.4.10, not with the IDE interface.
 
 Antigravity's named remote marketplace syntax currently targets its official marketplace, not this repository's Codex/Claude catalog alias. Do not assume `plugin@r-workflow-plugins` is supported. Installation from a pinned local extraction avoids ambiguity about a monorepo URL or Git subdirectory.
 

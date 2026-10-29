@@ -66,3 +66,19 @@ The supported scientific slice remains bounded. Missing-data and mixed-model ski
 | `r-simulation-methods` | `r-simulation-methods-v0.1.0` | `93f59c0864b448557b0dbb552b25ebedbd38c548` |
 
 The catalog commit follows these release commits. Codex CLI 0.165.0 refreshes a marketplace with `plugin marketplace upgrade`; Claude Code uses `plugin marketplace update`. Consult the current agent setup guide for host-specific command spelling.
+
+## Publication and User-Scope Installation
+
+The integration was fast-forwarded onto main without rewriting the pre-existing local commits. The catalog commit and all four annotated tags were pushed atomically, and the remote peeled tag targets were checked against the release-commit table above. Four non-draft GitHub releases were then created.
+
+| Host | Global/user installation | Enabled new plugins | Installed skills | Payload verification |
+| --- | --- | ---: | ---: | --- |
+| Codex CLI 0.165.0 | Native marketplace installation from tag-pinned Git subdirectories | 4 | 10 | Every tracked plugin file matches its published tag |
+| Claude Code 2.1.312 | Native marketplace installation with user scope | 4 | 10 | Every tracked plugin file matches its published tag |
+| Antigravity CLI 1.4.10 | Native install from directories extracted from exact release tags | 4 | 10 | Every tracked plugin file matches its published tag |
+
+Each installation contains 75 tracked files in total across the four plugins (15, 19, 23 and 18). Byte comparisons covered all 225 installed copies across the three hosts. Existing plugin inventories and their activation/version fields were preserved. The global mise configuration hash remained unchanged; no agent binary or statistical package was updated.
+
+A stale Codex marketplace snapshot existed without its source entry in user configuration. Native registration rejected the cached source and native refresh could not find a configured source. Restoring only that documented marketplace definition allowed native refresh and installation; unrelated parsed settings, including authentication, were unchanged by the repair. Claude required registration of the repository marketplace before installation. No credentials were copied or published.
+
+These are installation and integrity checks. The behavioral evidence above remains the sampled native-session evidence; installation does not guarantee every generated analysis. Detailed per-machine logs and installation receipts remain private rather than being bundled in the public repository.
