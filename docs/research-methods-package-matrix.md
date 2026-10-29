@@ -78,15 +78,32 @@ For mixed models, distinguish predictions conditional on estimated random effect
 | Item distributions and declared scoring | `dplyr`, ggplot2; targeted `psych` summaries | Frequencies, missingness and declared item/score metrics | No automatic item reversal, deletion or scoring threshold to maximize a fit/reliability statistic |
 | Classical internal consistency | `psych::alpha()` where its target is justified | Native estimates and uncertainty/limitations | Alpha does not establish dimensionality or construct validity |
 | Factor-model reliability | `semTools::compRelSEM()` for an appropriate fitted measurement model | Model-specific reliability and assumptions | Exploratory `psych::omega()` and CFA-based reliability are not interchangeable procedures |
-| EFA | `psych::fa()`, `fa.parallel()` and appropriate Pearson/polychoric input | Native loading/communality output; `parameters::model_parameters()` for supported psych objects | Separate common-factor analysis from PCA; justify retention, extraction and rotation; lavaan EFA is a conditional future reference |
+| EFA | `psych::fa()` / `fa.parallel()` for conventional work; `lavaan::efa(..., ordered = TRUE, estimator = "WLSMV")` for appropriate ordinal-item WLSMV | Native EFA output; `parameters::model_parameters()` for supported psych objects; optional `output = "lavaan"` for a single factor-count solution | Distinguish EFA from PCA and deferred ESEM; justify factor retention, ordinal treatment, estimation and rotation |
 | Continuous CFA | `lavaan::cfa()` | Native `summary()` plus verified psymetrics | Estimator, scale identification, missing-data policy and admissibility are visible |
-| Ordered-item CFA | `lavaan::cfa(..., ordered = ...)` with the appropriate estimator | Native robust fit information and verified extraction | Thresholds and ordered treatment are not an ordinary continuous-data variation; do not request unsupported FIML |
+| Ordered-item CFA | `lavaan::cfa(..., ordered = ...)` with the appropriate estimator | Native adjusted tests/SEs and **scaled** fit indices by default; verified extraction | WLSMV's robust inference is distinct from using the separate `.robust` fit-index variants; do not request unsupported FIML |
 | Basic structural/path models | `lavaan::sem()` | Native summary, structural estimates/intervals and psymetrics report | One technical home in `r-cfa-sem`; no automatic causal interpretation |
 | Standard multigroup invariance | `lavaan` models and `semTools::measEq.syntax()` when useful | Native comparisons plus verified fit/estimate comparisons | Continuous and ordinal identification/constraints differ; partial invariance requires a stated rationale |
 | Basic unidimensional IRT | `mirt::mirt()` | Native coefficients, fit, information and score summaries | Start with simple dichotomous and polytomous families; psymetrics 0.5.0 does not claim stable mirt support; defer DIF, linking, CAT and multidimensional extensions |
 | IRT diagnostics | `mirt::M2()`, `itemfit()`, residual/local-dependence checks and score diagnostics where applicable | Interpretive item/global diagnostic summaries | Test feasibility depends on response structure, available degrees of freedom and statistic assumptions |
 
-Primary sources: [lavaan CFA](https://lavaan.ugent.be/tutorial/cfa.html), [categorical variables](https://lavaan.ugent.be/tutorial/cat.html), [estimators/missingness](https://lavaan.ugent.be/tutorial/est.html), [lavaan Compendium](https://tdjorgensen.github.io/SEM-in-Ed-compendium/), [semTools documentation](https://cran.r-project.org/package=semTools), [psych documentation](https://cran.r-project.org/package=psych), [mirt model fitting](https://philchalmers.github.io/mirt/docs/reference/mirt.html), [mirt item fit](https://philchalmers.github.io/mirt/docs/reference/itemfit.html), [psymetrics source](https://github.com/brianmsm/psymetrics).
+Primary sources: [lavaan EFA/ESEM](https://lavaan.ugent.be/tutorial/efa.html), [lavaan EFA manual](https://search.r-project.org/CRAN/refmans/lavaan/html/efa.html), [lavaan CFA](https://lavaan.ugent.be/tutorial/cfa.html), [categorical variables](https://lavaan.ugent.be/tutorial/cat.html), [estimators/missingness](https://lavaan.ugent.be/tutorial/est.html), [lavaan Compendium](https://tdjorgensen.github.io/SEM-in-Ed-compendium/), [semTools documentation](https://cran.r-project.org/package=semTools), [psych documentation](https://cran.r-project.org/package=psych), [mirt model fitting](https://philchalmers.github.io/mirt/docs/reference/mirt.html), [mirt item fit](https://philchalmers.github.io/mirt/docs/reference/itemfit.html), [psymetrics source](https://github.com/brianmsm/psymetrics).
+
+### Ordinal EFA with `lavaan`
+
+The existing `lavaan::efa()` API supports a direct ordinal-data exploratory factor analysis with WLSMV:
+
+```r
+efa_ord <- lavaan::efa(
+  data = ordinal_items,
+  nfactors = 2,
+  rotation = "oblimin",
+  ordered = TRUE,
+  estimator = "WLSMV"
+)
+summary(efa_ord)
+```
+
+`ordinal_items` stands for an appropriately prepared data frame, not a bundled dataset. For one selected factor count, `output = "lavaan"` returns an inspectable lavaan object. WLSMV uses DWLS for parameter estimation and adjusted tests/standard errors. A small synthetic local smoke test with `lavaan 0.7.3` converged and returned scaled fit measures. This does not establish agent activation or support for every model/rotation. ESEM with structural relations remains deferred.
 
 ### Native lavaan inspection
 
@@ -96,20 +113,22 @@ Keep a model's syntax, fitting call and summary adjacent. Show the estimator, or
 
 ### psymetrics integration: inspected 0.5.0 source
 
-The public website and source declare version 0.5.0. The observed `master` commit was `85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c`. Stable support is centered on lavaan CFA/SEM. Additional psych/mirt classes and measurement-invariance helpers are marked as development work. This review inspected source and documentation; it did not execute these functions or establish a locally installed version.
+The public website and source declare version 0.5.0. The observed `master` commit was `85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c`. Stable support is centered on lavaan CFA/SEM. Additional psych/mirt classes and measurement-invariance helpers are marked as development work. This review inspected source and documentation. Local installation at version `0.5.0` was confirmed. A targeted execution of `model_estimates()` reproduced the covariance-labeling issue; the other extraction/comparison functions were not executed in this planning pass.
 
 | API | Relevant verified defaults | Meaning for the skill |
 | --- | --- | --- |
-| `model_fit(fit, ...)` | lavaan method: `type = NULL`, `metrics = "essential"`, `test = "default"`, `standard_test = FALSE`, `test_details = FALSE` | Default type selects scaled indices for a robust estimator; this is not the same as requesting the `.robust` variants. Make the intended index type explicit. |
+| `model_fit(fit, ...)` | lavaan method: `type = NULL`, `metrics = "essential"`, `test = "default"`, `standard_test = FALSE`, `test_details = FALSE` | Default type selects scaled indices for a robust estimator; this is not the same as requesting the `.robust` variants. The scaled-index default is deliberate, especially for WLSMV. Explain the index family and permit an explicit `.robust` alternative when requested. |
 | `compare_model_fit(...)` | Same fit-selection controls; at least two models | Extracts and stacks model-fit results. It does not perform a likelihood-ratio test or calculate inferential evidence of invariance. |
 | `model_estimates(fit, ...)` | lavaan method: `standardized = FALSE`, `ci = 0.95`, `component = "all"` | `TRUE` selects `std.all`; other supported choices include `std.lv` and `std.nox`. Standardized extraction uses `standardizedSolution()` and its inference; raw extraction uses `parameterEstimates()`. |
 | `compare_model_estimates(...)` | `standardized = FALSE`, `ci = 0.95`, `component = "all"`, `select = "ci"` | Aligns parameters by structural identity including group/level. `select = "se_p"` changes displayed statistics. Side-by-side output is not a test of equality of parameters. |
 
 All four functions are a preferred convenience layer for their supported fitted classes. Preserve the native model object, and select compact versus comprehensive reporting deliberately. Tests between models remain explicit native or semTools procedures whose nesting, sample, estimator and correction requirements have been established. The `test` argument in fit extraction selects a test already contained in a fitted object; it does not change this boundary.
 
-One source-level interpretation issue needs a focused future check: the current component mapping labels off-diagonal `~~` relations as `Correlation` even for unstandardized extraction. Such coefficients can be covariances. Interpret their metric from the extraction mode and native object, rather than from that label alone. This observation concerns labeling; it is not evidence of an incorrect numerical transformation. Any package correction is separate from implementing these plugins.
+The user's intended WLSMV reporting default is **scaled fit indices**, not automatic use of the distinct `.robust` index variants. WLSMV can have adjusted test statistics and standard errors without selecting the separately named robust fit-index family. State which indices were reported and explain the optional alternative.
 
-Before shipping, execute small CFA/SEM cases comparing selected ordinary/scaled/robust values, raw/standardized estimates and uncertainty with native lavaan output. Include a nonconverged or inadmissible model. Do not treat a table of fit indices as proof of measurement invariance.
+The off-diagonal `~~` labeling concern was registered as [psymetrics issue #55](https://github.com/brianmsm/psymetrics/issues/55): unstandardized covariances can be labeled `Correlation`. Interpret the native coefficient's metric until resolved. This is a labeling issue, not a demonstrated numerical transformation defect; correcting the package belongs outside this EPIC.
+
+Before shipping, execute small CFA/SEM cases confirming **scaled indices remain the default**, checking ordinary/scaled/explicit `.robust` alternatives when available, and comparing raw/standardized estimates and uncertainty with native lavaan output. Include a nonconverged or inadmissible model. Do not treat a table of fit indices as proof of measurement invariance.
 
 Primary evidence: [current scope](https://brianmsm.github.io/psymetrics/), [fit source](https://github.com/brianmsm/psymetrics/blob/85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c/R/model_fit-lavaan.R), [fit comparison](https://github.com/brianmsm/psymetrics/blob/85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c/R/compare_model_fit.R), [estimate source](https://github.com/brianmsm/psymetrics/blob/85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c/R/model_estimates-lavaan.R), [estimate comparison](https://github.com/brianmsm/psymetrics/blob/85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c/R/compare_model_estimates.R), [parameters structural methods](https://easystats.github.io/parameters/reference/model_parameters.principal.html).
 
@@ -130,6 +149,8 @@ Primary starting sources: [ADEMP and simulation design](https://doi.org/10.1002/
 The inspected SimDesign documentation regenerates data after errors and uses `max_errors` to limit consecutive failures. This is useful for debugging or rejecting a deliberately invalid DGP draw, but it must not silently redefine a fixed-attempt estimator evaluation as a study conditional on successful fits. Record method-level failure outcomes without accidentally requesting a new dataset. Test the chosen handling with a deliberately failing method. Likewise, rsimsum excludes missing estimates by default, so its useful Monte Carlo summaries need an explicit accounting of attempted, failed and usable replications.
 
 For a future.apply alternative, declare reproducible RNG explicitly. The documented default is `future.seed = FALSE` for `future_lapply()` and `TRUE` for `future_replicate()`. Setting a master seed alone does not establish the intended parallel contract. Keep resampling uncertainty within a dataset distinct from Monte Carlo uncertainty across simulated datasets, and distinguish conditional from unconditional parameter-recovery studies.
+
+The previously authored local SimDesign skill was reviewed read-only. Salvage tiny serial pilots (`save = FALSE`), `fixed_objects`, `genSeeds(Design, iseed = ...)`, `SimResults()`, `SimErrors()`, `SimWarnings()`, `FATAL_TERMINATION` checks and selective `load_seed` replay. Numeric `NA`/`NaN` results from `Analyse()` may trigger redraws by default, so method failures need explicit status flags or a validated `allow_na` policy. Installed `SimDesign 2.28` was detected; version-sensitive behavior still requires tests. Do not copy personal source paths, templates, external/HPC machinery or host-specific guidance into the public plugin.
 
 A simulation engine is a legitimate place for functions, controlled iteration and checkpointing. Keep the scientific DGP, model calls and estimands inspectable within that structure. Do not generalize its architecture into ordinary exploratory analysis scripts.
 

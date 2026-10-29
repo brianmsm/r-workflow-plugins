@@ -94,12 +94,12 @@ A reporting skill is not needed solely because several methods use `parameters` 
 | Skill | Activation task | Conditional references | Delivery |
 | --- | --- | --- | --- |
 | `r-item-and-reliability-analysis` | Inspect items, declared scoring and reliability evidence | Item distributions/keying; internal consistency; model-based reliability; score uncertainty | First slice |
-| `r-exploratory-factor-analysis` | Explore dimensional structure with appropriate correlations/extraction/rotation | Retention; ordinal correlations; rotation/interpretation; uncertainty and replication | First slice |
+| `r-exploratory-factor-analysis` | Explore dimensional structure with appropriate correlations/extraction/rotation | Retention; `psych::fa()`, ordinal WLSMV with `lavaan::efa()`, rotation/interpretation; uncertainty and replication | First slice |
 | `r-cfa-sem` | Fit and inspect confirmatory measurement and basic structural/path models | Continuous versus ordinal estimation; identification; native summaries; psymetrics; admissibility; simple SEM | First slice |
 | `r-measurement-invariance` | Evaluate comparable measurement across groups with a specified identification strategy | Continuous constraints; ordinal thresholds/identification; partial invariance; model comparison | Second slice |
 | `r-irt-analysis` | Fit and evaluate basic unidimensional IRT models | Dichotomous/polytomous models; information; item/global fit; local dependence; scoring | Second slice |
 
-EFA and CFA have materially different questions and decision sequences, so separate activation is useful. CFA and simple SEM share enough technical machinery to begin together. Invariance deserves a separate skill because constraint construction and comparability are a distinct task, particularly for ordered items.
+EFA and CFA have materially different questions and decision sequences, so separate activation is useful. The EFA skill includes `lavaan::efa(..., ordered = TRUE, estimator = "WLSMV")` for ordinal items, alongside `psych::fa()`. EFA-only rotated measurement models are in scope; ESEM with structural regressions remains deferred. CFA and simple SEM share enough technical machinery to begin together. Invariance deserves a separate skill because constraint construction and comparability are a distinct task, particularly for ordered items.
 
 ### r-simulation-methods
 
@@ -108,7 +108,7 @@ EFA and CFA have materially different questions and decision sequences, so separ
 | `r-simulation-design` | Design a Monte Carlo or simulation-based precision/power study | ADEMP; realistic DGPs; conditions and estimands; Monte Carlo precision; pilot planning | A short design worksheet only if it proves repeatedly useful |
 | `r-simulation-execution-and-evaluation` | Implement, run, resume or summarize a specified simulation | SimDesign pattern; RNG and parallelism; failure accounting; operating characteristics and plots | One small synthetic SimDesign starter, after execution-based validation |
 
-Design and execution can be requested independently. Keep them composable rather than creating separate skills for seed setup, checkpointing, bias, coverage and each simulation package.
+Design and execution can be requested independently. Keep them composable rather than creating separate skills for seed setup, checkpointing, bias, coverage and each simulation package. A previously authored local SimDesign skill was inspected read-only for small pilots, `fixed_objects`, per-condition RNG seeds, failure diagnostics and replay. Transfer only independently validated principles, not the original templates, host-specific source paths or advanced distributed-execution catalog.
 
 The proposed EPIC has 14 new skills across four plugins, delivered incrementally. This is a task map, not a quota or a prerequisite for releasing a smaller useful plugin.
 
@@ -144,7 +144,7 @@ The [package matrix](research-methods-package-matrix.md) is central to this EPIC
 
 1. **Native estimation and meaningful diagnostics:** the model's original R package remains visible.
 2. **Convenient extraction:** `parameters` and `performance` are usual choices where their class-specific behavior is appropriate. Inspect the relevant method rather than assuming a generic call supports every class.
-3. **SEM reporting:** retain the native lavaan summary, then use verified psymetrics operations for compact summaries and descriptive cross-model reports. The inspected psymetrics 0.5.0 support is centered on lavaan; do not promise stable psych/mirt extraction or interpret a comparison table as an inferential test.
+3. **SEM reporting:** retain the native lavaan summary, then use verified psymetrics operations for compact summaries and descriptive cross-model reports. Scaled fit indices are the **intentional default** for WLSMV; do not automatically switch to the separately named `.robust` variants. Explain the difference and allow explicit alternatives. The inspected psymetrics 0.5.0 support is centered on lavaan; do not promise stable psych/mirt extraction or interpret a comparison table as an inferential test.
 4. **Graphics:** use `ggplot2` for researcher-authored displays; retain valuable native diagnostic plots supplied by model packages.
 5. **Publication tables:** choose `gtsummary`, `gt`, `flextable` or `modelsummary` only when the requested output needs them. Avoid adding several table systems to a simple analysis.
 
@@ -158,7 +158,7 @@ Package documentation may describe development builds. Record the version actual
 
 - Data import/type/label integrity, declared transformations, joins and long/wide manipulation.
 - Descriptives, common comparisons/correlations, ordinary linear/binary/count regression and complex-survey descriptives/regression.
-- Item analysis, basic reliability, EFA and conventional continuous/ordinal CFA; simple SEM using the same native workflow.
+- Item analysis, basic reliability, EFA (including ordinal WLSMV with `lavaan::efa()`) and conventional continuous/ordinal CFA; simple SEM using the same native workflow.
 - One transparent Monte Carlo study, from design to estimates, failures, uncertainty and an interpretable performance display.
 
 ### Bounded second slices within this EPIC

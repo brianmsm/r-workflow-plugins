@@ -45,7 +45,15 @@ These are abstract methodological requirements, independently expressed for publ
 
 The public psymetrics website and source were inspected at version 0.5.0, with observed `master` commit `85cd7b7e24d112ecd8c93e8a1b49f59e8680d30c`. Its stable scope is centered on lavaan; psych/mirt support and measurement-invariance helpers are marked as development work. The four requested extraction/comparison functions exist. Their defaults, descriptive comparison semantics, standardization behavior and a covariance/correlation labeling concern are recorded in the [package matrix](research-methods-package-matrix.md).
 
-This was source and documentation review, not execution or confirmation of the locally installed package. No psymetrics code was changed, no issue was published, and no package release is part of this EPIC planning work.
+The original source/documentation review was supplemented with targeted local execution. No psymetrics source code was changed. The labeling concern was registered as [issue #55](https://github.com/brianmsm/psymetrics/issues/55); no package correction or release was performed. Installed `psymetrics 0.5.0` and `lavaan 0.7.3` were used for a targeted `model_estimates()` test on public example data: the unstandardized `visual ~~ textual` estimate was 0.4082324 and was labeled `Correlation`, while native lavaan returned the same covariance. Other psymetrics functions were not executed in this planning review.
+
+## Follow-up: lavaan EFA, Scaled Reporting and SimDesign
+
+`lavaan::efa()` already supports an ordinal EFA route with `ordered = TRUE` and `estimator = "WLSMV"`. A bounded synthetic R check on installed `lavaan 0.7.3` produced a converged two-factor oblimin EFA with scaled fit measures; its internal parameter-estimation option was DWLS, consistent with WLSMV. The result is an API smoke test, not agent-behavior evidence. ESEM with structural relations stays out of scope.
+
+A previously authored local SimDesign-specific skill was reviewed read-only: core workflow, API map, helper organization, reproducibility, diagnostics, validation scenarios and a basic starter. Retain independently verified lessons on small pilots, `fixed_objects`, condition-level RNG, `SimResults()`, `SimErrors()`/`SimWarnings()`, attempt denominators and seed replay. Defer extensive distributed/HPC, external-software and multi-machine operations. No original source path or template is included in public documentation. Installed `SimDesign 2.28` was detected; its version-sensitive behaviors have not been freshly executed for this design pass.
+
+The intended `psymetrics` default stays **scaled indices** with WLSMV rather than automatically selecting `.robust` indices. This is a project-level reporting decision to communicate, not a requested package change.
 
 ## Other Skills Reviewed
 
