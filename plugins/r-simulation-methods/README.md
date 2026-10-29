@@ -1,6 +1,6 @@
 # R Simulation Methods
 
-**Implemented initial slice, not published.** This skills-only plugin supports ADEMP-based Monte Carlo design and a small complete SimDesign experiment. Its development manifests remain at `0.0.0` until an independently reviewed release. It is not registered in the public catalogs.
+**Release: 0.1.0.** Independently versioned as `r-simulation-methods-v0.1.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-simulation-methods-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Skills
 
@@ -41,4 +41,15 @@ The targeted validation reruns the example and checks analytical targets, manual
 
 See [validation evidence](docs/validation.md) for exact results and limits. Source review, executed numerical tests and sampled agent behavior are recorded separately. Local PSOCK repeated exactly within its tested configuration; serial and PSOCK outputs differed under the same condition seeds. Automatic interruption recovery, alternative parallel backends, HPC/SLURM, multi-machine execution and external Mplus/Stan orchestration are conditional future work.
 
-See [architecture](docs/architecture.md), [roadmap](docs/roadmap.md) and [changelog](CHANGELOG.md) for the maintained scope. The existing Codex/Claude manifest conventions are preserved; native installation in those hosts was not tested in this delivery.
+See [architecture](docs/architecture.md), [roadmap](docs/roadmap.md) and [changelog](CHANGELOG.md) for the maintained scope. The Codex/Claude conventions are preserved alongside the Antigravity adapter. The original development validation and subsequent native-host evidence are distinguished in the release record.
+
+## Installation
+
+From the registered `r-workflow-plugins` marketplace:
+
+```sh
+codex plugin add r-simulation-methods@r-workflow-plugins
+claude plugin install --scope user r-simulation-methods@r-workflow-plugins
+```
+
+For Antigravity CLI, install a local directory extracted from `r-simulation-methods-v0.1.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-simulation-methods-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

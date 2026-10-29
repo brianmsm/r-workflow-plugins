@@ -32,6 +32,6 @@ The same responsibility split supports a domain estimator later, but the estimat
 
 Use applied or psychometric expertise when the scientific method needs it. Use the optional research-coding core for code organization and publishing expertise for document rendering. This plugin does not depend on another plugin's installation or copy its policy.
 
-The plugin directory remains the distribution/versioning unit with existing `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json` adapters. The initial development version is 0.0.0; a release and catalog integration belong to the coordinator's existing process. No host-global metadata, MCP server, account publication or marketplace mutation is introduced.
+The plugin directory remains the distribution/versioning unit with `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json` and `.antigravity-plugin/plugin.json` adapters. All record release 0.1.0 and follow the existing independent tag/catalog process. The plugin introduces no MCP server or statistical package installation.
 
 Synthetic runtime artifacts stay under the ignored plugin `output/` directory. Public evidence consists of new code, formulas, test procedures and summarized numerical results. Private source scripts, templates, identifiers and data are not part of the plugin.
