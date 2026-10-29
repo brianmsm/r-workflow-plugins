@@ -1,0 +1,36 @@
+{
+  "name": "r-psychometrics",
+  "version": "0.0.0",
+  "description": "Research-editable item, reliability, EFA and CFA/SEM workflows with native R estimation and verified reporting.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "psychometrics",
+    "reliability",
+    "factor-analysis",
+    "sem"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "R Psychometrics",
+    "shortDescription": "Item, reliability and factor-model analysis in R.",
+    "longDescription": "Inspect measurement items, estimate reliability, explore factor structure, and fit conventional CFA and basic SEM with explicit model choices, native diagnostics and verified reporting.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "R",
+      "Psychometrics",
+      "Factor Analysis",
+      "SEM"
+    ],
+    "defaultPrompt": [
+      "Inspect these items and estimate reliability for the declared score.",
+      "Explore the factor structure of these ordered questionnaire items.",
+      "Fit and compare these CFA models with native summaries and psymetrics reports."
+    ]
+  }
+}

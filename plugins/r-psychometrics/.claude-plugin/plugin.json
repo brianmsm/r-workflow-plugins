@@ -1,0 +1,19 @@
+{
+  "name": "r-psychometrics",
+  "version": "0.0.0",
+  "description": "Research-editable item, reliability, EFA and CFA/SEM workflows with native R estimation and verified reporting.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "psychometrics",
+    "reliability",
+    "factor-analysis",
+    "sem"
+  ],
+  "skills": "./skills/",
+  "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-psychometrics"
+}
