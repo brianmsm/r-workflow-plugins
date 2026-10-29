@@ -1,0 +1,36 @@
+{
+  "name": "r-data-wrangling",
+  "version": "0.0.0",
+  "description": "Research data import, types, labels, transformations and integration with editable tidyverse-first R code.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "research",
+    "tidyverse",
+    "data-import",
+    "data-wrangling"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "R Data Wrangling",
+    "shortDescription": "Preserve research data meaning in editable R.",
+    "longDescription": "Import and prepare research tables with explicit types, identifiers, labels, missing-value meanings, joins, reshaping and declared aggregation rules. Keep native R operations visible and distinguish data preparation from inferential method decisions.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "R",
+      "Research Data",
+      "Data Import",
+      "Data Transformation"
+    ],
+    "defaultPrompt": [
+      "Import this research table while preserving identifiers, labels and missing-value meanings.",
+      "Join these research tables using their actual observation units and check match coverage.",
+      "Reshape these repeated observations and apply the specified aggregation rule."
+    ]
+  }
+}

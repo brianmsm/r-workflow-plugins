@@ -1,0 +1,19 @@
+{
+  "name": "r-data-wrangling",
+  "version": "0.0.0",
+  "description": "Research data import, types, labels, transformations and integration with editable tidyverse-first R code.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "research",
+    "tidyverse",
+    "data-import",
+    "data-wrangling"
+  ],
+  "skills": "./skills/",
+  "homepage": "https://github.com/brianmsm/r-workflow-plugins/tree/main/plugins/r-data-wrangling"
+}
