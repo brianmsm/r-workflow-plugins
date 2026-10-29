@@ -1,0 +1,36 @@
+{
+  "name": "r-applied-analysis",
+  "version": "0.0.0",
+  "description": "Research-editable descriptive, regression and complex-survey analysis in R with explicit estimands and uncertainty.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "research",
+    "statistics",
+    "regression",
+    "survey"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "R Applied Analysis",
+    "shortDescription": "Transparent research analysis and survey inference in R.",
+    "longDescription": "Describe research data, compare groups, fit ordinary linear and generalized linear models, and preserve complex-sampling inference with survey. Keep specifications, diagnostics and interpretable results together.",
+    "developerName": "Brian Norman Peña-Calero",
+    "category": "Productivity",
+    "capabilities": [
+      "R",
+      "Applied Statistics",
+      "Regression",
+      "Survey Analysis"
+    ],
+    "defaultPrompt": [
+      "Describe these outcomes and estimate the prespecified group comparison with explicit missing-data denominators.",
+      "Fit and interpret this regression, keeping the model and diagnostics locally editable.",
+      "Estimate this survey domain's mean and uncertainty using its weights, strata and clusters."
+    ]
+  }
+}

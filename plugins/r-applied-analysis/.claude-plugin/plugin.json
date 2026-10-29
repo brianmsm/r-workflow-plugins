@@ -1,0 +1,18 @@
+{
+  "name": "r-applied-analysis",
+  "version": "0.0.0",
+  "description": "Research-editable descriptive, regression and complex-survey analysis in R with explicit estimands and uncertainty.",
+  "author": {
+    "name": "Brian Norman Peña-Calero"
+  },
+  "repository": "https://github.com/brianmsm/r-workflow-plugins",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "research",
+    "statistics",
+    "regression",
+    "survey"
+  ],
+  "skills": "./skills/"
+}
