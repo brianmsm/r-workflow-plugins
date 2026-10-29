@@ -2,6 +2,8 @@
 
 Status: **integrated locally for review, not released** (2026-10-29). This record covers a bounded, synthetic-first integration check, not a native agent-host installation or a general statistical benchmark.
 
+Later host evaluations and release corrections are recorded in [release evidence](research-methods-release-evidence.md). The results below remain the historical integration snapshot.
+
 ## Source and Isolation
 
 - Base: `8068a4740976d77561fbd2750ebb48b309e0221b` on the planning worktree.

@@ -31,6 +31,7 @@ Use the same versioning policy for every plugin:
 - Track unreleased work in the plugin `CHANGELOG.md` under `## [Unreleased]`.
 - When the next release is ready, move the relevant changelog entries from `Unreleased` to the new version section, update `plugin.json`, and create the plugin-specific tag.
 - For plugins with Claude support, update `plugins/<plugin-name>/.claude-plugin/plugin.json` to the same released plugin version and avoid duplicating that version in the root Claude marketplace.
+- For plugins with Antigravity support, update `plugins/<plugin-name>/.antigravity-plugin/plugin.json` to that same version and validate it with the target CLI. Its existence does not migrate other manifest formats.
 
 Avoid pre-release versions such as `0.2.0-alpha.0` unless the project intentionally wants to publish and support a pre-release build.
 

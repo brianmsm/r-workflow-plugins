@@ -1,116 +1,77 @@
 # Agent Setup
 
-`r-workflow-plugins` distributes common skill instructions through runtime-specific adapters. **`quarto-publishing v0.2.2` and `r-analytic-core v0.1.0` are available in the public marketplaces**, each pinned to its independent Git release tag. `quarto-bento` is a local `0.0.0` draft requiring a separate development installation; it is not in these public catalogs. Other plugins in the [global roadmap](roadmap.md) remain planned.
-
-Common content lives under `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`, with optional skill-local `references/`, `scripts/`, `assets/`, and `agents/openai.yaml`. Do not copy the same skill body into separate Codex, Claude, or Gemini trees.
-
-## Published Catalog vs Local Development
-
-The catalogs on `main` currently use **Git subdirectory sources pinned to plugin release tags**. The catalog itself may update on `main`, but a pinned plugin source does not install unreleased modifications from `main`. The latest `quarto-publishing` pin is `quarto-publishing-v0.2.2`.
-
-- Codex catalog: `.agents/plugins/marketplace.json`.
-- Claude Code catalog: `.claude-plugin/marketplace.json`.
-- Plugin-specific Codex metadata: `plugins/<plugin-name>/.codex-plugin/plugin.json` (published: `quarto-publishing`, `r-analytic-core`; local draft: `quarto-bento`).
-- Plugin-specific Claude metadata: `plugins/<plugin-name>/.claude-plugin/plugin.json` (published: `quarto-publishing`, `r-analytic-core`; local draft: `quarto-bento`).
-- A full Gemini CLI extension would require `plugins/quarto-publishing/gemini-extension.json`; no such adapter has been released.
-
-Importantly, **adding a local clone as a marketplace does not automatically switch a `git-subdir` tag-pinned plugin to working-tree content**. To test unpublished Codex changes, use a temporary local catalog entry with `source: {"source": "local", "path": "./plugins/quarto-publishing"}` rooted in the appropriate local marketplace directory, then restore the release catalog before committing. Alternatively, test skill discovery independently through the development agent's skill-loading facilities. Do not repoint the published catalog to a development branch merely for personal testing.
-
-See [release process](release-process.md) for the publication sequence.
+Plugins contain shared `skills/<skill>/SKILL.md` instructions and only the adapters required by their supported hosts. Versions and tag pins are authoritative in plugin manifests and the public catalogs; see the [plugin map](../README.md) and [release process](release-process.md).
 
 ## Codex
 
-Register the public catalog:
+Register the catalog once, then refresh it before installing new releases:
 
-```bash
+```sh
 codex plugin marketplace add brianmsm/r-workflow-plugins
+codex plugin marketplace update r-workflow-plugins
+codex plugin add r-data-wrangling@r-workflow-plugins
+codex plugin add r-applied-analysis@r-workflow-plugins
+codex plugin add r-psychometrics@r-workflow-plugins
+codex plugin add r-simulation-methods@r-workflow-plugins
+codex plugin list
 ```
 
-Install or enable either plugin from the catalog in the Codex app, or from the Codex CLI, for example:
+Skip registration if that marketplace already exists. Plugin skills are exposed through native discovery; an explicit request can name the qualified skill, such as `$r-psychometrics:r-cfa-sem`. Natural-language selection is host/model-dependent. The Codex adapter is `.codex-plugin/plugin.json`; the catalog is `.agents/plugins/marketplace.json`.
 
-```bash
-codex plugin add r-analytic-core@r-workflow-plugins
-```
+The catalog uses Git subdirectories pinned to independent plugin tags. Adding a working clone as a marketplace does not override those source pins. Use a separate temporary local-path catalog for development, never change public pins to test a working tree.
 
-Explicit skill invocation for research-first R coding is `$r-analytic-coding-principles`. As another example, a publishing skill can be invoked with:
-
-```text
-$quarto-render-troubleshooting
-```
-
-To inspect/refresh registered catalogs, the Codex CLI also provides:
-
-```bash
-codex plugin marketplace list
-codex plugin marketplace upgrade
-```
-
-The published catalog entries are `git-subdir` sources pinned to `quarto-publishing-v0.2.2` and `r-analytic-core-v0.1.0`, not `local` sources. For testing later unpublished changes, keep any developer override separate from these public entries. Users must refresh their catalog/installation according to their runtime to pick up a new plugin or version.
-
-Reference: [OpenAI's plugin packaging and marketplace documentation](https://developers.openai.com/plugins/build/plugins).
+Reference: [OpenAI plugin documentation](https://developers.openai.com/codex/plugins/).
 
 ## Claude Code
 
-Register the public catalog and install the plugin:
+Use the existing registered marketplace or register it once:
 
-```bash
+```sh
 claude plugin marketplace add brianmsm/r-workflow-plugins
-claude plugin install quarto-publishing@r-workflow-plugins
-claude plugin install r-analytic-core@r-workflow-plugins
+claude plugin marketplace update r-workflow-plugins
+claude plugin install --scope user r-data-wrangling@r-workflow-plugins
+claude plugin install --scope user r-applied-analysis@r-workflow-plugins
+claude plugin install --scope user r-psychometrics@r-workflow-plugins
+claude plugin install --scope user r-simulation-methods@r-workflow-plugins
+claude plugin list --json
 ```
 
-Claude Code plugin skills are namespaced, for example:
+Use a fresh session after installation. Invoke `/r-psychometrics:r-cfa-sem`, for example. For source-only development, `claude --plugin-dir ./plugins/r-psychometrics` loads that directory for the current session without installing it globally.
 
-```text
-/quarto-publishing:quarto-render-troubleshooting
-/r-analytic-core:r-analytic-coding-principles
+The adapter is `.claude-plugin/plugin.json`; the catalog is `.claude-plugin/marketplace.json`. The pinned source ref determines the fetched code; the plugin manifest records its displayed version. Do not duplicate plugin versions at marketplace level.
+
+If the shell command is a custom version-manager wrapper, inspect it before automated testing. Use the already installed binary directly when merely requesting help must not change a global version choice. Installing plugins does not require installing or updating the agent binary.
+
+Reference: [Claude Code marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
+
+## Antigravity CLI
+
+The four initial research-methods plugins include `.antigravity-plugin/plugin.json`. They share the same skill bodies and resource files as Codex and Claude. Native compatibility was tested with `agy 1.4.10`; this does not imply native Gemini CLI extension support.
+
+The CLI accepts a local plugin directory. To install an exact release from an existing Git clone without changing its working branch, extract only the committed plugin payload into a new directory:
+
+```sh
+stage=$(mktemp -d)
+git archive r-data-wrangling-v0.1.0 plugins/r-data-wrangling | tar -x -C "$stage"
+agy plugin validate "$stage/plugins/r-data-wrangling" --strict
+agy plugin install "$stage/plugins/r-data-wrangling"
+agy plugin list --json
 ```
 
-For testing **working-tree changes** directly from the repository root, use:
+Repeat with the corresponding plugin name/tag for the other three releases. Retain the staged directory if needed for provenance; do not package ignored simulation output from a working directory. The CLI stages installed plugins under its own user profile, distinct from the Antigravity IDE's configuration location.
 
-```bash
-claude --plugin-dir ./plugins/quarto-publishing
-```
+Antigravity's named remote marketplace syntax currently targets its official marketplace, not this repository's Codex/Claude catalog alias. Do not assume `plugin@r-workflow-plugins` is supported. Installation from a pinned local extraction avoids ambiguity about a monorepo URL or Git subdirectory.
 
-Claude Code's plugin version resolution gives priority to the version in `.claude-plugin/plugin.json` over any marketplace-level plugin `version`, then falls back to a Git commit when no version is supplied. This repository therefore records each plugin release version in its own manifest and does **not** duplicate that field on marketplace entries. A pinned `git-subdir` `ref` determines which source commit is fetched; the manifest version controls the plugin's displayed release identity. These are distinct concerns.
+Invoke `/r-applied-analysis:r-survey-analysis` for a packaged skill. A workspace-local test can instead place full plugins in `.agents/plugins/`. Individual complete skill folders can be placed in `.agents/skills/`, but this tests standalone skill loading rather than native plugin installation.
 
-The `homepage` points to plugin-specific documentation, while `repository` points to the whole monorepo. A `$schema` field is optional editor metadata, not a distribution requirement.
+References: [plugin authoring](https://antigravity.google/docs/build-plugins/), [CLI plugin installation](https://antigravity.google/docs/plugins?tab=cli), and [marketplace contract](https://antigravity.google/docs/marketplace).
 
-Reference: [Claude Code plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
+## Gemini CLI and Other Hosts
 
-## Gemini CLI
+No `gemini-extension.json` adapter is distributed. A host's support for standalone Agent Skills is not proof that it installs the full plugin. The Antigravity CLI evaluation does not certify Gemini CLI, another model or another version.
 
-**Native extension distribution is not implemented.** Gemini CLI extensions require a `gemini-extension.json` at the extension root, and `plugins/quarto-publishing/` does not currently contain it. Therefore these commands are **not ready for this repository**:
+Keep a skill's complete folder, including conditional references and assets. Local resource links in the new research skills stay inside that folder; optional developer-evidence links point to public tagged source. Do not create separate copies of the same instructions for each agent or make a sibling plugin an implicit dependency.
 
-```bash
-# Not supported yet for this plugin directory:
-gemini extensions link ./plugins/quarto-publishing
-gemini extensions install ./plugins/quarto-publishing
-```
+## Verification Boundaries
 
-However, Gemini CLI supports **standalone Agent Skills**, so individual Quarto skills can be used without turning the plugin into a native extension.
-
-### Link a local skill for development
-
-From the root of a local clone:
-
-```bash
-gemini skills link ./plugins/quarto-publishing/skills/quarto-report-design
-gemini skills list
-```
-
-Repeat the link operation for other skills as needed. For remote installation of a specific skill, Gemini CLI documents `--path` to select a skill subdirectory in a Git repository:
-
-```bash
-gemini skills install https://github.com/brianmsm/r-workflow-plugins.git --path plugins/quarto-publishing/skills/quarto-report-design
-```
-
-These skill-level methods follow current Gemini CLI documentation but **have not been end-to-end verified for this repository**. They are not equivalent to installing `quarto-publishing` as one native Gemini extension. For a fully pinned test, use a checkout of the desired release tag rather than an in-progress branch when linking locally.
-
-Gemini CLI can also discover skills placed in `~/.gemini/skills/` or the workspace's `.gemini/skills/`, along with their `.agents/skills/` aliases. Do not copy or symlink skills into the public plugin tree just to support an additional runtime.
-
-References: [Gemini CLI Agent Skills](https://geminicli.com/docs/cli/skills/) and [extension reference](https://geminicli.com/docs/extensions/reference/).
-
-## Adding Another Runtime
-
-Before adding a new manifest or installation recipe, verify the target host's actual distribution format, whether it can load these `SKILL.md` directories directly, and how it resolves plugin versions and paths. Support for individual skills should not be described as support for complete plugin installation. Keep host-specific metadata small and leave substantive instructions in shared skill folders.
+Check discovery, actual skill/reference reads and output behavior separately. Keep test workspaces and raw transcripts out of public releases; never bundle credentials or private user configuration. See [release evidence](research-methods-release-evidence.md) for the sampled native-host coverage and remaining limits.
