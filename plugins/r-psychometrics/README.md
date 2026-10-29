@@ -2,7 +2,7 @@
 
 Research-editable measurement workflows for R: item diagnostics and reliability, exploratory factor analysis, and conventional CFA/basic SEM.
 
-**Status:** first functional development slice, unreleased. Manifest version `0.0.0` is development metadata, not a public release or a marketplace entry. No invariance or IRT skill is included yet.
+**Status:** first functional development slice, unreleased. Manifest version `0.0.0` is development metadata, not a public release or a marketplace entry. No invariance or IRT skill is included yet. See the [integration handoff](docs/integration-handoff.md) for the commit identity, verification commands and coordination work.
 
 ## Implemented skills
 
