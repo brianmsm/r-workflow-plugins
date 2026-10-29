@@ -2,7 +2,7 @@
 
 Portable, research-editable R instructions for descriptive/comparative analysis, ordinary regression and complex-survey inference.
 
-**Status:** an unreleased first implementation. The manifests remain at `0.0.0` until a separately authorized release commit. This plugin has not been added to a public catalog, installed across hosts or published.
+**Release: 0.1.0.** Independently versioned as `r-applied-analysis-v0.1.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-applied-analysis-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Implemented skills
 
@@ -39,3 +39,14 @@ See [validation](docs/validation.md) for the actual execution, methodological re
 [Architecture](docs/architecture.md) defines task handoffs. [Roadmap](docs/roadmap.md) specifies procedures and validation requirements for `r-missing-data` and `r-mixed-models`; neither has a placeholder skill directory.
 
 Measurement/SEM, Monte Carlo execution, document publishing and data-import semantics have separate homes. Ordinal/multinomial models, advanced causal methods, survival, spatial/small-area analysis and survey-plus-imputation/multilevel/latent combinations are outside the initial support claim. These boundaries describe tested plugin capabilities, not a reason to refuse an otherwise valid user request.
+
+## Installation
+
+From the registered `r-workflow-plugins` marketplace:
+
+```sh
+codex plugin add r-applied-analysis@r-workflow-plugins
+claude plugin install --scope user r-applied-analysis@r-workflow-plugins
+```
+
+For Antigravity CLI, install a local directory extracted from `r-applied-analysis-v0.1.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-applied-analysis-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

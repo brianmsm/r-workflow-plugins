@@ -1,6 +1,6 @@
 # Roadmap
 
-## First slice: implemented, unreleased
+## First slice: released as 0.1.0
 
 Three skills cover descriptives/comparisons, ordinary linear/binary/count regression and complex-survey inference. Six conditional references contain the editable synthetic examples. [Validation](validation.md) records the tested APIs and evidence limits. Release, catalog registration and cross-host installation remain separate integration work.
 
