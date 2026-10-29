@@ -12,9 +12,10 @@
 
 These are **responsibility boundaries, not a mandatory inheritance or dependency chain**. An agent can combine relevant skills from different plugins. Each plugin should still be usable on its own; a core plugin may help others, but should not become an installation prerequisite without a demonstrated need.
 
-### Planned Domain Separation
+### Current and Planned Domain Separation
 
 - `r-analytic-core`: how to work with analytical R code; not a replacement for statistical procedures.
+- `r-data-wrangling`: preserve meanings while importing, typing, recoding, joining and reshaping research data; inferential missing-data strategies, scoring validity and sampling variances belong to method skills.
 - `r-applied-analysis`: applied analysis decisions and workflows; specialized measurement models belong to `r-psychometrics`.
 - `r-psychometrics`: measurement-oriented methods and diagnostics; reusable Monte Carlo infrastructure belongs to `r-simulation-methods`.
 - `r-simulation-methods`: generating conditions/replications and evaluating operating characteristics, including psychometric simulations when a simulation is the principal task.
@@ -23,7 +24,7 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `quarto-bento`: an independently distributed companion for the Quarto-Bento application: project identity, CLI/API/Studio operations, retained visual state, reviewed synchronization and recovery. Generic Quarto skills remain optional companions, not duplicates.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
-The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list `quarto-publishing`, `r-analytic-core` and `quarto-bento` with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. The remaining candidates have not been scaffolded; avoid creating new plugins before their boundaries and initial skills are reviewed.
+The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list `quarto-publishing`, `r-analytic-core` and `quarto-bento` with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. Four additional research-methods plugins now have implemented but unreleased first slices (ten skills total), with `0.0.0` manifests and no catalog entries. `r-package-development` and `rmarkdown-workflows` remain unscaffolded candidates. Avoid creating further plugins before their boundaries and useful initial skills are reviewed.
 
 ## Plugin Layout
 

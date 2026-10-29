@@ -6,20 +6,21 @@ The repository is **plugin-oriented, not a package of R functions or an agent fr
 
 ## Plugin Map
 
-The public marketplaces distribute **`quarto-publishing v0.2.2`** and **`r-analytic-core v0.1.0`**, each pinned to its own plugin release tag. `quarto-bento` is a local `0.0.0` companion-plugin draft, not yet in the public catalogs. Other entries are proposed areas, **not installed plugins or promised releases**; their scope can be refined before implementation.
+The public marketplaces distribute **`quarto-publishing v0.2.3`**, **`r-analytic-core v0.1.1`** and **`quarto-bento v0.2.0`**, each pinned to its own plugin release tag. Four additional research-methods plugins have **implemented, unreleased development slices** (`0.0.0` manifests). They are not listed in public catalogs or verified as native host installs. Other names remain proposals, not promised releases.
 
 | Plugin | Responsibility | Status |
 | --- | --- | --- |
-| [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.2** |
-| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.0** |
-| [`quarto-bento`](plugins/quarto-bento/) | Quarto-Bento CLI/Studio, retained design, reviewed source synchronization and recovery; optional Quarto/R companions. | **Local draft: 0.0.0** |
-| `r-applied-analysis` | Applied statistical analysis workflows, from descriptive work through regression and related models. | Planned |
-| `r-psychometrics` | Measurement, factor analysis, IRT, invariance, DIF, and related psychometric workflows. | Planned |
-| `r-simulation-methods` | Data-generating mechanisms, Monte Carlo study design, execution, evaluation, and reporting. | Planned |
+| [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.3** |
+| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.1** |
+| [`quarto-bento`](plugins/quarto-bento/) | Quarto-Bento CLI/Studio, retained design, reviewed source synchronization and recovery; optional Quarto/R companions. | **Published: v0.2.0** |
+| [`r-data-wrangling`](plugins/r-data-wrangling/) | Research data import, identifiers, labels and missing values; transformations, joins and longitudinal reshaping. | **Implemented, unreleased: 0.0.0 (2 skills)** |
+| [`r-applied-analysis`](plugins/r-applied-analysis/) | Descriptive/comparative analysis, ordinary regression and complex-survey inference; missing-data and mixed-model skills deferred. | **Implemented, unreleased: 0.0.0 (3 skills)** |
+| [`r-psychometrics`](plugins/r-psychometrics/) | Item/reliability analysis, EFA including ordinal WLSMV, and conventional CFA/basic SEM; invariance/IRT deferred. | **Implemented, unreleased: 0.0.0 (3 skills)** |
+| [`r-simulation-methods`](plugins/r-simulation-methods/) | ADEMP design and failure-aware SimDesign execution and Monte Carlo evaluation. | **Implemented, unreleased: 0.0.0 (2 skills)** |
 | `r-package-development` | R package architecture, APIs, documentation, testing, and release-related practices. | Planned |
 | `rmarkdown-workflows` | Classic R Markdown maintenance and workflows; full migration into Quarto belongs primarily to the Quarto plugin. | Planned |
 
-See the [global roadmap](docs/roadmap.md) for candidate scopes and development rules, and the [architecture](docs/architecture.md) for boundaries and responsibilities.
+See the [global roadmap](docs/roadmap.md) for staged scopes, the [architecture](docs/architecture.md) for boundaries, and the [Research Methods EPIC integration evidence](docs/research-methods-integration-evidence.md) for the four-plugin candidate review. Development implementation is not publication.
 
 ## Installation
 
@@ -31,7 +32,7 @@ Register the public marketplace:
 codex plugin marketplace add brianmsm/r-workflow-plugins
 ```
 
-Both `quarto-publishing` and `r-analytic-core` are available from the catalog. Install the R coding plugin with `codex plugin add r-analytic-core@r-workflow-plugins` (after registering the marketplace), or use the plugin directory. Its skill can be invoked as `$r-analytic-coding-principles`; a natural-language alternative is “Use the research-first R coding style” followed by the task. Natural-language activation is not guaranteed.
+The three tagged plugins (`quarto-publishing`, `r-analytic-core` and `quarto-bento`) are available from the catalog. Install the R coding plugin with `codex plugin add r-analytic-core@r-workflow-plugins` (after registering the marketplace), or use the plugin directory. Its skill can be invoked as `$r-analytic-coding-principles`; a natural-language alternative is “Use the research-first R coding style” followed by the task. Natural-language activation is not guaranteed.
 
 ### Claude Code
 
