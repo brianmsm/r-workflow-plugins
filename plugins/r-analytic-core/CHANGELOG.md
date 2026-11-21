@@ -4,10 +4,19 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
-### Changed
+## [0.1.2] - 2026-11-21
 
-- Made detailed research, classroom and namespace references conditional on the actual editing task rather than an obligatory read for simple R changes.
-- Added navigation to the existing research-first style reference without changing the plugin's activation description, statistical safeguards, or published API.
+### Added
+- Added behavioral scenarios for classroom R, reporting choices and preservation of instructor edits; these cases are prospective.
+
+### Changed
+- Preferred native or established package output over redundant custom extractors while preserving local model editability and meaningful intermediate objects.
+- Clarified the classroom distinction: short guided activities in the main script, dedicated independent practice as a separate script, concise comments and informative console results.
+- Specified temporary agent-side R verification without permanently embedding incidental checks in delivered analysis code.
+- Tightened conditional reference loading, activation wording and research-first style examples.
+
+### Verification
+- Official skill validation passed; numerical examples of companion method skills were rerun. New behavioral cases were not independently evaluated.
 
 ## [0.1.1] - 2026-10-26
 

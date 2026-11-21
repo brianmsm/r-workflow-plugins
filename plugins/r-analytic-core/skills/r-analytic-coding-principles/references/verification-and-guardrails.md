@@ -43,6 +43,12 @@ This is a **substantive constraint** only when each `schools` row is expected to
 
 A call via `Rscript` usually starts a different process and may not share live objects or package state with an interactive R session. First establish whether the command is checking the current in-memory object, reconstructing it from known files, or merely parsing source. If inputs are unavailable, report the gap; don't invent a passing diagnostic.
 
+### Temporary QA without a persistent R connection
+
+- **Test outside the deliverable:** run temporary checks through terminal/stdin or a throwaway QA script outside the user's analysis file. Use actual delivered inputs and a documented working directory when available; do not add temporary guards to the student's or researcher's source.
+- **Choose a meaningful execution scope:** a clean `Rscript --vanilla` run can verify source order and reproducibility but not objects that existed only in someone's RStudio session. If an intentional exercise blank or external dependency prevents a full run, inspect/parse the file and run completed sections with their necessary upstream objects; state exactly what was tested.
+- **Communicate findings, not QA plumbing:** inspect actual estimates, warnings, convergence and admissibility when relevant; report substantive problems in the handoff or study narrative. Retain diagnostics in delivered code only when they are genuine analysis outputs, explicitly taught procedures or safeguards against documented ongoing risks.
+
 ## When Persistent Guards Are Justified
 
 Consider a small persistent check **at the point of risk** only if native R/API behavior would not already reveal a **known consequential failure**, such as:

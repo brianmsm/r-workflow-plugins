@@ -93,21 +93,17 @@ A helper is usually a good trade when all of the following hold:
 3. The researcher is unlikely to need different behavior at each call site.
 4. It does not conceal consequential model settings, selections, recodings, or display choices.
 
-For example, a known, consistently structured coefficient extractor **for a specified model class** can be useful:
+**Check package output before writing an extractor or display helper.** If the model's native summary or a supported reporting package already presents the needed estimates, intervals and fit statistics, use that output. For an `lm` model, when the two packages are available and their metrics suit the task:
 
 ```r
-extract_lm_coefs <- function(fit) {
-  b <- coef(summary(fit))
-  data.frame(
-    term = rownames(b),
-    estimate = unname(b[, 1]),
-    std_error = unname(b[, 2]),
-    row.names = NULL
-  )
-}
+fit <- lm(mpg ~ wt + hp, data = mtcars)
+parameters::model_parameters(fit)
+performance::model_performance(fit)
 ```
 
-This example assumes the column structure of `coef(summary(fit))` has been checked for the intended `lm` objects; it is **not** a universal extractor for every model class. For a fixed recoding, confirm the missing-value and level semantics before wrapping it. For a contrast/table extractor, make sure identical extraction really is wanted across analyses.
+These calls are preferable to rebuilding the same coefficient and fit tables with a custom function. Do not attach optional packages or repeat outputs when `summary(fit)` already answers the question. Check the model class, coefficient scale and uncertainty method.
+
+A small custom helper remains useful for a **stable operation not provided by established tools**, such as a project-specific recoding or a genuinely new reporting quantity. Preserve the researcher's control over model settings and meaningful differences between analyses.
 
 By contrast, avoid a convenience wrapper that hides `cfa(..., estimator = ..., ordered = ..., std.lv = ...)` when those choices are likely to vary. A researcher should not need to jump to the helper definition to discover what estimator was used.
 
@@ -188,5 +184,6 @@ For `.R`, use existing editor-compatible section markers (`# Model 1 ----`, for 
 - Can each important figure be customized where it is defined?
 - Are repeated blocks genuinely independent, and are intentional differences preserved?
 - Is any proposed abstraction stable enough to offset the cost of obscuring original function arguments?
+- Does manual output extraction duplicate a clear, supported native or package-formatted result?
 - Does the analysis still run in the necessary order, not only in an already-populated interactive session?
 - Have original output fields, statistical meanings, Quarto/Rmd identifiers, and package function resolution remained intact?
