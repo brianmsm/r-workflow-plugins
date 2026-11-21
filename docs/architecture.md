@@ -26,6 +26,15 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 
 The domain map is provisional; see [global roadmap](roadmap.md). The catalogs list seven plugins with **independent tag-pinned versions**. `r-analytic-core` provides one core skill; `quarto-bento` provides one workflow skill with three operational references. Current versions and source refs belong in plugin manifests and marketplaces, not duplicated as release state throughout this document. Four research-methods plugins provide released first slices (ten skills total), with version-matched Codex, Claude and Antigravity adapters. `r-package-development` and `rmarkdown-workflows` remain unscaffolded candidates. Avoid creating further plugins before their boundaries and useful initial skills are reviewed.
 
+## Current Cross-Plugin Authoring Decisions
+
+These are **current conventions**, not a chronological decision log. Specific scientific methods and explicit project requirements override general style preferences.
+
+- **Interactive research R (`r-analytic-core`):** keep each model's formula, native fitting call and useful console output together so a researcher can edit or run a later model independently with clearly defined upstream objects. Repetition is intentional when models differ. Prefer familiar native/package reporting to reimplementing standard output; preserve substantive intermediate results. Do not turn exploratory scripts into unattended production pipelines.
+- **Classroom R (the classroom reference):** build on those conventions but reduce incidental complexity further. Use short, clearly named stages, ordinary package functions, informative printed results and course-specific defaults. Put brief in-class exercises beside the guided model; use a separate, independently runnable practice script only for a genuinely dedicated practice/reinforcement block. Longer documentation and answer keys belong in companion materials when needed.
+- **Verification versus deliverable:** validate code or fitted objects through temporary agent-side inspection, a connected R session or a scoped external `Rscript` run when permitted. A fresh `Rscript` process reconstructs its own state, not the learner's existing RStudio session. Keep temporary guards, checks and numeric comparisons outside the delivered source unless they are a learning objective, reported analytical result or justified ongoing safeguard. Explain material estimation failures and limitations to the reader rather than dumping bare boolean checks.
+- **Scientific slide communication:** calibrate depth to the **research contribution** (method-focused or application-focused), audience expertise and available speaking time, not to a rigid taxonomy of venues or slides-per-minute quotas. A communication block may progress across multiple slides without per-slide takeaway boxes; keep projected content large and readable and place spoken development in presenter notes. Use brief nominal, descriptive titles; reserve format mechanics and animation rules for their owning skills.
+
 ## Plugin Layout
 
 Plugins live at `plugins/<plugin-name>/`. The currently implemented plugin includes:
