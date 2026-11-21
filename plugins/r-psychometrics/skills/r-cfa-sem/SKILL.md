@@ -21,7 +21,9 @@ Keep the scientific specification and native estimation visible. This is the tec
 
 ## Diagnose Before Reporting
 
-Inspect native warnings, `lavInspect(fit, "converged")`, `lavInspect(fit, "post.check")`, residual/latent variances, covariance matrices and standardized solutions. Diagnose nonconvergence, inadmissibility, extreme correlations, unavailable SEs, sparse categories and residual dependence before substantive inference. For free-parameter SE checks use `parTable(fit)` fields `free` and `se`; `parameterEstimates()` has no `free` column. An empty selection is not a successful diagnostic. A returned object or successful extractor is insufficient evidence of an acceptable solution.
+- **Verify admissibility:** inspect native warnings, `lavInspect(fit, "converged")`, `lavInspect(fit, "post.check")`, residual/latent variances, covariance matrices and standardized solutions before substantive interpretation. Investigate nonconvergence, inadmissibility, extreme correlations, missing SEs, sparse categories and residual dependence.
+- **Check parameter extraction correctly:** `parTable(fit)` has `free` and `se` fields; `parameterEstimates()` does not expose `free`. An empty selection or a working extractor is not evidence of an acceptable solution.
+- **Separate verification from reporting:** run one-time diagnostic checks outside the delivered script when possible. Retain the calls when diagnostics are being taught, are substantive research outputs or guard against demonstrated ongoing risks. Explain estimation problems and their consequences instead of showing bare TRUE/FALSE flags.
 
 Report global and local diagnostics with model size, df, sample, estimator and uncertainty. Do not accept/reject a model using universal CFI/RMSEA/SRMR cutoffs. Modification indices and expected parameter changes are exploratory diagnostic information; changes require substantive justification and later validation, not automatic correlated residuals or item deletion.
 
@@ -29,7 +31,9 @@ Report global and local diagnostics with model size, df, sample, estimator and u
 
 Read [reporting-and-comparisons.md](references/reporting-and-comparisons.md) when using psymetrics, distinguishing fit-index families, extracting standardized uncertainty or comparing models.
 
-- Retain the native summary, then use `psymetrics::model_fit()` and `model_estimates()` for supported lavaan objects. Use `compare_model_fit()` and `compare_model_estimates()` for compact descriptive comparisons.
+- **Inspect with lavaan first:** its native `summary(..., fit.measures = TRUE, standardized = TRUE)` is often sufficient. Use `psymetrics::model_fit()` or `psymetrics::model_estimates()` for concise single-model tables only when helpful.
+- **Prefer prepared comparisons:** use `psymetrics::compare_model_fit()` to align fit results and `psymetrics::compare_model_estimates()` to align parameters across supported fitted models, instead of manually extracting, joining and formatting equivalent tables. These comparisons are descriptive, not formal model-difference tests or invariance analyses.
+- **Distinct communication roles:** retain the native summary for comprehensive model inspection and add a focused `psymetrics` table when it helps report or compare particular results. They may coexist without redundancy; avoid repeating equivalent tables automatically.
 - **Keep scaled fit indices as the WLSMV default.** WLSMV's robust SEs and adjusted test statistic do not mean that `cfi.robust`/`rmsea.robust` were reported. Label the chosen family and use those distinct alternatives only deliberately.
 - Distinguish raw estimates, `std.lv`, `std.all` and `std.nox`, including their SEs/intervals. In psymetrics 0.5.0, an unstandardized off-diagonal covariance may be labeled “Correlation” ([issue #55](https://github.com/brianmsm/psymetrics/issues/55)); verify the native metric and correct the presentation without modifying the package.
 - A side-by-side table is not a test of equality or invariance. Establish nesting, identical observed variables/cases, compatible estimation, constraints and correction before an explicit native difference test. Never subtract scaled chi-square statistics manually. WLSMV does not supply ordinary likelihood AIC/BIC.

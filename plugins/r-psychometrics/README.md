@@ -2,7 +2,7 @@
 
 Research-editable measurement workflows for R: item diagnostics and reliability, exploratory factor analysis, and conventional CFA/basic SEM.
 
-**Release: 0.1.0.** Independently versioned as `r-psychometrics-v0.1.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
+**Release: 0.1.1.** Independently versioned as `r-psychometrics-v0.1.1`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Implemented skills
 
@@ -50,4 +50,4 @@ codex plugin add r-psychometrics@r-workflow-plugins
 claude plugin install --scope user r-psychometrics@r-workflow-plugins
 ```
 
-For Antigravity CLI, install a local directory extracted from `r-psychometrics-v0.1.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.
+For Antigravity CLI, install a local directory extracted from `r-psychometrics-v0.1.1` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

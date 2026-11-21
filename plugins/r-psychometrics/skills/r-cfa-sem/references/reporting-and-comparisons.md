@@ -15,6 +15,8 @@ A valid extraction can still describe an inadmissible model. Inspect convergence
 | `model_estimates(fit)` | Extract coefficients and their uncertainty | `standardized = FALSE`, `ci = 0.95`, `component = "all"` |
 | `compare_model_estimates(first = fit1, second = fit2)` | Align corresponding parameters side by side | Same metric/CI controls; `select = "ci"` or `"se_p"` affects display |
 
+**Choose the shortest supported output path.** For one model, a native `lavaan` summary may be enough; use `model_fit()` or `model_estimates()` when focused tables help. For comparing two or more fitted models, prefer `compare_model_fit()` or `compare_model_estimates()` instead of manual `fitMeasures()`/`parameterEstimates()` extraction, joins and table formatting. Keep native extraction for diagnostics, unsupported quantities or deliberate instruction in the lower-level API. Do not print several equivalent representations by default.
+
 The comparison function aligns structural identities, not just row positions. Missing parameters in one model remain absent. A table of two estimates is not a test of their difference; estimates from the same respondents are generally dependent.
 
 ## Preserve the intended fit family

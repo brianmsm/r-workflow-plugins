@@ -113,3 +113,13 @@ A source review is not automatic skill activation. End-to-end installation or na
 ## Remaining limits
 
 Validation is confined to independent, single-group synthetic cases and the listed versions. It does not certify clustered/survey or MI/latent combinations, measurement invariance, IRT, ESEM, advanced models, factor-score uncertainty procedures, robust-index availability in every dataset, or general causal interpretation. The alpha/parallel-analysis replication counts are small demonstration runs. Skill discovery/host portability requires its own observable evidence, not just compatible manifests.
+
+## Prospective concise-reporting checks (added 2026-11-08; not yet evaluated)
+
+These are **behavioral test cases**, not additions to the executed 2026-10-29 numerical evidence.
+
+| Case | Fresh task | Expected behavior |
+| --- | --- | --- |
+| RPT-P1 | Two admissible single-group `lavaan` CFA fits require a model-fit table and aligned loadings. A draft manually joins `fitMeasures()` and `parameterEstimates()` results. | Prefer `psymetrics::compare_model_fit()` and `psymetrics::compare_model_estimates()` when supported and metric-compatible. Label them descriptive comparisons; do not substitute them for an appropriate model-difference test. |
+| RPT-P2 | A single fitted CFA is already understandable from the native `summary()`; an additional table adds no new information. | Retain the concise native output rather than emitting redundant formatters. Check uncertainty scales before reporting standardized coefficients. |
+| RPT-P3 | A user asks to apply `psymetrics` comparisons to an unsupported EFA-list or advanced latent model. | Do not infer class support from function names; use validated native output or explain the limitation instead of fabricating a generic comparison. |

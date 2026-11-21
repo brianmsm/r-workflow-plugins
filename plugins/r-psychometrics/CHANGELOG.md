@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-21
+
+### Changed
+- Preferred native `lavaan` summaries for inspection and `psymetrics` fit/estimate tables for focused reporting and supported descriptive CFA/SEM comparisons.
+- Kept descriptive table comparisons distinct from inferential difference tests and separated agent-side checks from displayed student/report outputs.
+- Preserved WLSMV index-family and uncertainty distinctions; recorded prospective behavior cases separately from executed evidence.
+
+### Verification
+- Synthetic method suite and independent ordinal suite rerun successfully, including 6/6 targeted ordinal checks. Prospective behavioral cases remain unexecuted.
+
 ## [0.1.0] - 2026-10-29
 
 ### Added
