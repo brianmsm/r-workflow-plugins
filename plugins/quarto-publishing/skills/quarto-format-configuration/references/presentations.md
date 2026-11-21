@@ -71,7 +71,7 @@ Practical options and patterns:
 - Insert `. . .` on its own line to create a pause within a slide.
 - **Reveal.js only:** for adjacent slides showing a transformation, `auto-animate=true` can animate matching elements; use `data-id` for explicit matches and `auto-animate-id` to group stages when needed. Keep each state readable without motion and test navigation (see [Quarto Auto Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)). These attributes do not establish a translation into another presentation engine such as Quarto-Bento.
 - Use `.columns` and `.column` divs for multi-column slides.
-- Use `.smaller` on crowded slides before reaching for dense formatting.
+- On crowded slides, **split or recompose content before scaling text down**. Use Reveal.js `.smaller` only as a deliberate, visually verified exception for secondary content; never as a default fix for essential text, chart labels or equations.
 - Use `.scrollable` when content must overflow vertically, but treat it as a practical fallback rather than a design goal.
 - Be careful combining `.scrollable` with image auto-stretch. Scrollable slides can make auto-stretched images size poorly or disappear; consider `auto-stretch: false`, `.r-stretch` only where needed, or `.nostretch` on scrollable slides.
 - Speaker notes use a `.notes` div. Revealjs speaker view opens with the `S` key.
@@ -167,7 +167,7 @@ Practical guidance:
 - Keep executable code chunks and code output short enough for a slide.
 - Prefer figures and tables sized specifically for slides.
 - Avoid dense tables; summarize on the slide and move detail to a report, appendix, handout, or notes when needed.
-- Avoid overflowing code output. Use chunk options or smaller outputs rather than relying on slide overflow.
+- Avoid overflowing code output. Limit the **displayed result**, paginate into separate slides or use an appropriate companion reference; do not shrink essential content merely to make a full console dump fit.
 - Citations are possible with Pandoc-style citation syntax and bibliography metadata, but keep references slide-appropriate.
 - Do not turn a deck into a manuscript with heavy bibliography mechanics unless the user asks for scholarly slides.
 - Route dense methodological content to a companion report or appendix rather than overcrowding slides.

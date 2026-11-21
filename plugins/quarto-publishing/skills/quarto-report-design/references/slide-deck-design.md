@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Use this reference for communication design in Quarto slide decks. Focus on audience, purpose, argument, sequence, slide density, evidence, and delivery readiness. This is not a format-configuration guide; use the `quarto-format-configuration` skill and its `presentations.md` reference for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
+Use this reference for **slide communication design**: audience, purpose, sequence, evidence, visuals, and delivery readiness. These principles are not tied to a presentation engine. For YAML, templates, animation syntax, or other format mechanics, use `quarto-format-configuration` and its `presentations.md` reference.
+
+**Contents:** [Situation](#first-decide-the-communication-situation) · [Titles](#use-concise-descriptive-titles) · [Figures and evidence](#use-figures-tables-code-and-equations) · [Narrative](#organize-the-narrative) · [Delivery](#design-for-delivery-and-failure)
 
 ## First Decide the Communication Situation
 
@@ -28,15 +30,25 @@ A projected deck should usually be lighter and more visual than a standalone dec
 
 Mixed decks should keep the main path readable and move secondary detail into backup slides, appendices, handouts, or a companion report.
 
+### Calibrate scientific talks to the contribution
+
+For a **research talk, conference presentation, seminar, or defense**, decide what the audience must understand about the contribution. The **contribution and audience** determine the depth; the venue label alone does not. A methodological seminar and a methodological conference talk share a communication profile but may differ in time and audience expertise.
+
+- **Method-focused research:** introduce the methodological problem and what the method changes; show its defining assumptions or mechanism, then the comparative evidence (e.g., bias, coverage, convergence or performance across conditions) and limitations. Make a technical deep dive only where it supports the claim.
+- **Application-focused research:** lead with the substantive question, population/data and main evidence; present modeling choices sufficient to judge credibility, estimates in interpretable units, substantive implications and limitations. Do not bury a decisive modeling assumption to make the talk accessible.
+- **Mixed audience:** explain the terms and reference quantities necessary to read the central figure; keep extra derivations and diagnostics accessible as backup rather than making every slide elementary.
+
+**Use time to select evidence, not to enforce a slide count.** Work from the actual speaking window after introductions, transitions and reserved discussion. Identify the one finding or methodological decision that must survive a shorter talk; protect time for its interpretation, then choose which comparisons or derivations earn deeper treatment. Rehearse the critical transitions and remove secondary content if the talk overruns; do not make all figures smaller or narrate them faster. Longer talks permit selected depth, not an obligation to cover the entire paper.
+
 ## Use Concise, Descriptive Titles
 
-Prefer **short, nominal titles** naming the concept, comparison, finding, or procedure, rather than sentence-length claims or conclusions. The slide body, figure, and speaker notes should develop the argument.
+Prefer **short, nominal and descriptive titles** naming the concept, comparison, finding, or procedure. In research and methodological talks, use labels such as “Coverage by estimator”, “Bias across sample sizes” or “Measurement model”, **not sentence-like claims, slogans or chapter-style headlines**. The body, figure and spoken explanation establish the conclusion. A more assertive executive title is a genre-specific exception, not the default.
 
 - Name the specific object: "Indirect-path stability" or "Indirect effects across robustness checks", not "Results" or "Methods".
-- Avoid headings that narrate or pre-announce the conclusion ("The indirect pathway was stable across robustness checks").
+- Avoid headings that narrate the conclusion (e.g., “The indirect pathway was stable across robustness checks”) when “Indirect-path stability” names the same finding more naturally.
 - Use questions only when they serve a deliberate teaching, prediction, or discussion purpose.
 - Omit title-slide subtitles or slogans when they only repeat an idea introduced on the next slide.
-- Make each slide carry one main idea, supported by a figure, diagram, model, equation, or concise comparison.
+- Give each slide a clear **local visual or explanatory step**. A larger idea may require several consecutive slides and need not be concluded or summarized on each one.
 - Split complex explanations across slides instead of shrinking text or using long prose-filled cards.
 - Avoid using projected slides as the speaker's script.
 
@@ -60,20 +72,18 @@ Avoid mechanical section-to-slide mapping. A report section may become several s
 
 ## Manage Slide Density
 
-Use density as a design decision, not as an accident:
+Design for **projection**, not for fitting a manuscript page:
 
-- Avoid overcrowded slides.
-- Prefer fewer elements arranged with clear visual hierarchy.
-- Use whitespace intentionally.
-- Keep text large enough to read when projected.
-- Avoid small tables, excessive coefficients, dense diagnostics, or manuscript figures copied directly into slides.
-- Avoid unnecessary animations, decorative images, special effects, and visual clutter.
-- Avoid long bullet lists and long sentences that compete with the speaker.
-- Use color, emphasis, and layout to guide attention rather than decorate.
-- Put details the audience does not need to read into speaker notes, backup slides, appendices, or a companion report.
-- Add backup slides for expected questions rather than interrupting the main narrative with every caveat.
+- **Prefer large, readable type:** for conventional projected 16:9 slides, start around **22–28 pt for main text** and **28–36 pt for titles**. Treat these as starting points, not universal software settings; actual size and viewing conditions govern.
+- **Protect essential detail:** keep figure axes, equation symbols and necessary table labels readable (preferably at least about 18–20 pt when using point-based typography). Text at 8–10 pt is not suitable for content the audience must read.
+- **Split instead of shrinking:** distribute a crowded equation, table, diagram or explanation across successive slides; enlarge the relevant detail. Do not reduce the font to make everything fit.
+- **Balance the usable slide area:** inspect the rendered composition, not only whether objects fit. If meaningful content is unnecessarily packed near the top with a large empty lower region, first enlarge central text, plots or diagrams to a readable scale; then adjust alignment or spacing. Center a genuinely sparse composition or combine adjacent slides only when this improves continuity without crowding. Preserve intentional whitespace and never add new elements merely to fill it.
+- Use whitespace and consistent hierarchy to guide attention. Avoid ornamental effects, dense manuscript figures, long bullets and small-text boxes.
+- Put secondary diagnostics and detailed evidence in backup material when not needed in the live argument; do not omit scientifically consequential limitations.
+- **Keep numerical notation consistent:** follow the user/project convention for decimal symbols and thousands grouping across charts, tables, axes, text and annotations. For example, if the deck uses a decimal point and no thousands separator, render `0.835` and `7138` consistently. Do not silently change values, rounding or the underlying analysis.
+- **Inspect the rendered deck:** check real screen/projection readability, visual balance and number formatting, including graph labels and equations. For web/CSS presentations, verify visual size rather than treating point values as literal CSS settings.
 
-If a slide takes too long to explain in practice, it probably contains more than one message or too much evidence.
+A dense technical subject warrants **more appropriately sequenced detail**, not smaller type. If a slide is slow to explain, first consider whether the idea should progress through several slides instead.
 
 ## Use Figures, Tables, Code, and Equations
 
@@ -86,35 +96,63 @@ If a slide takes too long to explain in practice, it probably contains more than
 - Diagnostics belong in the main deck only when they are central to the argument, decision, or technical review. Otherwise, place them in technical or backup slides.
 - Captions on projected slides should usually be shorter than manuscript captions. Use notes, backup slides, or companion reports for extended explanation.
 
+### Plan and verify explanatory representations
+
+For a new teaching sequence, **choose the depiction for the learning difficulty**:
+
+- **Relationships:** an annotated model with correct variable and arrow directions.
+- **Decisions:** a flow showing what evidence changes the next step.
+- **Contrasts:** aligned conditions with unchanged parts visible.
+- **Magnitude or uncertainty:** a quantitative plot with meaningful axes and units.
+- **Exact values:** a readable small table. Use prose when clearer.
+
+**Check meaning, not just bounds.** Match arrows, labels, axes, units, signs, denominators, estimates, and intervals to the source model, data, and code. A reversed path is wrong even if the drawing looks polished.
+
+When teaching **scientific reporting**:
+
+- Show a readable published table/figure or documented excerpt, then a **separately labeled** reproduction or learner-authored example.
+- Distinguish an original screenshot from a transcription, adapted layout, or newly calculated result. Cite the source and respect reuse permissions.
+- Follow relevant reporting conventions (e.g., APA when appropriate). Include titles, metric definitions, uncertainty, and notes; visual styling alone is insufficient.
+- Crop or redraw a source responsibly when a full-page image is unreadable. Never silently change source values.
+
 ## Organize the Narrative
 
 Design the main path as a talk, not as a file dump:
 
 1. Open with the problem, motivation, decision, or teaching need.
-2. State a roadmap or promise of the talk when it helps the audience track the sequence.
-3. Include methods only as much as the audience needs to trust and understand the results.
-4. Order results by the argument, not necessarily by the chronology of the analysis.
-5. Make implications, limitations, and uncertainty visible at the right level of detail.
-6. End the main deck with takeaways, recommendation, contribution, next actions, or a teaching synthesis.
-7. Put backup slides after the main ending so expected questions can be answered without bloating the main path.
+2. State a roadmap only if it helps the audience follow the sequence.
+3. Include methods and results at the depth needed to support the argument.
+4. Close with the warranted implications, limitations, contribution or synthesis; keep secondary details in backup material.
 
-For academic decks, the narrative should preserve the research logic. For executive decks, it should preserve the decision logic. For technical decks, it should preserve the inspection logic. For teaching decks, it should preserve the learning progression. Several adjacent slides may form **one continuous explanation**: do not force a separate takeaway, question or task at every intermediate stage.
+### Build continuous blocks, not isolated mini-presentations
+
+Treat the **communication block**, rather than each slide, as the unit that develops an idea. For example, sample size and statistical precision may progress through a problem, an enlarged plot, a controlled comparison and an interpretation across several slides. Keep the same visual reference, labels and scale when that continuity helps; use transitions that feel like one explanation. A technical talk may need more stages, not denser individual slides.
+
+- **No takeaway on every slide:** do not append a recurring “Key message”/“Takeaway” footer, summary box or miniature conclusion to each intermediate step. The title, visual and spoken transition can carry its purpose without a separate slogan.
+- **Summarize selectively:** use an explicit takeaway only when it adds value—typically after the block has developed the evidence, at a genuine decision or transition. It may be spoken rather than printed; if projected, make it a legible main element, not tiny text in a bottom rectangle.
+- **Keep boundaries fluid:** do not require a question, activity, summary or forced pause on each slide. Preserve a clear narrative across as many steps as needed without imposing a fixed slide count.
+
+For academic decks, preserve research logic; for executive decks, decision logic; for technical decks, inspection logic; for teaching decks, learning progression. The difference is **depth and evidence**, not an obligation to make each slide self-contained.
 
 ## Design for Delivery and Failure
 
-For live teaching, plan timing, breaks, activities and optional branches when useful, but keep **facilitation plans separate from projected content**. A timed agenda, break slide, task instruction or fixed exercise duration belongs on screen only when the audience needs it or the user requests it; otherwise put it in speaker notes or companion materials. Leave room to extend a discussion, adjust pacing or skip optional activities without compromising the conceptual thread.
+### Decide what appears on screen versus in speaker notes
+
+- **Project what must be seen:** a meaningful concept or definition, graph, equation, selected evidence, readable comparison, diagram or short cue. One central definition can occupy its own slide if the audience needs to examine its terms.
+- **Speak what must be explained:** elaboration, examples, transitions between stages, interpretation and delivery prompts belong in speaker notes or oral narration. For a multi-slide block, note its shared objective and the transitions between stages in the presenter notes, not as repeated projected boxes. Do not copy the lecturer's paragraphs onto slides.
+- **Keep necessary evidence visible:** do not move a number, assumption, qualification or source citation that the audience must inspect into notes alone. For self-study or inaccessible notes, provide an appropriate companion handout rather than turning projected slides into a transcript.
+
+For live teaching, plan breaks and optional activities without turning the projected deck into an instructor schedule. Display instructions or timings only when the audience needs them. Keep the path flexible.
 
 Before treating a deck as ready:
 
-- Practice transitions between slides.
-- Check timing against the time limit, including realistic time for learner exercises, interpretation, and pauses.
-- Confirm each slide has one main message.
-- Identify slides that are slow to explain and split or simplify them.
-- Create static fallbacks for videos, animations, embedded web content, or fragile interactive elements.
-- Consider a PDF or static backup for live presentations.
-- Avoid relying on internet access, external runtime dependencies, or live computation during a presentation unless the event explicitly supports it.
-- Use speaker notes for prompts, transitions, caveats, and details the audience should not read on the slide.
-- Verify projected readability, including text size, contrast, figure labels, tables, equations, and color meaning.
+- Rehearse **transitions within each multi-slide block**, not just the order of isolated slides.
+- Check the real speaking window, including activities, interpretation and pauses; adjust the block's scope if needed.
+- Check that each slide introduces a readable step and that any synthesis appears at a meaningful boundary, not automatically after each step.
+- Split or simplify graphics, tables, formulas and prose that become too small or take too long to explain.
+- Test projected readability, including title/body sizes, figure labels, equations, contrast and color meaning.
+- Provide static fallbacks for fragile animation, video or web content when relevant; avoid unapproved live runtime dependencies.
+- Keep prompts, transitions and oral elaboration in speaker notes when the format supports them. Do not claim checks of notes, readability or backups that were not performed.
 
 Do not claim visual review, projected-readability review, or backup export checks unless those artifacts were actually opened or inspected.
 
@@ -128,13 +166,17 @@ Do not claim visual review, projected-readability review, or backup export check
 
 ## Official and Authoritative Sources Checked
 
-Last reviewed: 2026-06-15
+Selected scientific-presentation sources reviewed: 2026-11-21
 
 - [Harvard Catalyst: Slides](https://catalyst.harvard.edu/writing-communication-center/visualize-science/slides/)
 - [Harvard T.H. Chan School of Public Health: Strategies for Clear, Engaging Slides](https://hsph.harvard.edu/research/health-communication/resources/strategies-for-clear-engaging-slides/)
+- [Harvard T.H. Chan School of Public Health: Slide Design Checklist](https://hsph.harvard.edu/research/health-communication/resources/slide-checklist/)
+- [Grambow and Weinfurt (2024): Effective Scientific Presentations Across Formats](https://doi.org/10.14738/assrj.119.17551)
 - [Penn State Engineering Communication: Presenting as an Engineer or Scientist](https://www.writing.engr.psu.edu/speaking.html)
 - [Penn State Assertion-Evidence Tutorial](https://www.assertion-evidence.org/tutorial.html)
 - [Garner and Alley, 2013: How the design of presentation slides affects audience comprehension](https://pure.psu.edu/en/publications/how-the-design-of-presentation-slides-affects-audience-comprehens/)
 - [Naegle, 2021: Ten simple rules for effective presentation slides](https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1009554)
 - [Nielsen Norman Group: Creating Engaging Reports and Asynchronous Presentations](https://www.nngroup.com/articles/engaging-reports-presentations/)
 - [Quarto Presentations documentation](https://quarto.org/docs/presentations/)
+- [Bourne (2007): Ten simple rules for making good oral presentations](https://doi.org/10.1371/journal.pcbi.0030077)
+- [Sura et al. (2019): Ten simple rules for giving an effective academic job talk](https://doi.org/10.1371/journal.pcbi.1007163)

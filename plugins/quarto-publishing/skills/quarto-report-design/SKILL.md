@@ -1,6 +1,6 @@
 ---
 name: quarto-report-design
-description: "Use to design or revise Quarto report, manuscript or teaching-slide communication: reader purpose, analytical argument, Results/Discussion, claims and evidence, tables/figures, technical depth, and reviewer-driven structure. Choose audience and report profile without inventing findings. Not for routine QMD syntax, format/project YAML, execution strategy, render verification or unrelated prose editing."
+description: "Use to design or revise Quarto reports and scientific/teaching slide communication, including methodological or applied conference talks, research seminars and defenses: audience, evidence, narrative, technical depth and delivery. Not for routine QMD syntax, format/project YAML, rendering or unrelated prose editing."
 ---
 
 # Quarto Report Design
@@ -61,7 +61,7 @@ Explain a bounded assumption when proceeding with ordinary edits; do not expand 
 - For decision-oriented reports, including reading guides, method comparisons, grouped tables, and interpretation of contrasts or transformed metrics, read `references/executive-report-structure.md`.
 - For technical review, audit, reproducibility, and diagnostic reports, read `references/technical-report-structure.md`.
 - For research, thesis, manuscript, methodological, and scholarly reports, read `references/academic-report-structure.md`.
-- For **slide organization and delivery** (titles, hierarchy, density, visuals, timing), read `references/slide-deck-design.md`.
+- For **research talks, methodological/applied conference presentations, seminars, defenses, or teaching slide structure** (titles, audience, argument, depth, timing), read `references/slide-deck-design.md`.
 - For **teaching explanations or learning activities** (examples, misconceptions, controlled contrasts, interpretation), read `references/pedagogical-communication.md`. A **new or substantially restructured teaching deck** involves both progression and layout: read both references **before authoring**. Narrow edits need only the relevant reference; neither is required for an ordinary report.
 - For basic transitional accessibility checks, read `references/accessibility-basic-checklist.md`.
 
@@ -77,13 +77,9 @@ Use `quarto-computation-performance` for cache, freeze, long renders, externaliz
 
 Use `quarto-render-troubleshooting` for failed renders, logs, YAML errors, cell or chunk errors, LaTeX or Typst errors, missing files, broken links, screenshots, browser inspection, rendered artifact checks, or verification claims.
 
-For a Quarto-Bento presentation, keep audience, slide-design and pedagogical decisions here;
-when `quarto-bento-workflow` is available, use it for Bento-native components, saved design,
-source sync and rendering. Decide the teaching progression independently of the
-engine; choose actual motion syntax by format. `auto-animate` belongs to
-Reveal.js, not the verified Bento source codec. For Reveal.js-to-Bento
-migration, preserve the original source and explain that the motion requires a
-Bento-native recreation or a readable static alternative. Neither plugin is
-required merely because the other was invoked.
+For Quarto-Bento presentations, keep audience, narrative and pedagogical choices here. Use
+`quarto-bento-workflow` when available for Bento-native layouts, motion, source synchronization
+and migration. Use `quarto-format-configuration` for Reveal.js-specific effects. Neither
+specialized skill is required for ordinary communication design.
 
 Do not use this skill as the primary guide for scripts, assets, reusable templates, full accessibility audits, deployment workflows, or broad academic-writing guidance. If the user asks for those while designing a report, keep the report-design part limited and route the rest to the appropriate skill boundary.

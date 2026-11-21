@@ -1,6 +1,6 @@
 interface:
   display_name: "Quarto Report Design"
-  short_description: "Design Quarto report and teaching-slide narratives."
+  short_description: "Design Quarto reports, research talks and teaching slides."
   default_prompt: "Use $quarto-report-design to review this Quarto deliverable, infer the appropriate audience and report profile, and recommend improvements to its narrative, terminology, evidence links, and visuals."
 policy:
   allow_implicit_invocation: true

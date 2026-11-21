@@ -8,7 +8,7 @@ Because this plugin lives in `r-workflow-plugins`, examples may emphasize R/knit
 
 This plugin is not focused on classic R Markdown. R Markdown should appear only when migrating to Quarto, comparing behavior, or maintaining interoperability with Quarto projects.
 
-**Agent plugin version:** `0.2.3` in the Codex and Claude manifests; distribution is determined by its independent `quarto-publishing-v0.2.3` tag and pinned marketplace entries, not by the version field alone. Six skills are implemented, including on-demand pedagogical communication and slide-design references within `quarto-report-design`. The architecture proposes ten target skills; planned skills are not available merely because they appear there. Reveal.js animation instructions belong to its output-format reference, not to Bento.
+**Agent plugin version:** `0.2.4` in the Codex and Claude manifests. Public distribution uses the independent `quarto-publishing-v0.2.4` tag and marketplace pins, not the version field alone. Six skills remain implemented, including conditional pedagogical and presentation-design references; the architecture's additional proposals are not automatically available. Reveal.js motion belongs to format configuration, not Bento.
 
 ## Implemented Structure
 
@@ -17,6 +17,7 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 - `assets/`: Codex interface icon and logo assets.
 - `docs/architecture.md`: intended mature architecture for the plugin.
 - `docs/roadmap.md`: staged plan for growing toward the intended architecture.
+- `docs/teaching-design-validation-cases.md`: positive and boundary scenarios for assessing teaching-design behavior.
 - `skills/quarto-authoring-core/SKILL.md`: Quarto `.qmd` authoring and review skill.
 - `skills/quarto-project-configuration/SKILL.md`: Quarto project configuration review skill.
 - `skills/quarto-format-configuration/SKILL.md`: Quarto output format configuration review skill.

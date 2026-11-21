@@ -4,12 +4,20 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
-### Changed
+## [0.2.4] - 2026-11-21
 
-- Reduced activation-description length in four skills and condensed `quarto-report-design`, `quarto-format-configuration` and render troubleshooting instructions without removing evidence, source-scope, or honest verification boundaries.
-- Clarified that slide titles should be concise/descriptive rather than simultaneously prescribing nominal titles and message-sentence headings; routed presentation-format tasks directly to their dedicated reference.
-- Distinguished untrusted or unauthorized QMD execution from read-only troubleshooting, and replaced references to future, unimplemented skills with explicit scope boundaries.
-- Added selective navigation indexes to long format and troubleshooting references; retained the existing bounded HTML structural checker and its tests.
+### Added
+- Defined teaching and slide-design behavioral scenarios, including visual balance and numeric consistency; independent behavior testing remains pending.
+
+### Changed
+- Improved case-based learning progression, evidence provenance, parameter interpretation, and coordination of slides, code, notes and handouts.
+- Added method-focused versus application-focused scientific talk guidance with audience- and time-proportionate depth and nominal descriptive titles.
+- Strengthened projected slide design: readable type, balanced use of space, multi-slide blocks, selective takeaways, notes for oral explanation, and consistent numeric notation.
+- Clarified Reveal.js/Bento ownership, discouraged habitual use of smaller text, and strengthened checks of diagrams and published-versus-reproduced examples.
+- Refined skill descriptions and routed references without adding mandatory slide quotas or new workflows.
+
+### Verification
+- All six skill entrypoints passed structural validation; affected Markdown rendered. Prospective agent-behavior cases are not yet executed.
 
 ## [0.2.3] - 2026-10-26
 

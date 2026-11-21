@@ -1,6 +1,6 @@
 # Teaching Explanations and Learning Activities
 
-Use this reference when the task is **helping people understand a concept or practice a decision** in a lesson, training deck, or worked example. It complements [slide-deck-design.md](slide-deck-design.md), which owns slide structure, titles, density, typography, whitespace, and delivery. Do not read both by default.
+Use this reference when the task is **helping people understand a concept or practice a decision** in a lesson, training deck, or worked example. For a new or substantially redesigned teaching deck, also read [slide-deck-design.md](slide-deck-design.md) for presentation structure and delivery. Explanation-only revisions do not need that second reference.
 
 ## Define what the learner needs to understand
 
@@ -8,7 +8,27 @@ Use this reference when the task is **helping people understand a concept or pra
 - Define the observable outcome: what should the learner be able to **explain, compare, predict, or decide** afterward?
 - Distinguish **projected explanation**, **self-study handout**, **speaker notes**, and **teacher-only evidence**. They need different levels of detail.
 
-For a multi-concept lesson, plan the **learning progression before composing slides**: begin with a familiar problem or example, then introduce each unfamiliar concept when it helps answer the next question. Carry a common case, labels and reference objects across stages when continuity makes what changes and what stays fixed easier to understand. This is a sequencing choice, not a mandatory series of slides.
+**Plan before composing.** For a multi-concept lesson, start from a familiar problem, then introduce each new concept when the next question needs it. Reuse labels and reference objects where continuity helps; do not force the same dataset or a fixed slide sequence.
+
+### Prepare the teaching brief before producing materials
+
+For a new or substantially redesigned lesson, make a brief **internal plan**:
+
+- **Check continuity:** inspect relevant prior lessons and materials; build on what learners can already do without repeating an exhausted case.
+- **Choose the case:** identify the substantive question, available evidence, and new decision learners must make.
+- **Define the output:** specify what learners will explain, calculate, decide, write, or review.
+- **Assign materials:** decide what belongs in slides, runnable code, handouts, instructor notes, and teacher-only evidence.
+- **Protect time:** allow for interpretation, practice, writing, and feedback, not only model fitting.
+
+Do not display this plan as a mandatory form, agenda, or fixed number of slides.
+
+### Work from substantive cases to defensible conclusions
+
+For an integrative case, connect **situation → question → measures → model → results → report**. Adapt stages to the objective rather than turning them into a software-click tutorial.
+
+- **Name variables:** introduce substantive meanings before abbreviations; reuse them across diagrams, tables, and code.
+- **Label evidence:** distinguish published results, reproduced estimates, simulated examples, and new teaching extensions.
+- **Preserve provenance:** do not attribute a classroom step to source authors unless documented. Show discrepancies rather than forcing numeric agreement.
 
 ## Make the mechanism intelligible
 
@@ -16,6 +36,9 @@ A useful sequence is **intuition → example → mechanism → formalization →
 
 - **Controlled contrast:** make **what remains fixed, what varies, and what follows** explicit across scenarios. If an additional scenario changes a different dimension, present it as a separate contrast rather than another step in the same gradient.
 - **Worked example:** show the decision and evidence, not just the final value. Identify units, model, reference, and assumptions when they affect its meaning.
+- **Parameter interpretation:** start with unstandardized estimates when units are meaningful. Name the response/link scale, adjustment conditions, and a meaningful increment or 0/1 contrast. Add standardized estimates when useful.
+  - Match **each estimate and interval** to the same scale. Latent units depend on identification; nonlinear-link coefficients are not raw outcome-unit changes.
+  - *Example:* if a performance score is measured in points, explain a modeled point difference before β. Show how it could inform an evaluation and why it does not establish causality.
 - **Counterexample:** challenge a tempting overgeneralization, then explain the condition under which the claim does or does not hold.
 - **Formalization:** introduce equations and notation after the underlying relationship is understandable, unless formal reasoning itself is the learning goal.
 - **Derivations:** when a transformation is the learning objective, show the starting quantity, the justified operation or assumption, the terms retained or removed, and the resulting meaning. Define consequential symbols at first use, including numerators and denominators.
@@ -41,17 +64,32 @@ When teaching a mechanism or transformation, first consider depicting its **inpu
 
 ### Connect concepts to informed use
 
-When theory, abstractions, methodological alternatives or results have practical consequences, bridge from **what they mean** to **how the intended audience can use them**. At a meaningful transition, not after every slide, synthesize the question the idea helps answer; when to apply it or favor an alternative; relevant comparative evidence, conditions and trade-offs; and what action or follow-up the evidence warrants. Choose the lightest helpful form, such as a concise recommendation, conditional rule, comparison, worked example or visual decision aid. Provide reference values or cutoffs only with their source and applicable conditions (see *Reference values* above); distinguish observed advantage from unsupported rankings, and say explicitly when no universal threshold, winner or action is justified. Abstract topics may warrant an application or implication rather than an immediate decision.
+**Connect explanations to usefulness** at meaningful transitions, not after every slide:
+
+- **Name the task:** what question does this concept help answer?
+- **Show the use:** what can learners interpret, compare, review, or decide with the result?
+- **State conditions:** when is the use justified, and which competing evidence matters?
+- **Limit the claim:** what is not established? Cite applicable cutoffs and do not invent a universal winner.
+
+*Example:* when teaching measurement-model fit, connect item loadings and residuals to **reviewing whether an assessment supports its intended score interpretation**. Acceptable fit alone does not justify using scores to rank or select people. For abstract topics, a practical implication can be more appropriate than an immediate decision.
 
 Use **anticipate → execute/inspect → interpret** when a prediction and its resolution add value. Ask for a comparison or defensible explanation, not an activity on every slide. Prefer a familiar case over a new dataset unless the new case reveals something the first cannot.
 
-When the task uses R or other software, decide what students actually run; teacher-only calculations may be precomputed illustrations. Do not require incidental programming or table manipulation merely to access evidence for the intended lesson.
+Before adding another model, estimator, restriction, or sensitivity exercise:
+
+- Name the **new learning decision** it supports.
+- Consider the time and incidental complexity it adds.
+- Defer it when the central case would become incomplete.
+
+A deliberate blank may appear in a **guided walkthrough or independent practice** when learners are meant to fill it. Mark the task and keep unrelated code runnable; do not present the blank as a missing published result.
+
+When the task uses R or other software, decide what students actually run; teacher-only calculations may be precomputed illustrations. Prefer a clear native or established package-formatted result to lengthy custom extraction that conveys the same evidence. Do not require incidental programming or table manipulation merely to access evidence for the intended lesson.
 
 Projected runnable code must match the **canonical material learners receive** (paths, objects, and outputs). When it changes, reconcile slides, notes, and handouts. For R script design and clean handoff checks, use `r-analytic-coding-principles` → `classroom-r-scripts.md`.
 
 ### Coordinate companion materials when present
 
-Decide which material carries the conceptual explanation, executable learner actions, instructor caveats and independent reference. Avoid repeating long explanations across projected slides, notebooks and notes when learners can use them together; keep the context needed to complete each activity. A live-session notebook may focus on code, outputs and short interpretation prompts, while an asynchronous or standalone notebook may require fuller explanation. Neither division is a universal requirement, and a companion notebook is not mandatory.
+Assign materials clear roles: slides explain; executable material supports action; handouts carry independent instructions; instructor notes hold delivery cues and caveats. Adapt this division to the setting: asynchronous materials need more self-contained context. Avoid duplicating explanations across materials learners use together. A companion notebook is optional.
 
 ## Avoid
 
