@@ -11,7 +11,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/quarto-publishing",
-        "ref": "quarto-publishing-v0.2.3"
+        "ref": "quarto-publishing-v0.2.4"
       },
       "description": "Quarto-first publishing workflows for analytical, academic, technical, and reproducible outputs.",
       "author": {
@@ -36,7 +36,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/r-analytic-core",
-        "ref": "r-analytic-core-v0.1.1"
+        "ref": "r-analytic-core-v0.1.2"
       },
       "description": "Research-first R coding conventions for transparent, locally editable analysis and proportionate verification.",
       "author": {
@@ -108,7 +108,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/r-applied-analysis",
-        "ref": "r-applied-analysis-v0.1.0"
+        "ref": "r-applied-analysis-v0.1.1"
       },
       "description": "Research-editable descriptive, regression and complex-survey analysis in R with explicit estimands and uncertainty.",
       "author": {
@@ -132,7 +132,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "plugins/r-psychometrics",
-        "ref": "r-psychometrics-v0.1.0"
+        "ref": "r-psychometrics-v0.1.1"
       },
       "description": "Research-editable item, reliability, EFA and CFA/SEM workflows with native R estimation and verified reporting.",
       "author": {

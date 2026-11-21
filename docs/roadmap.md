@@ -4,21 +4,21 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 ## Current State
 
-As of 2026-10-29, `quarto-publishing`, `quarto-bento` and `r-analytic-core` have **independent tagged versions and marketplace entries** in this repository. The new Quarto Publishing `0.2.3` guidance maintains six implemented skills, including pedagogical communication and progressive slide design; its [architecture](../plugins/quarto-publishing/docs/architecture.md) proposes ten target skills, while the [roadmap](../plugins/quarto-publishing/docs/roadmap.md) distinguishes implemented and planned work. Tag/pin changes reach remote consumers only after publication.
+As of 2026-11-21, the public catalogs contain seven independently tag-pinned plugins. Quarto Publishing `v0.2.4` (six implemented skills) extends teaching and scientific-slide guidance, while R Analytic Core `v0.1.2` refines locally editable research code, classroom scripts and proportionate verification. Quarto-Bento remains `v0.2.0`, with independent native application/state responsibilities.
 
-`r-analytic-core` has a new **v0.1.1** guidance patch and one research-first R coding skill; its published `v0.1.0` tag remains immutable. The `quarto-bento` agent plugin has a separate **v0.2.0** compatibility-guidance release (the installed application remains `qbento 0.1.1` until independently updated), with one skill and three operational references. Its [roadmap](../plugins/quarto-bento/docs/roadmap.md) documents native app/agent evidence and residual limits. Four research-methods plugins now have independently tagged **0.1.0 first releases**, catalog entries and bounded native-host evidence. Their Codex, Claude and Antigravity adapters share one instruction payload. Other plugin names remain candidates without scaffolds or releases.
+The research-methods plugins remain independently usable first slices: R Applied Analysis and R Psychometrics are now `v0.1.1` reporting/QA guidance updates; R Data Wrangling and R Simulation Methods remain `v0.1.0`. Ten research-methods skills are implemented; missing-data, mixed-model, invariance and IRT workflows remain planned and have no placeholder implementations. Published tags, not working-tree edits or manifest fields alone, determine what catalog consumers receive.
 
 ## Plugin Candidates and Scope
 
 | Plugin | Intended role | Examples, not a committed skill list | State |
 | --- | --- | --- | --- |
-| `r-analytic-core` | Research-first, locally editable analytical R code | One core skill; optional future specialized workflows | **Tagged v0.1.1** |
+| `r-analytic-core` | Research-first, locally editable analytical R code | One core skill; optional future specialized workflows | **Tagged v0.1.2** |
 | `r-data-wrangling` | Preserve and transform research data meanings | Import/types/labels; recoding, joins, reshaping and aggregation | **Released v0.1.0 (2 skills)** |
-| `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives, ordinary regression and complex-survey inference; next: missing-data and mixed-model skills | **Released v0.1.0 (3 skills)** |
-| `r-psychometrics` | Measurement modeling and interpretation | Item/reliability, EFA including ordinal WLSMV, conventional CFA and basic SEM; next: invariance and IRT | **Released v0.1.0 (3 skills)** |
+| `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives, ordinary regression and complex-survey inference; next: missing-data and mixed-model skills | **Released v0.1.1 (3 skills)** |
+| `r-psychometrics` | Measurement modeling and interpretation | Item/reliability, EFA including ordinal WLSMV, conventional CFA and basic SEM; next: invariance and IRT | **Released v0.1.1 (3 skills)** |
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | ADEMP, SimDesign, failure-aware bias/RMSE/coverage/MCSE and explicit RNG; advanced infrastructure deferred | **Released v0.1.0 (2 skills)** |
 | `r-package-development` | Build and maintain R packages | API design; roxygen2; testthat; pkgdown; CI | Planned |
-| `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | Six skills: QMD; formats; reports; slides; computation; rendering | **Tagged v0.2.3** |
+| `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | Six skills: QMD; formats; reports; slides; computation; rendering | **Tagged v0.2.4** |
 | `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; sync/recovery, animation migration and conditional app 0.2 composition/widget guidance | **Tagged v0.2.0** |
 | `rmarkdown-workflows` | Classic R Markdown support and interoperability | `.Rmd` reports; parameters; output maintenance | Planned |
 
