@@ -20,7 +20,7 @@ Use tidyverse operations (`dplyr`/`tidyr`) for visible preparation and native `s
 
 - For distributions, missing denominators, independent/paired means or contingency tables, read [denominators-and-comparisons.md](references/denominators-and-comparisons.md).
 - For Pearson/Spearman associations, rank tests or multiplicity, read [correlation-and-rank-methods.md](references/correlation-and-rank-methods.md).
-- Use ggplot2 for editable displays. Add `effectsize` when a defined standardized effect helps, or `gtsummary` when a requested table benefits from it. Preserve native estimates and denominators through extraction.
+- Use ggplot2 for editable displays. Prefer concise native summaries or class-appropriate package output (`effectsize` for defined effects, `gtsummary` for suitable tables) over equivalent custom table assembly. Verify counts, denominators, group definitions and uncertainty before trusting formatted output.
 - Inspect shape, influential observations, sparse cells and the sampling structure. Do not delete cases or change outcome definitions merely to improve a test.
 
 ## Report and hand off

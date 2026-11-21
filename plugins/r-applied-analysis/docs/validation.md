@@ -121,3 +121,12 @@ These executions supplement, and are not included in, the 62 reference checks. I
 The examples and tests certify a bounded first slice. They do not certify optional table/standardizer/marginaleffects APIs; all survey providers or replicate schemes; causal identification; ordinal/multinomial/negative-binomial/survival/mixture models; MI or mixed-model implementations; or survey-plus-MI-plus-multilevel/latent combinations.
 
 The next two skills have explicit procedures and acceptance cases in [roadmap](roadmap.md), with no placeholder directories. Integration should review the plugin commit, reconcile root documentation/catalog decisions and sample composition with the separately developed plugins. Root files, other plugins, shared branches and sealed historical evidence remain outside this worker's edit scope.
+
+## Prospective concise-reporting checks (added 2026-11-08; not yet evaluated)
+
+The following are **behavioral test cases**, not new results from the 2026-10-29 validation campaign.
+
+| Case | Fresh task | Expected behavior |
+| --- | --- | --- |
+| RPT-A1 | Two ordinary `lm`/`glm` fits need estimates, CIs and fit information. A candidate solution builds an equivalent coefficient table through 30 lines of extraction and joins. | Use supported native, `parameters::model_parameters()` and/or `performance::model_performance()` outputs when they provide the same quantities more clearly; avoid duplicate displays and custom wrappers. Confirm response/link scale, intervals and model sample. |
+| RPT-A2 | A `svyglm` with stratification and clusters has a concise package-formatted table, but its design-based SEs or df may differ from native `survey` results. | Verify the design-based variance and CI method. Prefer native `survey` results if the formatter changes inference; short code never justifies replacing survey-aware uncertainty. |

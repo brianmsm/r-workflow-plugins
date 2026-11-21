@@ -21,7 +21,14 @@ Use `stats::lm()` or `stats::glm()` with the formula, family, sample, estimation
 - Read [linear-models-and-contrasts.md](references/linear-models-and-contrasts.md) for ordinary linear models, HC3 covariance, interactions and specified adjusted contrasts.
 - Read [binary-and-count-models.md](references/binary-and-count-models.md) for binary logit, Poisson/exposure models, a quasi-Poisson alternative and response-scale predictions.
 
-Use `parameters::model_parameters()` and class-appropriate `performance` functions as usual inspection tools. Declare CI method, standardization, exponentiation and covariance choice. Verify estimates, SEs, df and intervals against the native fitted object when introducing an extractor or changing reporting options. Standardizing by refitting is an analytical change; robust covariance changes uncertainty, not the fitted mean.
+Prefer **model-aware package output** over recreating coefficient and fit tables:
+
+- **Coefficients and intervals:** use `parameters::model_parameters()` when clearer than the native summary. Keep CI method, standardization, exponentiation and covariance settings explicit.
+- **Fit and diagnostics:** use `performance::model_performance()` or class-supported checks such as `performance::check_model()` when they add information. Native `summary()` and `plot()` may already suffice.
+- **Adjusted contrasts:** prefer supported `emmeans` or `marginaleffects` calls to long hand-written equivalents. Specify the estimand, reference grid, weights and link/response scale.
+
+Use both a native summary and a formatted table when they serve distinct roles (model inspection versus focused reporting); neither is automatically redundant. Verify estimates, SEs, df and intervals against the native object when settings change. Do not shorten code by silently changing inference or refitting merely to standardize.
+
 
 ## Diagnose and communicate
 

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-21
+
+### Changed
+- Preferred concise native, `parameters`, `performance` and suitable `gtsummary` reporting to equivalent custom extraction, preserving native inspections when they serve a distinct purpose.
+- Required compatibility with model class, interval method, coefficient scale and design-based survey inference; recorded prospective behavior cases separately from executed evidence.
+
+### Verification
+- Existing executable validation suite rerun successfully: 62 numerical/plot checks passed. Prospective behavioral cases remain unexecuted.
+
 ## [0.1.0] - 2026-10-29
 
 ### Added
