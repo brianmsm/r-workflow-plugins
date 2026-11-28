@@ -12,6 +12,10 @@
 
 This scope is released, with focused reporting and QA refinements recorded in the [changelog](../CHANGELOG.md). See the [validation record](validation.md) for the evidence and its limits.
 
+## Path diagrams and defined-parameter inference
+
+Path diagrams and inference for defined parameters cover single-level linear examples, including parallel and serial routes, contrasts and observed moderation. See the [validation record](validation.md) for tested estimator, scale and interval combinations. More complex designs require separate checks of their estimands, sampling units and model identification.
+
 ## Second delivery, not implemented
 
 | Capability | Required methodological content | Minimum new evidence |

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-28
+
+### Added
+- Extended single-level path workflows to multiple indirect routes, contrasts and conditional effects with delta, Monte Carlo and bootstrap inference. Documented estimation, test, interval and reporting choices separately.
+- Added diagram guidance for CFA and basic SEM, including mediation layouts and checks against the model specification.
+
 ## [0.1.1] - 2026-11-21
 
 ### Changed

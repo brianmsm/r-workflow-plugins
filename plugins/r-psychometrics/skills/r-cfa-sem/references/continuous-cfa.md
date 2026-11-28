@@ -8,6 +8,8 @@ A factor's marker loading or variance sets its scale. In the example, `std.lv = 
 
 MLR retains ML point estimation with robust uncertainty and an adjusted test. It does not repair dependence, a wrong factor structure or missingness assumptions. For a defensible MCAR/MAR likelihood analysis, `missing = "fiml"` uses observed data under the specified model. Missingness tests cannot establish MAR. Here missingness is generated independently, and there are no observed exogenous covariates. In SEM with `fixed.x = TRUE`, missing covariates may still cause deletion; inspect the actual used cases and decide whether conditional, joint or supported `fiml.x` treatment is warranted. Changing `fixed.x` changes modeling assumptions.
 
+For a reproduction, check whether the source uses normal or Wishart ML. With complete continuous data, lavaan’s default normal ML uses an N divisor for the sample covariance and N as the test multiplier. `likelihood = "wishart"` uses N − 1 for both. Keep the source convention explicit in the reproduction and justify the choice separately in follow-up models. [lavaan estimator documentation](https://lavaan.ugent.be/tutorial/est.html)
+
 ## Runnable synthetic example
 
 The population includes a residual association to make misspecification visible. The two candidate models differ by that one prespecified association, representing shared item wording in this invented example. This is a controlled comparison, not permission to add the largest modification index in real data.

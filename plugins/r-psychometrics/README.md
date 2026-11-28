@@ -2,7 +2,7 @@
 
 Research-editable measurement workflows for R: item diagnostics and reliability, exploratory factor analysis, and conventional CFA/basic SEM.
 
-**Release: 0.1.1.** Independently versioned as `r-psychometrics-v0.1.1`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
+**Release: 0.2.0.** Independently versioned as `r-psychometrics-v0.2.0`, with Codex, Claude Code and Antigravity CLI adapters. Native discovery and sampled behavior are documented in the [release evidence](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/research-methods-release-evidence.md); this is not a guarantee that arbitrary generated code is correct.
 
 ## Implemented skills
 
@@ -10,7 +10,7 @@ Research-editable measurement workflows for R: item diagnostics and reliability,
 | --- | --- | --- |
 | [r-item-and-reliability-analysis](skills/r-item-and-reliability-analysis/SKILL.md) | Declared item keys/scores, distributions and reliability evidence | Raw/standardized alpha, item-rest diagnostics, conventional CFA-based reliability on continuous and ordinal score metrics |
 | [r-exploratory-factor-analysis](skills/r-exploratory-factor-analysis/SKILL.md) | Dimensional exploration, retention and rotation | `psych::fa()`/`fa.parallel()`; ordinal `lavaan::efa(ordered = TRUE, estimator = "WLSMV")` |
-| [r-cfa-sem](skills/r-cfa-sem/SKILL.md) | Confirmatory measurement and basic structural/path models | Continuous ML/MLR, ordinal WLSMV, native diagnostics, supported psymetrics extraction and explicit nested tests |
+| [r-cfa-sem](skills/r-cfa-sem/SKILL.md) | Confirmatory measurement and basic structural/path models, including path diagrams and mediation | Continuous ML/MLR, ordinal WLSMV, native diagnostics, supported psymetrics extraction, nested tests and defined-parameter inference |
 
 Invoke a skill explicitly, for example `$r-cfa-sem`, or request its task in ordinary language. Host-specific namespacing and discovery depend on the agent. These instructions can operate independently; `r-analytic-coding-principles` is an optional companion, not an installation dependency.
 
@@ -22,6 +22,8 @@ Native model objects and diagnostics are primary. The verified psymetrics layer 
 
 **WLSMV reports scaled indices by default.** Adjusted tests/SEs and the separately named `.robust` fit-index variants are distinct. The known [psymetrics covariance-label issue #55](https://github.com/brianmsm/psymetrics/issues/55) is documented; this plugin does not modify that package.
 
+[Inference for derived effects](skills/r-cfa-sem/references/indirect-effects-inference.md) covers single-level contrasts and conditional indirect effects. Ordinary regression moderation is handled by the applied regression workflow. The published tag above identifies the currently distributed version.
+
 ## Packages and evidence
 
 Examples were executed with R 4.6.1, psych 2.6.9, lavaan 0.7.3, semTools 0.5.10 and psymetrics 0.5.0. dplyr/tidyr support transparent data work. These are tested versions, not commands to change an existing environment. `mirt` belongs to the next bounded IRT slice and is not required for this delivery.
@@ -31,9 +33,11 @@ See [validation](docs/validation.md) for numerical comparisons, negative cases, 
 ```sh
 Rscript --vanilla plugins/r-psychometrics/tests/synthetic-validation.R plugins/r-psychometrics
 Rscript --vanilla plugins/r-psychometrics/tests/independent-ordinal-validation.R
+Rscript --vanilla plugins/r-psychometrics/tests/indirect-effects-inference.R
+Rscript --vanilla plugins/r-psychometrics/tests/reporting-metric-validation.R
 ```
 
-The second script uses a separately designed ordinal fixture to check fit families, standardized uncertainty and corrected nesting. Run both commands from the monorepo root, with the listed packages already available. The tests do not install packages or read external datasets. Test assertions belong to this verification script, not to the researcher-facing analysis examples.
+The second script uses a separately designed ordinal fixture to check fit families, standardized uncertainty and corrected nesting. The other focused scripts check derived-effect inference and reporting on raw and standardized metrics. Run these commands from the monorepo root with the listed packages available. The tests do not install packages or read external datasets. Test assertions belong to this verification script, not to the researcher-facing analysis examples.
 
 ## Boundaries
 
@@ -50,4 +54,4 @@ codex plugin add r-psychometrics@r-workflow-plugins
 claude plugin install --scope user r-psychometrics@r-workflow-plugins
 ```
 
-For Antigravity CLI, install a local directory extracted from `r-psychometrics-v0.1.1` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.
+For Antigravity CLI, install a local directory extracted from `r-psychometrics-v0.2.0` with `agy plugin install <directory>`. See the [agent setup guide](https://github.com/brianmsm/r-workflow-plugins/blob/r-psychometrics-v0.1.0/docs/agent-setup.md) for registration, exact tag extraction and native invocation.

@@ -123,3 +123,24 @@ These are **behavioral test cases**, not additions to the executed 2026-10-29 nu
 | RPT-P1 | Two admissible single-group `lavaan` CFA fits require a model-fit table and aligned loadings. A draft manually joins `fitMeasures()` and `parameterEstimates()` results. | Prefer `psymetrics::compare_model_fit()` and `psymetrics::compare_model_estimates()` when supported and metric-compatible. Label them descriptive comparisons; do not substitute them for an appropriate model-difference test. |
 | RPT-P2 | A single fitted CFA is already understandable from the native `summary()`; an additional table adds no new information. | Retain the concise native output rather than emitting redundant formatters. Check uncertainty scales before reporting standardized coefficients. |
 | RPT-P3 | A user asks to apply `psymetrics` comparisons to an unsupported EFA-list or advanced latent model. | Do not infer class support from function names; use validated native output or explain the limitation instead of fabricating a generic comparison. |
+
+## Path-diagram checks (2026-11-28)
+
+The structural syntax in the path-diagram reference was parsed with lavaan. Enumerating directed paths from X to Y recovered the direct route and the three named indirect routes from six regressions. Removing the between-mediator regression removed only the serial route.
+
+Two independent GPT-6.2 Sol evaluations at high reasoning received the same reflective-model and parallel-mediation task, one with the prior skill and one with the revised skill. Both corrected reversed loadings, identified the residual covariance, removed an unsupported numerical correlation and omitted the unspecified direct path. The revised skill supplied explicit diagram conventions and a two-way specification check for those decisions. This comparison supports a gain in documented coverage; both agents could already solve the task. The revised-skill evaluator's question about covariance labels prompted a further example using endogenous indicators. These were specification reviews without a fit or rendered thesis figure.
+
+## Derived effects and reporting (2026-11-28)
+
+The current worktree was checked with R 4.6.1, lavaan 0.7-3 and psymetrics 0.5.0. [Synthetic validation](../tests/synthetic-validation.R) executes the multiple-mediator example, checks each specific route against separate linear regressions and checks the total against the reduced-form slope. The SE for the difference of the single-mediator routes agreed with its gradient and the full robust covariance matrix.
+
+| Focused check | Evidence |
+| --- | --- |
+| [Defined-parameter inference](../tests/indirect-effects-inference.R) | Checked the delta product SE, joint Monte Carlo draws and bootstrap limits against independent calculations. On complete synthetic data at positive df, the explicit ML and DWLS bootstrap fits preserved the coefficients and scaled global tests of the corresponding MLR and WLSMV fits. Separate checks cover option precedence, Bollen–Stine versus ordinary draws, and detection of missing-data fallback. |
+| Draw accounting | In a deliberately weak measurement model, 59 requested and stored draws included three failed refits. Six of the remaining 56 finite target estimates came from flagged inadmissible solutions. The native raw percentile interval retained these six; discarding them produced a different result. |
+| Conditional mediation | For an observed moderator on the first leg, conditional products at three fixed values and their contrast matched direct calculations. The contrast SE used the covariance between the two conditional estimates. |
+| [Reporting metrics](../tests/reporting-metric-validation.R) | Tested metric-specific covariance labels and checked which uncertainty columns and limits the raw and standardized extractors used. The compact estimator column can display a test name in a hybrid fit; the detailed table separates estimator variant, test and SE. |
+
+An independent comparison on 99 matched case resamples found that raw indirect estimates agreed across refits but standardized percentile intervals differed when each refit used the resample’s own X variance. The reporting test checks native standardization using the original fixed-exogenous variance.
+
+These are checks of implementation, extraction and algebra on named models. They do not estimate interval coverage, establish causal identification or validate extensions to latent interactions, dependent samples or nonlinear response-scale mediation.

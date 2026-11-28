@@ -310,6 +310,30 @@ check_estimates(sem_case$fit_latent_path,
                 "std.nox")
 cat("EVIDENCE observed-path indirect =", indirect$est, "; delta SE =", indirect$se, "\n")
 
+# Cross-check each route against separate regressions and the reduced-form total.
+practice <- sem_case$practice_data
+a1 <- unname(coef(lm(preparation ~ access, practice))["access"])
+second <- coef(lm(practice ~ access + preparation, data = practice))
+outcome <- coef(lm(score ~ access + preparation + practice, data = practice))
+route_one <- a1 * unname(outcome["preparation"])
+route_two <- unname(second["access"] * outcome["practice"])
+route_both <- a1 * unname(second["preparation"] * outcome["practice"])
+expected <- c(via_preparation = route_one, via_practice = route_two,
+              via_both = route_both, indirect = route_one + route_two + route_both,
+              total = unname(coef(lm(score ~ access, practice))["access"]),
+              difference = route_one - route_two)
+paths <- lavaan::parameterEstimates(sem_case$practice_fit)
+derived <- paths[paths$op == ":=", ]
+stopifnot(setequal(derived$lhs, names(expected)))
+expect_near(derived$est, expected[derived$lhs], "multiple routes, total and contrast")
+# Differentiate a1*b1 - a2*b2 in the same order as the covariance submatrix.
+gradient <- c(a1 = unname(outcome["preparation"]), b1 = a1,
+              a2 = -unname(outcome["practice"]), b2 = -unname(second["access"]))
+V_routes <- lavaan::vcov(sem_case$practice_fit)[names(gradient), names(gradient)]
+expect_near(derived$se[derived$lhs == "difference"],
+            sqrt(drop(t(gradient) %*% V_routes %*% gradient)),
+            "joint-covariance delta SE for a difference of indirect effects")
+
 # Negative cases: deliberately invalid inputs/solutions are not reported as success.
 fiml_error <- tryCatch(
   lavaan::cfa(ord$model_ordinal, data = ord$ordinal_cfa_items,

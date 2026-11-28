@@ -6,14 +6,14 @@ The plugin owns measurement decisions, not general data engineering or a new sta
 
 Each skill has concise activation instructions and conditional references. References keep substantive assumptions, native calls and interpretation together. Necessary instructions remain inside the plugin; consumers do not need root contributor documents, private collections or a sibling plugin's filesystem path.
 
-The technical SEM home is `r-cfa-sem`. An observed-path model can use it without pretending to contain a measurement model. Research design, covariate rationale and causal interpretation remain substantive applied-analysis questions.
+The technical SEM home is `r-cfa-sem`. An observed-path model can use it without pretending to contain a measurement model. Its derived-parameter reference covers uncertainty for explicit functions of coefficients in identified single-level models. Ordinary regression interactions and conditional contrasts belong to the applied regression workflow. Research design, covariate rationale and causal interpretation remain substantive applied-analysis questions.
 
 ## Components that exist
 
-- Three skills and eight method references.
+- Three skills with conditional method references, including path-diagram conventions for measurement and structural models.
 - Codex and Claude compatibility manifests using the repository's existing layout.
 - Plugin documentation separating support, roadmap, validation and integration handoff.
-- A main synthetic verification script that executes documented examples and checks native numerical identities, plus a separately designed ordinal regression check.
+- Synthetic verification scripts execute documented examples and check numerical identities, ordinal estimation, derived effects and interval provenance.
 
 No generic router, custom estimator/extractor, external server, empty skill directory, generated analysis scaffold or automatic environment setup is included. Verification helpers are test mechanics, not an analysis API.
 

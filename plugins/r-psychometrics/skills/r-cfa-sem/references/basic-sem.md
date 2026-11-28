@@ -2,6 +2,8 @@
 
 Use for conventional single-level observed-path or confirmatory latent-variable SEM. The applied research question determines covariates, temporal ordering and the target association. A path diagram or statistically nonzero indirect effect does not identify a causal mechanism.
 
+For a conceptual, specification or results figure, see [path-diagrams.md](path-diagrams.md).
+
 ## Observed-path example
 
 This synthetic complete-data model is saturated. Its perfect global fit is a consequence of zero df, not support for its causal interpretation. Coefficients are a statistical decomposition on the specified linear scale.
@@ -41,7 +43,38 @@ path_estimates
 path_fit_table
 ```
 
-The `:=` parameters use a first-order delta-method SE and symmetric interval by default in this validated example. The product's sampling distribution can be asymmetric. If the scientific task requires another interval, specify and validate a compatible procedure; for example, an ML bootstrap is a different configuration from MLR and should not be obtained by blindly adding `se = "bootstrap"` to an incompatible estimator. Bootstrap design must respect dependence and record fit failures.
+The default interval for these defined parameters uses first-order delta uncertainty. See [inference for derived effects](indirect-effects-inference.md) to choose and verify an interval for a product, difference or conditional slope. In the model above, the mean structure allows intercepts to be inspected. With complete data and freely estimated intercepts, the definition of the product does not require a mean structure. Keep likelihood or scaling options used to reproduce a source local to that comparison unless they also serve the next analysis.
+
+## Several routes from the same exposure to the same outcome
+
+Suppose access to a new resource predicts preparation, preparation predicts practice, and both predict a later score. Practice may also depend directly on access. In a linear additive model, trace each directed route once and define its contribution on the same outcome scale per unit of exposure. This synthetic example uses complete independent records.
+
+```r
+set.seed(20353)
+practice_data <- tibble(access = rnorm(500)) |>
+  mutate(
+    preparation = 0.45 * access + rnorm(500),
+    practice = 0.30 * access + 0.40 * preparation + rnorm(500),
+    score = 0.15 * access + 0.35 * preparation + 0.50 * practice + rnorm(500)
+  )
+
+practice_model <- '
+  preparation ~ a1*access
+  practice ~ a2*access + d*preparation
+  score ~ direct*access + b1*preparation + b2*practice
+
+  via_preparation := a1*b1
+  via_practice := a2*b2
+  via_both := a1*d*b2
+  indirect := via_preparation + via_practice + via_both
+  total := direct + indirect
+  difference := via_preparation - via_practice
+'
+practice_fit <- sem(practice_model, data = practice_data, estimator = "MLR")
+summary(practice_fit, ci = TRUE)
+```
+
+Here the contrast compares the two single-mediator routes. To compare *all* routes through preparation with the practice-only route, the target would also include `via_both` on the preparation side. Specify that choice before inspecting the estimates. A purely parallel model omits the between-mediator regression and its serial product. Decide separately whether the parallel mediators have residual covariance. Estimating the contrast within the same fit preserves the covariance between the products. Separate significance decisions for the two paths do not test their difference. [Preacher and Hayes (2008)](https://doi.org/10.3758/BRM.40.3.879)
 
 ## Confirmatory latent SEM example
 
@@ -102,7 +135,7 @@ Raw and standardized structural effects answer different metric questions. Keep 
 
 Causal mediation additionally needs an appropriate design, temporal order and assumptions about confounding, selection and measurement. Cross-sectional associations alone do not supply these. Avoid claiming that a significant a*b explains how an intervention works.
 
-Interaction, nonlinear, categorical-outcome and multilevel indirect effects need their own scale/identification procedures; the linear product and total formulas do not certify those extensions. Factor-score regression is not numerically or inferentially equivalent to the latent model.
+When an observed moderator changes a path, evaluate that path at stated moderator values before forming its product or contrast. The [derived-effects reference](indirect-effects-inference.md) covers a linear example. Nonlinear links, categorical outcomes, latent interactions and multilevel processes require identification and uncertainty procedures appropriate to their scale and design. A direct path compatible with zero is insufficient evidence for complete mediation or practical equivalence. An equivalence claim requires justified bounds and a corresponding inferential procedure. Factor-score regression is not numerically or inferentially equivalent to the latent model.
 
 ## Sources and checked API
 

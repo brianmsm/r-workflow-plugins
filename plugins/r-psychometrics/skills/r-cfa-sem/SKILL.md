@@ -1,6 +1,6 @@
 ---
 name: r-cfa-sem
-description: "Use when specifying, fitting, diagnosing or comparing continuous or ordinal CFA and basic single-level SEM/path models in R with lavaan, including supported psymetrics reporting. Multigroup invariance, ESEM and advanced latent models require separate workflows."
+description: "Use when diagramming, specifying, fitting, diagnosing or comparing continuous or ordinal CFA and basic single-level SEM/path models in R with lavaan, including mediation, conditional effects, derived-parameter uncertainty and supported psymetrics reporting. Multigroup invariance, ESEM and advanced latent models require separate workflows."
 ---
 
 # CFA and Basic SEM
@@ -13,11 +13,15 @@ Keep the scientific specification and native estimation visible. This is the tec
 - Identify each latent scale (e.g. a marker loading or `std.lv = TRUE`) and inspect model degrees of freedom, information and parameter plausibility. Positive df alone does not prove identification. A one-indicator or two-indicator factor needs defensible additional information/constraints; do not add arbitrary restrictions to make it run.
 - Keep each model's syntax string, `lavaan::cfa()` or `lavaan::sem()` call, and `summary(..., fit.measures = TRUE, standardized = TRUE)` adjacent. Add `ci = TRUE` and `rsquare = TRUE` where relevant, using arguments supported by the installed version.
 
+For creating, interpreting or auditing a path diagram, read [path-diagrams.md](references/path-diagrams.md). A conceptual or diagram-only request can start from the supplied hypotheses or specification without fitting a model.
+
 ## Select the Estimation Path
 
 - For continuous CFA, read [continuous-cfa.md](references/continuous-cfa.md). Choose ML/MLR from the analysis assumptions and inference needs; make any likelihood-based missing-data strategy explicit. FIML relies on a defensible missingness/model argument, and missing exogenous covariates require special attention.
 - For ordered endogenous indicators, read [ordinal-cfa.md](references/ordinal-cfa.md). Declare their names, use `estimator = "WLSMV"` when appropriate, and retain the identification/parameterization and missing-data policy. Do not request unsupported ordinal FIML or silently apply continuous assumptions. If missingness is unresolved, inspect it before selecting a strategy; an unsupported FIML request does not authorize an automatic switch to pairwise deletion.
 - For basic structural equations or indirect effects, read [basic-sem.md](references/basic-sem.md). Specify structural coefficients and derived parameters explicitly. An observed-path model may be saturated; its perfect global fit cannot validate causal assumptions.
+
+For uncertainty in a product, sum, difference or conditional effect defined in a SEM, read [indirect-effects-inference.md](references/indirect-effects-inference.md). Identify the target function and metric before choosing delta, Monte Carlo or bootstrap inference. For moderation in a standalone observed regression, use the ordinary regression workflow.
 
 ## Diagnose Before Reporting
 
