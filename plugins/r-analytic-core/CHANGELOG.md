@@ -4,6 +4,9 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
+### Added
+- Included the MIT license and copyright notice in the standalone plugin.
+
 ## [0.1.2] - 2026-11-21
 
 ### Added

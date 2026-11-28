@@ -41,8 +41,6 @@ Plugins are independently usable; do not introduce hard dependency chains or clo
 
 ## Current Skill and Resources
 
-### Current skill and resources (`v0.1.1`)
-
 `r-analytic-coding-principles` is one general skill with meaningful conditional guidance:
 
 - `SKILL.md` states the defaults, workflow, boundaries and when to load supporting references.
