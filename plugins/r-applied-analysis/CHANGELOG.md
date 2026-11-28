@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-11-28
+
+### Changed
+- Clarified how to specify and interpret observed moderation using conditional effects and uncertainty on the target scale.
+
 ### Fixed
 - Kept declared empty and all-missing groups visible in the summary example, with separate denominators and unavailable statistics.
 

@@ -85,7 +85,7 @@ Keep this covariance in any downstream contrast that is meant to use it. Cluster
 
 ## Contrasts at named baseline values
 
-Averaging an interacting effect without specifying the target can conceal the question. Here three prespecified contrasts form one family. The reference grid fixes baseline at -1, 0 and 1; there are no other factors to average over. Both intervals and p-values use a stated Bonferroni adjustment across the three contrasts.
+Averaging an interacting effect without specifying the target can conceal the question. Choose moderator values with substantive meaning and check their support within each relevant group or covariate combination in the analyzed sample. A pooled range can hide poor overlap. Here both groups have observations at each chosen baseline value of -1, 0 and 1, and there are no other factors to average over. The three prespecified Program-minus-Control contrasts form one family with Bonferroni-adjusted intervals and p-values.
 
 ```r
 linear_grid <- emmeans::emmeans(
@@ -113,6 +113,35 @@ contrast_plot
 ```
 
 With additional categorical covariates, equal-cell and proportional weighting differ. With continuous covariates, predictions at the mean need not equal averages of predictions. State the grid and target population instead of relying on a package default. `marginaleffects` is an alternative for averages over explicit rows and counterfactual comparisons; its installed class support, averaging weights and covariance propagation must be checked separately.
+
+## Conditional slopes and their difference
+
+The same interaction also makes the baseline slope conditional on group. With treatment coding, the Control slope is the `baseline` coefficient. The Program slope adds `baseline:groupProgram`, which is the Program-minus-Control slope difference. The two slopes and their difference are in score units per baseline unit. Report the slope difference directly if the question is whether slopes differ. Comparing the significance of each slope against zero answers a different question.
+
+```r
+linear_slopes <- emmeans::emtrends(
+  linear_fit, ~ group, var = "baseline", vcov. = linear_vcov_hc3
+)
+linear_slope_table <- as.data.frame(confint(
+  linear_slopes, level = 0.95, adjust = "none"
+))
+linear_slope_difference <- emmeans::contrast(
+  linear_slopes, method = list("Program - Control" = c(-1, 1))
+)
+summary(linear_slope_difference, infer = c(TRUE, TRUE), level = 0.95, adjust = "none")
+
+slope_plot <- ggplot(linear_slope_table, aes(group, baseline.trend)) +
+  geom_hline(yintercept = 0, linetype = 2) +
+  geom_pointrange(aes(ymin = lower.CL, ymax = upper.CL)) +
+  labs(
+    x = "Group", y = "Score change per baseline unit",
+    caption = "Pointwise 95% intervals using HC3 covariance"
+  ) +
+  theme_minimal()
+slope_plot
+```
+
+The contrast plot addresses group differences at selected baseline values. The slope plot addresses change per baseline unit within group. Use predictions with uncertainty when the question concerns fitted outcome levels. For interacting continuous predictors, evaluate the requested slope or contrast at supported moderator values with `at = list(...)`; a fitted curve over a grid needs the same support checks and a clear label for pointwise or simultaneous intervals.
 
 Standardization is optional. `parameters(..., standardize = "refit")` refits using transformed variables and changes coefficient interpretation. An equivalent reparameterization can preserve fitted means; inspect interactions and factor coding because standardized coefficients are not interchangeable merely because predictions agree. Do not exponentiate an ordinary identity-link coefficient.
 

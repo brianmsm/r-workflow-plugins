@@ -126,6 +126,26 @@ check_equal("one-family simultaneous contrast intervals",
             c(linear_contrast_table$lower.CL, linear_contrast_table$upper.CL),
             c(c(2.5, 4, 5.5) - qt(1 - 0.05 / 6, 36) * contrast_se,
               c(2.5, 4, 5.5) + qt(1 - 0.05 / 6, 36) * contrast_se))
+slope_weights <- rbind(
+  Control = c(0, 1, 0, 0),
+  Program = c(0, 1, 0, 1),
+  Program_minus_Control = c(0, 0, 0, 1)
+)
+slope_difference_table <- as.data.frame(summary(
+  linear_slope_difference, infer = c(TRUE, TRUE), level = 0.95, adjust = "none"
+))
+slope_estimates <- drop(slope_weights %*% coef(linear_fit))
+slope_se <- sqrt(diag(slope_weights %*% hc3_manual %*% t(slope_weights)))
+slope_half_width <- qt(0.975, df.residual(linear_fit)) * slope_se
+check_equal("conditional slopes and explicit slope difference",
+            c(linear_slope_table$baseline.trend, slope_difference_table$estimate),
+            slope_estimates)
+check_equal("conditional slopes and slope difference carry HC3 uncertainty",
+            c(linear_slope_table$SE, slope_difference_table$SE), slope_se)
+check_equal("conditional slopes and slope difference use pointwise 95% intervals",
+            c(linear_slope_table$lower.CL, slope_difference_table$lower.CL,
+              linear_slope_table$upper.CL, slope_difference_table$upper.CL),
+            c(slope_estimates - slope_half_width, slope_estimates + slope_half_width))
 
 # Binary coefficient, odds, delta SE and probability contrast are different scales.
 check_equal("known binary coefficients", coef(binary_fit), c(log(0.25), log(8 / 3), 0))
@@ -277,6 +297,11 @@ check_equal("survey binary extractor transformed SE df and p",
 for (plot in list(distribution_plot, association_plot, residual_plot, contrast_plot, probability_plot)) {
   check_true("ggplot layers build", length(ggplot2::ggplot_build(plot)$data) > 0)
 }
+slope_plot_intervals <- ggplot2::ggplot_build(slope_plot)$data[[2]]
+check_equal("conditional slope plot reproduces the table and intervals",
+            c(slope_plot_intervals$y, slope_plot_intervals$ymin, slope_plot_intervals$ymax),
+            c(linear_slope_table$baseline.trend, linear_slope_table$lower.CL,
+              linear_slope_table$upper.CL))
 cat("\n", checks, "substantive numerical/plot checks passed.\n")
 print(c(
   welch_difference = mean_difference,

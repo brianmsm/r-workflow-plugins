@@ -62,6 +62,8 @@ probability_plot
 
 These are confidence intervals for modeled probabilities at named covariate values, not individual prediction intervals. Exponentiated `parameters` intervals transform the link-scale endpoints; its exponentiated SE is delta-method transformed and is **not** the log-coefficient SE. Native `confint(glm)` may use profiling, while this example explicitly uses normal/Wald inference. Different interval procedures are not necessarily extraction bugs.
 
+For an interaction, choose the target scale before probing it. A conditional difference on the logit or log-rate scale exponentiates to an odds ratio or rate ratio, respectively. A probability or rate difference requires taking that contrast after obtaining predictions on the intended scale. A response-scale slope or difference can vary with other covariates even in an additive link-scale model. Specify the supported covariate settings, any averaging distribution and the exposure at which counts are compared. Carry the model coefficient covariance into the slope or contrast interval and make the plotted quantity and interval method explicit.
+
 Avoid treating in-sample classification accuracy or a nonsignificant fit test as adequate validation. Calibration and out-of-sample evaluation matter for a predictive task. Independent Bernoulli observations have variance fixed by their mean; an ordinary binomial dispersion p-value is not a general diagnostic for omitted clustering.
 
 ### A probability difference, rather than an odds ratio

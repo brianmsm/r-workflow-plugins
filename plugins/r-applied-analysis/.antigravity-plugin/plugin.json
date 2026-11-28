@@ -1,5 +1,5 @@
 {
   "name": "r-applied-analysis",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Research-editable descriptive, regression and complex-survey analysis in R with explicit estimands and uncertainty."
 }

@@ -130,3 +130,7 @@ The following are **behavioral test cases**, not new results from the 2026-10-29
 | --- | --- | --- |
 | RPT-A1 | Two ordinary `lm`/`glm` fits need estimates, CIs and fit information. A candidate solution builds an equivalent coefficient table through 30 lines of extraction and joins. | Use supported native, `parameters::model_parameters()` and/or `performance::model_performance()` outputs when they provide the same quantities more clearly; avoid duplicate displays and custom wrappers. Confirm response/link scale, intervals and model sample. |
 | RPT-A2 | A `svyglm` with stratification and clusters has a concise package-formatted table, but its design-based SEs or df may differ from native `survey` results. | Verify the design-based variance and CI method. Prefer native `survey` results if the formatter changes inference; short code never justifies replacing survey-aware uncertainty. |
+
+## Observed moderation (2026-11-28)
+
+The expanded linear example and [numerical checks](../tests/numerical-validation.R) verified group-specific slopes of 3 and 4.5 score units per baseline unit. The Program-minus-Control slope difference was 1.5, with HC3 SE 0.4517 and a 95% interval of [0.584, 2.416]. The checks compared slopes, contrasts and uncertainty with linear combinations of the fitted coefficients and covariance, and checked the plotted layer data. All 67 numerical/plot checks passed in the current worktree. This validates the single-level linear fixture. The scale guidance for binary and count outcomes does not establish a nonlinear mediation procedure.
