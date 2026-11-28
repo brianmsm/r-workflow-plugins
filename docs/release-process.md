@@ -83,6 +83,7 @@ Before releasing a plugin:
 - update the plugin `CHANGELOG.md`;
 - update `.codex-plugin/plugin.json`;
 - review any agent-specific manifests and marketplaces;
+- verify that the standalone plugin payload includes the MIT license and copyright notice;
 - validate included skills;
 - create the plugin-specific Git tag at the commit containing the validated release manifests and changelog.
 
