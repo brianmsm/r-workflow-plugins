@@ -1,6 +1,6 @@
 # R Psychometrics Roadmap
 
-## First slice: released as 0.1.0
+## Current scope
 
 - Item distributions, declared keying/scoring, raw and standardized alpha, item-rest diagnostics and bounded bootstrap illustration.
 - Conventional CFA-based reliability for a continuous composite and an ordered-category composite, with explicit metric and denominator.
@@ -10,7 +10,7 @@
 - Same-sample nested comparison examples with estimator-appropriate corrections.
 - Synthetic numerical checks, invalid-model/missing-data failure cases and bounded independent behavioral review, documented separately in the validation record.
 
-This is a usable development slice. A public version/tag/catalog decision belongs to integration and release coordination.
+This scope is released, with focused reporting and QA refinements recorded in the [changelog](../CHANGELOG.md). See the [validation record](validation.md) for the evidence and its limits.
 
 ## Second delivery, not implemented
 
@@ -27,6 +27,6 @@ ESEM with structural relations; DIF and anchor/purification decisions; psychomet
 
 These methods need bounded scientific questions, package evidence and independent validation before being advertised. Deferral does not prevent a user from requesting separate expert work.
 
-## Integration follow-up
+## Maintenance
 
-The coordinator can reconcile the root plugin map/README, assess cross-plugin task composition and decide any catalog/release changes. Worker commits modify only this plugin. Future tests should address demonstrated remaining risks rather than repeat unrelated historical release gates.
+Verify substantive changes with the affected numerical examples and targeted behavioral cases. Sample cross-plugin composition and host discovery when a change affects routing or distribution.
