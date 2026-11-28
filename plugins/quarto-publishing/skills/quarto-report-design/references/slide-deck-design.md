@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this reference for **slide communication design**: audience, purpose, sequence, evidence, visuals, and delivery readiness. These principles are not tied to a presentation engine. For YAML, templates, animation syntax, or other format mechanics, use `quarto-format-configuration` and its `presentations.md` reference.
+Use this reference for **slide communication design**: audience, purpose, sequence, evidence, visuals, and delivery readiness. These principles are not tied to a presentation engine. For Quarto YAML, templates, animation syntax, or other Quarto format mechanics, use `quarto-format-configuration` and its `presentations.md` reference.
 
 **Contents:** [Situation](#first-decide-the-communication-situation) · [Titles](#use-concise-descriptive-titles) · [Figures and evidence](#use-figures-tables-code-and-equations) · [Narrative](#organize-the-narrative) · [Delivery](#design-for-delivery-and-failure)
 
@@ -47,7 +47,7 @@ Prefer **short, nominal and descriptive titles** naming the concept, comparison,
 - Name the specific object: "Indirect-path stability" or "Indirect effects across robustness checks", not "Results" or "Methods".
 - Avoid headings that narrate the conclusion (e.g., “The indirect pathway was stable across robustness checks”) when “Indirect-path stability” names the same finding more naturally.
 - Use questions only when they serve a deliberate teaching, prediction, or discussion purpose.
-- Omit title-slide subtitles or slogans when they only repeat an idea introduced on the next slide.
+- Give each slide one primary heading. Keep a subtitle or panel label when it identifies a distinct population, condition or comparison. Remove lines that restate the heading or pre-empt the next slide.
 - Give each slide a clear **local visual or explanatory step**. A larger idea may require several consecutive slides and need not be concluded or summarized on each one.
 - Split complex explanations across slides instead of shrinking text or using long prose-filled cards.
 - Avoid using projected slides as the speaker's script.
@@ -70,6 +70,12 @@ When converting a report, thesis section, manuscript, or technical note into sli
 
 Avoid mechanical section-to-slide mapping. A report section may become several slides, one slide, a backup slide, or no slide at all depending on the audience task. Within an authorized pedagogical redesign, reconsider the existing slides rather than merely reordering or accumulating them: merge, replace, omit, or move redundant material to backup while retaining needed evidence.
 
+## Continue or revise an existing deck
+
+When visual continuity is requested, inspect representative rendered slides from the reference series, including code, tables or diagrams when present. Match the hierarchy actually used: typeface, weight, spacing, margins, alignment, accent meanings and notation. Compare the continuation at its intended viewing size; a shared theme can render differently across editors.
+
+Compare the revision with the instructor’s current editable deck. Check affected content, formatting, speaker notes and editable elements against that version, even when an older deck supplies the visual reference.
+
 ## Manage Slide Density
 
 Design for **projection**, not for fitting a manuscript page:
@@ -81,7 +87,7 @@ Design for **projection**, not for fitting a manuscript page:
 - Use whitespace and consistent hierarchy to guide attention. Avoid ornamental effects, dense manuscript figures, long bullets and small-text boxes.
 - Put secondary diagnostics and detailed evidence in backup material when not needed in the live argument; do not omit scientifically consequential limitations.
 - **Keep numerical notation consistent:** follow the user/project convention for decimal symbols and thousands grouping across charts, tables, axes, text and annotations. For example, if the deck uses a decimal point and no thousands separator, render `0.835` and `7138` consistently. Do not silently change values, rounding or the underlying analysis.
-- **Inspect the rendered deck:** check real screen/projection readability, visual balance and number formatting, including graph labels and equations. For web/CSS presentations, verify visual size rather than treating point values as literal CSS settings.
+- **Inspect the rendered deck:** check real screen/projection readability, visual balance and number formatting, including graph labels, equations, effective stroke weight and contrast of code, and the alignment of bullets with wrapped text. For web/CSS presentations, verify visual size rather than treating point values as literal CSS settings.
 
 A dense technical subject warrants **more appropriately sequenced detail**, not smaller type. If a slide is slow to explain, first consider whether the idea should progress through several slides instead.
 
@@ -106,7 +112,7 @@ For a new teaching sequence, **choose the depiction for the learning difficulty*
 - **Magnitude or uncertainty:** a quantitative plot with meaningful axes and units.
 - **Exact values:** a readable small table. Use prose when clearer.
 
-**Check meaning, not just bounds.** Match arrows, labels, axes, units, signs, denominators, estimates, and intervals to the source model, data, and code. A reversed path is wrong even if the drawing looks polished.
+**Check meaning, not just bounds.** Match arrows, labels, axes, units, signs, denominators, estimates, and intervals to the source model, data, and code. Use recognizable disciplinary conventions from the source or domain guidance. Trace every relevant connector to its endpoints in the rendered figure and check that each label belongs unambiguously to its object. Rearrange geometry as needed while preserving the underlying relationships.
 
 When teaching **scientific reporting**:
 
@@ -139,7 +145,7 @@ For academic decks, preserve research logic; for executive decks, decision logic
 ### Decide what appears on screen versus in speaker notes
 
 - **Project what must be seen:** a meaningful concept or definition, graph, equation, selected evidence, readable comparison, diagram or short cue. One central definition can occupy its own slide if the audience needs to examine its terms.
-- **Speak what must be explained:** elaboration, examples, transitions between stages, interpretation and delivery prompts belong in speaker notes or oral narration. For a multi-slide block, note its shared objective and the transitions between stages in the presenter notes, not as repeated projected boxes. Do not copy the lecturer's paragraphs onto slides.
+- **Speak what must be explained:** elaboration, examples, transitions between stages, interpretation and delivery prompts belong in speaker notes or oral narration. For a multi-slide block, note its shared objective and the transitions between stages in the presenter notes, not as repeated projected boxes. Put a qualification where it changes the interpretation. Carry reminders for the instructor in notes when repeating them on screen adds no information.
 - **Keep necessary evidence visible:** do not move a number, assumption, qualification or source citation that the audience must inspect into notes alone. For self-study or inaccessible notes, provide an appropriate companion handout rather than turning projected slides into a transcript.
 
 For live teaching, plan breaks and optional activities without turning the projected deck into an instructor schedule. Display instructions or timings only when the audience needs them. Keep the path flexible.
@@ -154,9 +160,11 @@ Before treating a deck as ready:
 - Provide static fallbacks for fragile animation, video or web content when relevant; avoid unapproved live runtime dependencies.
 - Keep prompts, transitions and oral elaboration in speaker notes when the format supports them. Do not claim checks of notes, readability or backups that were not performed.
 
-Do not claim visual review, projected-readability review, or backup export checks unless those artifacts were actually opened or inspected.
+For a whole-deck review, inspect every requested slide in sequence, including its transitions and any notes or companion materials in scope. Report which artifact and viewing environment you checked, which checks covered a sample, and any checks still pending. A bounds check alone cannot establish legibility or learning progression.
 
-## Handoffs
+## Quarto production handoffs
+
+Use these routes when Quarto is the authoring environment. For native artifacts, inspect the delivered file using a viewer or editor appropriate to that format.
 
 - Use the `quarto-format-configuration` skill and its `presentations.md` reference for revealjs, PowerPoint, Beamer, YAML, themes, templates, slide numbers, speaker notes, and format-specific behavior.
 - Use `quarto-authoring-core` for writing or editing the slide `.qmd` content.

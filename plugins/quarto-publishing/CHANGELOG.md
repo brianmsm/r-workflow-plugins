@@ -4,6 +4,11 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-11-28
+
+### Changed
+- Extended teaching design across native and Quarto formats, with learner-order review, continuity with reference materials and preservation of editable decks.
+
 ### Added
 - Included the MIT license and copyright notice in the standalone plugin.
 

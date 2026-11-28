@@ -8,7 +8,7 @@ Because this plugin lives in `r-workflow-plugins`, examples may emphasize R/knit
 
 This plugin is not focused on classic R Markdown. R Markdown should appear only when migrating to Quarto, comparing behavior, or maintaining interoperability with Quarto projects.
 
-**Agent plugin version:** `0.2.4` in the Codex and Claude manifests. Public distribution uses the independent `quarto-publishing-v0.2.4` tag and marketplace pins, not the version field alone. Six skills remain implemented, including conditional pedagogical and presentation-design references; the architecture's additional proposals are not automatically available. Reveal.js motion belongs to format configuration, not Bento.
+**Agent plugin version:** `0.2.5` in the Codex and Claude manifests. Public distribution uses the independent `quarto-publishing-v0.2.5` tag and marketplace pins, not the version field alone. Six skills remain implemented, including conditional pedagogical and presentation-design references; the architecture's additional proposals are not automatically available. Reveal.js motion belongs to format configuration, not Bento.
 
 ## Implemented Structure
 
@@ -21,7 +21,7 @@ This plugin is not focused on classic R Markdown. R Markdown should appear only 
 - `skills/quarto-authoring-core/SKILL.md`: Quarto `.qmd` authoring and review skill.
 - `skills/quarto-project-configuration/SKILL.md`: Quarto project configuration review skill.
 - `skills/quarto-format-configuration/SKILL.md`: Quarto output format configuration review skill.
-- `skills/quarto-report-design/SKILL.md`: Quarto report structure and analytical communication design skill.
+- `skills/quarto-report-design/SKILL.md`: Quarto report structure, scientific presentations and pedagogical design across delivery formats.
 - `skills/quarto-computation-performance/SKILL.md`: Quarto computation, cache, freeze, and long-render strategy skill.
 - `skills/quarto-render-troubleshooting/SKILL.md`: Quarto render failure and output verification troubleshooting skill.
 - `skills/*/agents/openai.yaml`: OpenAI-facing skill metadata.

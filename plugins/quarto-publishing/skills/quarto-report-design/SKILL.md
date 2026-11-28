@@ -1,11 +1,13 @@
 ---
 name: quarto-report-design
-description: "Use to design or revise Quarto reports and scientific/teaching slide communication, including methodological or applied conference talks, research seminars and defenses: audience, evidence, narrative, technical depth and delivery. Not for routine QMD syntax, format/project YAML, rendering or unrelated prose editing."
+description: "Use to design or revise Quarto reports, scientific talks (conferences, seminars, defenses), and teaching explanations or activities across formats, including native slides, handouts and web lessons. Shape audience, evidence, narrative, technical depth and delivery. Not for routine QMD syntax, format/project YAML, rendering or unrelated prose editing."
 ---
 
 # Quarto Report Design
 
 Make the reader's path from the substantive question through evidence, interpretation, limits and implications clear. This is communication design, not general prose polishing.
+
+For communication design alone, keep the requested medium and current editable artifact. Select the relevant design reference directly. Apply the report profiles to reports, the slide guidance to decks, and the teaching guidance wherever learners encounter the explanation. Use that medium’s authoring and inspection tools for implementation. When revising generated material, establish whether the editable deliverable or its source contains later user edits. Reconcile those edits before regenerating or review a separate candidate if preservation is uncertain.
 
 ## Operating Workflow
 
@@ -66,6 +68,8 @@ Explain a bounded assumption when proceeding with ordinary edits; do not expand 
 - For basic transitional accessibility checks, read `references/accessibility-basic-checklist.md`.
 
 ## Boundaries
+
+Apply the following production routes to Quarto projects.
 
 Use `quarto-authoring-core` for Quarto Markdown syntax, cell or chunk labels/options, citations, cross-references, captions, equations, callout syntax, or ordinary `.qmd` authoring mechanics.
 

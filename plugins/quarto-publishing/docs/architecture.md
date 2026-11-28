@@ -315,9 +315,7 @@ Rationale:
 
 ### Purpose
 
-Translate a reporting goal and audience into a coherent Quarto deliverable structure.
-
-This skill should not be a generic writing skill. It should focus on how to structure Quarto outputs according to audience, purpose, medium, and level of technical detail.
+Structure Quarto reports for their audience and purpose. Scientific presentation and pedagogical design also apply independently of the authoring engine, including native decks, handouts and web lessons. Preserve the requested medium and use its own tools for production and verification.
 
 ### Covers
 
@@ -374,7 +372,7 @@ This skill should not be a generic writing skill. It should focus on how to stru
 
 ### Boundary Rule
 
-This skill should focus on the structure of Quarto deliverables, not general prose editing. It should answer questions such as:
+Use this skill for report structure, scientific presentations and learning design. Select production and verification tools for the actual format. Typical questions include:
 
 * What sections should this report have?
 * What should go in the appendix?

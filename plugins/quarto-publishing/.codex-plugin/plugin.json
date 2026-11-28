@@ -1,6 +1,6 @@
 {
   "name": "quarto-publishing",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Quarto publishing workflows for analytical and research-oriented documents, reports, websites, books, manuscripts, slides, and reproducible rendering.",
   "author": {
     "name": "Brian Norman Peña-Calero"
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Quarto Publishing",
     "shortDescription": "Quarto-first publishing workflows.",
-    "longDescription": "Guidance for AI agents working on Quarto publishing projects, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows with R/knitr, Python/Jupyter, Julia, or prose-only documents.",
+    "longDescription": "Guidance for AI agents working on Quarto publishing projects, including documents, analytical reports, websites, books, manuscripts, revealjs slides, _quarto.yml configuration, render troubleshooting, and reproducible workflows with R/knitr, Python/Jupyter, Julia, or prose-only documents. Scientific presentation and teaching design can also be used with native slides, handouts and web lessons.",
     "developerName": "Brian Norman Peña-Calero",
     "brandColor": "#4779A6",
     "composerIcon": "./assets/icon.png",

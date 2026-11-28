@@ -26,6 +26,7 @@ Do not display this plan as a mandatory form, agenda, or fixed number of slides.
 
 For an integrative case, connect **situation → question → measures → model → results → report**. Adapt stages to the objective rather than turning them into a software-click tutorial.
 
+- **Anchor a recurring example at first use.** Establish the situation, question and relevant units before asking learners to interpret its notation or numbers. When returning to it, identify what changed, including a switch from assumed values to estimates from data.
 - **Name variables:** introduce substantive meanings before abbreviations; reuse them across diagrams, tables, and code.
 - **Label evidence:** distinguish published results, reproduced estimates, simulated examples, and new teaching extensions.
 - **Preserve provenance:** do not attribute a classroom step to source authors unless documented. Show discrepancies rather than forcing numeric agreement.
@@ -87,6 +88,8 @@ When the task uses R or other software, decide what students actually run; teach
 
 Projected runnable code must match the **canonical material learners receive** (paths, objects, and outputs). When it changes, reconcile slides, notes, and handouts. For R script design and clean handoff checks, use `r-analytic-coding-principles` → `classroom-r-scripts.md`.
 
+Read the sequence in learner order, including any handoff between materials. At each exercise, try the task with only the definitions, evidence and instructions available at that point. Repair missing prerequisites and move a premature solution to the feedback step when independent prediction is the objective. For self-study, keep the explanation and feedback accessible without a presenter.
+
 ### Coordinate companion materials when present
 
 Assign materials clear roles: slides explain; executable material supports action; handouts carry independent instructions; instructor notes hold delivery cues and caveats. Adapt this division to the setting: asynchronous materials need more self-contained context. Avoid duplicating explanations across materials learners use together. A companion notebook is optional.
@@ -99,4 +102,4 @@ Assign materials clear roles: slides explain; executable material supports actio
 - Treating "the algorithm finished", "the model fits", or "the value is above a threshold" as a complete interpretation.
 - Enforcing a fixed number of stages, questions, diagrams, examples, or slides.
 
-For titles, visual hierarchy, contrast, whitespace, accessibility, and rendered-slide review, use [slide-deck-design.md](slide-deck-design.md) and the relevant Quarto skills **only when those aspects are being edited**.
+For titles, visual hierarchy, contrast, whitespace, accessibility, and rendered-slide review, use [slide-deck-design.md](slide-deck-design.md) **when those aspects are being edited**. Use format-specific production guidance for the actual deliverable.
