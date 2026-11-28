@@ -43,7 +43,11 @@ check_true <- function(label, value) {
 # Denominators, independent and paired mean contrasts.
 check_equal("eligible, observed and missing denominators",
             as.matrix(score_summary[, c("n_eligible", "n_observed", "n_missing")]),
-            matrix(c(6, 6, 5, 5, 1, 1), nrow = 2))
+            rbind(c(6, 5, 1), c(6, 5, 1), c(1, 0, 1), c(0, 0, 0)))
+check_true("all-missing and empty groups remain explicitly unestimable",
+           identical(as.character(score_summary$group), c("A", "B", "C", "D")) &&
+             all(is.na(score_summary[3:4, c("mean", "sd", "median", "q1", "q3")])) &&
+             identical(score_summary$mean[3:4], c(NA_real_, NA_real_)))
 a <- observed_scores$score[observed_scores$group == "A"]
 b <- observed_scores$score[observed_scores$group == "B"]
 v_a <- var(a) / length(a)

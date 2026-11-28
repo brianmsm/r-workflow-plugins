@@ -6,25 +6,28 @@ Read for ordinary sample descriptions, mean contrasts and independent contingenc
 
 Distinguish eligible N, observed N and missing N for each variable and group. A percentage among observed responses and a percentage among all eligible records answer different questions. Report the denominator beside the result; do not count a missing binary outcome as "no." Empty/all-missing groups have no estimable mean or proportion and must remain explicitly unestimable.
 
-This synthetic example targets **A minus B** among observed scores. Available-case summaries and a complete-case test do not correct selection bias from missingness.
+Declare the eligible groups as factor levels and retain those levels in the summary. This example includes group C with one eligible participant and no observed scores, and group D with no eligible participants. Both have unavailable statistics. The planned Welch contrast is **A minus B** among observed scores. Available-case summaries and a complete-case test do not correct selection bias from missingness.
 
 ```r
 library(dplyr)
 library(ggplot2)
 
 comparison_data <- tibble::tibble(
-  participant = 1:12,
-  group = factor(rep(c("A", "B"), each = 6), levels = c("A", "B")),
-  score = c(8, 11, 9, 13, 10, NA, 10, 14, 12, 16, 15, NA)
+  participant = 1:13,
+  group = factor(
+    c(rep(c("A", "B"), each = 6), "C"),
+    levels = c("A", "B", "C", "D")
+  ),
+  score = c(8, 11, 9, 13, 10, NA, 10, 14, 12, 16, 15, NA, NA)
 )
 
 score_summary <- comparison_data |>
-  group_by(group) |>
+  group_by(group, .drop = FALSE) |>
   summarise(
     n_eligible = n(),
     n_observed = sum(!is.na(score)),
     n_missing = sum(is.na(score)),
-    mean = mean(score, na.rm = TRUE),
+    mean = if (n_observed > 0) mean(score, na.rm = TRUE) else NA_real_,
     sd = sd(score, na.rm = TRUE),
     median = median(score, na.rm = TRUE),
     q1 = quantile(score, 0.25, na.rm = TRUE),
@@ -34,7 +37,8 @@ score_summary <- comparison_data |>
 score_summary
 
 observed_scores <- comparison_data |>
-  filter(!is.na(group), !is.na(score))
+  filter(group %in% c("A", "B"), !is.na(score)) |>
+  mutate(group = droplevels(group))
 
 welch_fit <- stats::t.test(
   score ~ group, data = observed_scores,
@@ -48,7 +52,7 @@ welch_fit$conf.int
 distribution_plot <- ggplot(observed_scores, aes(group, score)) +
   geom_boxplot(width = 0.35, outlier.shape = NA) +
   geom_point(position = position_jitter(width = 0.07, height = 0, seed = 41)) +
-  labs(x = "Group", y = "Score", caption = "Observed outcomes; 5 of 6 per group") +
+  labs(x = "Group", y = "Score", caption = "Observed outcomes in A and B (5 of 6 per group)") +
   theme_minimal()
 distribution_plot
 ```

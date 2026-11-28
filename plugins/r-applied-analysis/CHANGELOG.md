@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- Kept declared empty and all-missing groups visible in the summary example, with separate denominators and unavailable statistics.
+
 ## [0.1.1] - 2026-11-21
 
 ### Changed
