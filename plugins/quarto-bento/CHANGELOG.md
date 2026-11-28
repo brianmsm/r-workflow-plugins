@@ -4,7 +4,12 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ## [Unreleased]
 
-_No subsequent changes recorded._
+### Added
+- Included the MIT license and copyright notice in the standalone plugin.
+
+### Changed
+- Updated the version-gated guidance for the published Linux application 0.2.0 and retained the limits of earlier candidate validation.
+- Coordinated learning progression and slide design with the optional Quarto report-design skill for new or substantially revised teaching decks.
 
 ## [0.2.0] - 2026-10-27
 
