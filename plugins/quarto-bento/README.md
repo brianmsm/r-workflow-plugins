@@ -2,7 +2,7 @@
 
 A portable companion for agents using **Quarto-Bento**: QMD authoring/computation, retained visual design, structured `qbento` operations, selective source synchronization and conservative recovery.
 
-**Agent plugin release:** `0.2.0`, independently tagged as `quarto-bento-v0.2.0`.
+**Agent plugin release:** `0.2.1`, independently tagged as `quarto-bento-v0.2.1`.
 The **application** `@brianmsm/quarto-bento@0.2.0` is now npm-published
 (dist-tag `latest`; Linux), with immutable source tag
 [`v0.2.0`](https://github.com/brianmsm/quarto-bento/tree/v0.2.0).
@@ -20,7 +20,7 @@ This is a deliberately **narrower local acceptance policy** than the earlier str
 
 The application is published as npm package `@brianmsm/quarto-bento@0.2.0`
 and tagged as `v0.2.0` at commit `5b17bf6`. It is distinct from the
-independently versioned agent plugin `0.2.0` and from the older app `0.1.1`.
+independently versioned agent plugin `0.2.1` and from the older app `0.1.1`.
 The earlier candidate smoke used a dirty-source tarball (SHA-256
 `ae96fc64…` at `b52772e`); it is **historical evidence**, not a claim
 that the candidate and final published package have byte-identical artifacts.

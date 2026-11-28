@@ -4,6 +4,8 @@ Versions belong to this **agent plugin**, independently of the Quarto-Bento appl
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-28
+
 ### Added
 - Included the MIT license and copyright notice in the standalone plugin.
 
