@@ -4,22 +4,22 @@ This is the **global plugin map and development horizon**, not a release schedul
 
 ## Current State
 
-As of 2026-11-21, the public catalogs contain seven independently tag-pinned plugins. Quarto Publishing `v0.2.4` (six implemented skills) extends teaching and scientific-slide guidance, while R Analytic Core `v0.1.2` refines locally editable research code, classroom scripts and proportionate verification. Quarto-Bento remains `v0.2.0`, with independent native application/state responsibilities.
+The two public catalogs distribute seven independently tagged plugins. Quarto Publishing and R Analytic Core cover teaching design and classroom scripts. Quarto-Bento tracks compatibility with the independently versioned application. R Applied Analysis covers observed moderation, and R Psychometrics covers path diagrams and defined-parameter inference in single-level SEM.
 
-The research-methods plugins remain independently usable first slices: R Applied Analysis and R Psychometrics are now `v0.1.1` reporting/QA guidance updates; R Data Wrangling and R Simulation Methods remain `v0.1.0`. Ten research-methods skills are implemented; missing-data, mixed-model, invariance and IRT workflows remain planned and have no placeholder implementations. Published tags, not working-tree edits or manifest fields alone, determine what catalog consumers receive.
+The table below lists the current releases. Missing-data, mixed-model, invariance and IRT workflows remain planned.
 
 ## Plugin Candidates and Scope
 
 | Plugin | Intended role | Examples, not a committed skill list | State |
 | --- | --- | --- | --- |
-| `r-analytic-core` | Research-first, locally editable analytical R code | One core skill; optional future specialized workflows | **Tagged v0.1.2** |
+| `r-analytic-core` | Research-first, locally editable analytical R code | One core skill; optional future specialized workflows | **Tagged v0.1.3** |
 | `r-data-wrangling` | Preserve and transform research data meanings | Import/types/labels; recoding, joins, reshaping and aggregation | **Released v0.1.0 (2 skills)** |
-| `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives, ordinary regression and complex-survey inference; next: missing-data and mixed-model skills | **Released v0.1.1 (3 skills)** |
-| `r-psychometrics` | Measurement modeling and interpretation | Item/reliability, EFA including ordinal WLSMV, conventional CFA and basic SEM; next: invariance and IRT | **Released v0.1.1 (3 skills)** |
+| `r-applied-analysis` | Statistical analysis applied to research questions | Descriptives, ordinary regression and complex-survey inference; next: missing-data and mixed-model skills | **Released v0.1.2 (3 skills)** |
+| `r-psychometrics` | Measurement modeling and interpretation | Item/reliability, EFA including ordinal WLSMV, conventional CFA and basic SEM; next: invariance and IRT | **Released v0.2.0 (3 skills)** |
 | `r-simulation-methods` | Simulation designs and Monte Carlo evaluation | ADEMP, SimDesign, failure-aware bias/RMSE/coverage/MCSE and explicit RNG; advanced infrastructure deferred | **Released v0.1.0 (2 skills)** |
 | `r-package-development` | Build and maintain R packages | API design; roxygen2; testthat; pkgdown; CI | Planned |
-| `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | Six skills: QMD; formats; reports; slides; computation; rendering | **Tagged v0.2.4** |
-| `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; sync/recovery, animation migration and conditional app 0.2 composition/widget guidance | **Tagged v0.2.0** |
+| `quarto-publishing` | Quarto-first, engine-aware document and publication workflows | Six skills: QMD; formats; reports; slides; computation; rendering | **Tagged v0.2.5** |
+| `quarto-bento` | Independent companion for the Quarto-Bento application | One workflow skill; sync/recovery, animation migration and conditional app 0.2 composition/widget guidance | **Tagged v0.2.1** |
 | `rmarkdown-workflows` | Classic R Markdown support and interoperability | `.Rmd` reports; parameters; output maintenance | Planned |
 
 ### Cross-Plugin Boundaries

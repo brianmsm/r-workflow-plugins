@@ -6,16 +6,16 @@ The repository is **plugin-oriented, not a package of R functions or an agent fr
 
 ## Plugin Map
 
-The public marketplaces distribute independently tagged **`quarto-publishing v0.2.4`**, **`r-analytic-core v0.1.2`**, and **`quarto-bento v0.2.0`**. The research-methods plugins include **`r-applied-analysis v0.1.1`** and **`r-psychometrics v0.1.1`**; `r-data-wrangling` and `r-simulation-methods` remain at v0.1.0. Catalog sources are pinned to plugin-specific release tags. The research-methods plugins include Codex, Claude Code and Antigravity CLI adapters; unimplemented plugins remain proposals.
+The public marketplaces distribute independently tagged **`quarto-publishing v0.2.5`**, **`r-analytic-core v0.1.3`**, and **`quarto-bento v0.2.1`**. The research-methods plugins include **`r-applied-analysis v0.1.2`** and **`r-psychometrics v0.2.0`**; `r-data-wrangling` and `r-simulation-methods` remain at v0.1.0. Catalog sources are pinned to plugin-specific release tags. The research-methods plugins include Codex, Claude Code and Antigravity CLI adapters; unimplemented plugins remain proposals.
 
 | Plugin | Responsibility | Status |
 | --- | --- | --- |
-| [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.4** |
-| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.2** |
-| [`quarto-bento`](plugins/quarto-bento/) | Quarto-Bento CLI/Studio, retained design, reviewed source synchronization and recovery; optional Quarto/R companions. | **Published: v0.2.0** |
+| [`quarto-publishing`](plugins/quarto-publishing/) | Quarto documents, reports, presentations, configuration, computation strategy, and render verification. Engine-aware across R/knitr, Python/Jupyter, Julia, and prose-only documents. | **Published: v0.2.5** |
+| [`r-analytic-core`](plugins/r-analytic-core/) | Research-first R coding: model-by-model editability, intentional repetition, proportional live verification. | **Published: v0.1.3** |
+| [`quarto-bento`](plugins/quarto-bento/) | Quarto-Bento CLI/Studio, retained design, reviewed source synchronization and recovery; optional Quarto/R companions. | **Published: v0.2.1** |
 | [`r-data-wrangling`](plugins/r-data-wrangling/) | Research data import, identifiers, labels and missing values; transformations, joins and longitudinal reshaping. | **Published: v0.1.0 (2 skills)** |
-| [`r-applied-analysis`](plugins/r-applied-analysis/) | Descriptive/comparative analysis, ordinary regression and complex-survey inference; missing-data and mixed-model skills deferred. | **Published: v0.1.1 (3 skills)** |
-| [`r-psychometrics`](plugins/r-psychometrics/) | Item/reliability analysis, EFA including ordinal WLSMV, and conventional CFA/basic SEM; invariance/IRT deferred. | **Published: v0.1.1 (3 skills)** |
+| [`r-applied-analysis`](plugins/r-applied-analysis/) | Descriptive/comparative analysis, ordinary regression and complex-survey inference; missing-data and mixed-model skills deferred. | **Published: v0.1.2 (3 skills)** |
+| [`r-psychometrics`](plugins/r-psychometrics/) | Item/reliability analysis, EFA including ordinal WLSMV, and conventional CFA/basic SEM; invariance/IRT deferred. | **Published: v0.2.0 (3 skills)** |
 | [`r-simulation-methods`](plugins/r-simulation-methods/) | ADEMP design and failure-aware SimDesign execution and Monte Carlo evaluation. | **Published: v0.1.0 (2 skills)** |
 | `r-package-development` | R package architecture, APIs, documentation, testing, and release-related practices. | Planned |
 | `rmarkdown-workflows` | Classic R Markdown maintenance and workflows; full migration into Quarto belongs primarily to the Quarto plugin. | Planned |

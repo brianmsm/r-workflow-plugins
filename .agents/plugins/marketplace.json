@@ -10,7 +10,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/quarto-publishing",
-        "ref": "quarto-publishing-v0.2.4"
+        "ref": "quarto-publishing-v0.2.5"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -24,7 +24,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/r-analytic-core",
-        "ref": "r-analytic-core-v0.1.2"
+        "ref": "r-analytic-core-v0.1.3"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -38,7 +38,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/quarto-bento",
-        "ref": "quarto-bento-v0.2.0"
+        "ref": "quarto-bento-v0.2.1"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -66,7 +66,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/r-applied-analysis",
-        "ref": "r-applied-analysis-v0.1.1"
+        "ref": "r-applied-analysis-v0.1.2"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -80,7 +80,7 @@
         "source": "git-subdir",
         "url": "https://github.com/brianmsm/r-workflow-plugins.git",
         "path": "./plugins/r-psychometrics",
-        "ref": "r-psychometrics-v0.1.1"
+        "ref": "r-psychometrics-v0.2.0"
       },
       "policy": {
         "installation": "AVAILABLE",

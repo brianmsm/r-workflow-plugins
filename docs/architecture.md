@@ -20,7 +20,7 @@ These are **responsibility boundaries, not a mandatory inheritance or dependency
 - `r-psychometrics`: measurement-oriented methods and diagnostics; reusable Monte Carlo infrastructure belongs to `r-simulation-methods`.
 - `r-simulation-methods`: generating conditions/replications and evaluating operating characteristics, including psychometric simulations when a simulation is the principal task.
 - `r-package-development`: R package engineering and maintenance, not general data analysis.
-- `quarto-publishing`: Quarto authoring, reports, formats, projects, slides, rendering, and delivery. The primary engine is detected from the actual project (R, Python, Julia, or prose-only), not assumed.
+- `quarto-publishing`: Quarto authoring, reports, formats, projects, slides, rendering, and delivery. Its scientific presentation and pedagogical guidance can also be used directly with other authoring systems. The primary engine is detected from the actual project (R, Python, Julia, or prose-only), not assumed.
 - `quarto-bento`: an independently distributed companion for the Quarto-Bento application: project identity, CLI/API/Studio operations, retained visual state, reviewed synchronization and recovery. Generic Quarto skills remain optional companions, not duplicates.
 - `rmarkdown-workflows`: maintaining classic R Markdown projects and outputs; when converting them to Quarto, `quarto-publishing` owns the migration target.
 
