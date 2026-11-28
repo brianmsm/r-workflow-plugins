@@ -4,6 +4,12 @@ All notable changes to `quarto-publishing` will be documented here.
 
 ## [Unreleased]
 
+### Added
+- Included the MIT license and copyright notice in the standalone plugin.
+
+### Fixed
+- Route Reveal.js slide links to interactive verification to avoid false broken-anchor errors in the HTML checker.
+
 ## [0.2.4] - 2026-11-21
 
 ### Added

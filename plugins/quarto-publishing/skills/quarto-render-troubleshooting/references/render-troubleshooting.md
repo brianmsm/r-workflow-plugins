@@ -211,6 +211,8 @@ For structural verification when a local HTML artifact is available, run `python
 
 Treat source inspection, successful render, structural inspection, visual inspection, and interactive testing as separate evidence levels. Finding a lightbox class in HTML does not prove that enlargement works; finding an SVG does not prove that a Mermaid diagram is legible. If browser execution is unavailable, report the affected checks as unverified.
 
+For Reveal.js, follow slide links such as `#/results` and `#/2` in the rendered deck and verify the destination. The structural helper skips these JavaScript routes when it detects Reveal.js deck markup.
+
 For public-facing reports with local terminology rules, inspect rendered headings, captions, table cells, legends, alt or ARIA text, SVG labels, navigation, and metadata when the task includes language-policy verification. A clean source-prose search does not prove that generated or hidden surfaces comply.
 
 Do not perform broad visual design or accessibility review here. Deep accessibility belongs to future `quarto-accessibility-quality`.

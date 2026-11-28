@@ -37,6 +37,9 @@ class ArtifactParser(HTMLParser):
         self.anchor_refs: list[tuple[int, str]] = []
         self.asset_refs: list[tuple[int, str, str]] = []
         self.base_href: str | None = None
+        self.div_depth = 0
+        self.reveal_depth: int | None = None
+        self.has_reveal_deck = False
         self.code_depth = 0
         self.code_line = 0
         self.code_tail = ""
@@ -48,6 +51,13 @@ class ArtifactParser(HTMLParser):
         tag = tag.lower()
         values = {name.lower(): value for name, value in attrs}
         line = self.getpos()[0]
+        if tag == "div":
+            self.div_depth += 1
+            classes = (values.get("class") or "").split()
+            if self.reveal_depth is not None and "slides" in classes:
+                self.has_reveal_deck = True
+            if self.reveal_depth is None and "reveal" in classes:
+                self.reveal_depth = self.div_depth
         if tag == "code":
             if self.code_depth == 0:
                 self.code_line, self.code_tail, self.code_match = line, "", None
@@ -82,7 +92,12 @@ class ArtifactParser(HTMLParser):
         self.code_tail = combined[-260:]
 
     def handle_endtag(self, tag: str) -> None:
-        if tag.lower() == "code" and self.code_depth:
+        tag = tag.lower()
+        if tag == "div" and self.div_depth:
+            if self.div_depth == self.reveal_depth:
+                self.reveal_depth = None
+            self.div_depth -= 1
+        if tag == "code" and self.code_depth:
             self.code_depth -= 1
             if self.code_depth == 0:
                 self._finish_code()
@@ -179,6 +194,9 @@ def inspect(artifact: Path) -> dict[str, object]:
         fragment = same_document_fragment(href, artifact, resolved_base)
         if fragment is None:
             continue
+        # Reveal routes slash-prefixed hashes through its JavaScript navigator.
+        if parser.has_reveal_deck and urlsplit(href).fragment.startswith("/"):
+            continue
         checked_anchors += 1
         if fragment not in parser.targets:
             add_error({"type": "broken_same_document_anchor", "line": line,
@@ -217,7 +235,7 @@ def inspect(artifact: Path) -> dict[str, object]:
             "visual": "Layout, clipping, legibility, and appearance were not inspected.",
             "interactive": "Navigation, scripts, widgets, lightboxes, and controls were not exercised.",
             "asset_scope": "Remote, root-relative, malformed, inline/data, srcset, dynamic, and CSS-contained asset URLs were not checked.",
-            "anchor_scope": "External, root-relative, malformed, #top, text-fragment, and dynamically created targets were not checked.",
+            "anchor_scope": "External, root-relative, malformed, #top, text-fragment, Reveal.js hash routes, and dynamically created targets were not checked.",
         },
         "exit_code": 1 if error_count else 0,
     }

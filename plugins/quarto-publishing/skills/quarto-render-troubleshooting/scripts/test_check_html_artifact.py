@@ -104,6 +104,31 @@ class CheckHtmlArtifactTests(unittest.TestCase):
         self.assertEqual(result["summary"]["checked_same_document_anchor_count"], 0)
         self.assertEqual(result["summary"]["skipped_anchor_reference_count"], 2)
 
+    def test_reveal_hash_routes_require_interactive_verification(self):
+        html = """<div class="reveal"><div class="slides">
+        <section id="one"><a href="#/two">named slide</a>
+        <a href="#/1">indexed slide</a><a href="#/two/0">fragment</a>
+        <a href="#absent">broken HTML anchor</a></section>
+        <section id="two"></section></div></div>"""
+        code, result = self.run_checker(html)
+        self.assertEqual(code, 1)
+        self.assertEqual(result["summary"]["skipped_anchor_reference_count"], 3)
+        self.assertEqual(result["summary"]["checked_same_document_anchor_count"], 1)
+        self.assertEqual(
+            [item["href"] for item in result["errors"]["items"]], ["#absent"]
+        )
+
+    def test_slash_fragments_remain_literal_in_ordinary_html(self):
+        html = """<div class="reveal" id="two"></div>
+        <div class="slides" id="/present"></div><a href="#/present">valid literal target</a>
+        <a href="#/two">missing literal target</a>"""
+        code, result = self.run_checker(html)
+        self.assertEqual(code, 1)
+        self.assertEqual(result["summary"]["checked_same_document_anchor_count"], 2)
+        self.assertEqual(
+            [item["href"] for item in result["errors"]["items"]], ["#/two"]
+        )
+
     def test_malformed_urls_do_not_crash_or_create_definite_errors(self):
         html = """<html><body><a href="https://[invalid#target">bad link</a>
         <img src="https://[invalid"></body></html>"""
