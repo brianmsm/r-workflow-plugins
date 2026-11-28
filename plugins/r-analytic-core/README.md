@@ -2,7 +2,7 @@
 
 `r-analytic-core` provides **research-first coding conventions** for AI agents that create, review, or revise analytical R code. The default is code that a researcher can inspect and change **model by model, section by section, and figure by figure**—not a prematurely automated production pipeline.
 
-**Agent plugin version:** `v0.1.2`, independently tagged as `r-analytic-core-v0.1.2`. Public distribution follows the marketplace's pinned tag, not the manifest field alone. This patch improves native/package reporting, classroom handoffs and temporary R verification without adding a new skill.
+**Agent plugin version:** `v0.1.3`, independently tagged as `r-analytic-core-v0.1.3`. Public distribution follows the marketplace's pinned tag, not the manifest field alone. This release refines course continuity, purposeful data preparation and explanations of consequential settings in learner scripts.
 
 ## Implemented Skill
 
@@ -65,7 +65,7 @@ For direct local Claude Code testing from the monorepo root:
 claude --plugin-dir ./plugins/r-analytic-core
 ```
 
-For **unreleased Codex development**, use a separate local marketplace entry pointing to `./plugins/r-analytic-core`, rather than overriding the tag-pinned public marketplace source. The public catalog installs its currently pinned release; verify that its `source.ref` matches `r-analytic-core-v0.1.2` after publication. See the repository [agent setup](../../docs/agent-setup.md).
+For **unreleased Codex development**, use a separate local marketplace entry pointing to `./plugins/r-analytic-core`, rather than overriding the tag-pinned public marketplace source. The public catalog installs its currently pinned release; verify that its `source.ref` matches `r-analytic-core-v0.1.3` after publication. See the repository [agent setup](../../docs/agent-setup.md).
 
 The first `0.1.0` release passed its [scoped behavioral gate](docs/pilot-findings.md), including two independent post-fix test waves. The `0.1.1` instruction changes passed structural and synthetic R/Quarto checks but have **not** undergone a new independent agent-behavior wave. See the [validation cases](docs/validation-cases.md); public distribution requires the tag and matching marketplace pin to be available remotely.
 

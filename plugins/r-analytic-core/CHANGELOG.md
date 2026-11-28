@@ -4,6 +4,12 @@ All notable changes to `r-analytic-core` will be documented here. Versions and t
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-11-28
+
+### Changed
+- Refined classroom script continuity, purposeful data preparation and the review of repeated comments and reproduction-specific settings.
+- Connected consequential classroom R settings to learner-facing explanations at first use.
+
 ### Added
 - Included the MIT license and copyright notice in the standalone plugin.
 
